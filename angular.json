@@ -22,9 +22,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "**/??.json",
+              {
+                "glob": "**/??.json",
                 "input": "./node_modules/youcoach-i18n/i18n/",
-                "output": "./assets/i18n/" }
+                "output": "./assets/i18n/"
+              }
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
@@ -95,9 +97,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "**/??.json",
+              {
+                "glob": "**/??.json",
                 "input": "./node_modules/youcoach-i18n/i18n/",
-                "output": "./assets/i18n/" }
+                "output": "./assets/i18n/"
+              }
             ],
             "styles": [
               "src/styles.css"
@@ -106,15 +110,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
           }
         },
@@ -133,5 +133,8 @@
       }
     }
   },
-  "defaultProject": "20-frontend"
+  "defaultProject": "20-frontend",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
