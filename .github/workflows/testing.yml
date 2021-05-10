@@ -1,0 +1,25 @@
+# Source: https://github.com/filipesilva/ng-github-actions/blob/master/.github/workflows/main.yml
+
+name: Testing
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 14.15
+    - name: Install dependencies
+      run: npm install
+    - name: Lint
+      run: npm run lint
+    - name: Build
+      run: npm run build -- --prod
+    - name: Test
+      run: npm run test:ci
+    - name: E2E
+      run: npm run e2e
