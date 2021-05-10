@@ -16,16 +16,11 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'final-project-skeleton'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Final-project-skeleton');
-  });
 
-  it('should render title', () => {
+  it('should render the navigation bar', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('20-frontend app is running!');
+    expect(compiled.querySelector('app-navigation-bar')).toBeTruthy();
   });
 });

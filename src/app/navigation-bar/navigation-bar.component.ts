@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../authentication/authentication.service';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -9,9 +8,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class NavigationBarComponent implements OnInit {
   username;
-  language = 'en';
 
-  constructor(private authenticationService: AuthenticationService, private translate: TranslateService) {
+  constructor(private authenticationService: AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -21,12 +19,5 @@ export class NavigationBarComponent implements OnInit {
     });
   }
 
-  switchLanguage(language: string) {
-    this.translate.use(language);
-    this.language = language;
-  }
-  currentLanguage() {
-    return this.language;
-  }
 
 }

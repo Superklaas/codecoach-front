@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NavigationBarComponent } from './navigation-bar.component';
@@ -8,7 +9,8 @@ describe('NavigationBarComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavigationBarComponent ]
+      declarations: [ NavigationBarComponent ],
+      imports: [ HttpClientTestingModule ],
     })
     .compileComponents();
   }));
