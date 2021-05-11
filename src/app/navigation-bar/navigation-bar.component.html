@@ -10,12 +10,19 @@
           <div *ngIf="!username" translate>Sign-in</div>
           <i class="material-icons right">person</i>
         </a></li>
+
+        <li><a *ngIf="!username" class="waves-effect waves-light yellow darken-2 btn black-text"  routerLink="/register">
+          <div translate>Register</div>
+          <i class="material-icons right">person</i>
+        </a></li>
+
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
         <li><a href="#" routerLink="/home">Home</a></li>
         <li><a href="#">Hello world</a></li>
-        <li><a class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login">Sign in<i
+        <li><a class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login">Sign in<i class="material-icons right">person</i></a></li>
+        <li><a class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/register">Register<i
           class="material-icons right">person</i></a></li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
