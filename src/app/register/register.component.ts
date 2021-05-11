@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../service/user.service";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
 @Component({
@@ -37,8 +37,42 @@ export class RegisterComponent implements OnInit {
     return this._registerForm;
   }
 
+  get firstName() {
+    return this._registerForm.get('firstName');
+  }
+
+  get lastName(){
+    return this._registerForm.get('lastName');
+  }
+
+  get profileName(){
+    return this._registerForm.get('profileName');
+  }
+
+  get email(){
+    return this._registerForm.get('email');
+  }
+
+  get password(){
+    return this._registerForm.get('password');
+  }
+
+  get password2(){
+    return this._registerForm.get('password2')
+  }
 
   submit() {
     return this.userService.create(this._registerForm.value).subscribe(user => this.router.navigate([`/user/${user.id}`]));
+  }
+
+  wrongInputHasBeenTyped(input: AbstractControl): boolean{
+    if (input === null){
+      return false;
+    }
+    return input.invalid && (input.dirty || input.touched);
+  }
+
+  hasAllBeenTouched(...inputs: AbstractControl[]){
+    return inputs.reduce((touched, input) => touched && (input.touched || input.dirty), true);
   }
 }
