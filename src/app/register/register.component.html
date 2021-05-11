@@ -1,0 +1,60 @@
+<main>
+  <div class="container">
+
+    <div class="row">
+      <div class="col s12 m12">
+        <h1 class="center teal-text lighten-3">Register</h1>
+        <div class="content-container-with-padding z-depth-4">
+          <div class="row">
+            <form class="col s12" [formGroup]="registerForm" (ngSubmit)="submit()" >
+
+
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="First name" formControlName="firstName"
+                         aria-label="First name">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Last name" formControlName="lastName"
+                         aria-label="Last name">
+                </div>
+              </div>
+
+              <div class="row">
+                <label for="profile-name">Profile Name (This is the name other users will see.)</label>
+                <input id="profile-name" type="text" class="form-control" formControlName="profileName"
+                       aria-label="profile name">
+              </div>
+
+              <div class="row">
+                <label for="email">Email</label>
+                <input id="email" type="email" class="form-control" placeholder="" formControlName="email"
+                       aria-label="email">
+              </div>
+
+              <div class="row" >
+                <input type="password" class="form-control" placeholder="Password" formControlName="password"
+                       aria-label="password">
+              </div>
+
+
+              <div class="row" >
+                <input type="password" class="form-control" placeholder="Repeat password" formControlName="password2"
+                       aria-label="repeat password">
+              </div>
+
+              <div class="row right-align">
+
+                <button type="submit" class="waves-effect waves-light yellow darken-2 btn-large black-text">Register<i
+                  class="material-icons right">send</i></button>
+
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
