@@ -9,14 +9,15 @@ import { AuthenticationService } from 'src/app/authentication/authentication.ser
 })
 export class NavigationBarComponent implements OnInit {
   username;
+  isLoggedIn: boolean;
 
   constructor(private authenticationService: AuthenticationService) {
   }
 
   ngOnInit(): void {
-    this.username = 'Profile';
     this.authenticationService.userLoggedIn$.subscribe(isLoggedIn => { 
       this.username = isLoggedIn ? this.authenticationService.getProfileName(): undefined ;
+      this.isLoggedIn =isLoggedIn;
     });
   }
 
