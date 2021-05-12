@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {Observable} from "rxjs";
+import {Observable, throwError} from "rxjs";
 import {User} from "../model/User";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,20 @@ export class UserService {
   }
 
   create(user: User): Observable<User>{
-    return this.http.post<User>(this.url,user);
+    return this.http.post<User>(this.url,user).pipe(catchError(this.handleError('register'))
+    );
   }
+
 
   get(id: number):  Observable<User>{
     return this.http.get<User>(`${this.url}/${id}`);
+  }
+
+  private handleError(operation = 'operation') {
+    return (error: any) => {
+      console.error(error);
+      return throwError(error);
+    };
   }
 
 
