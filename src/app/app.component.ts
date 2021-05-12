@@ -6,5 +6,9 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  private _title = 'CodeCoach';
 
+  get title(): string {
+    return this._title;
+  }
 }
