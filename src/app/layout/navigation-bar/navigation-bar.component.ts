@@ -10,14 +10,15 @@ import {Router} from "@angular/router";
 })
 export class NavigationBarComponent implements OnInit {
   username;
+  isLoggedIn: boolean;
 
   constructor(private authenticationService: AuthenticationService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.username = undefined;
     this.authenticationService.userLoggedIn$.subscribe(isLoggedIn => {
       this.username = isLoggedIn ? this.authenticationService.getProfileName(): undefined ;
+      this.isLoggedIn =isLoggedIn;
     });
   }
 
