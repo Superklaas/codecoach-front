@@ -44,8 +44,8 @@
                   <input id="email" type="email" class="form-control" placeholder="" formControlName="email"
                          aria-label="email">
                   <div *ngIf="wrongInputHasBeenTyped(email)" class="alert alert-danger">
-                    <div *ngIf="email.errors.required">email is required.</div>
-                    <div *ngIf="email.errors.pattern">not a valid email</div>
+                    <div *ngIf="email.errors.required">Email is required.</div>
+                    <div *ngIf="email.errors.pattern">Not a valid email</div>
                   </div>
                 </div>
               </div>
@@ -55,9 +55,9 @@
                   <input type="password" class="form-control" placeholder="Password" formControlName="password"
                          aria-label="password">
                   <div *ngIf="wrongInputHasBeenTyped(password)" class="alert alert-danger">
-                    <div *ngIf="password.errors.required">password is required.</div>
-                    <div *ngIf="password.errors.pattern">not a valid password, you need at least A number, capital and
-                      lower case letter
+                    <div *ngIf="password.errors.required">Password is required.</div>
+                    <div *ngIf="password.errors.pattern">Not a valid password: you need at least a number, an upper case letter and
+                     a lower case letter
                     </div>
                   </div>
                 </div>
@@ -69,7 +69,7 @@
                   <input type="password" class="form-control" placeholder="Repeat password" formControlName="password2"
                          aria-label="repeat password">
                   <div *ngIf="hasAllBeenTouched(password,password2)" class="alert alert-danger">
-                    <div *ngIf="registerForm.errors.notSame">password don't match.</div>
+                    <div *ngIf="registerForm.errors.notSame">Passwords don't match.</div>
                   </div>
                 </div>
               </div>

@@ -10,7 +10,6 @@ import {AuthenticationInterceptor} from './authentication/authentication.interce
 import {LoginComponent} from './login/login.component';
 import {AppRoutingModule} from './app-routing.module';
 import { HomeComponent } from './home/home.component';
-import {HelloWorldComponent} from './hello-world/hello-world.component';
 import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NavigationBarComponent } from './layout/navigation-bar/navigation-bar.component';
@@ -24,7 +23,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     LoginComponent,
-    HelloWorldComponent,
     HomeComponent,
     NavigationBarComponent,
     FooterComponent,
