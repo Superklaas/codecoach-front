@@ -42,5 +42,11 @@ export class LoginComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
+    this.router.navigateByUrl(`/home`);
   }
+
+  requestResetPassword() {
+    alert("please email an admin.")
+  }
+
 }

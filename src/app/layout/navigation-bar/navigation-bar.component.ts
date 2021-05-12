@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -10,15 +11,19 @@ import { AuthenticationService } from 'src/app/authentication/authentication.ser
 export class NavigationBarComponent implements OnInit {
   username;
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private authenticationService: AuthenticationService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.username = 'Profile';
-    this.authenticationService.userLoggedIn$.subscribe(isLoggedIn => { 
+    this.username = undefined;
+    this.authenticationService.userLoggedIn$.subscribe(isLoggedIn => {
       this.username = isLoggedIn ? this.authenticationService.getProfileName(): undefined ;
     });
   }
 
 
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigateByUrl(`/home`);
+  }
 }
