@@ -8,7 +8,7 @@ import {environment} from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthenticationHttpService {
-  private url = `${environment.backendUrl}/login`;
+  private url = `${environment.backendUrl}/authenticate`;
 
   constructor(private http: HttpClient) {
   }

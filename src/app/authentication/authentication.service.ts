@@ -1,7 +1,10 @@
-import {Injectable} from '@angular/core';
-import {AuthenticationHttpService} from './authentication.http.service';
-import {tap} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { AuthenticationHttpService } from './authentication.http.service';
+import { tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import jwt_decode from "jwt-decode";
+import { Token } from '../model/Token';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +25,14 @@ export class AuthenticationService {
         sessionStorage.setItem(this.tokenKey, response.headers.get('Authorization').replace('Bearer', '').trim());
         sessionStorage.setItem(this.usernameKey, loginData.username);
         this.userLoggedInSource.next(true);
-      }));
+        console.log(jwt_decode(this.getToken()));
+      }))
+      ;
+
+  }
+
+  getDecodedToken(): Token{
+    return jwt_decode(this.getToken());
   }
 
   getToken() {

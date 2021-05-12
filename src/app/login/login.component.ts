@@ -3,6 +3,8 @@ import {FormBuilder} from '@angular/forms';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {Router} from '@angular/router';
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (_ => {
           this.success = true;
-          this.router.navigateByUrl('/hello-world');
+          this.router.navigateByUrl(`/user/${this.authenticationService.getDecodedToken().sub}`);
         }),
         (_ => this.error = true)
       );
