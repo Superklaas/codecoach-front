@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  private _hasDuplicateEmail = false;
   private _registerForm = this.formBuilder.group({
     firstName: new FormControl("",[Validators.required]),
     lastName: new FormControl("", [Validators.required]),
@@ -61,8 +62,12 @@ export class RegisterComponent implements OnInit {
     return this._registerForm.get('password2')
   }
 
+  get hasDuplicateEmail(){
+    return this._hasDuplicateEmail;
+  }
+
   submit() {
-    return this.userService.create(this._registerForm.value).subscribe(user => this.router.navigate([`/user/${user.id}`]));
+    return this.userService.create(this._registerForm.value).subscribe(user => this.router.navigate([`/user/${user.id}`]), (_ => this._hasDuplicateEmail = true)  );
   }
 
   wrongInputHasBeenTyped(input: AbstractControl): boolean{
