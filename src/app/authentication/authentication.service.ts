@@ -25,7 +25,6 @@ export class AuthenticationService {
         sessionStorage.setItem(this.tokenKey, response.headers.get('Authorization').replace('Bearer', '').trim());
         sessionStorage.setItem(this.usernameKey, loginData.username);
         this.userLoggedInSource.next(true);
-        console.log(jwt_decode(this.getToken()));
       }))
       ;
 
@@ -39,6 +38,9 @@ export class AuthenticationService {
     return sessionStorage.getItem(this.tokenKey);
   }
 
+  getProfileName() {
+    return this.getDecodedToken().profileName;
+  }
   getUsername() {
     return sessionStorage.getItem(this.usernameKey);
   }
