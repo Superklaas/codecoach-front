@@ -67,7 +67,10 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
-    return this.userService.create(this._registerForm.value).subscribe(user => this.router.navigate([`/user/${user.id}`]), (_ => this._hasDuplicateEmail = true)  );
+    this._registerForm.markAllAsTouched();
+    if(this._registerForm.valid){
+      return this.userService.create(this._registerForm.value).subscribe(user => this.router.navigate([`/user/${user.id}`]), (_ => this._hasDuplicateEmail = true)  );
+    }
   }
 
   wrongInputHasBeenTyped(input: AbstractControl): boolean{

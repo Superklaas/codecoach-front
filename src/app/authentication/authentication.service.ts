@@ -50,6 +50,10 @@ export class AuthenticationService {
     return localStorage.getItem(this.usernameKey);
   }
 
+  getId() {
+    return this.getDecodedToken().sub;
+  }
+
   isLoggedIn() {
     return localStorage.getItem(this.tokenKey) !== null;
   }
