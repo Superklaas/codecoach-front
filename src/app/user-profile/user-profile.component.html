@@ -1,1 +1,5 @@
-<p>user-profile works!</p>
+<app-authenticated-only>
+<div *ngIf=user>
+    {{user | json}}
+</div>    
+</app-authenticated-only>
