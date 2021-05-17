@@ -7,25 +7,29 @@ import {RegisterComponent} from "./register/register.component";
 import {UserProfileComponent} from "./user-profile/user-profile.component";
 import { MyProfileComponent } from './dashboard/my-profile/my-profile.component';
 import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
+import { AuthenticationGuard } from './authentication/authentication.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'dashboard', component: UserDashboardComponent ,
-  children: [
-    {
-      path: '', // child route path
-      component: MyProfileComponent, // child route component that the router renders
-    },
-    // {
-    //   path: 'child-b',
-    //   component: , // another child route component that the router renders
-    // },
-  ]
-},
-  {path: 'user/:id', component: UserProfileComponent}
+  {
+    path: 'dashboard', 
+    component: UserDashboardComponent,
+    canActivate: [ AuthenticationGuard ],
+    children: [
+      {
+        path: '', // child route path
+        component: MyProfileComponent, // child route component that the router renders
+      },
+      // {
+      //   path: 'child-b',
+      //   component: , // another child route component that the router renders
+      // },
+    ]
+  },
+  {path: 'user/:id', component: UserProfileComponent, canActivate: [ AuthenticationGuard ] }
 ];
 
 @NgModule({

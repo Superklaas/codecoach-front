@@ -16,6 +16,7 @@ export class MyProfileComponent implements OnInit {
   constructor(private authenticationService: AuthenticationService, private userService: UserService) { }
 
   ngOnInit(): void {
+    if (!this.authenticationService.isLoggedIn()) return;
     this.userService.get(Number(this.authenticationService.getId())).subscribe(user => this.user = user);
   }
 

@@ -14,7 +14,6 @@ import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NavigationBarComponent } from './layout/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { AuthenticatedOnlyComponent } from './authenticated-only/authenticated-only.component';
 import { MyProfileComponent } from './dashboard/my-profile/my-profile.component';
 import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
 
@@ -31,7 +30,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     RegisterComponent,
     UserProfileComponent,
-    AuthenticatedOnlyComponent,
     MyProfileComponent,
     UserDashboardComponent
   ],
