@@ -12,8 +12,10 @@
         <ul>
           <li><a class="grey-text text-darken-3" href="#" routerLink="/home"><i class="tiny material-icons">chevron_right</i>Home</a>
           </li>
-          <li><a class="grey-text text-darken-3" href="#" routerLink="/login"><i class="tiny material-icons">chevron_right</i>Sign
-            in / Register</a></li>
+          <li><a *ngIf="!isLoggedIn" class="grey-text text-darken-3" href="#" routerLink="/login"><i class="tiny material-icons">chevron_right</i>Sign
+            in</a></li>
+            <li><a *ngIf="!isLoggedIn" class="grey-text text-darken-3" href="#" routerLink="/register"><i class="tiny material-icons">chevron_right</i>Register</a></li>
+            <li><a *ngIf="isLoggedIn" class="grey-text text-darken-3" href="#" routerLink="/dashboard"><i class="tiny material-icons">chevron_right</i>Dashboard</a></li>
         </ul>
       </div>
     </div>
