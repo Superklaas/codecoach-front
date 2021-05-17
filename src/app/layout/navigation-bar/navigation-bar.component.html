@@ -1,12 +1,12 @@
 <header>
   <nav class="white fixed-top" role="navigation">
     <div class="nav-wrapper container ">
-      <a id="logo-container" href="#" class="brand-logo">CodeCoach</a>
+      <a id="logo-container" routerLink="/home" class="brand-logo">CodeCoach</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#" routerLink="/home">Home</a></li>
+        <li><a routerLink="/home">Home</a></li>
         <li><a class="waves-effect waves-light yellow darken-2 btn black-text"  routerLink="/login">
-          <div *ngIf="username" translate [translateParams]="{username: username}">menu.label.logged-in</div>
-          <div *ngIf="!username" translate>Sign-in</div>
+          <div *ngIf="isLoggedIn" translate [translateParams]="{username: username}">menu.label.logged-in</div>
+          <div *ngIf="!isLoggedIn" translate>Sign-in</div>
           <i class="material-icons right">person</i>
         </a></li>
 
@@ -15,13 +15,31 @@
           <i class="material-icons right">person</i>
         </a></li>
 
+        <li>
+          <a *ngIf="username" class="waves-effect waves-light teal lighten-3 btn black-text" (click)="logout()" >
+            <div>Logout</div>
+            <i class="material-icons right">autorenew</i>
+          </a>
+        </li>
+
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
         <li><a href="#" routerLink="/home">Home</a></li>
-        <li><a class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login">Sign in<i class="material-icons right">person</i></a></li>
-        <li><a class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/register">Register<i
+        <li><a *ngIf="!username" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login">Sign in<i
           class="material-icons right">person</i></a></li>
+        <li><a *ngIf="!username" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/register">Register<i
+          class="material-icons right">person</i></a></li>
+
+        <li><a *ngIf="username" translate [translateParams]="{username: username}" class="waves-effect waves-light yellow darken-2 btn black-text">menu.label.logged-in<i
+          class="material-icons right">person</i></a></li>
+
+        <li><a *ngIf="username" (click)="logout()"
+               class="waves-effect waves-light teal lighten-3 btn black-text">Logout <i class="material-icons right">
+          autorenew</i></a></li>
+
+
+
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>

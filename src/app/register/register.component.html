@@ -47,7 +47,11 @@
                     <div *ngIf="email.errors.required">Email is required.</div>
                     <div *ngIf="email.errors.pattern">Not a valid email</div>
                   </div>
+
+                  <div *ngIf="hasDuplicateEmail" class="alert alert-danger">
+                    <div>User with email already exists.</div>
                 </div>
+              </div>
               </div>
 
               <div class="row">
@@ -68,7 +72,8 @@
                 <div class="col">
                   <input type="password" class="form-control" placeholder="Repeat password" formControlName="password2"
                          aria-label="repeat password">
-                  <div *ngIf="hasAllBeenTouched(password,password2)" class="alert alert-danger">
+                  <div *ngIf="registerForm.errors!=null && hasAllBeenTouched(password,password2)"
+                       class="alert alert-danger">
                     <div *ngIf="registerForm.errors.notSame">Passwords don't match.</div>
                   </div>
                 </div>

@@ -22,9 +22,12 @@
               <p *ngIf="success" class="alert alert-primary" translate>sign-in.message.login-successful</p>
               <p *ngIf="error" class="alert alert-danger" translate>sign-in.message.login-failed</p>
               <div class="row right-align">
-                <button class="waves-effect waves-light teal lighten-3 btn-large black-text" (click)="logout()">Logout<i
-                  class="material-icons right">autorenew</i></button>
+
                 <button type="submit" class="waves-effect waves-light yellow darken-2 btn-large black-text">Sign in<i
+                  class="material-icons right">send</i></button>
+
+                <button (click)="requestResetPassword()"
+                        class="waves-effect waves-light yellow darken-2 btn-large black-text">Reset Password<i
                   class="material-icons right">send</i></button>
 
               </div>

@@ -14,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NavigationBarComponent } from './layout/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { AuthenticatedOnlyComponent } from './authenticated-only/authenticated-only.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -27,7 +28,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavigationBarComponent,
     FooterComponent,
     RegisterComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AuthenticatedOnlyComponent
   ],
   imports: [
     BrowserModule,
