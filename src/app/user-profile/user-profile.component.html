@@ -1,5 +1,31 @@
 <app-authenticated-only>
 <div *ngIf=user>
-    {{user | json}}
+<div class="card mx-5 my-5">
+    <div class="card-body">
+        <h3>Profile Information</h3>
+        <div class= "row">
+            <div class= "col-4">
+                <img src="assets/images/default-person.png" alt="">
+            </div>
+            <div class="col-8">
+                <table class="table">
+                    <tr>
+                        <th>Profile Name</th>
+                        <td>{{user.profileName}}</td>
+                    </tr>
+                    <tr>
+                        <th>CodeCoach role</th>
+                        <td>{{user.role | lowercase}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+       
+    
+    </div>
+</div>
+
+    
 </div>    
 </app-authenticated-only>
