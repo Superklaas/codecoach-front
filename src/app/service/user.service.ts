@@ -27,7 +27,6 @@ export class UserService {
 
   private handleError(operation = 'operation') {
     return (error: any) => {
-      console.error(error);
       return throwError(error);
     };
   }

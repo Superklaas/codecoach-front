@@ -9,7 +9,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private _hasDuplicateEmail = false;
   private _registerForm = this.formBuilder.group({
     firstName: new FormControl("",[Validators.required]),
     lastName: new FormControl("", [Validators.required]),
@@ -62,14 +61,19 @@ export class RegisterComponent implements OnInit {
     return this._registerForm.get('password2')
   }
 
-  get hasDuplicateEmail(){
-    return this._hasDuplicateEmail;
-  }
-
   submit() {
     this._registerForm.markAllAsTouched();
     if(this._registerForm.valid){
-      return this.userService.create(this._registerForm.value).subscribe(user => this.router.navigate([`/user/${user.id}`]), (_ => this._hasDuplicateEmail = true)  );
+      return this.userService.create(this._registerForm.value).subscribe(user => this.router.navigate([`/user/${user.id}`]), (errorResponse => this.addErrorToForm(errorResponse))  );
+    }
+  }
+
+  addErrorToForm(errorResponse){
+    console.log(errorResponse)
+    if (errorResponse.error.status === 400){
+      this._registerForm.setErrors({ serverError : errorResponse.error.message});
+    }else{
+    this._registerForm.setErrors({ serverError : 'Error: oops something went wrong...'});
     }
   }
 
