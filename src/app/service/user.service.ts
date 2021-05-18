@@ -16,13 +16,17 @@ export class UserService {
   }
 
   create(user: User): Observable<User>{
-    return this.http.post<User>(this.url,user).pipe(catchError(this.handleError('register'))
+    return this.http.post<User>(this.url,user)
+      .pipe(catchError(this.handleError('register'))
     );
   }
 
-
   get(id: number):  Observable<User>{
     return this.http.get<User>(`${this.url}/${id}`);
+  }
+
+  updateRole(id: number): Observable<User> {
+    return this.http.post<User>(`${this.url}/${id}/coachify`, null);
   }
 
   private handleError(operation = 'operation') {

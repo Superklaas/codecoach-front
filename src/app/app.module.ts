@@ -16,6 +16,7 @@ import { NavigationBarComponent } from './layout/navigation-bar/navigation-bar.c
 import { FooterComponent } from './layout/footer/footer.component';
 import { MyProfileComponent } from './dashboard/my-profile/my-profile.component';
 import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
+import { BecomeCoachComponent } from './dashboard/become-coach/become-coach.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -31,7 +32,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterComponent,
     UserProfileComponent,
     MyProfileComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    BecomeCoachComponent
   ],
   imports: [
     BrowserModule,

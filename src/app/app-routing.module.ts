@@ -8,6 +8,7 @@ import {UserProfileComponent} from "./user-profile/user-profile.component";
 import { MyProfileComponent } from './dashboard/my-profile/my-profile.component';
 import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
 import { AuthenticationGuard } from './authentication/authentication.guard';
+import {BecomeCoachComponent} from "./dashboard/become-coach/become-coach.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {
-    path: 'dashboard', 
+    path: 'dashboard',
     component: UserDashboardComponent,
     canActivate: [ AuthenticationGuard ],
     children: [
@@ -23,10 +24,10 @@ const routes: Routes = [
         path: '', // child route path
         component: MyProfileComponent, // child route component that the router renders
       },
-      // {
-      //   path: 'child-b',
-      //   component: , // another child route component that the router renders
-      // },
+      {
+      path: 'become-coach',
+      component: BecomeCoachComponent,
+      },
     ]
   },
   {path: 'user/:id', component: UserProfileComponent, canActivate: [ AuthenticationGuard ] }
