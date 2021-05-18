@@ -1,4 +1,4 @@
-<section *ngIf="user !== undefined">
+<section *ngIf="profileService.currentUser$ | async as user">
   <div class="container">
     <div class="card">
       <div class="row">
@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="row" *ngIf="user.role === 'COACH'">
-        <p>Your application to become a Coach was accepted!</p>
+        <p class="m-2">Your application to become a Coach was accepted!</p>
       </div>
       <div class="row" *ngIf="user.role !== 'COACH'">
         <div class="col-md-2">
@@ -15,6 +15,7 @@
         </div>
         <div class="col-md-10">
           <div class="card-body col-md-10">
+            {{user.role}}
             <p>This part of the application is currently still under construction.
               In order to become a coach please send an email to your administrator with the
               following information:</p>

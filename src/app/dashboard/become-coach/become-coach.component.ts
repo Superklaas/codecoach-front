@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from "../../service/user.service";
 import {User} from "../../model/User";
+import {ProfileService} from "../../service/profile.service";
+import {AuthenticationService} from "../../authentication/authentication.service";
 
 @Component({
   selector: 'app-become-coach',
@@ -10,13 +12,13 @@ import {User} from "../../model/User";
 export class BecomeCoachComponent implements OnInit {
 
   @Input() user: User;
-  constructor(private userService: UserService) { }
+  constructor(public profileService: ProfileService, private userService: UserService, private authService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
   becomeCoach(): void {
-    this.userService.updateRole(this.user.id)
+    this.userService.updateRole(+this.authService.getId())
       .subscribe(user => this.user = user);
   }
 
