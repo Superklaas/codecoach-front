@@ -31,6 +31,13 @@
                   class="material-icons right">autorenew</i></button>
 
               </div>
+
+              <div *ngIf="loginForm.errors" >
+                <div *ngIf="loginForm.errors.serverError" class="alert alert-danger">
+                  {{loginForm.errors.serverError}}
+                </div>
+              </div>
+
             </form>
           </div>
         </div>

@@ -15,13 +15,12 @@ export class AuthenticationHttpService {
 
   login(loginData): Observable<any> {
     return this.http.post<any>(this.url, loginData, {observe: 'response'}).pipe(
-      catchError(this.handleError('login'))
+      catchError(this.handleError('authenticate'))
     );
   }
 
   private handleError(operation = 'operation') {
     return (error: any) => {
-      console.error(error);
       return throwError(error);
     };
   }

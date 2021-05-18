@@ -74,7 +74,6 @@ export class RegisterComponent implements OnInit {
   }
 
   addErrorToForm(errorResponse){
-    console.log(errorResponse)
     if (errorResponse.error.status === 400){
       this._registerForm.setErrors({ serverError : errorResponse.error.message});
     }else{
