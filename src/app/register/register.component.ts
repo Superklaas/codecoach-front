@@ -69,9 +69,16 @@ export class RegisterComponent implements OnInit {
   submit() {
     this._registerForm.markAllAsTouched();
     if(this._registerForm.valid){
-      return this.userService.create(this._registerForm.value)
-        .subscribe(user => this.router.navigate([`/user/${user.id}`]),
-          (_ => this._hasDuplicateEmail = true)  );
+      return this.userService.create(this._registerForm.value).subscribe(user => this.router.navigate([`/user/${user.id}`]), (errorResponse => this.addErrorToForm(errorResponse))  );
+    }
+  }
+
+  addErrorToForm(errorResponse){
+    console.log(errorResponse)
+    if (errorResponse.error.status === 400){
+      this._registerForm.setErrors({ serverError : errorResponse.error.message});
+    }else{
+    this._registerForm.setErrors({ serverError : 'Error: oops something went wrong...'});
     }
   }
 
