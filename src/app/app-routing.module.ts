@@ -8,6 +8,7 @@ import {UserProfileComponent} from "./user-profile/user-profile.component";
 import { MyProfileComponent } from './dashboard/my-profile/my-profile.component';
 import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
 import { AuthenticationGuard } from './authentication/authentication.guard';
+import {CoachOverviewComponent} from "./coach-overview/coach-overview.component";
 import {BecomeCoachComponent} from "./dashboard/become-coach/become-coach.component";
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
       },
     ]
   },
-  {path: 'user/:id', component: UserProfileComponent, canActivate: [ AuthenticationGuard ] }
+  {path: 'user/:id', component: UserProfileComponent, canActivate: [ AuthenticationGuard ] },
+  {path: 'coaches', component: CoachOverviewComponent, canActivate: [ AuthenticationGuard ] },
 ];
 
 @NgModule({
