@@ -18,8 +18,17 @@ export class UserDashboardComponent implements OnInit {
     this.authenticationService.userLoggedIn$.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
     })
-   
   }
 
+  activate(user) {
+    user = this.user;
+    console.log(user);
+  }
+
+  /*
+  activate(component) {
+     component.someProperty = 'someValue';
+ } 
+  */
 
 }

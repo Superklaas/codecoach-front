@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { User } from 'src/app/model/User';
+import { ProfileService } from 'src/app/service/profile.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -12,12 +13,11 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class MyProfileComponent implements OnInit {
   
-  user: User;
-  constructor(private authenticationService: AuthenticationService, private userService: UserService) { }
+  @Input() user: User;
+  constructor(public profileService: ProfileService) { }
 
   ngOnInit(): void {
-    if (!this.authenticationService.isLoggedIn()) return;
-    this.userService.get(Number(this.authenticationService.getId())).subscribe(user => this.user = user);
+    
   }
 
 }

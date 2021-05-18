@@ -1,4 +1,4 @@
-<div *ngIf=user>
+<div *ngIf="profileService.currentUser$ | async as user">
     <div class="card mx-5 my-5">
         <div class="card-body">
             <h3>Profile Information</h3>

@@ -13,6 +13,7 @@
         </ul>
     </div>
     <div class="col">
-        <router-outlet></router-outlet>
+        <router-outlet (activate)="activate($event)"></router-outlet>
+        <!-- (activate)="activate($event)" -->
     </div>
 </div>
