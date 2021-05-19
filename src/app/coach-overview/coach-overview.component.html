@@ -1,7 +1,7 @@
 <app-user-menu></app-user-menu>
 <div class="coach-wrapper container" *ngIf="coaches$ | async as coaches">
   <div class="coach" *ngFor="let coach of coaches">
-    <h3>{{coach.firstName}} {{coach.lastName}}</h3>
+    <h3>{{coach.profileName}}</h3>
     <div class="coach-card">
       <div class="image-wrapper">
         <img src="{{coach.imageUrl}}">
@@ -13,8 +13,9 @@
         </ul>
       </div>
       <button class="round-button yellow darken-2">
-        <i class="material-icons center">send</i>
+        <a routerLink="/user/{{coach.id}}"><i class="material-icons center">send</i></a>   
       </button>
     </div>
   </div>
 </div>
+<div class="my-5"></div>
