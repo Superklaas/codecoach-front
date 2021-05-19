@@ -1,6 +1,6 @@
-import { Topic } from "./Topic";
+import {Topic} from "./Topic";
 
-export interface User{
+export interface User {
   id: number;
   firstName: string;
   lastName: string;
@@ -9,8 +9,6 @@ export interface User{
   role: string;
   availability: string;
   introduction: string;
-  imageUrl: string; 
+  imageUrl: string;
   topicList: Topic[];
 }
-
-

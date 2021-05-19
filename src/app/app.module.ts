@@ -19,6 +19,7 @@ import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboar
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { CoachOverviewComponent } from './coach-overview/coach-overview.component';
 import { BecomeCoachComponent } from './dashboard/become-coach/become-coach.component';
+import { SessionRequestComponent } from './session-request/session-request.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -38,7 +39,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserMenuComponent,
     CoachOverviewComponent,
     UserDashboardComponent,
-    BecomeCoachComponent
+    BecomeCoachComponent,
+    SessionRequestComponent
   ],
   imports: [
     BrowserModule,
