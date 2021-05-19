@@ -12,8 +12,8 @@
           <li *ngFor="let topic of coach.topicList">{{topic.name}}</li>
         </ul>
       </div>
-      <button class="round-button yellow darken-2">
-        <a routerLink="/user/{{coach.id}}"><i class="material-icons center">send</i></a>   
+      <button class="round-button yellow darken-2" routerLink="/user/{{coach.id}}">
+        <i class="material-icons center">send</i> 
       </button>
     </div>
   </div>
