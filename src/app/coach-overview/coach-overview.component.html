@@ -1,2 +1,20 @@
 <app-user-menu></app-user-menu>
-<p>coach-overview works!</p>>
+<div class="coach-wrapper container" *ngIf="coaches$ | async as coaches">
+  <div class="coach" *ngFor="let coach of coaches">
+    <h3>{{coach.firstName}} {{coach.lastName}}</h3>
+    <div class="coach-card">
+      <div class="image-wrapper">
+        <img src="{{coach.imageUrl}}">
+      </div>
+      <div class="topic-wrapper">
+        <h4>Topics</h4>
+        <ul>
+          <li *ngFor="let topic of coach.topicList">{{topic.name}}</li>
+        </ul>
+      </div>
+      <button class="round-button yellow darken-2">
+        <i class="material-icons center">send</i>
+      </button>
+    </div>
+  </div>
+</div>

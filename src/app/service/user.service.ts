@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable, throwError} from "rxjs";
 import {User} from "../model/User";
-import {catchError} from "rxjs/operators";
+import {catchError, map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,11 @@ export class UserService {
     return this.http.post<User>(this.url,user)
       .pipe(catchError(this.handleError('register'))
     );
+  }
+
+  getAllCoaches(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.url}/coaches`)
+      .pipe(map(users => users.sort((a,b) => a.lastName.localeCompare(b.lastName))));
   }
 
   get(id: number):  Observable<User>{
