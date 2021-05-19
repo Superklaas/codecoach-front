@@ -31,11 +31,11 @@
                 <table class="table">
                     <tr>
                         <th>Introduction</th>
-                        <td></td>
+                        <td>{{user.introduction}}</td>
                     </tr>
                     <tr>
                         <th>Availability</th>
-                        <td></td>
+                        <td>{{user.availability}}</td>
                     </tr>
                 </table>
             </div>
@@ -43,7 +43,11 @@
         <div class="card mx-5 ">
             <div class="card-body">
                 <h3>Coaching Topics</h3>
-                
+                <table class="table">
+                    <tr *ngFor="let topic of user.topicList">
+                        <th>{{topic.name}}</th>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
