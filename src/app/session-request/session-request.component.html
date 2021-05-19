@@ -14,18 +14,36 @@
                   <input type="text" class="form-control"
                          placeholder="On which topic/subject would you like to have a coaching session?"
                          formControlName="subject"
+                         name="subject"
                          aria-label="subject">
+
+                  <div *ngIf="wrongInputHasBeenTyped(subject)" class="alert alert-danger">
+                    <div *ngIf="subject.errors.required">Subject is required.</div>
+                  </div>
+
                 </div>
               </div>
 
               <div class="row">
                 <div class="col">
                   <input type="date" class="form-control" placeholder="Date" formControlName="date" aria-label="date">
+
+                  <div *ngIf="wrongInputHasBeenTyped(date)" class="alert alert-danger">
+                    <div *ngIf="date.errors.required">Date is required.</div>
+                  </div>
+
                 </div>
 
                 <div class="col">
                   <input type="time" class="form-control" placeholder="Time" formControlName="startTime"
                          aria-label="time">
+                  <div *ngIf="wrongInputHasBeenTyped(startTime)" class="alert alert-danger">
+                    <div *ngIf="startTime.errors.required">Start Time is required.</div>
+                  </div>
+                </div>
+
+                <div *ngIf="requestSessionForm.touched && requestSessionForm.errors?.inThePast" class="alert alert-danger">
+                  <div>Please specify a time and date in the future.</div>
                 </div>
               </div>
 
@@ -35,6 +53,9 @@
                          placeholder="Location"
                          formControlName="location"
                          aria-label="location">
+                  <div *ngIf="wrongInputHasBeenTyped(location)" class="alert alert-danger">
+                    <div *ngIf="location.errors.required">Location is required.</div>
+                  </div>
                 </div>
               </div>
 
