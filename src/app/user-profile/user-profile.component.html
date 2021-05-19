@@ -1,28 +1,51 @@
 <div *ngIf=user>
-<div class="card mx-5 my-5">
-    <div class="card-body">
-        <h3>Profile Information</h3>
-        <div class= "row">
-            <div class= "col-4">
-                <img src="assets/images/default-person.png" alt="">
+    <div class="card mx-5 my-5">
+        <div class="card-body">
+            <h3>Profile Information</h3>
+            <div class="row">
+                <div class="col-4">
+                    <img [src]="userImage" alt="">
+                </div>
+                <div class="col-8">
+                    <table class="table">
+                        <tr>
+                            <th>Profile name</th>
+                            <td>{{user.profileName}}</td>
+                        </tr>
+                        <tr>
+                            <th>CodeCoach role</th>
+                            <td>{{user.role | lowercase}}</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div class="col-8">
+
+
+
+        </div>
+    </div>
+    <div *ngIf="user.role=='COACH'">
+        <div class="card mx-5 my-5">
+            <div class="card-body">
+                <h3>Coach Information</h3>
                 <table class="table">
                     <tr>
-                        <th>Profile name</th>
-                        <td>{{user.profileName}}</td>
+                        <th>Introduction</th>
+                        <td></td>
                     </tr>
                     <tr>
-                        <th>CodeCoach role</th>
-                        <td>{{user.role | lowercase}}</td>
+                        <th>Availability</th>
+                        <td></td>
                     </tr>
                 </table>
             </div>
         </div>
-
-       
-    
+        <div class="card mx-5 ">
+            <div class="card-body">
+                <h3>Coaching Topics</h3>
+                
+            </div>
+        </div>
     </div>
-</div>
 
-</div>    
+</div>
