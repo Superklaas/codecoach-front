@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthenticatedOnlyComponent } from './authenticated-only.component';
+import { UserMenuComponent } from './user-menu.component';
 
-describe('AuthenticatedOnlyComponent', () => {
-  let component: AuthenticatedOnlyComponent;
-  let fixture: ComponentFixture<AuthenticatedOnlyComponent>;
+describe('UserMenuComponent', () => {
+  let component: UserMenuComponent;
+  let fixture: ComponentFixture<UserMenuComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthenticatedOnlyComponent ]
+      declarations: [ UserMenuComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuthenticatedOnlyComponent);
+    fixture = TestBed.createComponent(UserMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

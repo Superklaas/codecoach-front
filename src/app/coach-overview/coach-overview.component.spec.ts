@@ -1,18 +1,16 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterModule } from '@angular/router';
 
-import { UserProfileComponent } from './user-profile.component';
+import { CoachOverviewComponent } from './coach-overview.component';
 
-describe('UserProfileComponent', () => {
-  let component: UserProfileComponent;
-  let fixture: ComponentFixture<UserProfileComponent>;
+describe('CoachOverviewComponent', () => {
+  let component: CoachOverviewComponent;
+  let fixture: ComponentFixture<CoachOverviewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserProfileComponent ],
+      declarations: [ CoachOverviewComponent ],
       imports: [
-        RouterModule.forRoot([]),
         HttpClientTestingModule
       ]
     })
@@ -20,7 +18,7 @@ describe('UserProfileComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserProfileComponent);
+    fixture = TestBed.createComponent(CoachOverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

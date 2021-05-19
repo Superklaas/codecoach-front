@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  isLoggedIn: boolean;
+  constructor(private authenticationService: AuthenticationService) { }
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit(): void {
+    this.authenticationService.userLoggedIn$.subscribe(isLoggedIn => {
+      this.isLoggedIn =isLoggedIn;
+    });
   }
 
 }

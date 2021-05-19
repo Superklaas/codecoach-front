@@ -1,0 +1,13 @@
+
+.user-top-menu .navbar-nav {
+  padding-left: 300px;
+}
+
+.user-top-menu .nav-link {
+  font-size: 1.2em;
+  font-family: sans-serif;
+}
+
+.user-top-menu .nav-item {
+  margin-right: 20px;
+}

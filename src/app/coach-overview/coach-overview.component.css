@@ -1,0 +1,68 @@
+.coach {
+  width: 400px;
+}
+
+.coach-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+.coach-card {
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+  display: flex;
+  padding: 10px;
+  height: 200px;
+  position: relative;
+}
+
+.coach-card img {
+  width: 180px;
+}
+
+.image-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 20px;
+  /*height: auto;*/
+}
+
+h4 {
+  font-size: 22px;
+  text-align: center;
+}
+
+li {
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  padding: 3px;
+}
+
+li:last-child {
+  border: none;
+}
+
+ul {
+  width: 100%;
+}
+
+.topic-wrapper {
+  flex-grow: 1;
+}
+
+.round-button {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: inline-block;
+  border: none;
+  padding: 3px 0 0 5px;
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+}
