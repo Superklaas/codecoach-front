@@ -1,26 +1,24 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Subject } from 'rxjs';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
-import { ProfileService } from 'src/app/service/profile.service';
 
-import { MyProfileComponent } from './my-profile.component';
+import { CoacheeSessionsComponent } from './coachee-sessions.component';
 
-describe('MyProfileComponent', () => {
-  let component: MyProfileComponent;
-  let fixture: ComponentFixture<MyProfileComponent>;
+describe('CoacheeSessionsComponent', () => {
+  let component: CoacheeSessionsComponent;
+  let fixture: ComponentFixture<CoacheeSessionsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MyProfileComponent ],
+      declarations: [ CoacheeSessionsComponent ],
       imports: [ HttpClientTestingModule ],
-      providers: [{provide: ProfileService, useValue: {currentUser$ : new Subject()}}]
+      providers: [{provide: AuthenticationService, useValue: {getId(){ return 1 }}}]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyProfileComponent);
+    fixture = TestBed.createComponent(CoacheeSessionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

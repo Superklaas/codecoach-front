@@ -1,10 +1,9 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, Input, OnInit } from '@angular/core';
 
-import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { User } from 'src/app/model/User';
 import { ProfileService } from 'src/app/service/profile.service';
-import { UserService } from 'src/app/service/user.service';
+
 
 @Component({
   selector: 'app-my-profile',
@@ -13,11 +12,17 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class MyProfileComponent implements OnInit {
   
-  @Input() user: User;
+  user: User;
   constructor(public profileService: ProfileService) { }
 
   ngOnInit(): void {
-    
+    this.profileService.currentUser$.subscribe(user => this.user = user);
+  }
+  get userImage() {
+    if (!this.user.imageUrl) {
+      return "assets/images/default-person.png";
+    }
+    return this.user.imageUrl;
   }
 
 }

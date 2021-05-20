@@ -1,34 +1,32 @@
 <div *ngIf="profileService.currentUser$ | async as user">
-    <div class="card mx-5 my-5">
+    <div class="card mx-md-5 my-md-5">
         <div class="card-body">
             <h3>Profile Information</h3>
             <div class="row">
-                <div class="col-4">
-                    <img src="assets/images/default-person.png" alt="">
+                <div class="col-md-4 profile-image">
+                    <img [src]="userImage" alt="">
                 </div>
-                <div class="col-8">
-                    <table class="table">
-                        <tr>
-                            <th>First name</th>
-                            <td>{{user.firstName}}</td>
-                        </tr>
-                        <tr>
-                            <th>Last name</th>
-                            <td>{{user.lastName}}</td>
-                        </tr>
-                        <tr>
-                            <th>Profile name</th>
-                            <td>{{user.profileName}}</td>
-                        </tr>
-                        <tr>
-                            <th>Email</th>
-                            <td>{{user.email}}</td>
-                        </tr>
-                        <tr>
-                            <th>CodeCoach role</th>
-                            <td>{{user.role | lowercase}}</td>
-                        </tr>
-                    </table>
+                <div class="col-md-8">
+                    <div class="row border-bottom ">
+                        <div class="col"><b>First name</b></div>
+                        <div class="col">{{user.firstName}}</div>
+                    </div>
+                    <div class="row border-bottom ">
+                        <div class="col"><b>Last name</b></div>
+                        <div class="col">{{user.lastName}}</div>
+                    </div>
+                    <div class="row border-bottom ">
+                        <div class="col"><b>Email</b></div>
+                        <div class="col">{{user.email}}</div>
+                    </div>
+                    <div class="row border-bottom ">
+                        <div class="col"><b>Profile name</b></div>
+                        <div class="col">{{user.profileName}}</div>
+                    </div>
+                    <div class="row border-bottom">
+                        <div class="col"><b>CodeCoach role</b></div>
+                        <div class="col">{{user.role | lowercase}}</div>
+                    </div>
                 </div>
             </div>
         </div>

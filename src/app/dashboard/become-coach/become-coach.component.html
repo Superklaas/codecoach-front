@@ -3,11 +3,11 @@
     <div class="card">
       <div class="row">
         <div class="col-md-12">
-          <h6 class="card-title p-2 border-bottom">Apply to become a coach</h6>
+          <h6 class="card-title p-2 border-bottom mx-1">Apply to become a coach</h6>
         </div>
       </div>
       <div class="row" *ngIf="user.role === 'COACH'">
-        <p class="m-2">Your application to become a Coach was accepted!</p>
+        <p class="m-2 mx1">Your application to become a Coach was accepted!</p>
       </div>
       <div class="row" *ngIf="user.role !== 'COACH'">
         <div class="col-md-2">

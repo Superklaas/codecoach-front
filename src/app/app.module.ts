@@ -20,6 +20,11 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import { CoachOverviewComponent } from './coach-overview/coach-overview.component';
 import { BecomeCoachComponent } from './dashboard/become-coach/become-coach.component';
 import { SessionRequestComponent } from './session-request/session-request.component';
+import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach-dashboard.component';
+import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
+import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
+import { CoachSessionsComponent } from './dashboard-coach/coach-sessions/coach-sessions.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -40,7 +45,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoachOverviewComponent,
     UserDashboardComponent,
     BecomeCoachComponent,
-    SessionRequestComponent
+    SessionRequestComponent,
+    CoachDashboardComponent,
+    MyCoachProfileComponent,
+    CoacheeSessionsComponent,
+    CoachSessionsComponent
+
   ],
   imports: [
     BrowserModule,

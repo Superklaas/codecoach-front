@@ -1,0 +1,24 @@
+<app-my-profile></app-my-profile>
+<div *ngIf="profileService.currentUser$ | async as user">
+    <div class="card mx-5 my-5">
+        <div class="card-body">
+            <h3 class="border-bottom ">Coach Information</h3>
+            <div class="row border-bottom ">
+                <div class="col"><b>Introduction</b></div>
+                <div class="col">{{user.introduction}}</div>
+            </div>
+            <div class="row border-bottom ">
+                <div class="col"><b>Availability</b></div>
+                <div class="col">{{user.availability}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="card mx-5 ">
+        <div class="card-body">
+            <h3 class="border-bottom ">Coaching Topics</h3>
+            <div class="row border-bottom " *ngFor="let topic of user.topicList">
+                <div class="col"><b>{{topic.name}}</b></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -54,6 +54,10 @@ export class AuthenticationService {
     return localStorage.getItem(this.usernameKey);
   }
 
+  getRole(){
+    return this.getDecodedToken().role;
+  }
+
   getId() {
     return this.getDecodedToken().sub;
   }
