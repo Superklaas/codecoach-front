@@ -1,0 +1,7 @@
+.nav-wrapper, .brand-logo{
+    font-family: bs-font-sans-serif, apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+}
+
+nav ul a{
+    font-family: bs-font-sans-serif, apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+}
