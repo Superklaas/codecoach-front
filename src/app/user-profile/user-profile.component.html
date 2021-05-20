@@ -1,34 +1,34 @@
 <app-user-menu></app-user-menu>
 <div *ngIf=user>
-    <div class="card mx-5 my-5">
+    <div class="card mx-md-5 my-md-5">
         <div class="card-body">
             <h3 class="border-bottom ">Profile Information </h3>
             <div class="row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <img [src]="userImage" alt="">
                 </div>
-                <div class="col">
+                <div class="col-md-8">
                     <div *ngIf="role==='ADMIN'">
                         <div class="row border-bottom ">
-                            <div class="col"><b>First name</b></div>
-                            <div class="col">{{user.firstName}}</div>
+                            <div class="col-md-4"><b>First name</b></div>
+                            <div class="col-md-4">{{user.firstName}}</div>
                         </div>
                         <div class="row border-bottom ">
-                            <div class="col"><b>Last name</b></div>
-                            <div class="col">{{user.lastName}}</div>
+                            <div class="col-md-4"><b>Last name</b></div>
+                            <div class="col-md-4">{{user.lastName}}</div>
                         </div>
                         <div class="row border-bottom ">
-                            <div class="col"><b>Email</b></div>
-                            <div class="col">{{user.email}}</div>
+                            <div class="col-md-4"><b>Email</b></div>
+                            <div class="col-md-4">{{user.email}}</div>
                         </div>
                     </div>
                     <div class="row border-bottom ">
-                        <div class="col"><b>Profile name</b></div>
-                        <div class="col">{{user.profileName}}</div>
+                        <div class="col-md-4"><b>Profile name</b></div>
+                        <div class="col-md-4">{{user.profileName}}</div>
                     </div>
                     <div class="row border-bottom">
-                        <div class="col"><b>CodeCoach role</b></div>
-                        <div class="col">{{user.role | lowercase}}</div>
+                        <div class="col-md-4"><b>CodeCoach role</b></div>
+                        <div class="col-md-4">{{user.role | lowercase}}</div>
                     </div>
                     <div *ngIf="user.role=='COACH'">
                         <a class="waves-effect waves-light yellow darken-2 btn black-text right"
@@ -41,20 +41,20 @@
         </div>
     </div>
     <div *ngIf="user.role=='COACH'">
-        <div class="card mx-5 my-5">
+        <div class="card mx-md-5 my-md-5">
             <div class="card-body">
                 <h3 class="border-bottom ">Coach Information</h3>
                 <div class="row border-bottom ">
-                    <div class="col-2"><b>Introduction</b></div>
-                    <div class="col">{{user.introduction}}</div>
+                    <div class="col-md-2"><b>Introduction</b></div>
+                    <div class="col-md-6">{{user.introduction}}</div>
                 </div>
                 <div class="row border-bottom ">
-                    <div class="col-2"><b>Availability</b></div>
-                    <div class="col">{{user.availability}}</div>
+                    <div class="col-md-2"><b>Availability</b></div>
+                    <div class="col-md-6">{{user.availability}}</div>
                 </div>
             </div>
         </div>
-        <div class="card mx-5 ">
+        <div class="card mx-md-5 ">
             <div class="card-body">
                 <h3 class="border-bottom ">Coaching Topics</h3>
                 <div class="row border-bottom " *ngFor="let topic of user.topicList">
