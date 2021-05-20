@@ -12,6 +12,7 @@ import { filter } from 'rxjs/operators';
 export class NavigationBarComponent implements OnInit {
   username;
   isLoggedIn: boolean;
+  role;
 
   constructor(private authenticationService: AuthenticationService, private router: Router) {
   }
@@ -19,6 +20,7 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit(): void {
     this.authenticationService.userLoggedIn$.subscribe(isLoggedIn => {
       this.username = isLoggedIn ? this.authenticationService.getProfileName(): undefined ;
+      this.role = isLoggedIn ? this.authenticationService.getRole() : undefined;
       this.isLoggedIn =isLoggedIn;
     });
 
