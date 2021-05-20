@@ -1,0 +1,64 @@
+<main>
+
+  <div *ngIf="sessions$ | async as sessions">
+    <div>
+        <div >
+          <div>
+            <h3>My Upcoming sessions</h3>
+            <table class="table">
+              <tr>
+                <th>Coach</th>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+              <tr *ngFor="let session of sessions">
+               <td>{{session.coachProfileName}}</td>
+                <td>{{session.subject}}</td>
+                <td>{{session.date}}</td>
+                <td>{{session.startTime}}</td>
+                <td>{{session.location}}</td>
+                <td>{{session.status}}</td>
+                <td></td>
+              </tr>
+
+            </table>
+          </div>
+        </div>
+
+      <div *ngIf="HasArchivedSessions(sessions)" >
+        <div >
+          <div>
+            <h3>Archive</h3>
+            <table class="table">
+              <tr>
+                <th>Coach</th>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+              <tr *ngFor="let session of sessions" >
+                <td>{{session.coachProfileName}}</td>
+                <td>{{session.subject}}</td>
+                <td>{{session.date}}</td>
+                <td>{{session.startTime}}</td>
+                <td>{{session.location}}</td>
+                <td>{{session.status}}</td>
+                <td></td>
+              </tr>
+
+            </table>
+          </div>
+        </div>
+
+
+  </div>
+  </div>
+  </div>
+</main>

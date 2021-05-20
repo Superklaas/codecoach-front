@@ -11,6 +11,7 @@ import { AuthenticationGuard } from './authentication/authentication.guard';
 import {CoachOverviewComponent} from "./coach-overview/coach-overview.component";
 import {BecomeCoachComponent} from "./dashboard/become-coach/become-coach.component";
 import {SessionRequestComponent} from "./session-request/session-request.component";
+import {CoacheeSessionsComponent} from "./dashboard/coachee-sessions/coachee-sessions.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -30,6 +31,10 @@ const routes: Routes = [
       path: 'become-coach',
       component: BecomeCoachComponent,
       },
+      {
+        path: 'coachee-sessions',
+        component: CoacheeSessionsComponent
+      }
     ]
   },
   {path: 'user/:id', component: UserProfileComponent, canActivate: [ AuthenticationGuard ] },
