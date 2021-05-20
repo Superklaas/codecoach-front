@@ -7,7 +7,7 @@ import { RegisterComponent } from "./register/register.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { MyProfileComponent } from './dashboard/my-profile/my-profile.component';
 import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
-import { AuthenticationGuard } from './authentication/authentication.guard';D
+import { AuthenticationGuard } from './authentication/authentication.guard';
 import { CoachOverviewComponent } from "./coach-overview/coach-overview.component";
 import { BecomeCoachComponent } from "./dashboard/become-coach/become-coach.component";
 import { SessionRequestComponent } from "./session-request/session-request.component";
