@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (_ => {
           this.success = true;
-          this.router.navigateByUrl(`/user/${this.authenticationService.getDecodedToken().sub}`);
+          this.router.navigateByUrl(`/dashboard`);
         }),
         (error => this.addErrorToForm(error))
       );
