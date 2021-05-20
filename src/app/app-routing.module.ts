@@ -16,14 +16,13 @@ import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-c
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, data: { color: 'yellow' } },
-  { path: 'home', component: HomeComponent, data: { color: 'yellow' } },
-  { path: 'register', component: RegisterComponent, data: { color: 'yellow' } },
+  { path: 'login', component: LoginComponent, },
+  { path: 'home', component: HomeComponent, },
+  { path: 'register', component: RegisterComponent, },
   {
     path: 'dashboard',
     component: UserDashboardComponent,
     canActivate: [AuthenticationGuard],
-    data: { color: 'yellow' },
     children: [
       {
         path: '', // child route path
@@ -39,14 +38,13 @@ const routes: Routes = [
     path: 'dashboard-coach',
     component: CoachDashboardComponent,
     canActivate: [AuthenticationGuard],
-    data: { color: 'teal' },
     children: [
       { path: '', component: MyCoachProfileComponent },
     ]
   },
-  { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard], data: { color: 'yellow' } },
-  { path: 'coaches', component: CoachOverviewComponent, canActivate: [AuthenticationGuard], data: { color: 'yellow' } },
-  { path: 'create-session/:id', component: SessionRequestComponent, canActivate: [AuthenticationGuard], data: { color: 'yellow' } }
+  { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard],},
+  { path: 'coaches', component: CoachOverviewComponent, canActivate: [AuthenticationGuard], },
+  { path: 'create-session/:id', component: SessionRequestComponent, canActivate: [AuthenticationGuard],  }
 ];
 
 @NgModule({
