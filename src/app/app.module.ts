@@ -23,6 +23,7 @@ import { SessionRequestComponent } from './session-request/session-request.compo
 import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach-dashboard.component';
 import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
 import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
+import { CoachSessionsComponent } from './dashboard-coach/coach-sessions/coach-sessions.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -47,7 +48,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SessionRequestComponent,
     CoachDashboardComponent,
     MyCoachProfileComponent,
-    CoacheeSessionsComponent
+    CoacheeSessionsComponent,
+    CoachSessionsComponent
 
   ],
   imports: [
