@@ -1,54 +1,56 @@
-import {RouterModule, Routes} from '@angular/router';
-import {NgModule} from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
 
-import {LoginComponent} from './login/login.component';
-import {HomeComponent} from './home/home.component';
-import {RegisterComponent} from "./register/register.component";
-import {UserProfileComponent} from "./user-profile/user-profile.component";
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from "./register/register.component";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { MyProfileComponent } from './dashboard/my-profile/my-profile.component';
 import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
 import { AuthenticationGuard } from './authentication/authentication.guard';
-import {CoachOverviewComponent} from "./coach-overview/coach-overview.component";
-import {BecomeCoachComponent} from "./dashboard/become-coach/become-coach.component";
-import {SessionRequestComponent} from "./session-request/session-request.component";
+import { CoachOverviewComponent } from "./coach-overview/coach-overview.component";
+import { BecomeCoachComponent } from "./dashboard/become-coach/become-coach.component";
+import { SessionRequestComponent } from "./session-request/session-request.component";
 import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach-dashboard.component';
 import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'register', component: RegisterComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent, data: { color: 'yellow' } },
+  { path: 'home', component: HomeComponent, data: { color: 'yellow' } },
+  { path: 'register', component: RegisterComponent, data: { color: 'yellow' } },
   {
     path: 'dashboard',
     component: UserDashboardComponent,
-    canActivate: [ AuthenticationGuard ],
+    canActivate: [AuthenticationGuard],
+    data: { color: 'yellow' },
     children: [
       {
         path: '', // child route path
         component: MyProfileComponent, // child route component that the router renders
       },
       {
-      path: 'become-coach',
-      component: BecomeCoachComponent,
+        path: 'become-coach',
+        component: BecomeCoachComponent,
       },
     ]
   },
   {
     path: 'dashboard-coach',
     component: CoachDashboardComponent,
-    canActivate: [ AuthenticationGuard ],
+    canActivate: [AuthenticationGuard],
+    data: { color: 'teal' },
     children: [
-      { path: '', component: MyCoachProfileComponent},
+      { path: '', component: MyCoachProfileComponent },
     ]
   },
-  {path: 'user/:id', component: UserProfileComponent, canActivate: [ AuthenticationGuard ] },
-  {path: 'coaches', component: CoachOverviewComponent, canActivate: [ AuthenticationGuard ] },
-  {path: 'create-session/:id', component: SessionRequestComponent}
+  { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard], data: { color: 'yellow' } },
+  { path: 'coaches', component: CoachOverviewComponent, canActivate: [AuthenticationGuard], data: { color: 'yellow' } },
+  { path: 'create-session/:id', component: SessionRequestComponent, canActivate: [AuthenticationGuard], data: { color: 'yellow' } }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { 
+  imports: [RouterModule.forRoot(routes, {
     relativeLinkResolution: 'legacy',
     // When moving from one page to the other page, scroll to top.
     scrollPositionRestoration: 'enabled',
