@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MyCoachProfileComponent } from './my-coach-profile.component';
@@ -8,7 +9,8 @@ describe('MyCoachProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MyCoachProfileComponent ]
+      declarations: [ MyCoachProfileComponent ],
+      imports:[HttpClientTestingModule,]
     })
     .compileComponents();
   });

@@ -1,5 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { FooterComponent } from './footer.component';
 
@@ -10,7 +12,7 @@ describe('FooterComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ FooterComponent ],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, RouterModule,  RouterTestingModule]
     })
     .compileComponents();
   }));
