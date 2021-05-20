@@ -15,6 +15,7 @@ import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach
 import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
 import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
 import {CoachSessionsComponent} from "./dashboard-coach/coach-sessions/coach-sessions.component";
+import {AuthorizationGuard} from "./authorization/authorization.guard";
 
 
 
@@ -46,7 +47,7 @@ const routes: Routes = [
   {
     path: 'dashboard-coach',
     component: CoachDashboardComponent,
-    canActivate: [AuthenticationGuard],
+    canActivate: [AuthenticationGuard, AuthorizationGuard],
     children: [
       { path: '', component: MyCoachProfileComponent },
       { path: 'coach-sessions', component: CoachSessionsComponent}
