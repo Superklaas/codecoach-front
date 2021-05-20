@@ -17,4 +17,8 @@ export class SessionService {
   create(session: Session): Observable<Session>{
     return this.http.post<Session>(this.url, session);
   }
+
+  getCoacheeSessions(): Observable<Session[]>{
+    return this.http.get<Session[]>(`${this.url}/coachee`);
+  }
 }

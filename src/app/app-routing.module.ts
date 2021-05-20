@@ -7,12 +7,14 @@ import { RegisterComponent } from "./register/register.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { MyProfileComponent } from './dashboard/my-profile/my-profile.component';
 import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
-import { AuthenticationGuard } from './authentication/authentication.guard';
+import { AuthenticationGuard } from './authentication/authentication.guard';D
 import { CoachOverviewComponent } from "./coach-overview/coach-overview.component";
 import { BecomeCoachComponent } from "./dashboard/become-coach/become-coach.component";
 import { SessionRequestComponent } from "./session-request/session-request.component";
 import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach-dashboard.component';
 import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
+import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -32,6 +34,10 @@ const routes: Routes = [
         path: 'become-coach',
         component: BecomeCoachComponent,
       },
+      {
+        path: 'coachee-sessions',
+        component: CoacheeSessionsComponent
+      }
     ]
   },
   {

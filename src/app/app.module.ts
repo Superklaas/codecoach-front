@@ -22,6 +22,8 @@ import { BecomeCoachComponent } from './dashboard/become-coach/become-coach.comp
 import { SessionRequestComponent } from './session-request/session-request.component';
 import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach-dashboard.component';
 import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
+import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -44,7 +46,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     BecomeCoachComponent,
     SessionRequestComponent,
     CoachDashboardComponent,
-    MyCoachProfileComponent
+    MyCoachProfileComponent,
+    CoacheeSessionsComponent
+
   ],
   imports: [
     BrowserModule,

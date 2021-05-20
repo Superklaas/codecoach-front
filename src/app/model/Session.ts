@@ -6,5 +6,8 @@ export interface Session {
   location: string;
   remarks: string;
   coach_id: number;
-  coachee_id: number
+  coachee_id: number;
+  coachProfileName: string;
+  coacheeProfileName: string;
+  status:string;
 }
