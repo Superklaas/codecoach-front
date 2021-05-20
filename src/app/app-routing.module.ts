@@ -14,6 +14,9 @@ import { SessionRequestComponent } from "./session-request/session-request.compo
 import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach-dashboard.component';
 import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
 import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
+import {CoachSessionsComponent} from "./dashboard-coach/coach-sessions/coach-sessions.component";
+
+
 
 
 const routes: Routes = [
@@ -46,6 +49,7 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
     children: [
       { path: '', component: MyCoachProfileComponent },
+      { path: 'coach-sessions', component: CoachSessionsComponent}
     ]
   },
   { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard],},

@@ -21,4 +21,8 @@ export class SessionService {
   getCoacheeSessions(): Observable<Session[]>{
     return this.http.get<Session[]>(`${this.url}/coachee`);
   }
+
+  getCoachSessions(): Observable<Session[]>{
+    return this.http.get<Session[]>(`${this.url}/coach`);
+  }
 }
