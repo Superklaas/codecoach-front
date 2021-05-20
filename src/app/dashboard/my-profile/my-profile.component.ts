@@ -13,11 +13,17 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class MyProfileComponent implements OnInit {
   
-  @Input() user: User;
+  user: User;
   constructor(public profileService: ProfileService) { }
 
   ngOnInit(): void {
-    
+    this.profileService.currentUser$.subscribe(user => this.user = user);
+  }
+  get userImage() {
+    if (!this.user.imageUrl) {
+      return "assets/images/default-person.png";
+    }
+    return this.user.imageUrl;
   }
 
 }
