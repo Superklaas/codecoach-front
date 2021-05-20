@@ -2,62 +2,65 @@
 <div *ngIf=user>
     <div class="card mx-5 my-5">
         <div class="card-body">
-            <h3>Profile Information</h3>
+            <h3 class="border-bottom ">Profile Information </h3>
             <div class="row">
                 <div class="col-4">
                     <img [src]="userImage" alt="">
                 </div>
-                <div class="col-8">
-                    <table class="table">
-                        <tr>
-                            <th>Profile name</th>
-                            <td>{{user.profileName}}</td>
-                        </tr>
-                        <tr>
-                            <th>CodeCoach role</th>
-                            <td>{{user.role | lowercase}}</td>
-                        </tr>
-                    </table>
-
-                  <div *ngIf="user.role=='COACH'" >
-                    <a class="waves-effect waves-light yellow darken-2 btn black-text right"
-                       routerLink="/create-session/{{user.id}}">
-                      <i class="material-icons center">date_range</i>
-                    </a>
-                  </div>
+                <div class="col">
+                    <div *ngIf="role==='ADMIN'">
+                        <div class="row border-bottom ">
+                            <div class="col"><b>First name</b></div>
+                            <div class="col">{{user.firstName}}</div>
+                        </div>
+                        <div class="row border-bottom ">
+                            <div class="col"><b>Last name</b></div>
+                            <div class="col">{{user.lastName}}</div>
+                        </div>
+                        <div class="row border-bottom ">
+                            <div class="col"><b>Email</b></div>
+                            <div class="col">{{user.email}}</div>
+                        </div>
+                    </div>
+                    <div class="row border-bottom ">
+                        <div class="col"><b>Profile name</b></div>
+                        <div class="col">{{user.profileName}}</div>
+                    </div>
+                    <div class="row border-bottom">
+                        <div class="col"><b>CodeCoach role</b></div>
+                        <div class="col">{{user.role | lowercase}}</div>
+                    </div>
+                    <div *ngIf="user.role=='COACH'">
+                        <a class="waves-effect waves-light yellow darken-2 btn black-text right"
+                            routerLink="/create-session/{{user.id}}">
+                            <i class="material-icons center">date_range</i>
+                        </a>
+                    </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
     <div *ngIf="user.role=='COACH'">
         <div class="card mx-5 my-5">
             <div class="card-body">
-                <h3>Coach Information</h3>
-                <table class="table">
-                    <tr>
-                        <th>Introduction</th>
-                        <td>{{user.introduction}}</td>
-                    </tr>
-                    <tr>
-                        <th>Availability</th>
-                        <td>{{user.availability}}</td>
-                    </tr>
-                </table>
+                <h3 class="border-bottom ">Coach Information</h3>
+                <div class="row border-bottom ">
+                    <div class="col-2"><b>Introduction</b></div>
+                    <div class="col">{{user.introduction}}</div>
+                </div>
+                <div class="row border-bottom ">
+                    <div class="col-2"><b>Availability</b></div>
+                    <div class="col">{{user.availability}}</div>
+                </div>
             </div>
         </div>
         <div class="card mx-5 ">
             <div class="card-body">
-                <h3>Coaching Topics</h3>
-                <table class="table">
-                    <tr *ngFor="let topic of user.topicList">
-                        <th>{{topic.name}}</th>
-                    </tr>
-                </table>
+                <h3 class="border-bottom ">Coaching Topics</h3>
+                <div class="row border-bottom " *ngFor="let topic of user.topicList">
+                    <div class="col"><b>{{topic.name}}</b></div>
+                </div>
             </div>
         </div>
     </div>
-
 </div>

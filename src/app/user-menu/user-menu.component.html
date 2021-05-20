@@ -3,10 +3,13 @@
     <div class="container-fluid">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/dashboard" routerLinkActive="active">My profile</a>
+          <a class="nav-link" aria-current="page" routerLink="/dashboard" routerLinkActive="active">My Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/coaches" routerLinkActive="active">Find a coach</a>
+          <a class="nav-link" routerLink="/coaches" routerLinkActive="active">Find a Coach</a>
+        </li>
+        <li class="nav-item" *ngIf="role==='ADMIN' || role==='COACH'">
+          <a class="nav-link" aria-current="page" routerLink="/dashboard-coach" routerLinkActive="active">My Coach Profile</a>
         </li>
       </ul>
     </div>

@@ -11,6 +11,8 @@ import { AuthenticationGuard } from './authentication/authentication.guard';
 import {CoachOverviewComponent} from "./coach-overview/coach-overview.component";
 import {BecomeCoachComponent} from "./dashboard/become-coach/become-coach.component";
 import {SessionRequestComponent} from "./session-request/session-request.component";
+import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach-dashboard.component';
+import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -30,6 +32,14 @@ const routes: Routes = [
       path: 'become-coach',
       component: BecomeCoachComponent,
       },
+    ]
+  },
+  {
+    path: 'dashboard-coach',
+    component: CoachDashboardComponent,
+    canActivate: [ AuthenticationGuard ],
+    children: [
+      { path: '', component: MyCoachProfileComponent},
     ]
   },
   {path: 'user/:id', component: UserProfileComponent, canActivate: [ AuthenticationGuard ] },
