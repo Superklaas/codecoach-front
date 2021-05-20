@@ -16,6 +16,7 @@ import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-c
 import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
 
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, },

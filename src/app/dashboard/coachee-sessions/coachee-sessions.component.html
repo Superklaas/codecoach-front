@@ -1,10 +1,10 @@
 <main>
 
   <div *ngIf="sessions$ | async as sessions">
-    <div>
-        <div >
+    <div class="card">
+        <div>
           <div>
-            <h3>My Upcoming sessions</h3>
+            <h4>My Upcoming sessions</h4>
             <table class="table">
               <tr>
                 <th>Coach</th>
@@ -29,10 +29,10 @@
           </div>
         </div>
 
-      <div *ngIf="HasArchivedSessions(sessions)" >
-        <div >
+      <div *ngIf="HasArchivedSessions(sessions)" class="card" >
+        <div>
           <div>
-            <h3>Archive</h3>
+            <h4>Archive</h4>
             <table class="table">
               <tr>
                 <th>Coach</th>

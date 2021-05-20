@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SessionService} from "../../service/session.service";
 import {Session} from "../../model/Session";
 import {Observable} from "rxjs";
 import {UserService} from "../../service/user.service";
-import {User} from "../../model/User";
 
 @Component({
   selector: 'app-coachee-sessions',
@@ -21,12 +20,11 @@ export class CoacheeSessionsComponent implements OnInit {
 
   HasArchivedSessions(sessions: Session[]) {
     for (let i = 0; i < sessions.length ; i++){
-      let dateTime = new Date()
-      let sesseionTime = Date.parse(`${sessions[i].date} ${sessions[i].startTime}`)
-
-      if (sesseionTime > Date.parse(dateTime.toString())){
+      let sessionTime = Date.parse(`${sessions[i].date} ${sessions[i].startTime}`)
+      if (sessionTime < Date.parse(new Date().toString())){
         return true;
       }
     }
   }
+
 }
