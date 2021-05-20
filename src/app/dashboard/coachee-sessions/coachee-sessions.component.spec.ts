@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
 
 import { CoacheeSessionsComponent } from './coachee-sessions.component';
 
@@ -8,7 +10,9 @@ describe('CoacheeSessionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CoacheeSessionsComponent ]
+      declarations: [ CoacheeSessionsComponent ],
+      imports: [ HttpClientTestingModule ],
+      providers: [{provide: AuthenticationService, useValue: {getId(){ return 1 }}}]
     })
     .compileComponents();
   });

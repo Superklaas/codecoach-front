@@ -2,6 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthenticationService } from '../authentication/authentication.service';
 import { RolePersonalisationService } from '../service/role-personalisation.service';
 
 import { UserMenuComponent } from './user-menu.component';
@@ -13,7 +14,8 @@ describe('UserMenuComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ UserMenuComponent ],
-      imports:[HttpClientTestingModule, RouterModule,  RouterTestingModule]
+      imports:[HttpClientTestingModule, RouterModule,  RouterTestingModule],
+      providers: [{provide: AuthenticationService, useValue: {getRole(){ return 'COACH' }}}]
     })
     .compileComponents();
     TestBed.inject(RolePersonalisationService);
