@@ -1,0 +1,19 @@
+<app-user-menu></app-user-menu>
+<div class="row mx-md-1 my-md-1">
+  <div class="col-md-2">
+    <ul class="nav flex-column nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard">My Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard/coachee-sessions">Coaching sessions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard/become-coach">Apply to become a coach</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-10">
+    <router-outlet></router-outlet>
+  </div>
+</div>

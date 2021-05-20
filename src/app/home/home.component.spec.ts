@@ -1,4 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { RolePersonalisationService } from '../service/role-personalisation.service';
 
 import { HomeComponent } from './home.component';
 
@@ -8,7 +12,9 @@ describe('HomeComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [ HomeComponent ],
+      imports: [HttpClientTestingModule, RouterModule,  RouterTestingModule],
+      providers: [{provides: RolePersonalisationService, useValue: {color: 'yellow'}}]
     })
     .compileComponents();
   }));

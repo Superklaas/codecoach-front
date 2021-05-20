@@ -4,7 +4,6 @@ import {AuthenticationService} from '../authentication/authentication.service';
 import {Router} from '@angular/router';
 
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -33,11 +32,19 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (_ => {
           this.success = true;
-          this.router.navigateByUrl(`/user/${this.authenticationService.getDecodedToken().sub}`);
+          this.router.navigateByUrl(`/dashboard`);
         }),
-        (_ => this.error = true)
+        (error => this.addErrorToForm(error))
       );
     this.loginForm.reset();
+  }
+
+  addErrorToForm(errorResponse) {
+    if (errorResponse.error.status === 400) {
+      this.loginForm.setErrors({serverError: errorResponse.error.message});
+    }else{
+      this.loginForm.setErrors({ serverError : 'Error: oops something went wrong...'});
+    }
   }
 
   logout() {

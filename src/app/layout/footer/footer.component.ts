@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
+import { RolePersonalisationService } from 'src/app/service/role-personalisation.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,11 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+  isLoggedIn: boolean;
+  constructor(private authenticationService: AuthenticationService, private roleStuff: RolePersonalisationService) { }
 
-  constructor() { }
-
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit(): void {
+    this.authenticationService.userLoggedIn$.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+    });
   }
+
+  get color() {
+    return this.roleStuff.color;
+  }
+
 
 }

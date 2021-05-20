@@ -1,0 +1,69 @@
+<main>
+
+  <div *ngIf="sessions$ | async as sessions">
+    <div class="card">
+      <div>
+        <div>
+          <h4>My Upcoming sessions</h4>
+          <table class="table">
+            <tr>
+              <th>Coach</th>
+              <th>Subject</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+            <ng-container *ngFor="let session of sessions">
+              <tr *ngIf="hasStatusRequested(session)"  >
+               <td  >{{session.coachProfileName}}</td>
+                <td >{{session.subject}}</td>
+                <td >{{session.date}}</td>
+                <td >{{session.startTime}}</td>
+                <td >{{session.location}}</td>
+                <td >{{session.status}}</td>
+                <td ></td>
+              </tr>
+            </ng-container>
+          </table>
+        </div>
+      </div>
+
+      <div *ngIf="HasArchivedSessions(sessions)" class="card">
+        <div>
+          <div>
+            <h4>Archive</h4>
+            <table class="table">
+              <tr>
+                <th>Coach</th>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+              <ng-container *ngFor="let session of sessions">
+
+              <tr *ngIf="session.status==='FINISHED'">
+
+                <td>{{session.coachProfileName}}</td>
+                <td>{{session.subject}}</td>
+                <td>{{session.date}}</td>
+                <td>{{session.startTime}}</td>
+                <td>{{session.location}}</td>
+                <td>{{session.status}}</td>
+                <td></td>
+
+              </tr>
+              </ng-container>
+            </table>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</main>

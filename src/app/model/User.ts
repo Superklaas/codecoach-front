@@ -1,9 +1,14 @@
-export interface User{
+import {Topic} from "./Topic";
+
+export interface User {
   id: number;
   firstName: string;
   lastName: string;
   profileName: string;
   email: string;
-  password: string;
   role: string;
+  availability: string;
+  introduction: string;
+  imageUrl: string;
+  topicList: Topic[];
 }

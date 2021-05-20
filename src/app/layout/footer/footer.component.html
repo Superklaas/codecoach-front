@@ -1,19 +1,19 @@
-<footer class="page-footer yellow darken-2">
+<footer class="page-footer  darken-2" [ngClass]="color">
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
         <h5 class="black-text">CodeCoach</h5>
         <p class="grey-text text-darken-3">CodeCoach is a platform that allows you to get coached on coding issues</p>
-
-
       </div>
       <div class="col l3 s12">
         <h5 class="black-text">Navigation</h5>
         <ul>
           <li><a class="grey-text text-darken-3" href="#" routerLink="/home"><i class="tiny material-icons">chevron_right</i>Home</a>
           </li>
-          <li><a class="grey-text text-darken-3" href="#" routerLink="/login"><i class="tiny material-icons">chevron_right</i>Sign
-            in / Register</a></li>
+          <li><a *ngIf="!isLoggedIn" class="grey-text text-darken-3" href="#" routerLink="/login"><i class="tiny material-icons">chevron_right</i>Sign
+            in</a></li>
+            <li><a *ngIf="!isLoggedIn" class="grey-text text-darken-3" href="#" routerLink="/register"><i class="tiny material-icons">chevron_right</i>Register</a></li>
+            <li><a *ngIf="isLoggedIn" class="grey-text text-darken-3" href="#" routerLink="/dashboard"><i class="tiny material-icons">chevron_right</i>Dashboard</a></li>
         </ul>
       </div>
     </div>

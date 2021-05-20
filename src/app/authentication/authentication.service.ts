@@ -4,6 +4,8 @@ import { tap } from 'rxjs/operators';
 import { ReplaySubject, Subject } from 'rxjs';
 import jwt_decode from "jwt-decode";
 import { Token } from '../model/Token';
+import { User } from '../model/User';
+import { UserService } from '../service/user.service';
 
 
 @Injectable({
@@ -15,13 +17,16 @@ export class AuthenticationService {
   private usernameKey = 'username';
   private userLoggedInSource = new ReplaySubject<boolean>();
   userLoggedIn$ = this.userLoggedInSource.asObservable();
+  private currentUser = new ReplaySubject<User>();
+  currentUser$ = this.currentUser.asObservable();
 
-  constructor(private loginService: AuthenticationHttpService) {
-    if(this.getToken()){
+  constructor(private loginService: AuthenticationHttpService, private userService: UserService) {
+    if (this.getToken()) {
       this.userLoggedInSource.next(true);
-    }else {
+    } else {
       this.userLoggedInSource.next(false);
     }
+
   }
 
   login(loginData: any) {
@@ -32,10 +37,9 @@ export class AuthenticationService {
         this.userLoggedInSource.next(true);
       }))
       ;
-
   }
 
-  getDecodedToken(): Token{
+  getDecodedToken(): Token {
     return jwt_decode(this.getToken());
   }
 
@@ -48,6 +52,14 @@ export class AuthenticationService {
   }
   getUsername() {
     return localStorage.getItem(this.usernameKey);
+  }
+
+  getRole(){
+    return this.getDecodedToken().role;
+  }
+
+  getId() {
+    return this.getDecodedToken().sub;
   }
 
   isLoggedIn() {

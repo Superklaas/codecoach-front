@@ -1,4 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { Subject } from 'rxjs';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 import { UserProfileComponent } from './user-profile.component';
 
@@ -8,7 +12,15 @@ describe('UserProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserProfileComponent ]
+      declarations: [ UserProfileComponent ],
+      imports: [
+        RouterModule.forRoot([]),
+        HttpClientTestingModule
+      ],
+      providers: [{provide: AuthenticationService, useValue: {
+        getId(){ return 1 },
+        userLoggedIn$ : new Subject()
+      }}]
     })
     .compileComponents();
   });

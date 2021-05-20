@@ -27,10 +27,17 @@
                   class="material-icons right">send</i></button>
 
                 <button (click)="requestResetPassword()"
-                        class="waves-effect waves-light yellow darken-2 btn-large black-text">Reset Password<i
-                  class="material-icons right">send</i></button>
+                        class="waves-effect waves-light teal darken-2 btn-large black-text">Reset Password<i
+                  class="material-icons right">autorenew</i></button>
 
               </div>
+
+              <div *ngIf="loginForm.errors" >
+                <div *ngIf="loginForm.errors.serverError" class="alert alert-danger">
+                  {{loginForm.errors.serverError}}
+                </div>
+              </div>
+
             </form>
           </div>
         </div>

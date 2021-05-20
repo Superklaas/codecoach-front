@@ -14,16 +14,25 @@ import { UserService } from '../service/user.service';
 export class UserProfileComponent implements OnInit {
   user: User;
   isLoggedIn: boolean;
+  role: string;
 
-  constructor(  private route: ActivatedRoute, private userService: UserService, private authenticationService: AuthenticationService) { }
+  constructor(private route: ActivatedRoute, private userService: UserService, private authenticationService: AuthenticationService) { }
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.userService.get(id).subscribe(user => this.user = user);
-    this.authenticationService.userLoggedIn$.subscribe(isLoggedIn => { 
-      this.isLoggedIn =isLoggedIn;
+    this.authenticationService.userLoggedIn$.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+      this.role = this.authenticationService.getRole();
     });
+   
+  }
+
+  get userImage() {
+    if (!this.user.imageUrl) {
+      return "assets/images/default-person.png";
+    }
+    return this.user.imageUrl;
   }
 
 }

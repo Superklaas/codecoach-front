@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable, throwError} from "rxjs";
 import {User} from "../model/User";
-import {catchError} from "rxjs/operators";
+import {catchError, map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -16,18 +16,26 @@ export class UserService {
   }
 
   create(user: User): Observable<User>{
-    return this.http.post<User>(this.url,user).pipe(catchError(this.handleError('register'))
+    return this.http.post<User>(this.url,user)
+      .pipe(catchError(this.handleError('register'))
     );
   }
 
+  getAllCoaches(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.url}/coaches`)
+      .pipe(map(users => users.sort((a,b) => a.lastName.localeCompare(b.lastName))));
+  }
 
   get(id: number):  Observable<User>{
     return this.http.get<User>(`${this.url}/${id}`);
   }
 
+  updateRole(id: number): Observable<User> {
+    return this.http.post<User>(`${this.url}/${id}/coachify`, null);
+  }
+
   private handleError(operation = 'operation') {
     return (error: any) => {
-      console.error(error);
       return throwError(error);
     };
   }

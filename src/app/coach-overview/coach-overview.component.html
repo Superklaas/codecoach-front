@@ -1,0 +1,21 @@
+<app-user-menu></app-user-menu>
+<div class="coach-wrapper container" *ngIf="coaches$ | async as coaches">
+  <div class="coach" *ngFor="let coach of coaches">
+    <h3>{{coach.profileName}}</h3>
+    <div class="coach-card">
+      <div class="image-wrapper">
+        <img src="{{coach.imageUrl}}">
+      </div>
+      <div class="topic-wrapper">
+        <h4>Topics</h4>
+        <ul>
+          <li *ngFor="let topic of coach.topicList">{{topic.name}}</li>
+        </ul>
+      </div>
+      <button class="round-button yellow darken-2" routerLink="/user/{{coach.id}}">
+        <i class="material-icons center">send</i> 
+      </button>
+    </div>
+  </div>
+</div>
+<div class="my-5"></div>
