@@ -1,69 +1,99 @@
 <main>
-
-  <div *ngIf="sessions$ | async as sessions">
-    <div class="card">
-      <div>
-        <div>
-          <h4>My Upcoming sessions</h4>
-          <table class="table">
-            <tr>
-              <th>Coach</th>
-              <th>Subject</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Location</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-            <ng-container *ngFor="let session of sessions">
-              <tr *ngIf="hasStatusRequested(session)"  >
-               <td  >{{session.coachProfileName}}</td>
-                <td >{{session.subject}}</td>
-                <td >{{session.date}}</td>
-                <td >{{session.startTime}}</td>
-                <td >{{session.location}}</td>
-                <td >{{session.status}}</td>
-                <td ></td>
-              </tr>
-            </ng-container>
-          </table>
-        </div>
+  <div class="card">
+    <div class="card-body mx-md-2 my-md-2">
+      <h4>My Upcoming sessions</h4>
+      <div *ngIf="!futureSessions[0]">
+        <p>You have no upcoming sessions</p>
       </div>
+      <table class="table" *ngIf="futureSessions[0]">
+        <tr>
+          <th>Coach</th>
+          <th>Subject</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Location</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+        <ng-container *ngFor="let session of futureSessions">
+          <tr>
+            <td>{{session.coachProfileName}}</td>
+            <td>{{session.subject}}</td>
+            <td>{{session.date}}</td>
+            <td>{{session.startTime}}</td>
+            <td>{{session.location}}</td>
+            <td>{{session.status}}</td>
+            <td></td>
+          </tr>
+        </ng-container>
+      </table>
+    </div>
+  </div>
 
-      <div *ngIf="HasArchivedSessions(sessions)" class="card">
-        <div>
-          <div>
-            <h4>Archive</h4>
-            <table class="table">
-              <tr>
-                <th>Coach</th>
-                <th>Subject</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Location</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-              <ng-container *ngFor="let session of sessions">
-
-              <tr *ngIf="session.status==='FINISHED'">
-
-                <td>{{session.coachProfileName}}</td>
-                <td>{{session.subject}}</td>
-                <td>{{session.date}}</td>
-                <td>{{session.startTime}}</td>
-                <td>{{session.location}}</td>
-                <td>{{session.status}}</td>
-                <td></td>
-
-              </tr>
-              </ng-container>
-            </table>
-          </div>
-        </div>
-
-
+  <div class="card">
+    <div class="card-body mx-md-2 my-md-2">
+      <h4>Waiting for Feedback</h4>
+      <div *ngIf="!waitingSessions[0]">
+        <p>You have no sessions waiting for feedback</p>
       </div>
+      <table class="table" *ngIf="waitingSessions[0]">
+        <tr>
+          <th>Coach</th>
+          <th>Subject</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Location</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+        <ng-container *ngFor="let session of waitingSessions">
+
+          <tr>
+
+            <td>{{session.coachProfileName}}</td>
+            <td>{{session.subject}}</td>
+            <td>{{session.date}}</td>
+            <td>{{session.startTime}}</td>
+            <td>{{session.location}}</td>
+            <td>{{session.status}}</td>
+            <td></td>
+
+          </tr>
+        </ng-container>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body mx-md-2 my-md-2">
+      <h4>Archive</h4>
+      <div *ngIf="!archivedSessions[0]">
+        <p>You have no archived sessions</p>
+      </div>
+      <table class="table" *ngIf="archivedSessions[0]">
+        <tr>
+          <th>Coach</th>
+          <th>Subject</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Location</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+        <ng-container *ngFor="let session of archivedSessions">
+
+          <tr>
+
+            <td>{{session.coachProfileName}}</td>
+            <td>{{session.subject}}</td>
+            <td>{{session.date}}</td>
+            <td>{{session.startTime}}</td>
+            <td>{{session.location}}</td>
+            <td>{{session.status}}</td>
+            <td></td>
+
+          </tr>
+        </ng-container>
+      </table>
     </div>
   </div>
 </main>
