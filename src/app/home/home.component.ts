@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {InitMaterializeComponent} from '../init-materialize.component';
 
 
 @Component({
@@ -7,10 +6,6 @@ import {InitMaterializeComponent} from '../init-materialize.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent extends InitMaterializeComponent {
-
-  constructor() {
-    super();
-  }
+export class HomeComponent  {
 
 }
