@@ -9,25 +9,51 @@ import {Session} from "../../model/Session";
   styleUrls: ['./coach-sessions.component.css']
 })
 export class CoachSessionsComponent implements OnInit {
-  public sessions$: Observable<Session[]>
+  public sessions: Session[]= [];
+
+  futureSessions: Session[] = [];
+  waitingSessions: Session[] = [];
+  archivedSessions: Session[] = [];
 
   constructor(private sessionService: SessionService) { }
 
   ngOnInit(): void {
-    this.sessions$ = this.sessionService.getCoachSessions();
-  }
-
-  HasArchivedSessions(sessions: Session[]) {
-    for (let i = 0; i < sessions.length; i++) {
-      let sessionTime = Date.parse(`${sessions[i].date} ${sessions[i].startTime}`)
-      if (sessionTime < Date.parse(new Date().toString())) {
-        return true;
-      }
-    }
+    this.sessionService.getCoachSessions().subscribe(sessions => {
+      this.sessions = sessions;
+      this.sortSessions(this.sessions);
+    });
   }
 
   hasStatusRequested(session: Session): boolean{
     return session.status==="REQUESTED"
+  }
+
+  isInTheFuture(session: Session): boolean{
+    let sessionTime = Date.parse(`${session.date} ${session.startTime}`)
+    if (sessionTime > Date.parse(new Date().toString())) {
+      return true;
+    }
+    return false;
+  }
+
+  sortSessions(sessions: Session[]){
+    for(let session of sessions){
+      if (this.isInTheFuture(session)){
+        this.futureSessions.push(session);
+      }
+      else if(session.status=='WAITING_FEEDBACK'){
+        this.waitingSessions.push(session);
+      }else {
+        this.archivedSessions.push(session);
+      }
+    }
+  }
+  accept(session: Session){
+    console.log("in accept");
+    this.sessionService.updateSession(session.id,'ACCEPTED').subscribe(session => window.location.reload());
+  }
+  decline(session: Session){
+    this.sessionService.updateSession(session.id,'REQUEST_DECLINED').subscribe(session => window.location.reload());
   }
 
 }
