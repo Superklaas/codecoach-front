@@ -29,6 +29,7 @@ import { FeedbackOverviewComponent } from './dashboard/coachee-sessions/feedback
 import { EasterEggComponent } from './easter-egg/easter-egg.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { EditProfileComponent } from './dashboard/edit-profile/edit-profile.component';
 
 
 
@@ -61,7 +62,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RemoveUnderscorePipe,
     EasterEggComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    EditProfileComponent
 
   ],
   imports: [
