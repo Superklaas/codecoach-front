@@ -34,6 +34,14 @@ export class UserService {
     return this.http.post<User>(`${this.url}/${id}/coachify`, null);
   }
 
+  sendResetToken(email: string): Observable<User> {
+    return this.http.post<User>(`${this.url}/forgot-password`, email);
+  }
+
+  resetPassword(token: string, newPassword: string) {
+    return this.http.post<User>(`${this.url}/reset-password?token=${token}`, newPassword);
+  }
+
   private handleError(operation = 'operation') {
     return (error: any) => {
       return throwError(error);

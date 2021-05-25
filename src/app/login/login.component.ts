@@ -53,7 +53,6 @@ export class LoginComponent implements OnInit {
   }
 
   requestResetPassword() {
-    alert("please email an admin.")
+    this.router.navigateByUrl(`/forgot-password`);
   }
-
 }

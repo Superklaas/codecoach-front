@@ -16,6 +16,8 @@ import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-c
 import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
 import {CoachSessionsComponent} from "./dashboard-coach/coach-sessions/coach-sessions.component";
 import {AuthorizationGuard} from "./authorization/authorization.guard";
+import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
+import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 
 
 
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, },
   { path: 'home', component: HomeComponent, },
   { path: 'register', component: RegisterComponent, },
+  { path: 'forgot-password', component: ForgotPasswordComponent},
+  { path: 'reset-password', component: ResetPasswordComponent},
   {
     path: 'dashboard',
     component: UserDashboardComponent,
