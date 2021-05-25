@@ -31,10 +31,8 @@ export class CoacheeSessionsComponent implements OnInit {
 
    isInTheFuture(session: Session): boolean{
     let sessionTime = Date.parse(`${session.date} ${session.startTime}`)
-    if (sessionTime > Date.parse(new Date().toString())) {
-      return true;
-    }
-    return false;
+    return sessionTime > Date.parse(new Date().toString());
+
   }
 
   sortSessions(sessions: Session[]){
