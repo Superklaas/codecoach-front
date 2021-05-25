@@ -57,7 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoacheeSessionsComponent,
     CoachSessionsComponent,
     RemoveUnderscorePipe,
-    FeedbackOverviewComponent
+    FeedbackOverviewComponent,
     RemoveUnderscorePipe,
     EasterEggComponent,
     ForgotPasswordComponent,
