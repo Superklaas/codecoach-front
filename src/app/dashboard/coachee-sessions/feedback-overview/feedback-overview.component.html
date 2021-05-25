@@ -1,0 +1,20 @@
+
+<tr>
+
+  <td>{{session.coachProfileName}}</td>
+  <td>{{session.subject}}</td>
+  <td>{{session.date}}</td>
+  <td>{{session.startTime}}</td>
+  <td>{{session.location}}</td>
+  <td>{{session.status | removeUnderscore | titlecase}}</td>
+  <td>
+    <button (click)="getFeedback()" class="waves-effect waves-light btn btn-custom grey accent-4">GIVE FEEDBACK<i
+      class="material-icons right">person</i>
+    </button>
+  </td>
+</tr>
+<tr *ngIf="!isFeedbackClosed()" >
+  <td colspan="6">
+    test
+  </td>
+</tr>

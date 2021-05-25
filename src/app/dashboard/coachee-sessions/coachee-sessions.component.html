@@ -57,19 +57,11 @@
           </tr>
           <ng-container *ngFor="let session of waitingSessions">
 
-            <tr>
+            <app-feedback-overview  [session]="session" [isCoach]="false"></app-feedback-overview>
 
-              <td>{{session.coachProfileName}}</td>
-              <td>{{session.subject}}</td>
-              <td>{{session.date}}</td>
-              <td>{{session.startTime}}</td>
-              <td>{{session.location}}</td>
-              <td>{{session.status | removeUnderscore | titlecase}}</td>
-              <td></td>
-
-            </tr>
           </ng-container>
         </table>
+
       </ng-container>
     </div>
   </div>

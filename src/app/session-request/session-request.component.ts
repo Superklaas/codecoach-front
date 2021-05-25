@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { SessionService } from "../service/session.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import { AuthenticationService } from "../authentication/authentication.service";
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {SessionService} from "../service/session.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {AuthenticationService} from "../authentication/authentication.service";
+import {UserService} from "../service/user.service";
 
 @Component({
   selector: 'app-session-request',
@@ -20,9 +21,10 @@ export class SessionRequestComponent implements OnInit {
       remarks: new FormControl("", []),
       coachId: new FormControl(this.route.snapshot.paramMap.get('id'),),
       coacheeId: new FormControl(this.authenticationService.getId())
-    }, { validators: this.timeInThePast });
+    }, {validators: this.timeInThePast});
 
-  constructor(private formBuilder: FormBuilder, private sessionService: SessionService, private router: Router, private route: ActivatedRoute, private authenticationService: AuthenticationService) {
+  constructor(private formBuilder: FormBuilder, private sessionService: SessionService, private router: Router,
+              private route: ActivatedRoute, private authenticationService: AuthenticationService, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class SessionRequestComponent implements OnInit {
     const startTime = group.get('startTime').value;
     if (date === '' || startTime == '') return null;
     const referenceDate = Date.parse(date + " " + startTime);
-    return referenceDate < Date.now() ? { inThePast: true } : {};
+    return referenceDate < Date.now() ? {inThePast: true} : {};
   }
 
   get requestSessionForm() {
@@ -66,7 +68,16 @@ export class SessionRequestComponent implements OnInit {
   submit() {
     this._requestSessionForm.markAllAsTouched();
     if (this._requestSessionForm.valid) {
-      return this.sessionService.create(this._requestSessionForm.value).subscribe(() => this.router.navigate([`/user/${this.route.snapshot.paramMap.get('id')}`]))
+      return this.sessionService.create(this._requestSessionForm.value)
+        .subscribe(
+          () => this.router.navigate([`/user/${this.route.snapshot.paramMap.get('id')}`]),
+          errorResponse => this.alertWrongCoachIdInUrl(errorResponse));
     }
   }
+
+  private alertWrongCoachIdInUrl(errorResponse: any) {
+    alert(errorResponse.error.message);
+    this.router.navigate([`/user/${this.authenticationService.getId()}`]);
+  }
+
 }
