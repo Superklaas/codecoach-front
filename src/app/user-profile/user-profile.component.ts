@@ -16,6 +16,7 @@ export class UserProfileComponent implements OnInit {
   isLoggedIn: boolean;
   role: string;
   currentWindowWidth: number;
+  loggedInId: number;
 
 
   constructor(private route: ActivatedRoute, private userService: UserService, private authenticationService: AuthenticationService) { }
@@ -27,6 +28,7 @@ export class UserProfileComponent implements OnInit {
       this.isLoggedIn = isLoggedIn;
       this.role = this.authenticationService.getRole();
       this.currentWindowWidth = window.innerWidth;
+      this.loggedInId = +this.authenticationService.getId();
     });
 
 

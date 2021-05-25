@@ -1,4 +1,7 @@
 <app-user-menu></app-user-menu>
+<div class="progress" *ngIf="!loaded">
+  <div class="indeterminate"></div>
+</div>
 <div class="coach-wrapper container" *ngIf="coaches$ | async as coaches">
   <div class="coach" *ngFor="let coach of coaches">
     <h3>{{coach.profileName}}</h3>
