@@ -31,15 +31,16 @@ export class CoacheeSessionsComponent implements OnInit {
 
    isInTheFuture(session: Session): boolean{
     let sessionTime = Date.parse(`${session.date} ${session.startTime}`)
-    if (sessionTime > Date.parse(new Date().toString())) {
-      return true;
-    }
-    return false;
+    return sessionTime > Date.parse(new Date().toString());
+
   }
 
   sortSessions(sessions: Session[]){
     for(let session of sessions){
-      if (this.isInTheFuture(session)){
+      if(session.status=='REQUEST_DECLINED') {
+        this.archivedSessions.push(session);
+      }
+      else if (this.isInTheFuture(session)){
         this.futureSessions.push(session);
       }
       else if(session.status=='WAITING_FEEDBACK'){
