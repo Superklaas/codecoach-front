@@ -1,0 +1,3 @@
+export enum FeedbackPopup {
+    CLOSED,FEEDBACK_TO_COACH,FEEDBACK_TO_COACHEE
+}
