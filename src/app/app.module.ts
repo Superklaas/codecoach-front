@@ -56,13 +56,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoacheeSessionsComponent,
     CoachSessionsComponent,
     RemoveUnderscorePipe,
-<<<<<<< HEAD
-    EasterEggComponent
-
-=======
+    EasterEggComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent
->>>>>>> 8bd21f7307e188ccf5dfbfeac632ad3c2a572127
+
   ],
   imports: [
     BrowserModule,
