@@ -10,10 +10,7 @@ import * as M from 'materialize-css';
 export class HomeComponent implements AfterViewInit  {
 
   ngAfterViewInit(): void {
-    const elements = document.getElementsByClassName('parallax');
-    for(let i = 0; i < elements.length; i++) {
-      M.Parallax.init(elements[i]);
-    }
+    M.Parallax.init(document.querySelectorAll('.parallax'));
   }
 
 }
