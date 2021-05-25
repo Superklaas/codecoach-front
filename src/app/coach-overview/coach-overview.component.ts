@@ -11,18 +11,11 @@ import {UserService} from "../service/user.service";
 export class CoachOverviewComponent implements OnInit {
 
   coaches$: Observable<User[]>;
-  loaded: boolean = false;
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    
-    setTimeout(()=>{  
       this.coaches$ = this.userService.getAllCoaches();
-      this.loaded = true;
-    }, 0);
-    
-    
   }
 
 }

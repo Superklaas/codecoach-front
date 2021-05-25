@@ -1,8 +1,5 @@
 <app-user-menu></app-user-menu>
-<div class="progress" *ngIf="!loaded">
-  <div class="indeterminate"></div>
-</div>
-<div class="coach-wrapper container" *ngIf="coaches$ | async as coaches">
+<div class="coach-wrapper container" *ngIf="coaches$ | async as coaches; else loading">
   <div class="coach" *ngFor="let coach of coaches">
     <h3>{{coach.profileName}}</h3>
     <div class="coach-card">
@@ -16,9 +13,15 @@
         </ul>
       </div>
       <button class="round-button yellow darken-2" routerLink="/user/{{coach.id}}">
-        <i class="material-icons center">send</i> 
+        <i class="material-icons center">send</i>
       </button>
     </div>
   </div>
 </div>
+<ng-template #loading>
+  <div class="progress">
+    <div class="indeterminate"></div>
+  </div>
+</ng-template>
+
 <div class="my-5"></div>
