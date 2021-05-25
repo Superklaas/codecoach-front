@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../service/user.service";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-reset-password',
@@ -11,15 +11,15 @@ import {Router} from "@angular/router";
 export class ResetPasswordComponent implements OnInit {
   private _success;
   private _error;
+  private _resetToken;
   private _resetPasswordForm = this.formBuilder.group({
-    resetToken: '',
     newPassword: new FormControl("",
     [Validators.required, Validators.minLength(8),
     Validators.pattern(/.*[0-9]+.*/), Validators.pattern(/.*[A-Z]+.*/), Validators.pattern(/.*[a-z]+.*/)]),
     confirmNewPassword: new FormControl("", [Validators.required, ])
   })
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -27,14 +27,18 @@ export class ResetPasswordComponent implements OnInit {
   submit() {
     this._success = false;
     this._error = false;
-    this.userService.resetPassword(this._resetPasswordForm.get("resetToken").value, this._resetPasswordForm.get("newPassword").value)
-      .subscribe(
-        (() => {
-          this._success = true;
-          this.router.navigateByUrl('/login');
-        }),
-        (error => this.addErrorToForm(error))
-      );
+    this.route.queryParams.subscribe(params => {
+      this._resetToken = params.token;
+      this.userService.resetPassword(this._resetToken, this._resetPasswordForm.get("newPassword").value)
+        .subscribe(
+          (() => {
+            this._success = true;
+            this.router.navigateByUrl('/login');
+          }),
+          (error => this.addErrorToForm(error))
+        );
+
+    });
     this._resetPasswordForm.reset();
   }
 

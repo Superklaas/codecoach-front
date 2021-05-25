@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../service/user.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -23,11 +23,10 @@ export class ForgotPasswordComponent implements OnInit {
   submit() {
     this._success = false;
     this._error = false;
-    this.userService.sendResetToken(this._emailForm.get("email").value)
+    this.userService.sendResetToken(this._emailForm.get("email").value, window.location.href.replace('/forgot-password', ''))
       .subscribe(
         (() => {
         this._success = true;
-        // this.router.navigateByUrl('/reset-password');
       }),
       (error => this.addErrorToForm(error))
   );
