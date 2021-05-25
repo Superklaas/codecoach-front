@@ -9,32 +9,13 @@
       <div class="row" *ngIf="user.role === 'COACH'">
         <p class="m-2 mx1">Your application to become a Coach was accepted!</p>
       </div>
-      <div class="row" *ngIf="user.role !== 'COACH'">
-        <div class="col-md-2">
-          <img class="card-img img-responsive m-2" src="assets/images/under-construction.jpg">
-        </div>
-        <div class="col-md-10">
-          <div class="card-body col-md-10">
-            <p>This part of the application is currently still under construction.
-              In order to become a coach please send an email to your administrator with the
-              following information:</p>
-            <ul class="list-unstyled">
-              <li>Your full name</li>
-              <li>Your motivation to become a coach</li>
-              <li>The list of topics (topic + grade) on which you would like to coach</li>
-            </ul>
-          </div>
-        </div>
-      </div>
       <div class="row justify-content-end m-3">
-        <button type="button"
-                class="col-md-3 waves-effect waves-light yellow darken-2 btn-large black-text"
-                (click)="becomeCoach()" [disabled]="user.role === 'COACH'">
+        <button type="button" class="col-md-3 waves-effect waves-light yellow darken-2 btn-large black-text"
+          (click)="becomeCoach()" [disabled]="user.role === 'COACH'">
           Become a coach
-          <i class="material-icons right">send</i></button>
+          <i class="material-icons right">send</i>
+        </button>
       </div>
     </div>
   </div>
 </section>
-
-
