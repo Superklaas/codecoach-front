@@ -1,16 +1,18 @@
 <app-user-menu></app-user-menu>
 <div class="row mx-md-1 my-md-1">
-  <div class="col-md-2">
-    <ul class="nav flex-column nav-tabs">
+  <div class="col-md-3 col-xl-2">
+    <ul class="nav flex-column nav-tabs usernav">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/dashboard-coach">My Coach Profile</a>
+        <a class="nav-link" routerLink="/dashboard-coach" routerLinkActive="light-blue darken-2 active" [routerLinkActiveOptions]="{exact: true}">My Coach Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/dashboard-coach/coach-sessions">Coaching sessions</a>
+        <a class="nav-link" routerLink="/dashboard-coach/coach-sessions" routerLinkActive="light-blue darken-2 active">Coaching sessions</a>
       </li>
     </ul>
   </div>
-  <div class="col-md-10">
-    <router-outlet ></router-outlet>
+  <div class="col-md-9 col-xl-10">
+    <div class="mx-md-5 my-md-5">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

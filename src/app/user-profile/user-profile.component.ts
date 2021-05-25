@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
@@ -15,6 +15,8 @@ export class UserProfileComponent implements OnInit {
   user: User;
   isLoggedIn: boolean;
   role: string;
+  currentWindowWidth: number;
+
 
   constructor(private route: ActivatedRoute, private userService: UserService, private authenticationService: AuthenticationService) { }
 
@@ -24,8 +26,14 @@ export class UserProfileComponent implements OnInit {
     this.authenticationService.userLoggedIn$.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
       this.role = this.authenticationService.getRole();
+      this.currentWindowWidth = window.innerWidth;
     });
-   
+
+
+  }
+
+  isMobile(): boolean {
+    return this.currentWindowWidth >= 400;
   }
 
   get userImage() {
@@ -33,6 +41,11 @@ export class UserProfileComponent implements OnInit {
       return "assets/images/default-person.png";
     }
     return this.user.imageUrl;
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.currentWindowWidth = window.innerWidth
   }
 
 }

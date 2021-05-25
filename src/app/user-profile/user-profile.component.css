@@ -2,6 +2,13 @@
     margin: 10px 20px;
 }
 
+.custom{
+    line-height: 1rem;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
 @media (max-width: 767px) { 
     .card-body h3 {
         text-align: center;
@@ -22,4 +29,5 @@
         padding: 0;
         margin: 0;
     }
+    
 }

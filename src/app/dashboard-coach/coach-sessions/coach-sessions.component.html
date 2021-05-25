@@ -1,8 +1,14 @@
 <main>
-    <div class="card ">
-      <div class="card-body mx-md-2 my-md-2">
-        <h4>My Upcoming sessions</h4>
-        <div *ngIf="!futureSessions[0]"><p>You have no upcoming sessions</p></div>
+  <div class="card ">
+    <div class="card-body mx-md-2 my-md-2">
+      <h4>My Upcoming sessions</h4>
+      <div class="progress" *ngIf="!loaded">
+        <div class="indeterminate"></div>
+      </div>
+      <ng-container *ngIf="loaded">
+        <div *ngIf="!futureSessions[0]">
+          <p>You have no upcoming sessions</p>
+        </div>
         <table class="table" *ngIf="futureSessions[0]">
           <tr>
             <th>Coachee</th>
@@ -14,35 +20,42 @@
             <th>Actions</th>
           </tr>
           <ng-container *ngFor="let session of futureSessions">
-            <tr >
+            <tr>
               <td>{{session.coacheeProfileName}}</td>
               <td>{{session.subject}}</td>
               <td>{{session.date}}</td>
               <td>{{session.startTime}}</td>
               <td>{{session.location}}</td>
-              <td>{{session.status}}</td>
+              <td>{{session.status | removeUnderscore | titlecase}}</td>
               <td>
                 <div *ngIf="hasStatusRequested(session)">
-                  <button class="waves-effect waves-light btn btn-custom green"(click)="accept(session)">ACCEPT<i
-                      class="material-icons right" >check_circle</i>
-                    </button>
-                  <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="decline(session)">DECLINE<i
-                      class="material-icons right" >cancel</i>
-                    </button>
+                  <button class="waves-effect waves-light btn btn-custom green" (click)="accept(session)">ACCEPT<i
+                      class="material-icons right">check_circle</i>
+                  </button>
+                  <button class="waves-effect waves-light btn btn-custom red accent-4"
+                    (click)="decline(session)">DECLINE<i class="material-icons right">cancel</i>
+                  </button>
                 </div>
               </td>
             </tr>
           </ng-container>
         </table>
-      </div>
+      </ng-container>
     </div>
-  
-    <div class="card">
-      <div class="card-body mx-md-2 my-md-2">
+  </div>
 
-        <h4>Waiting for Feedback</h4>
-        <div *ngIf="!waitingSessions[0]"><p>You have no sessions waiting for feedback</p></div>
-        <table class="table" *ngIf="waitingSessions[0]" >
+  <div class="card">
+    <div class="card-body mx-md-2 my-md-2">
+
+      <h4>Waiting for Feedback</h4>
+      <div class="progress" *ngIf="!loaded">
+        <div class="indeterminate"></div>
+      </div>
+      <ng-container *ngIf="loaded">
+        <div *ngIf="!waitingSessions[0]">
+          <p>You have no sessions waiting for feedback</p>
+        </div>
+        <table class="table" *ngIf="waitingSessions[0]">
           <tr>
             <th>Coachee</th>
             <th>Subject</th>
@@ -61,19 +74,26 @@
               <td>{{session.date}}</td>
               <td>{{session.startTime}}</td>
               <td>{{session.location}}</td>
-              <td>{{session.status}}</td>
+              <td>{{session.status | removeUnderscore | titlecase}}</td>
               <td></td>
 
             </tr>
           </ng-container>
         </table>
-      </div>
+      </ng-container>
     </div>
-    <div  class="card">
-      <div class="card-body mx-md-2 my-md-2">
+  </div>
+  <div class="card">
+    <div class="card-body mx-md-2 my-md-2">
 
-        <h4>Archive</h4>
-        <div *ngIf="!archivedSessions[0]"><p>You have no archived sessions</p></div>
+      <h4>Archive</h4>
+      <div class="progress" *ngIf="!loaded">
+        <div class="indeterminate"></div>
+      </div>
+      <ng-container *ngIf="loaded">
+        <div *ngIf="!archivedSessions[0]">
+          <p>You have no archived sessions</p>
+        </div>
         <table class="table" *ngIf="archivedSessions[0]">
           <tr>
             <th>Coachee</th>
@@ -86,19 +106,20 @@
           </tr>
           <ng-container *ngFor="let session of archivedSessions">
 
-            <tr >
+            <tr>
 
               <td>{{session.coacheeProfileName}}</td>
               <td>{{session.subject}}</td>
               <td>{{session.date}}</td>
               <td>{{session.startTime}}</td>
               <td>{{session.location}}</td>
-              <td>{{session.status}}</td>
+              <td>{{session.status | removeUnderscore | titlecase}}</td>
               <td></td>
 
             </tr>
           </ng-container>
         </table>
-      </div>
+        </ng-container>
     </div>
+  </div>
 </main>

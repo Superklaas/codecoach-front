@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SessionService} from "../../service/session.service";
 import {Session} from "../../model/Session";
-import {Observable} from "rxjs";
+
 
 
 @Component({
@@ -16,6 +16,8 @@ export class CoacheeSessionsComponent implements OnInit {
   waitingSessions: Session[] = [];
   archivedSessions: Session[] = [];
 
+  loaded: boolean = false;
+
   constructor(private sessionService: SessionService) {
   }
 
@@ -23,20 +25,22 @@ export class CoacheeSessionsComponent implements OnInit {
     this.sessionService.getCoacheeSessions().subscribe(sessions => {
       this.sessions = sessions;
       this.sortSessions(this.sessions);
+      this.loaded=true;
     });
   }
 
    isInTheFuture(session: Session): boolean{
     let sessionTime = Date.parse(`${session.date} ${session.startTime}`)
-    if (sessionTime > Date.parse(new Date().toString())) {
-      return true;
-    }
-    return false;
+    return sessionTime > Date.parse(new Date().toString());
+
   }
 
   sortSessions(sessions: Session[]){
     for(let session of sessions){
-      if (this.isInTheFuture(session)){
+      if(session.status=='REQUEST_DECLINED') {
+        this.archivedSessions.push(session);
+      }
+      else if (this.isInTheFuture(session)){
         this.futureSessions.push(session);
       }
       else if(session.status=='WAITING_FEEDBACK'){
