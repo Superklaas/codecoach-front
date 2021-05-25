@@ -14,8 +14,12 @@ import { SessionRequestComponent } from "./session-request/session-request.compo
 import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach-dashboard.component';
 import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
 import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
-import {CoachSessionsComponent} from "./dashboard-coach/coach-sessions/coach-sessions.component";
-import {AuthorizationGuard} from "./authorization/authorization.guard";
+import { CoachSessionsComponent } from "./dashboard-coach/coach-sessions/coach-sessions.component";
+import { AuthorizationGuard } from "./authorization/authorization.guard";
+import { EasterEggComponent } from './easter-egg/easter-egg.component';
+import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
+import {ResetPasswordComponent} from "./reset-password/reset-password.component";
+
 
 
 
@@ -25,6 +29,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, },
   { path: 'home', component: HomeComponent, },
   { path: 'register', component: RegisterComponent, },
+  { path: 'egg', component: EasterEggComponent, canActivate: [AuthenticationGuard], },
+  { path: 'forgot-password', component: ForgotPasswordComponent},
+  { path: 'reset-password', component: ResetPasswordComponent},
   {
     path: 'dashboard',
     component: UserDashboardComponent,
@@ -50,12 +57,12 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard, AuthorizationGuard],
     children: [
       { path: '', component: MyCoachProfileComponent },
-      { path: 'coach-sessions', component: CoachSessionsComponent}
+      { path: 'coach-sessions', component: CoachSessionsComponent }
     ]
   },
-  { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard],},
+  { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard], },
   { path: 'coaches', component: CoachOverviewComponent, canActivate: [AuthenticationGuard], },
-  { path: 'create-session/:id', component: SessionRequestComponent, canActivate: [AuthenticationGuard],  }
+  { path: 'create-session/:id', component: SessionRequestComponent, canActivate: [AuthenticationGuard], }
 ];
 
 @NgModule({

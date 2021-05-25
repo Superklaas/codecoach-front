@@ -26,6 +26,10 @@ import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-s
 import { CoachSessionsComponent } from './dashboard-coach/coach-sessions/coach-sessions.component';
 import { RemoveUnderscorePipe } from './pipe/remove-underscore.pipe';
 import { FeedbackOverviewComponent } from './dashboard/coachee-sessions/feedback-overview/feedback-overview.component';
+import { EasterEggComponent } from './easter-egg/easter-egg.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -54,6 +58,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoachSessionsComponent,
     RemoveUnderscorePipe,
     FeedbackOverviewComponent
+    RemoveUnderscorePipe,
+    EasterEggComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
 
   ],
   imports: [

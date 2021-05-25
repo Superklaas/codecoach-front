@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable, throwError} from "rxjs";
 import {User} from "../model/User";
@@ -32,6 +32,19 @@ export class UserService {
 
   updateRole(id: number): Observable<User> {
     return this.http.post<User>(`${this.url}/${id}/coachify`, null);
+  }
+
+  sendResetToken(email: string, url: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Email': email
+      })
+    };
+    return this.http.post<any>(`${this.url}/forgot-password`, url, httpOptions);
+  }
+
+  resetPassword(token: string, newPassword: string): Observable<any> {
+    return this.http.post<any>(`${this.url}/reset-password?token=${token}`, newPassword);
   }
 
   private handleError(operation = 'operation') {

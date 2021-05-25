@@ -32,7 +32,13 @@
                     </div>
                     <div *ngIf="user.role=='COACH'">
                         <a class="waves-effect waves-light yellow darken-2 btn black-text right"
-                            routerLink="/create-session/{{user.id}}">
+                            routerLink="/create-session/{{user.id}}" *ngIf="user.id!=loggedInId">
+                            <span class="black-text center custom " *ngIf="isMobile()">Book a Session</span>
+                            <i class="material-icons center">date_range</i>
+                        </a>
+                        <a class="waves-effect waves-light yellow darken-2 btn black-text right" routerLink="/egg"
+                            *ngIf="user.id==loggedInId">
+                            <span class="black-text center custom " *ngIf="isMobile()">Book a Session</span>
                             <i class="material-icons center">date_range</i>
                         </a>
                     </div>
