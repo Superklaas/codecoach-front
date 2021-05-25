@@ -39,7 +39,10 @@ export class CoacheeSessionsComponent implements OnInit {
 
   sortSessions(sessions: Session[]){
     for(let session of sessions){
-      if (this.isInTheFuture(session)){
+      if(session.status=='REQUEST_DECLINED') {
+        this.archivedSessions.push(session);
+      }
+      else if (this.isInTheFuture(session)){
         this.futureSessions.push(session);
       }
       else if(session.status=='WAITING_FEEDBACK'){
