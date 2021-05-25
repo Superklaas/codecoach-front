@@ -52,8 +52,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoachDashboardComponent,
     MyCoachProfileComponent,
     CoacheeSessionsComponent,
-    CoachSessionsComponent
-
+    CoachSessionsComponent,
+    RemoveUnderscorePipe,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
