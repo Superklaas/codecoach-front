@@ -17,6 +17,9 @@ import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-s
 import { CoachSessionsComponent } from "./dashboard-coach/coach-sessions/coach-sessions.component";
 import { AuthorizationGuard } from "./authorization/authorization.guard";
 import { EasterEggComponent } from './easter-egg/easter-egg.component';
+import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
+import {ResetPasswordComponent} from "./reset-password/reset-password.component";
+
 
 
 
@@ -27,6 +30,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, },
   { path: 'register', component: RegisterComponent, },
   { path: 'egg', component: EasterEggComponent, canActivate: [AuthenticationGuard], },
+  { path: 'forgot-password', component: ForgotPasswordComponent},
+  { path: 'reset-password', component: ResetPasswordComponent},
   {
     path: 'dashboard',
     component: UserDashboardComponent,
