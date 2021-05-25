@@ -28,7 +28,7 @@
                     </div>
                     <div class="row border-bottom">
                         <div class="col-md-4"><b>CodeCoach role</b></div>
-                        <div class="col-md-4">{{user.role | lowercase}}</div>
+                        <div class="col-md-4">{{user.role | removeUnderscore| titlecase}}</div>
                     </div>
                     <div *ngIf="user.role=='COACH'">
                         <a class="waves-effect waves-light yellow darken-2 btn black-text right"

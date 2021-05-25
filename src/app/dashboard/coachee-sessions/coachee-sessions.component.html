@@ -22,7 +22,7 @@
             <td>{{session.date}}</td>
             <td>{{session.startTime}}</td>
             <td>{{session.location}}</td>
-            <td>{{session.status}}</td>
+            <td>{{session.status | removeUnderscore | titlecase}}</td>
             <td></td>
           </tr>
         </ng-container>
@@ -55,7 +55,7 @@
             <td>{{session.date}}</td>
             <td>{{session.startTime}}</td>
             <td>{{session.location}}</td>
-            <td>{{session.status}}</td>
+            <td>{{session.status | removeUnderscore | titlecase}}</td>
             <td></td>
 
           </tr>
@@ -88,7 +88,7 @@
             <td>{{session.date}}</td>
             <td>{{session.startTime}}</td>
             <td>{{session.location}}</td>
-            <td>{{session.status}}</td>
+            <td>{{session.status | removeUnderscore | titlecase}}</td>
             <td></td>
 
           </tr>

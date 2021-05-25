@@ -20,7 +20,7 @@
               <td>{{session.date}}</td>
               <td>{{session.startTime}}</td>
               <td>{{session.location}}</td>
-              <td>{{session.status}}</td>
+              <td>{{session.status  | removeUnderscore | titlecase}}</td>
               <td>
                 <div *ngIf="hasStatusRequested(session)">
                   <button class="waves-effect waves-light btn btn-custom green"(click)="accept(session)">ACCEPT<i
@@ -61,7 +61,7 @@
               <td>{{session.date}}</td>
               <td>{{session.startTime}}</td>
               <td>{{session.location}}</td>
-              <td>{{session.status}}</td>
+              <td>{{session.status  | removeUnderscore | titlecase}}</td>
               <td></td>
 
             </tr>
@@ -93,7 +93,7 @@
               <td>{{session.date}}</td>
               <td>{{session.startTime}}</td>
               <td>{{session.location}}</td>
-              <td>{{session.status}}</td>
+              <td>{{session.status  | removeUnderscore | titlecase}}</td>
               <td></td>
 
             </tr>
