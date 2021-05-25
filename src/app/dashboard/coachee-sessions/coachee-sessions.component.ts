@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SessionService} from "../../service/session.service";
 import {Session} from "../../model/Session";
-import {Observable} from "rxjs";
+
 
 
 @Component({
@@ -16,6 +16,8 @@ export class CoacheeSessionsComponent implements OnInit {
   waitingSessions: Session[] = [];
   archivedSessions: Session[] = [];
 
+  loaded: boolean = false;
+
   constructor(private sessionService: SessionService) {
   }
 
@@ -23,6 +25,7 @@ export class CoacheeSessionsComponent implements OnInit {
     this.sessionService.getCoacheeSessions().subscribe(sessions => {
       this.sessions = sessions;
       this.sortSessions(this.sessions);
+      this.loaded=true;
     });
   }
 
