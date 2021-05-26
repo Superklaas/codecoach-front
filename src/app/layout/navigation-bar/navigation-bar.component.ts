@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import {NavigationStart, Router} from "@angular/router";
 import { filter } from 'rxjs/operators';
+import * as M from "materialize-css";
 
 
 @Component({
@@ -9,7 +10,7 @@ import { filter } from 'rxjs/operators';
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.css']
 })
-export class NavigationBarComponent implements OnInit {
+export class NavigationBarComponent implements OnInit, AfterViewInit {
   username;
   isLoggedIn: boolean;
   role;
@@ -23,6 +24,7 @@ export class NavigationBarComponent implements OnInit {
       this.role = isLoggedIn ? this.authenticationService.getRole() : undefined;
       this.isLoggedIn =isLoggedIn;
     });
+
 
     // The materialize sidenav doesn't play nice with Angular Router.
     // When a mobile user navigates to a link, the sidenav remains open.
@@ -39,6 +41,9 @@ export class NavigationBarComponent implements OnInit {
     }
   }
 
+  ngAfterViewInit(): void {
+    M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {coverTrigger: false});
+  }
 
   logout() {
     this.authenticationService.logout();
