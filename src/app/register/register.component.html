@@ -57,9 +57,8 @@
                          aria-label="password">
                   <div *ngIf="wrongInputHasBeenTyped(password)" class="alert alert-danger">
                     <div *ngIf="password.errors.required">Password is required.</div>
-                    <div *ngIf="password.errors.pattern">Not a valid password: you need at least a number, an upper case letter and
-                     a lower case letter
-                    </div>
+                    <div *ngIf="password.errors.pattern || password.errors.minlength">
+                      Not a valid password: you need at least 8 characters including a number, an upper case letter, a lower case letter.                    </div>
                   </div>
                 </div>
               </div>

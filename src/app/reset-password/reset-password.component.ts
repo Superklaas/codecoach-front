@@ -16,8 +16,8 @@ export class ResetPasswordComponent implements OnInit {
     newPassword: new FormControl("",
     [Validators.required, Validators.minLength(8),
     Validators.pattern(/.*[0-9]+.*/), Validators.pattern(/.*[A-Z]+.*/), Validators.pattern(/.*[a-z]+.*/)]),
-    confirmNewPassword: new FormControl("", [Validators.required, ])
-  })
+    confirmNewPassword: new FormControl("", [Validators.required])
+  }, { validators: this.matchingPassword });
 
   constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) { }
 
@@ -25,6 +25,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   submit() {
+    this._resetPasswordForm.markAllAsTouched();
     this._success = false;
     this._error = false;
     this.route.queryParams.subscribe(params => {
