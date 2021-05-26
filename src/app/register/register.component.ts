@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     password: new FormControl("",
       [Validators.required, Validators.minLength(8),
         Validators.pattern(/.*[0-9]+.*/), Validators.pattern(/.*[A-Z]+.*/), Validators.pattern(/.*[a-z]+.*/)]),
-    password2: new FormControl("", [Validators.required, ]),
+    password2: new FormControl("", [Validators.required]),
     role : "COACHEE"
   },{ validators: this.matchingPassword })
   constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
