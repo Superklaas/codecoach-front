@@ -16,11 +16,11 @@
      FEEDBACK GIVEN
       <i class="material-icons right">person</i>
     </button>
-
   </ng-container>
 
 
 </app-common-session-details>
+
 <tr *ngIf="feedBackViewStatus === 'open'">
   <td class="center" colspan="7">
    <app-coach-feedback-form [session]="session" (submitted)="feedBackSubmitted($event)" ></app-coach-feedback-form>
