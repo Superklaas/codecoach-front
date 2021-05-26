@@ -15,12 +15,11 @@ export class RequestedCoachSessionDetailsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   accept(session: Session) {
-    console.log("in accept");
     this.sessionService.updateSession(session.id, 'ACCEPTED').subscribe(session => window.location.reload());
   }
-  
+
   decline(session: Session) {
     this.sessionService.updateSession(session.id, 'REQUEST_DECLINED').subscribe(session => window.location.reload());
   }
