@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {Router} from '@angular/router';
+import {InitService} from "../materialize/init.service";
 
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   success;
   loginForm;
 
-  constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router, private initService: InitService) {
     this.loginForm = this.formBuilder.group({
       username: '',
       password: ''
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (_ => {
           this.success = true;
+          this.initService.initDropdowns();
           this.router.navigateByUrl(`/dashboard`);
         }),
         (error => this.addErrorToForm(error))

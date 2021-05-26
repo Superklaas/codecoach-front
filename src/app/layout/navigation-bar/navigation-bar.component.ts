@@ -3,6 +3,7 @@ import { AuthenticationService } from 'src/app/authentication/authentication.ser
 import {NavigationStart, Router} from "@angular/router";
 import { filter } from 'rxjs/operators';
 import * as M from "materialize-css";
+import {InitService} from "../../materialize/init.service";
 
 
 @Component({
@@ -15,7 +16,7 @@ export class NavigationBarComponent implements OnInit, AfterViewInit {
   isLoggedIn: boolean;
   role;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private authenticationService: AuthenticationService, private router: Router, private initService: InitService) {
   }
 
   ngOnInit(): void {
@@ -42,7 +43,8 @@ export class NavigationBarComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {coverTrigger: false});
+    this.initService.initDropdowns();
+    this.initService.initSidenav();
   }
 
   logout() {
