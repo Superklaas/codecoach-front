@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../authentication/authentication.service';
-import { RolePersonalisationService } from '../service/role-personalisation.service';
+import {Component, OnInit} from '@angular/core';
+import {RolePersonalisationService} from '../service/role-personalisation.service';
+import {ProfileService} from "../service/profile.service";
+import {UserService} from "../service/user.service";
+import {AuthenticationService} from "../authentication/authentication.service";
 
 @Component({
   selector: 'app-user-menu',
@@ -9,14 +10,21 @@ import { RolePersonalisationService } from '../service/role-personalisation.serv
   styleUrls: ['./user-menu.component.css']
 })
 export class UserMenuComponent implements OnInit {
-  role: string;
-  constructor(private authService: AuthenticationService, private roleStuff: RolePersonalisationService) { }
+  private _role: string;
+
+  constructor(private authService: AuthenticationService, private userService: UserService, private roleStuff: RolePersonalisationService) {
+  }
 
   ngOnInit(): void {
-    this.role = this.authService.getRole();
+    this.userService.get(Number(this.authService.getId()))
+      .subscribe(user => this._role = user.role)
   }
-  
-  get  color(){
+
+  get role(): string {
+    return this._role;
+  }
+
+  get color() {
     return this.roleStuff.color;
   }
 

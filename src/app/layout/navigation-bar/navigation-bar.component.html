@@ -21,7 +21,6 @@
          <!-- If logged in -->
 
          <ng-container *ngIf="isLoggedIn">
-
            <a class='dropdown-trigger btn' data-target='dropdown'>
              {{username}}
              <i class="material-icons right">arrow_drop_down</i>
@@ -38,7 +37,7 @@
 
       <ul id="nav-mobile" class="sidenav">
 
-        <li *ngIf="username" class="welcome-msg">
+        <li *ngIf="isLoggedIn" class="welcome-msg">
           Welcome {{username}}
         </li>
 
@@ -60,7 +59,7 @@
         </ng-container>
 
 
-        <ng-container *ngIf="username">
+        <ng-container *ngIf="isLoggedIn">
 
           <!-- If logged in -->
           <li  routerLink="/dashboard"><a class="waves-effect waves-light amber lighten-4 btn black-text">

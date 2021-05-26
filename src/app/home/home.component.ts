@@ -1,6 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import { InitMaterializeComponent } from '../init-materialize.component';
-import * as M from 'materialize-css';
+import {AfterViewInit, Component} from '@angular/core';
 import {InitService} from "../materialize/init.service";
 
 @Component({

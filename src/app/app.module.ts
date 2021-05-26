@@ -68,7 +68,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     SessionListItemComponent,
     CommonSessionDetailsComponent,
     RequestedCoachSessionDetailsComponent
-
   ],
   imports: [
     BrowserModule,

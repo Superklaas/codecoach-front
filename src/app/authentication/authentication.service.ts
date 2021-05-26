@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { AuthenticationHttpService } from './authentication.http.service';
-import { tap } from 'rxjs/operators';
-import { ReplaySubject, Subject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {AuthenticationHttpService} from './authentication.http.service';
+import {tap} from 'rxjs/operators';
+import {ReplaySubject} from 'rxjs';
 import jwt_decode from "jwt-decode";
-import { Token } from '../model/Token';
-import { User } from '../model/User';
-import { UserService } from '../service/user.service';
+import {Token} from '../model/Token';
+import {User} from '../model/User';
+import {UserService} from '../service/user.service';
 
 
 @Injectable({
@@ -55,6 +55,7 @@ export class AuthenticationService {
   }
 
   getRole(){
+    console.log(this.getDecodedToken().role);
     return this.getDecodedToken().role;
   }
 
