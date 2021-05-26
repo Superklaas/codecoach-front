@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SessionService} from "../../service/session.service";
 import {Session} from "../../model/Session";
-
+import {FeedbackPopup} from "./feedbackPopup";
 
 
 @Component({
@@ -17,6 +17,7 @@ export class CoacheeSessionsComponent implements OnInit {
   archivedSessions: Session[] = [];
 
   loaded: boolean = false;
+  feedbackPopup: FeedbackPopup = FeedbackPopup.CLOSED
 
   constructor(private sessionService: SessionService) {
   }
