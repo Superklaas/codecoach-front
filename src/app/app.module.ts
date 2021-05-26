@@ -32,6 +32,9 @@ import { EditProfileComponent } from './dashboard/edit-profile/edit-profile.comp
 import { SessionListItemComponent } from './session-list/session-list-item/session-list-item.component';
 import { CommonSessionDetailsComponent } from './session-list/common-session-details/common-session-details.component';
 import { RequestedCoachSessionDetailsComponent } from './session-list/requested-coach-session-details/requested-coach-session-details.component';
+import { WaitingFeedbackCoachSessionDetailsComponent } from './session-list/waiting-feedback-coach-session-details/waiting-feedback-coach-session-details.component';
+import { CoachFeedbackFormComponent } from './session-list/coach-feedback-form/coach-feedback-form.component';
+import { SmileySelectorComponent } from './session-list/smiley-selector/smiley-selector.component';
 
 
 
@@ -67,7 +70,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditProfileComponent,
     SessionListItemComponent,
     CommonSessionDetailsComponent,
-    RequestedCoachSessionDetailsComponent
+    RequestedCoachSessionDetailsComponent,
+    WaitingFeedbackCoachSessionDetailsComponent,
+    CoachFeedbackFormComponent,
+    SmileySelectorComponent
 
   ],
   imports: [
