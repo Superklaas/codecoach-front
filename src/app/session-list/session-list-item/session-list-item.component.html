@@ -5,8 +5,11 @@
     <app-common-session-details *ngSwitchDefault [session]="session" [perspective]="perspective"></app-common-session-details>
   </ng-container>
   <ng-container *ngSwitchCase="'coachee'" [ngSwitch]="session.status">
+    <app-waiting-feedback-coachee-session-details *ngSwitchCase="'WAITING_FEEDBACK'" [session]="session">
+    </app-waiting-feedback-coachee-session-details>
     <app-common-session-details *ngSwitchDefault [session]="session"
                                 [perspective]="perspective"></app-common-session-details>
+
   </ng-container>
 </ng-container>
 

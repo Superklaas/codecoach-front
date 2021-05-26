@@ -37,6 +37,8 @@ import { EditCoachingTopicsComponent } from './dashboard-coach/edit-coaching-top
 import { WaitingFeedbackCoachSessionDetailsComponent } from './session-list/waiting-feedback-coach-session-details/waiting-feedback-coach-session-details.component';
 import { CoachFeedbackFormComponent } from './session-list/coach-feedback-form/coach-feedback-form.component';
 import { SmileySelectorComponent } from './session-list/smiley-selector/smiley-selector.component';
+import {WaitingFeedbackCoacheeSessionDetailsComponent } from "./session-list/waiting-feedback-coachee-session-details/waiting-feedback-coachee-session-details.component";
+import { CoacheeFeedbackFormComponent } from './session-list/coachee-feedback-form/coachee-feedback-form.component';
 
 
 
@@ -74,9 +76,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonSessionDetailsComponent,
     RequestedCoachSessionDetailsComponent,
     WaitingFeedbackCoachSessionDetailsComponent,
+    WaitingFeedbackCoacheeSessionDetailsComponent,
     CoachFeedbackFormComponent,
     SmileySelectorComponent,
-
+    SmileySelectorComponent,
+    CoacheeFeedbackFormComponent,
     RequestedCoachSessionDetailsComponent,
     EditCoachingTopicsComponent
   ],

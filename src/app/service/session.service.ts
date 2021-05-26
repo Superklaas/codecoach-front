@@ -4,6 +4,7 @@ import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {Session} from "../model/Session";
 import {FeedbackForCoachee} from "../model/FeedbackForCoachee";
+import {FeedbackForCoach} from "../model/FeedbackForCoach";
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,13 @@ export class SessionService {
     return this.http.post<Session>(`${this.url}/${id}/status`, {"status":status});
   }
 
-  updateCoachFeedback(id: number, feedbackForCoachee: FeedbackForCoachee){
+  updateCoachFeedback(id: number, feedbackForCoachee: FeedbackForCoachee): Observable<Session>{
     console.log(feedbackForCoachee)
-    return this.http.post(`${this.url}/${id}/feedback-for-coachee`, feedbackForCoachee);
+    return this.http.post<Session>(`${this.url}/${id}/feedback-for-coachee`, feedbackForCoachee);
+  }
+
+  updateCoacheeFeedback(id: number, feedbackForCoach: FeedbackForCoach): Observable<Session>{
+    console.log(feedbackForCoach)
+    return this.http.post<Session>(`${this.url}/${id}/feedback-for-coach`, feedbackForCoach);
   }
 }

@@ -2,11 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Session} from "../../model/Session";
 
 @Component({
-  selector: 'app-waiting-feedback-coach-session-details',
-  templateUrl: './waiting-feedback-coach-session-details.component.html',
-  styleUrls: ['./waiting-feedback-coach-session-details.component.css']
+  selector: 'app-waiting-feedback-coachee-session-details',
+  templateUrl: './waiting-feedback-coachee-session-details.component.html',
+  styleUrls: ['./waiting-feedback-coachee-session-details.component.css']
 })
-export class WaitingFeedbackCoachSessionDetailsComponent implements OnInit {
+export class WaitingFeedbackCoacheeSessionDetailsComponent implements OnInit {
 
   feedBackViewStatus: 'open' | 'closed' | 'given' = 'closed';
   @Input()
@@ -15,17 +15,17 @@ export class WaitingFeedbackCoachSessionDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (this.session.feedbackForCoachee){
+    if (this.session.feedbackForCoach){
       this.feedBackViewStatus = 'given';
     }
   }
 
   toggleFeedbackView() {
-      if (this.feedBackViewStatus === 'open'){
-        this.feedBackViewStatus = 'closed';
-      }else{
-        this.feedBackViewStatus = 'open';
-      }
+    if (this.feedBackViewStatus === 'open'){
+      this.feedBackViewStatus = 'closed';
+    }else{
+      this.feedBackViewStatus = 'open';
+    }
   }
 
   feedBackSubmitted(session: Session) {
@@ -34,4 +34,5 @@ export class WaitingFeedbackCoachSessionDetailsComponent implements OnInit {
       window.location.reload();
     }
   }
+
 }

@@ -1,15 +1,15 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Session} from "../../model/Session";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {SessionService} from "../../service/session.service";
-import {Session} from "../../model/Session";
-
 
 @Component({
-  selector: 'app-coach-feedback-form',
-  templateUrl: './coach-feedback-form.component.html',
-  styleUrls: ['./coach-feedback-form.component.css']
+  selector: 'app-coachee-feedback-form',
+  templateUrl: './coachee-feedback-form.component.html',
+  styleUrls: ['./coachee-feedback-form.component.css']
 })
-export class CoachFeedbackFormComponent implements OnInit {
+export class CoacheeFeedbackFormComponent implements OnInit {
+
   @Input()
   private session: Session
   @Output()
@@ -17,8 +17,8 @@ export class CoachFeedbackFormComponent implements OnInit {
 
   public _coachFeedbackForm = this.formBuilder.group(
     {
-      preparedness: new FormControl(null,[Validators.required]),
-      willingness: new FormControl(null, [Validators.required]),
+      explanation: new FormControl(null,[Validators.required]),
+      usefulness: new FormControl(null, [Validators.required]),
       positive: new FormControl("", []),
       negative: new FormControl("", []),
     }
@@ -29,14 +29,13 @@ export class CoachFeedbackFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get preparedness() {
-    return this._coachFeedbackForm.get('preparedness');
+  get explanation() {
+    return this._coachFeedbackForm.get('explanation');
   }
 
-  get willingness() {
-    return this._coachFeedbackForm.get('willingness');
+  get usefulness() {
+    return this._coachFeedbackForm.get('usefulness');
   }
-
 
   updateSmileyRating(formName: string, rating: number){
     this._coachFeedbackForm.get(formName).setValue(rating);
@@ -44,6 +43,7 @@ export class CoachFeedbackFormComponent implements OnInit {
 
   submit() {
     this._coachFeedbackForm.markAllAsTouched();
-  this.sessionService.updateCoachFeedback(this.session.id, this._coachFeedbackForm.value as any).subscribe(session => this.submitted.emit(session));
+    this.sessionService.updateCoacheeFeedback(this.session.id, this._coachFeedbackForm.value as any).subscribe(session => this.submitted.emit(session));
   }
+
 }

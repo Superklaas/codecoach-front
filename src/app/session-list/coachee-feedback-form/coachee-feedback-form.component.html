@@ -2,17 +2,17 @@
 
   <div class="row">
     <div class="col">
-      <div>Was the Coachee well prepared for the coaching session?</div>
-      <app-smiley-selector [rating]="0" (scoreUpdate)="updateSmileyRating('preparedness', $event)" ></app-smiley-selector>
-      <div *ngIf="preparedness.touched && preparedness.invalid" class="alert alert-danger">
-       Please choose a smiley
+      <div>Were the explanations given by your Coach clear?</div>
+      <app-smiley-selector [rating]="0" (scoreUpdate)="updateSmileyRating('explanation', $event)" ></app-smiley-selector>
+      <div *ngIf="explanation.touched && explanation.invalid" class="alert alert-danger">
+        Please choose a smiley
       </div>
     </div>
 
     <div class="col">
-      <div>Was the Coachee willing to learn and make progress?</div>
-      <app-smiley-selector [rating]="0" (scoreUpdate)="updateSmileyRating('willingness', $event)" ></app-smiley-selector>
-      <div *ngIf=" willingness.touched && willingness.invalid" class="alert alert-danger">
+      <div>Was the coaching session useful ?</div>
+      <app-smiley-selector [rating]="0" (scoreUpdate)="updateSmileyRating('usefulness', $event)" ></app-smiley-selector>
+      <div *ngIf=" usefulness.touched && usefulness.invalid" class="alert alert-danger">
         Please choose a smiley
       </div>
     </div>
@@ -29,7 +29,7 @@
 
   <div class="row">
     <div class="col">
-      <label for="negative">How could your Coachee get better ?</label>
+      <label for="negative">How could your Coach get better ?</label>
       <textarea maxlength="2000" id="negative" rows="10" cols="60" formControlName="negative"
                 placeholder="type here..."></textarea>
     </div>
