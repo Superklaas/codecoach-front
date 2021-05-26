@@ -1,26 +1,44 @@
 <form [formGroup]="_coachFeedbackForm" (ngSubmit)="submit()">
 
-  <app-smiley-selector></app-smiley-selector>
+  <div class="row">
+    <div class="col">
+      <div>Was the Coachee well prepared for the coaching session?</div>
+      <app-smiley-selector [rating]="0" (scoreUpdate)="updatePreparedness('preparedness', $event)" ></app-smiley-selector>
+      <div *ngIf="preparedness.touched && preparedness.invalid" class="alert alert-danger">
+       Please choose a smiley
+      </div>
+    </div>
 
-  <app-smiley-selector></app-smiley-selector>
+    <div class="col">
+      <div>Was the Coachee willing to learn and make progress?</div>
+      <app-smiley-selector [rating]="0" (scoreUpdate)="updatePreparedness('willingness', $event)" ></app-smiley-selector>
+      <div *ngIf=" willingness.touched && willingness.invalid" class="alert alert-danger">
+        Please choose a smiley
+      </div>
+    </div>
+  </div>
+
 
   <div class="row">
     <div class="col">
-      <label for="positive">positive feedback</label>
-      <textarea id="positive" rows="5" cols="60" formControlName="positive" placeholder="type here..."></textarea>
+      <label for="positive">What did you like in the coaching session?</label>
+      <textarea maxlength="2000" id="positive" rows="10" cols="60" formControlName="positive"
+                placeholder="type here..."></textarea>
     </div>
   </div>
 
   <div class="row">
     <div class="col">
-      <label for="negative">negative feedback</label>
-      <textarea id="negative" rows="5" cols="60" formControlName="negative" placeholder="type here..."></textarea>
+      <label for="negative">How could your Coachee get better ?</label>
+      <textarea maxlength="2000" id="negative" rows="10" cols="60" formControlName="negative"
+                placeholder="type here..."></textarea>
     </div>
   </div>
 
   <div class="row right-align">
-    <button type="submit" class="waves-effect waves-light yellow darken-2 btn-large black-text">Register<i
+    <button type="submit" class="waves-effect waves-light yellow darken-2 btn-large black-text">SEND FEEDBACK<i
       class="material-icons right">send</i></button>
   </div>
+
 
 </form>

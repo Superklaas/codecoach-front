@@ -8,13 +8,16 @@ import {Session} from "../../model/Session";
 })
 export class WaitingFeedbackCoachSessionDetailsComponent implements OnInit {
 
-  feedBackViewStatus: 'open' | 'closed' = 'open';
+  feedBackViewStatus: 'open' | 'closed' | 'given' = 'closed';
   @Input()
   session: Session
 
   constructor() { }
 
   ngOnInit(): void {
+    if (this.session.feedbackForCoachee){
+      this.feedBackViewStatus = 'given';
+    }
   }
 
   toggleFeedbackView() {
@@ -27,5 +30,9 @@ export class WaitingFeedbackCoachSessionDetailsComponent implements OnInit {
 
   submit() {
 
+  }
+
+  feedBackSubmitted() {
+    this.feedBackViewStatus = 'given';
   }
 }

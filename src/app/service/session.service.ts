@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {Session} from "../model/Session";
+import {FeedbackForCoachee} from "../model/FeedbackForCoachee";
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,10 @@ export class SessionService {
 
   updateSession(id: number, status: string): Observable<Session>{
     return this.http.post<Session>(`${this.url}/${id}/status`, {"status":status});
+  }
+
+  updateCoachFeedback(id: number, feedbackForCoachee: FeedbackForCoachee){
+    console.log(feedbackForCoachee)
+    return this.http.post(`${this.url}/${id}/feedback-for-coachee`, feedbackForCoachee);
   }
 }
