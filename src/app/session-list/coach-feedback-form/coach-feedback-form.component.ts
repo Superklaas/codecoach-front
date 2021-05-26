@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-coach-feedback-form',
@@ -7,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoachFeedbackFormComponent implements OnInit {
 
-  constructor() { }
+  public _coachFeedbackForm = this.formBuilder.group(
+    {
+      preparedness: new FormControl(0,[Validators.required]),
+      willingness: new FormControl(0, [Validators.required]),
+      positive: new FormControl("", []),
+      negative: new FormControl("", []),
+    }
+  )
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
   }
