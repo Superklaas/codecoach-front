@@ -17,11 +17,10 @@ export class RequestedCoachSessionDetailsComponent implements OnInit {
   }
 
   accept(session: Session) {
-    this.sessionService.updateSession(session.id, 'ACCEPTED').subscribe(session => window.location.reload());
+    this.sessionService.updateSession(session.id, 'ACCEPTED').subscribe(_ => window.location.reload());
   }
 
   decline(session: Session) {
-    this.sessionService.updateSession(session.id, 'REQUEST_DECLINED').subscribe(session => window.location.reload());
+    this.sessionService.updateSession(session.id, 'REQUEST_DECLINED').subscribe(_ => window.location.reload());
   }
-
 }

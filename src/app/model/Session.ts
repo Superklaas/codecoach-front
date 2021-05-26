@@ -1,3 +1,8 @@
+import {FeedbackForCoachee} from "./FeedbackForCoachee";
+
+class FeedbackForCoach {
+}
+
 export interface Session {
   id: number;
   subject: string;
@@ -10,4 +15,8 @@ export interface Session {
   coachProfileName: string;
   coacheeProfileName: string;
   status:string;
+  feedbackForCoach: FeedbackForCoach ;
+  feedbackForCoachee: FeedbackForCoachee ;
+
 }
+

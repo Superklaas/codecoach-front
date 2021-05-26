@@ -1,0 +1,25 @@
+<div class="card ">
+  <div class="card-body">
+    <h3>Edit coaching topics</h3>
+    <form [formGroup]="editForm" (ngSubmit)="update()">
+      <div class="row">
+        <div class="row border-bottom ">
+          <div class="col"><b>Topic 1</b></div>
+          <input type="text" class="form-control col" formControlName="topic1" aria-label="Topic 1">
+        </div>
+        <div class="row border-bottom ">
+          <div class="col"><b>Topic 2</b></div>
+          <input type="text" class="form-control col" formControlName="topic2" aria-label="Topic 2">
+        </div>
+      </div>
+    </form>
+    <div class="right-align">
+      <button class="waves-effect waves-light btn btn-custom green" (click)="update()">SAVE<i
+        class="material-icons right">check_circle</i>
+      </button>
+      <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancel()">CANCEL<i
+        class="material-icons right">cancel</i>
+      </button>
+    </div>
+  </div>
+</div>

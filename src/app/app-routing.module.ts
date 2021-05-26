@@ -20,6 +20,7 @@ import { EasterEggComponent } from './easter-egg/easter-egg.component';
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 import { EditProfileComponent } from './dashboard/edit-profile/edit-profile.component';
+import {EditCoachingTopicsComponent} from "./dashboard-coach/edit-coaching-topics/edit-coaching-topics.component";
 
 
 
@@ -62,7 +63,8 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard, AuthorizationGuard],
     children: [
       { path: '', component: MyCoachProfileComponent },
-      { path: 'coach-sessions', component: CoachSessionsComponent }
+      { path: 'coach-sessions', component: CoachSessionsComponent },
+      { path: 'edit-coaching-topics', component: EditCoachingTopicsComponent}
     ]
   },
   { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard], },
