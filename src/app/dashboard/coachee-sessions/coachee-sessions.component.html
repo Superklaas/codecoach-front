@@ -19,17 +19,7 @@
             <th>Status</th>
             <th>Actions</th>
           </tr>
-          <ng-container *ngFor="let session of futureSessions">
-            <tr>
-              <td>{{session.coachProfileName}}</td>
-              <td>{{session.subject}}</td>
-              <td>{{session.date}}</td>
-              <td>{{session.startTime}}</td>
-              <td>{{session.location}}</td>
-              <td>{{session.status | removeUnderscore | titlecase}}</td>
-              <td></td>
-            </tr>
-          </ng-container>
+          <app-session-list-item *ngFor="let session of futureSessions" [session]="session" perspective="coachee"></app-session-list-item>
         </table>
       </ng-container>
     </div>
@@ -55,11 +45,8 @@
             <th>Status</th>
             <th>Actions</th>
           </tr>
-          <ng-container *ngFor="let session of waitingSessions">
+          <app-session-list-item *ngFor="let session of futureSessions" [session]="session" perspective="coachee"></app-session-list-item>
 
-            <app-feedback-overview  [session]="session" [isCoach]="false"></app-feedback-overview>
-
-          </ng-container>
         </table>
 
       </ng-container>
@@ -85,20 +72,7 @@
             <th>Status</th>
             <th>Actions</th>
           </tr>
-          <ng-container *ngFor="let session of archivedSessions">
-
-            <tr>
-
-              <td>{{session.coachProfileName}}</td>
-              <td>{{session.subject}}</td>
-              <td>{{session.date}}</td>
-              <td>{{session.startTime}}</td>
-              <td>{{session.location}}</td>
-              <td>{{session.status | removeUnderscore | titlecase}}</td>
-              <td></td>
-
-            </tr>
-          </ng-container>
+          <app-session-list-item *ngFor="let session of futureSessions" [session]="session" perspective="coachee"></app-session-list-item>
         </table>
         </ng-container>
     </div>
