@@ -21,24 +21,6 @@
           </tr>
           <app-session-list-item *ngFor="let session of futureSessions" [session]="session" perspective="coach"></app-session-list-item>
 
-            <!-- <tr>
-              <td>{{session.coacheeProfileName}}</td>
-              <td>{{session.subject}}</td>
-              <td>{{session.date}}</td>
-              <td>{{session.startTime}}</td>
-              <td>{{session.location}}</td>
-              <td>{{session.status | removeUnderscore | titlecase}}</td>
-              <td>
-                <div *ngIf="hasStatusRequested(session)">
-                  <button class="waves-effect waves-light btn btn-custom green" (click)="accept(session)">ACCEPT<i
-                      class="material-icons right">check_circle</i>
-                  </button>
-                  <button class="waves-effect waves-light btn btn-custom red accent-4"
-                    (click)="decline(session)">DECLINE<i class="material-icons right">cancel</i>
-                  </button>
-                </div>
-              </td>
-            </tr> -->
         </table>
       </ng-container>
     </div>
