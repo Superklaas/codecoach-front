@@ -22,7 +22,7 @@
                                 aria-label="Last name">
                         </div>
                         <div class="row border-bottom ">
-                            <div class="col"><b>Email</b></div>
+                            <div class="col"><b>Email</b><span class="red-text mx-2">This is used to sign in</span></div>
                             <input type="text" class="form-control col" formControlName="email" aria-label="Email">
                         </div>
                         <div class="row border-bottom ">
@@ -45,6 +45,11 @@
                         class="material-icons right">cancel</i>
                 </button>
             </div>
+            <div *ngIf="editForm.errors">
+                <div *ngIf="editForm.errors.serverError" class="alert alert-danger">
+                  {{editForm.errors.serverError}}
+                </div>
+              </div>
         </div>
     </div>
 </div>
