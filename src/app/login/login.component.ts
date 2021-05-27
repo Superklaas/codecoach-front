@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
         Validators.pattern(/.*[0-9]+.*/), Validators.pattern(/.*[A-Z]+.*/), Validators.pattern(/.*[a-z]+.*/)]),
   });;
 
-  constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router, private initService: InitService) {
+  constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router) {
   }
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (_ => {
           this.router.navigateByUrl(`/dashboard`);
-          this.initService.initDropdowns();
           this.loginForm.reset();
         }),
         (error => this.addErrorToForm(error))

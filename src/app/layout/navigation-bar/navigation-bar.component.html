@@ -18,20 +18,10 @@
             <i class="material-icons right">person</i>
           </a>
         </li>
+
          <!-- If logged in -->
-
          <ng-container *ngIf="isLoggedIn">
-           <a class='dropdown-trigger btn' data-target='dropdown'>
-             {{username}}
-             <i class="material-icons right">arrow_drop_down</i>
-           </a>
-
-           <ul id='dropdown' class='dropdown-content'>
-             <li><a routerLink="/dashboard">My Profile</a></li>
-             <li *ngIf="role==='COACH'"><a routerLink="/dashboard-coach">My Coach Profile</a></li>
-             <li><a (click)="logout()">Logout</a></li>
-           </ul>
-
+            <app-dropdown [username]="username" [role]="role"></app-dropdown>
         </ng-container>
       </ul>
 
@@ -77,7 +67,7 @@
               <i class="material-icons right">school</i>
             </a>
           </li>
-          
+
           <li  *ngIf="role==='ADMIN'">
             <a class="waves-effect waves-light deep-purple lighten-4 btn black-text" aria-current="page" routerLink="/dashboard-admin" routerLinkActive="active">
               Admin Dashboard
