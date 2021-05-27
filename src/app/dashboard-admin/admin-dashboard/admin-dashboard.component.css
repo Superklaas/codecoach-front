@@ -1,0 +1,22 @@
+.usernav {
+  margin-top: 45px;
+  width: 100%;
+}
+
+.nav-tabs {
+  border: 1px solid #aaa;
+}
+
+.nav-link {
+  color: #666;
+}
+
+.active {
+  color: #333;
+}
+
+@media only screen and (max-width: 767px) {
+  .usernav {
+    margin-top: 10px;
+  }
+}
