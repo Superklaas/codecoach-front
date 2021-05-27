@@ -30,8 +30,6 @@ export class UserProfileComponent implements OnInit {
       this.currentWindowWidth = window.innerWidth;
       this.loggedInId = +this.authenticationService.getId();
     });
-
-
   }
 
   isMobile(): boolean {
