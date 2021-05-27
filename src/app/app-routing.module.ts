@@ -17,10 +17,14 @@ import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-s
 import { CoachSessionsComponent } from "./dashboard-coach/coach-sessions/coach-sessions.component";
 import { AuthorizationGuard } from "./authorization/authorization.guard";
 import { EasterEggComponent } from './easter-egg/easter-egg.component';
-import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
-import {ResetPasswordComponent} from "./reset-password/reset-password.component";
+import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
+import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 import { EditProfileComponent } from './dashboard/edit-profile/edit-profile.component';
-import {EditCoachingTopicsComponent} from "./dashboard-coach/edit-coaching-topics/edit-coaching-topics.component";
+import { EditCoachingTopicsComponent } from "./dashboard-coach/edit-coaching-topics/edit-coaching-topics.component";
+import { AdminDashboardComponent } from './dashboard-admin/admin-dashboard/admin-dashboard.component';
+import { UserOverviewComponent } from './dashboard-admin/user-overview/user-overview.component';
+import { AdminGuard } from './authorization/admin.guard';
+import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.component';
 
 
 
@@ -32,29 +36,17 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, },
   { path: 'register', component: RegisterComponent, },
   { path: 'egg', component: EasterEggComponent, canActivate: [AuthenticationGuard], },
-  { path: 'forgot-password', component: ForgotPasswordComponent},
-  { path: 'reset-password', component: ResetPasswordComponent},
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
   {
     path: 'dashboard',
     component: UserDashboardComponent,
     canActivate: [AuthenticationGuard],
     children: [
-      {
-        path: '', // child route path
-        component: MyProfileComponent, // child route component that the router renders
-      },
-      {
-        path: 'become-coach',
-        component: BecomeCoachComponent,
-      },
-      {
-        path: 'coachee-sessions',
-        component: CoacheeSessionsComponent
-      },
-      {
-        path: 'edit-profile',
-        component: EditProfileComponent
-      }
+      { path: '', component: MyProfileComponent, },
+      { path: 'become-coach', component: BecomeCoachComponent, },
+      { path: 'coachee-sessions', component: CoacheeSessionsComponent },
+      { path: 'edit-profile', component: EditProfileComponent }
     ]
   },
   {
@@ -64,7 +56,16 @@ const routes: Routes = [
     children: [
       { path: '', component: MyCoachProfileComponent },
       { path: 'coach-sessions', component: CoachSessionsComponent },
-      { path: 'edit-coaching-topics', component: EditCoachingTopicsComponent}
+      { path: 'edit-coaching-topics', component: EditCoachingTopicsComponent }
+    ]
+  },
+  {
+    path: 'dashboard-admin',
+    component: AdminDashboardComponent,
+    canActivate: [AuthenticationGuard, AuthorizationGuard, AdminGuard],
+    children: [
+      { path: '', component: UserOverviewComponent },
+      { path: 'edit/:id', component: EditUserComponent },
     ]
   },
   { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard], },
