@@ -55,7 +55,6 @@ export class AuthenticationService {
   }
 
   getRole(){
-    console.log(this.getDecodedToken().role);
     return this.getDecodedToken().role;
   }
 

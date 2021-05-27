@@ -25,6 +25,7 @@ import { AdminDashboardComponent } from './dashboard-admin/admin-dashboard/admin
 import { UserOverviewComponent } from './dashboard-admin/user-overview/user-overview.component';
 import { AdminGuard } from './authorization/admin.guard';
 import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.component';
+import { EditCoachComponent } from './dashboard-coach/edit-coach/edit-coach.component';
 
 
 
@@ -56,7 +57,8 @@ const routes: Routes = [
     children: [
       { path: '', component: MyCoachProfileComponent },
       { path: 'coach-sessions', component: CoachSessionsComponent },
-      { path: 'edit-coaching-topics', component: EditCoachingTopicsComponent }
+      { path: 'edit-coaching-topics', component: EditCoachingTopicsComponent },
+      { path: 'edit-coach-profile', component: EditCoachComponent }
     ]
   },
   {
