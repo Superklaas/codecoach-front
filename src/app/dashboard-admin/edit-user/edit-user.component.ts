@@ -33,7 +33,10 @@ export class EditUserComponent implements OnInit {
 
   update() {
     this.userService.update(this._editForm.value, +this.id).subscribe(
-      (_ => alert("Your changes have been saved")),
+      (_ => {
+        alert("Your changes have been saved");
+        this.ngOnInit();
+      }),
       (error =>  this._editForm.setErrors({serverError: error.error.message}))
     );
   }
