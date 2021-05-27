@@ -23,17 +23,13 @@
     "@angular/platform-browser": "~11.2.13",
     "@angular/platform-browser-dynamic": "~11.2.13",
     "@angular/router": "~11.2.13",
-    "@ngx-translate/core": "^12.1.2",
-    "@ngx-translate/http-loader": "^4.0.0",
     "@types/materialize-css": "^1.0.9",
     "jquery": "^3.6.0",
     "jwt-decode": "^3.1.2",
     "material-design-icons": "^3.0.1",
     "materialize-css": "^1.0.0",
-    "ngx-bar-rating": "^2.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
-    "youcoach-i18n": "github:switchfully/youcoach-i18n",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

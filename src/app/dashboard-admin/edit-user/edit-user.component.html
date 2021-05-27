@@ -1,0 +1,62 @@
+<div *ngIf="id">
+    <div class="card ">
+        <div class="card-body">
+            <h3>Profile Information</h3>
+            <form class="col s12" [formGroup]="editForm" (ngSubmit)="update()">
+
+                <div class="row">
+                    <div class="col-md-4 profile-image">
+                        <img class= "custom-img" [src]="userImage" alt="">
+                        <div><b>Avatar URL:</b></div>
+                        <input type="text" class="form-control" formControlName="imageUrl" aria-label="Avatar URL">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row border-bottom ">
+                            <div class="col"><b>First name</b></div>
+                            <input type="text" class="form-control col" formControlName="firstName"
+                                aria-label="First name">
+                        </div>
+                        <div class="row border-bottom ">
+                            <div class="col"><b>Last name</b></div>
+                            <input type="text" class="form-control col" formControlName="lastName"
+                                aria-label="Last name">
+                        </div>
+                        <div class="row border-bottom ">
+                            <div class="col"><b>Email</b><span class="red-text mx-2">This is used to sign in</span>
+                            </div>
+                            <input type="text" class="form-control col" formControlName="email" aria-label="Email">
+                        </div>
+                        <div class="row border-bottom ">
+                            <div class="col"><b>Profile name</b></div>
+                            <input type="text" class="form-control col" formControlName="profileName"
+                                aria-label="Profile name">
+                        </div>
+                        <div class="row border-bottom">
+                            <div class="col"><b>CodeCoach role</b></div>
+                            <div class="col">
+                                <select name="roles" id="roles" formControlName="role">
+                                    <option value="COACHEE">Coachee</option>
+                                    <option value="COACH">Coach</option>
+                                    <option value="ADMIN">Admin</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="right-align">
+                <button class="waves-effect waves-light btn btn-custom green" (click)="update()">SAVE<i
+                        class="material-icons right">check_circle</i>
+                </button>
+                <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancel()">CANCEL<i
+                        class="material-icons right">cancel</i>
+                </button>
+            </div>
+            <div *ngIf="editForm.errors">
+                <div *ngIf="editForm.errors.serverError" class="alert alert-danger">
+                    {{editForm.errors.serverError}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

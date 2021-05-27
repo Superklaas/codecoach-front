@@ -1,3 +1,8 @@
 :host {
     display: contents
 }
+
+tr{
+  border-color: red;
+}
+

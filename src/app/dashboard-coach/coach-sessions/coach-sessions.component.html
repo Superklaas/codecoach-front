@@ -9,7 +9,7 @@
         <div *ngIf="!futureSessions[0]">
           <p>You have no upcoming sessions</p>
         </div>
-        <table class="table" *ngIf="futureSessions[0]">
+        <table *ngIf="futureSessions[0]">
           <tr>
             <th>Coachee</th>
             <th>Subject</th>
@@ -55,7 +55,7 @@
         <div *ngIf="!waitingSessions[0]">
           <p>You have no sessions waiting for feedback</p>
         </div>
-        <table class="table" *ngIf="waitingSessions[0]">
+        <table *ngIf="waitingSessions[0]">
           <tr>
             <th>Coachee</th>
             <th>Subject</th>
@@ -81,7 +81,7 @@
         <div *ngIf="!archivedSessions[0]">
           <p>You have no archived sessions</p>
         </div>
-        <table class="table" *ngIf="archivedSessions[0]">
+        <table *ngIf="archivedSessions[0]">
           <tr>
             <th>Coachee</th>
             <th>Subject</th>
