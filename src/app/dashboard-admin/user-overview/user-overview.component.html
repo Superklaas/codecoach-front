@@ -1,27 +1,31 @@
 <div class="container" *ngIf="users$ | async as users; else loading">
-    <div class="row">
-        <div class="col">Profile Name</div>
-        <div class="col">Email address</div>
-        <div class="col">Role</div>
-        <div class="col"></div>
-    </div>
-    <div class="row" *ngFor="let user of users">
-        <div class="col">{{user.profileName}}</div>
-        <div class="col">{{user.email}}</div>
-        <div class="col">{{user.role | titlecase}}</div>
-        <div class="col">
-            <button class="round-button yellow darken-2" routerLink="/dashboard-admin/edit/{{user.id}}">
-                <i class="material-icons center">edit</i>
-            </button>
-        </div>
-
-
-    </div>
+  <table class="striped">
+    <thead>
+    <tr>
+      <th>Profile Name</th>
+      <th>Email address</th>
+      <th>Role</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.profileName}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.role | titlecase}}</td>
+      <td>
+        <button [ngClass]="color" class="right btn-floating" routerLink="/dashboard-admin/edit/{{user.id}}">
+          <i class="material-icons center">edit</i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 <ng-template #loading>
-    <div class="progress">
-        <div class="indeterminate"></div>
-    </div>
+  <div class="progress">
+    <div class="indeterminate"></div>
+  </div>
 </ng-template>
 
 <div class="my-5"></div>

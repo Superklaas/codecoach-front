@@ -1,13 +1,13 @@
 <main>
   <div class="card ">
     <div class="card-body mx-md-2 my-md-2">
-      <h4>My Upcoming sessions</h4>
+      <h4>My Upcoming Sessions</h4>
       <div class="progress" *ngIf="!loaded">
         <div class="indeterminate"></div>
       </div>
       <ng-container *ngIf="loaded">
         <div *ngIf="!futureSessions[0]">
-          <p>You have no upcoming sessions</p>
+          <p>You have no upcoming sessions.</p>
         </div>
         <table *ngIf="futureSessions[0]">
           <tr>
@@ -35,7 +35,7 @@
       </div>
       <ng-container *ngIf="loaded">
         <div *ngIf="!waitingSessions[0]">
-          <p>You have no sessions waiting for feedback</p>
+          <p>You have no sessions waiting for feedback.</p>
         </div>
         <table *ngIf="waitingSessions[0]">
           <tr>
@@ -61,7 +61,7 @@
       </div>
       <ng-container *ngIf="loaded">
         <div *ngIf="!archivedSessions[0]">
-          <p>You have no archived sessions</p>
+          <p>You have no archived sessions.</p>
         </div>
         <table *ngIf="archivedSessions[0]">
           <tr>
