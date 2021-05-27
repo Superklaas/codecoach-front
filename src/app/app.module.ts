@@ -2,9 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { BarRatingModule } from "ngx-bar-rating";
 
 import {AppComponent} from './app.component';
 import {AuthenticationInterceptor} from './authentication/authentication.interceptor';
@@ -39,12 +36,11 @@ import { CoachFeedbackFormComponent } from './session-list/coach-feedback-form/c
 import { SmileySelectorComponent } from './session-list/smiley-selector/smiley-selector.component';
 import {WaitingFeedbackCoacheeSessionDetailsComponent } from "./session-list/waiting-feedback-coachee-session-details/waiting-feedback-coachee-session-details.component";
 import { CoacheeFeedbackFormComponent } from './session-list/coachee-feedback-form/coachee-feedback-form.component';
-
-
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}
+import { AdminDashboardComponent } from './dashboard-admin/admin-dashboard/admin-dashboard.component';
+import { UserOverviewComponent } from './dashboard-admin/user-overview/user-overview.component';
+import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.component';
+import { CancellableSessionDetailsComponent } from './session-list/cancellable-session-details/cancellable-session-details.component';
+import { DropdownComponent } from './layout/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -82,23 +78,20 @@ export function HttpLoaderFactory(http: HttpClient) {
     SmileySelectorComponent,
     CoacheeFeedbackFormComponent,
     RequestedCoachSessionDetailsComponent,
-    EditCoachingTopicsComponent
+    EditCoachingTopicsComponent,
+    AdminDashboardComponent,
+    UserOverviewComponent,
+    EditUserComponent,
+    CancellableSessionDetailsComponent,
+    DropdownComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    BarRatingModule
+    AppRoutingModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}

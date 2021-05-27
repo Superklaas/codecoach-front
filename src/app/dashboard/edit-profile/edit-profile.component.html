@@ -7,6 +7,7 @@
                 <div class="row">
                     <div class="col-md-4 profile-image">
                         <img [src]="userImage" alt="">
+                        <div><b>Avatar URL:</b></div>
                         <input type="text" class="form-control" value="{{userImageString}}" formControlName="imageUrl"
                             aria-label="Avatar URL">
                     </div>
@@ -15,20 +16,34 @@
                             <div class="col"><b>First name</b></div>
                             <input type="text" class="form-control col" formControlName="firstName"
                                 aria-label="First name">
+                            <div *ngIf="wrongInputHasBeenTyped(firstName)" class="alert alert-danger">
+                                <div *ngIf="firstName.errors.required">First name is required.</div>
+                            </div>
                         </div>
                         <div class="row border-bottom ">
                             <div class="col"><b>Last name</b></div>
                             <input type="text" class="form-control col" formControlName="lastName"
                                 aria-label="Last name">
+                            <div *ngIf="wrongInputHasBeenTyped(lastName)" class="alert alert-danger">
+                                <div *ngIf="lastName.errors.required">Last name is required.</div>
+                            </div>
                         </div>
                         <div class="row border-bottom ">
-                            <div class="col"><b>Email</b></div>
+                            <div class="col"><b>Email</b><span class="red-text mx-2">This is used to sign in</span>
+                            </div>
                             <input type="text" class="form-control col" formControlName="email" aria-label="Email">
+                            <div *ngIf="wrongInputHasBeenTyped(email)" class="alert alert-danger">
+                                <div *ngIf="email.errors.required">Email is required.</div>
+                                <div *ngIf="email.errors.pattern">Not a valid email</div>
+                            </div>
                         </div>
                         <div class="row border-bottom ">
                             <div class="col"><b>Profile name</b></div>
                             <input type="text" class="form-control col" formControlName="profileName"
                                 aria-label="Profile name">
+                            <div *ngIf="wrongInputHasBeenTyped(profileName)" class="alert alert-danger">
+                                <div *ngIf="profileName.errors.required">Profile name is required.</div>
+                            </div>
                         </div>
                         <div class="row border-bottom">
                             <div class="col grey-text"><b>CodeCoach role</b></div>
@@ -44,6 +59,11 @@
                 <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancel()">CANCEL<i
                         class="material-icons right">cancel</i>
                 </button>
+            </div>
+            <div *ngIf="editForm.errors">
+                <div *ngIf="editForm.errors.serverError" class="alert alert-danger">
+                    {{editForm.errors.serverError}}
+                </div>
             </div>
         </div>
     </div>

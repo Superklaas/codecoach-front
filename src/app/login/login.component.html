@@ -19,18 +19,18 @@
                   <label for="password">Password</label>
                 </div>
               </div>
-              <p *ngIf="success" class="alert alert-primary" translate>sign-in.message.login-successful</p>
-              <p *ngIf="error" class="alert alert-danger" translate>sign-in.message.login-failed</p>
-              <div class="row right-align">
 
+              <div class="row right-align">
                 <button type="submit" class="waves-effect waves-light yellow darken-2 btn-large black-text">Sign in<i
                   class="material-icons right">send</i></button>
-
               </div>
 
               <div *ngIf="loginForm.errors">
                 <div *ngIf="loginForm.errors.serverError" class="alert alert-danger">
                   {{loginForm.errors.serverError}}
+                </div>
+                <div *ngIf="loginForm.errors.credentials" class="alert alert-danger">
+                  Credentials aren't valid
                 </div>
               </div>
 
