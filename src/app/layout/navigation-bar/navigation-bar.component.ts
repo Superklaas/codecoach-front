@@ -51,7 +51,6 @@ export class NavigationBarComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.initService.initDropdowns();
     this.initService.initSidenav();
   }
 

@@ -2,7 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
-import { BarRatingModule } from "ngx-bar-rating";
 
 import {AppComponent} from './app.component';
 import {AuthenticationInterceptor} from './authentication/authentication.interceptor';
@@ -41,6 +40,7 @@ import { AdminDashboardComponent } from './dashboard-admin/admin-dashboard/admin
 import { UserOverviewComponent } from './dashboard-admin/user-overview/user-overview.component';
 import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.component';
 import { CancellableSessionDetailsComponent } from './session-list/cancellable-session-details/cancellable-session-details.component';
+import { DropdownComponent } from './layout/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +82,8 @@ import { CancellableSessionDetailsComponent } from './session-list/cancellable-s
     AdminDashboardComponent,
     UserOverviewComponent,
     EditUserComponent,
-    CancellableSessionDetailsComponent
+    CancellableSessionDetailsComponent,
+    DropdownComponent
 
   ],
   imports: [
