@@ -1,7 +1,5 @@
 import {FeedbackForCoachee} from "./FeedbackForCoachee";
-
-class FeedbackForCoach {
-}
+import {FeedbackForCoach} from "./FeedbackForCoach";
 
 export interface Session {
   id: number;

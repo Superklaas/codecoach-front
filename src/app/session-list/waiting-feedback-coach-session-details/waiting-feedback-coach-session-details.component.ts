@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Session} from "../../model/Session";
 import {FeedbackForCoach} from "../../model/FeedbackForCoach";
 
@@ -16,7 +16,7 @@ export class WaitingFeedbackCoachSessionDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (this.session.feedbackForCoachee){
+    if (this.session.feedbackForCoachee && this.session.feedbackForCoachee.preparedness !== null){
       this.feedBackViewStatus = 'given';
     }
   }
@@ -30,8 +30,7 @@ export class WaitingFeedbackCoachSessionDetailsComponent implements OnInit {
   }
 
   coacheeHasAlreadyGivenFeedback(): boolean{
-    let value = this.session.feedbackForCoach as FeedbackForCoach
-    return value.explanation > 0;
+    return this.session.feedbackForCoach !== null;
   }
 
   feedBackSubmitted(session: Session) {
