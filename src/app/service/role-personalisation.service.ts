@@ -6,7 +6,7 @@ import { filter } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class RolePersonalisationService {
-  color: 'yellow' | 'light-blue' = 'yellow';
+  color: 'yellow' | 'light-blue' | 'green' = 'yellow';
 
   constructor(private router: Router) { 
     this.router.events
@@ -15,6 +15,9 @@ export class RolePersonalisationService {
       this.color='yellow';
       if(ev.url.startsWith('/dashboard-coach')){
         this.color='light-blue';
+      }
+      if(ev.url.startsWith('/dashboard-admin')){
+        this.color='green';
       }
     });
   }

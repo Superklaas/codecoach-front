@@ -77,6 +77,13 @@
               <i class="material-icons right">school</i>
             </a>
           </li>
+          
+          <li  *ngIf="role==='ADMIN'">
+            <a class="waves-effect waves-light deep-purple lighten-4 btn black-text" aria-current="page" routerLink="/dashboard-admin" routerLinkActive="active">
+              Admin Dashboard
+              <i class="material-icons right">lock</i>
+            </a>
+          </li>
 
           <li  (click)="logout()"><a class="waves-effect waves-light teal lighten-4 btn black-text">
             Logout <i class="material-icons right">autorenew</i>
