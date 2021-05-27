@@ -89,7 +89,7 @@ import { FeedbackReceivedDetailsComponent } from './session-list/feedback-receiv
     DropdownComponent,
     FeedbackReceivedDetailsComponent,
     EditCoachComponent,
-
+    CoachingTopicsEditorComponent
   ],
   imports: [
     BrowserModule,
