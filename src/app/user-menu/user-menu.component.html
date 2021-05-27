@@ -11,6 +11,9 @@
         <li class="nav-item" *ngIf="role==='ADMIN' || role==='COACH'">
           <a class="nav-link" aria-current="page" routerLink="/dashboard-coach" routerLinkActive="active">My Coach Profile</a>
         </li>
+        <li class="nav-item" *ngIf="role==='ADMIN'">
+          <a class="nav-link" aria-current="page" routerLink="/dashboard-admin" routerLinkActive="active">Admin Dashboard</a>
+        </li>
       </ul>
     </div>
   </nav>

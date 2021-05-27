@@ -26,6 +26,10 @@ export class UserService {
       .pipe(map(users => users.sort((a,b) => a.lastName.localeCompare(b.lastName))));
   }
 
+  getAll(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.url}`);   
+  }
+
   get(id: number):  Observable<User>{
     return this.http.get<User>(`${this.url}/${id}`);
   }
