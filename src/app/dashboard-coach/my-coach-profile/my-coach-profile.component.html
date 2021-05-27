@@ -2,7 +2,6 @@
 <div *ngIf="profileService.currentUser$ | async as user">
   <div class="card">
     <div class="card-body">
-      <h3 class="border-bottom ">Coach Information</h3>
       <div class="row border-bottom ">
         <div class="col"><b>Introduction</b></div>
         <div class="col">{{user.introduction}}</div>
