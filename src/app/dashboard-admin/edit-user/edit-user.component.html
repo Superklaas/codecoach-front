@@ -6,7 +6,7 @@
 
                 <div class="row">
                     <div class="col-md-4 profile-image">
-                        <img class= "custom-img" [src]="userImage" alt="">
+                        <img class="custom-img" [src]="userImage" alt="">
                         <div><b>Avatar URL:</b></div>
                         <input type="text" class="form-control" formControlName="imageUrl" aria-label="Avatar URL">
                     </div>
@@ -35,9 +35,7 @@
                             <div class="col"><b>CodeCoach role</b></div>
                             <div class="col">
                                 <select name="roles" id="roles" formControlName="role">
-                                    <option value="COACHEE">Coachee</option>
-                                    <option value="COACH">Coach</option>
-                                    <option value="ADMIN">Admin</option>
+                                    <option *ngFor="let role of roles" [ngValue]="role">{{ role | titlecase }}</option>
                                 </select>
                             </div>
                         </div>
