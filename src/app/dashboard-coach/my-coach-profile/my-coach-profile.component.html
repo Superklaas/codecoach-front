@@ -14,13 +14,13 @@
   </div>
   <div class="card">
     <div class="card-body">
-      <button class="round-button yellow darken-2" routerLink="/dashboard-coach/edit-coaching-topics">
-        <i class="material-icons center">edit</i>
-      </button>
       <h3 class="border-bottom ">Coaching Topics</h3>
       <div class="row border-bottom " *ngFor="let topic of user.topicList">
         <div class="col"><b>{{topic.name}}</b></div>
       </div>
+      <button class="yellow darken-2 right btn-floating" routerLink="/dashboard-coach/edit-coaching-topics">
+        <i class="material-icons center">edit</i>
+      </button>
     </div>
   </div>
 </div>

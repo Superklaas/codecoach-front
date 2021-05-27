@@ -62,11 +62,14 @@ export class EditProfileComponent implements OnInit {
 
   update() {
     this.userService.update(this._editForm.value, +this.authService.getId()).subscribe(
-      (_ => alert("Your changes have been saved")),
+      (_ => {
+        alert("Your changes have been saved");
+        window.location.reload();
+      }),
       (error =>  this._editForm.setErrors({serverError: error.error.message}))
     );
   }
-  
+
   cancel() {
     this.userService.get(+this.authService.getId()).subscribe(user => {
       this._editForm.patchValue(user);
