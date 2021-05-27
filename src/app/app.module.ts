@@ -36,6 +36,7 @@ import { CoachFeedbackFormComponent } from './session-list/coach-feedback-form/c
 import { SmileySelectorComponent } from './session-list/smiley-selector/smiley-selector.component';
 import {WaitingFeedbackCoacheeSessionDetailsComponent } from "./session-list/waiting-feedback-coachee-session-details/waiting-feedback-coachee-session-details.component";
 import { CoacheeFeedbackFormComponent } from './session-list/coachee-feedback-form/coachee-feedback-form.component';
+import { CancellableSessionDetailsComponent } from './session-list/cancellable-session-details/cancellable-session-details.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { CoacheeFeedbackFormComponent } from './session-list/coachee-feedback-fo
     SmileySelectorComponent,
     CoacheeFeedbackFormComponent,
     RequestedCoachSessionDetailsComponent,
-    EditCoachingTopicsComponent
+    EditCoachingTopicsComponent,
+    CancellableSessionDetailsComponent
   ],
   imports: [
     BrowserModule,

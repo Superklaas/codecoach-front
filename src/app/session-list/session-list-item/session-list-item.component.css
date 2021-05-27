@@ -1,4 +1,7 @@
 :host {
     display: contents
 }
-  
+
+:host * {
+  display: contents
+}
