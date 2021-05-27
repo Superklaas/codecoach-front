@@ -40,6 +40,7 @@ import { CoacheeFeedbackFormComponent } from './session-list/coachee-feedback-fo
 import { AdminDashboardComponent } from './dashboard-admin/admin-dashboard/admin-dashboard.component';
 import { UserOverviewComponent } from './dashboard-admin/user-overview/user-overview.component';
 import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.component';
+import { CancellableSessionDetailsComponent } from './session-list/cancellable-session-details/cancellable-session-details.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,9 @@ import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.compone
     EditCoachingTopicsComponent,
     AdminDashboardComponent,
     UserOverviewComponent,
-    EditUserComponent
+    EditUserComponent,
+    CancellableSessionDetailsComponent
+
   ],
   imports: [
     BrowserModule,
