@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { InitService } from 'src/app/materialize/init.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -8,10 +9,11 @@ import { UserService } from 'src/app/service/user.service';
   templateUrl: './edit-user.component.html',
   styleUrls: ['./edit-user.component.css']
 })
-export class EditUserComponent implements OnInit {
+export class EditUserComponent implements OnInit, AfterViewInit {
 
   id: number; 
   _userImage: string;
+   roles = ['COACH','COACHEE','ADMIN']
 
   private _editForm = this.formBuilder.group({
     firstName: new FormControl("",),
@@ -21,14 +23,20 @@ export class EditUserComponent implements OnInit {
     imageUrl: new FormControl("",),
     role: new FormControl("",),
   });
-  constructor(private userService: UserService, private route: ActivatedRoute, private formBuilder: FormBuilder ) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private formBuilder: FormBuilder , private initService: InitService) { }
+
+  ngAfterViewInit(): void {
+    this.initService.initFormSelect();
+  }
 
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.userService.get(this.id).subscribe(user => {
+      console.log(user);
       this._editForm.patchValue(user);
+      this.initService.initFormSelect();
       this._userImage = user.imageUrl;
-    });
+    }); 
   }
 
   update() {
