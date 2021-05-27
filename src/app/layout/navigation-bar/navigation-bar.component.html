@@ -21,6 +21,8 @@
 
          <!-- If logged in -->
          <ng-container *ngIf="isLoggedIn">
+            <li><a routerLink="/dashboard">Dashboard</a></li>
+
             <app-dropdown [username]="username" [role]="role"></app-dropdown>
         </ng-container>
       </ul>
@@ -63,7 +65,7 @@
 
           <li  *ngIf="role==='ADMIN' || role==='COACH'">
             <a class="waves-effect waves-light light-blue lighten-4 btn black-text" aria-current="page" routerLink="/dashboard-coach" routerLinkActive="active">
-              My Coach Profile
+              Coach Dashboard
               <i class="material-icons right">school</i>
             </a>
           </li>
