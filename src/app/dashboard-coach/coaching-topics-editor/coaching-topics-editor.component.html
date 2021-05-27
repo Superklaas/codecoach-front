@@ -1,0 +1,38 @@
+<div class="card ">
+  <div class="card-body">
+    <h3>Edit coaching topics</h3>
+    <form [formGroup]="editForm" (ngSubmit)="update()">
+      <div formArrayName="editForm">
+        <div *ngFor="let topic of topics.controls; let i = index">
+          {{topic.value}}
+          <input type="text" [formControlName]="i">
+        </div>
+      </div>
+      <!--      <div class="row">-->
+      <!--        <div class="row border-bottom ">-->
+      <!--          <div class="col"><b>Topic 1</b></div>-->
+      <!--          <input type="text" class="form-control col" formControlName="topic1" list="topiclist1">-->
+      <!--          <datalist id="topiclist1" *ngIf="topicsFromDatabase$ | async as topics">-->
+      <!--            <option *ngFor="let topic of topics">{{topic.name}}</option>-->
+      <!--          </datalist>-->
+      <!--        </div>-->
+      <!--        <div class="row border-bottom ">-->
+      <!--          <div class="col"><b>Topic 2</b></div>-->
+      <!--          <input type="text" class="form-control col" formControlName="topic2" list="topiclist2">-->
+      <!--          <datalist id="topiclist2" *ngIf="topicsFromDatabase$ | async as topics">-->
+      <!--            <option *ngFor="let topic of topics">{{topic.name}}</option>-->
+      <!--          </datalist>-->
+      <!--        </div>-->
+      <!--      </div>-->
+    </form>
+    <!--    <div class="right-align">-->
+    <!--      <button class="waves-effect waves-light btn btn-custom green" (click)="update()">SAVE<i-->
+    <!--        class="material-icons right">check_circle</i>-->
+    <!--      </button>-->
+    <!--      <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancel()">CANCEL<i-->
+    <!--        class="material-icons right">cancel</i>-->
+    <!--      </button>-->
+    <!--    </div>-->
+  </div>
+</div>
+
