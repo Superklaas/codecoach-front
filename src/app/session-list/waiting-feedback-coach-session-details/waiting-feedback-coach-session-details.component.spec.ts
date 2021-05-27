@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Session } from 'src/app/model/Session';
 
 import { WaitingFeedbackCoachSessionDetailsComponent } from './waiting-feedback-coach-session-details.component';
 
@@ -16,6 +17,7 @@ describe('WaitingFeedbackCoachSessionDetailsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(WaitingFeedbackCoachSessionDetailsComponent);
     component = fixture.componentInstance;
+    component.session = {} as Session;
     fixture.detectChanges();
   });
 
