@@ -35,7 +35,7 @@ export class CoacheeSessionsComponent implements OnInit {
 
   sortSessions(sessions: Session[]) {
     for (let session of sessions) {
-      if( ['REQUEST_CANCELLED_BY_COACHEE', 'SESSION_CANCELLED_BY_COACHEE', 'REQUEST_CANCELLED_BY_COACHEE', 'REQUEST_DECLINED'].includes(session.status)) {
+      if( ['REQUEST_CANCELLED_BY_COACHEE', 'SESSION_CANCELLED_BY_COACH', 'SESSION_CANCELLED_BY_COACHEE', 'REQUEST_DECLINED'].includes(session.status)) {
         this.archivedSessions.push(session);
       }
       else if (this.isInTheFuture(session)) {
