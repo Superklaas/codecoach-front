@@ -4,6 +4,7 @@ import {environment} from "../../environments/environment";
 import {Observable, throwError} from "rxjs";
 import {User} from "../model/User";
 import {catchError, map} from "rxjs/operators";
+import {Topic} from "../model/Topic";
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class UserService {
   }
 
   getAll(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.url}`);   
+    return this.http.get<User[]>(`${this.url}`);
   }
 
   get(id: number):  Observable<User>{
@@ -63,6 +64,10 @@ export class UserService {
 
   updateCoach(user: User, id: number): Observable<User>{
     return this.http.put<User>(`${this.url}/${id}/coach`, user);
+  }
+
+  updateTopics(newTopics: Topic[], id: number): Observable<Topic[]> {
+    return this.http.post<Topic[]>(`${this.url}/${id}/topics`, newTopics);
   }
 
 

@@ -42,6 +42,7 @@ import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.compone
 import { CancellableSessionDetailsComponent } from './session-list/cancellable-session-details/cancellable-session-details.component';
 import { DropdownComponent } from './layout/dropdown/dropdown.component';
 import { EditCoachComponent } from './dashboard-coach/edit-coach/edit-coach.component';
+import { CoachingTopicsEditorComponent } from './dashboard-coach/coaching-topics-editor/coaching-topics-editor.component';
 import { FeedbackReceivedDetailsComponent } from './session-list/feedback-received-details/feedback-received-details.component';
 
 @NgModule({
@@ -86,6 +87,8 @@ import { FeedbackReceivedDetailsComponent } from './session-list/feedback-receiv
     EditUserComponent,
     CancellableSessionDetailsComponent,
     DropdownComponent,
+    EditCoachComponent,
+    CoachingTopicsEditorComponent
     FeedbackReceivedDetailsComponent,
     EditCoachComponent,
 
