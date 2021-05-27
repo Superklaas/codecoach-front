@@ -2,9 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { BarRatingModule } from "ngx-bar-rating";
 
 import {AppComponent} from './app.component';
 import {AuthenticationInterceptor} from './authentication/authentication.interceptor';
@@ -39,12 +36,6 @@ import { CoachFeedbackFormComponent } from './session-list/coach-feedback-form/c
 import { SmileySelectorComponent } from './session-list/smiley-selector/smiley-selector.component';
 import {WaitingFeedbackCoacheeSessionDetailsComponent } from "./session-list/waiting-feedback-coachee-session-details/waiting-feedback-coachee-session-details.component";
 import { CoacheeFeedbackFormComponent } from './session-list/coachee-feedback-form/coachee-feedback-form.component';
-
-
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}
 
 @NgModule({
   declarations: [
