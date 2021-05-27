@@ -4,6 +4,7 @@ import {SessionService} from "../service/session.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../authentication/authentication.service";
 import {UserService} from "../service/user.service";
+import {User} from "../model/User";
 
 @Component({
   selector: 'app-session-request',
@@ -12,6 +13,8 @@ import {UserService} from "../service/user.service";
 })
 export class SessionRequestComponent implements OnInit {
 
+  coach: User;
+
   public _requestSessionForm = this.formBuilder.group(
     {
       subject: new FormControl("", [Validators.required]),
@@ -19,7 +22,7 @@ export class SessionRequestComponent implements OnInit {
       startTime: new FormControl("", [Validators.required]),
       location: new FormControl("", [Validators.required]),
       remarks: new FormControl("", []),
-      coachId: new FormControl(this.route.snapshot.paramMap.get('id'),),
+      coachId: new FormControl(this.route.snapshot.paramMap.get('id')),
       coacheeId: new FormControl(this.authenticationService.getId())
     }, {validators: this.timeInThePast});
 
@@ -28,6 +31,14 @@ export class SessionRequestComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCoach();
+  }
+
+  private getCoach() {
+    this.userService.get(+this.route.snapshot.paramMap.get('id')).subscribe(
+      user => this.coach = user,
+      errorResponse => this.alertWrongCoachIdInUrl(errorResponse)
+    );
   }
 
   timeInThePast(group: FormGroup): { inThePast?: boolean } {

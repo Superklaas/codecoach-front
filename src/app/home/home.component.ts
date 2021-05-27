@@ -1,6 +1,5 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import { InitMaterializeComponent } from '../init-materialize.component';
-import * as M from 'materialize-css';
+import {AfterViewInit, Component} from '@angular/core';
+import {InitService} from "../materialize/init.service";
 
 @Component({
   selector: 'app-home',
@@ -9,8 +8,10 @@ import * as M from 'materialize-css';
 })
 export class HomeComponent implements AfterViewInit  {
 
+  constructor(private initService: InitService) { }
+
   ngAfterViewInit(): void {
-    M.Parallax.init(document.querySelectorAll('.parallax'));
+    this.initService.initParalax();
   }
 
 }

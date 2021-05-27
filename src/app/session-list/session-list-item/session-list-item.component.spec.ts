@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FeedbackOverviewComponent } from './feedback-overview.component';
+import { SessionListItemComponent } from './session-list-item.component';
 
-describe('FeedbackOverviewComponent', () => {
-  let component: FeedbackOverviewComponent;
-  let fixture: ComponentFixture<FeedbackOverviewComponent>;
+describe('SessionListItemComponent', () => {
+  let component: SessionListItemComponent;
+  let fixture: ComponentFixture<SessionListItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FeedbackOverviewComponent ]
+      declarations: [ SessionListItemComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FeedbackOverviewComponent);
+    fixture = TestBed.createComponent(SessionListItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

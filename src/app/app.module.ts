@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { BarRatingModule } from "ngx-bar-rating";
 
 import {AppComponent} from './app.component';
 import {AuthenticationInterceptor} from './authentication/authentication.interceptor';
@@ -25,11 +26,19 @@ import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-c
 import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
 import { CoachSessionsComponent } from './dashboard-coach/coach-sessions/coach-sessions.component';
 import { RemoveUnderscorePipe } from './pipe/remove-underscore.pipe';
-import { FeedbackOverviewComponent } from './dashboard/coachee-sessions/feedback-overview/feedback-overview.component';
 import { EasterEggComponent } from './easter-egg/easter-egg.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { EditProfileComponent } from './dashboard/edit-profile/edit-profile.component';
+import { SessionListItemComponent } from './session-list/session-list-item/session-list-item.component';
+import { CommonSessionDetailsComponent } from './session-list/common-session-details/common-session-details.component';
+import { RequestedCoachSessionDetailsComponent } from './session-list/requested-coach-session-details/requested-coach-session-details.component';
+import { EditCoachingTopicsComponent } from './dashboard-coach/edit-coaching-topics/edit-coaching-topics.component';
+import { WaitingFeedbackCoachSessionDetailsComponent } from './session-list/waiting-feedback-coach-session-details/waiting-feedback-coach-session-details.component';
+import { CoachFeedbackFormComponent } from './session-list/coach-feedback-form/coach-feedback-form.component';
+import { SmileySelectorComponent } from './session-list/smiley-selector/smiley-selector.component';
+import {WaitingFeedbackCoacheeSessionDetailsComponent } from "./session-list/waiting-feedback-coachee-session-details/waiting-feedback-coachee-session-details.component";
+import { CoacheeFeedbackFormComponent } from './session-list/coachee-feedback-form/coachee-feedback-form.component';
 
 
 
@@ -58,13 +67,22 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoacheeSessionsComponent,
     CoachSessionsComponent,
     RemoveUnderscorePipe,
-    FeedbackOverviewComponent,
     RemoveUnderscorePipe,
     EasterEggComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    EditProfileComponent
-
+    EditProfileComponent,
+    SessionListItemComponent,
+    CommonSessionDetailsComponent,
+    RequestedCoachSessionDetailsComponent,
+    WaitingFeedbackCoachSessionDetailsComponent,
+    WaitingFeedbackCoacheeSessionDetailsComponent,
+    CoachFeedbackFormComponent,
+    SmileySelectorComponent,
+    SmileySelectorComponent,
+    CoacheeFeedbackFormComponent,
+    RequestedCoachSessionDetailsComponent,
+    EditCoachingTopicsComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +90,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    BarRatingModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}

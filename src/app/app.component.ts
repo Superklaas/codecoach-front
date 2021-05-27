@@ -1,15 +1,15 @@
 import {Component} from '@angular/core';
 import {Title} from "@angular/platform-browser";
-import {InitMaterializeComponent} from './init-materialize.component';
+import {InitService} from "./materialize/init.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent extends InitMaterializeComponent {
-  constructor(private titleService: Title) {
-    super();
+export class AppComponent {
+  constructor(private initService: InitService, private titleService: Title) {
+    initService.autoInit();
     this.titleService.setTitle('CodeCoach');
   }
 }
