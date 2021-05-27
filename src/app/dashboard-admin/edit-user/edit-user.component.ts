@@ -23,6 +23,13 @@ export class EditUserComponent implements OnInit, AfterViewInit {
     imageUrl: new FormControl("",),
     role: new FormControl("",),
   });
+
+  private _editCoachForm = this.formBuilder.group({
+    availability: new FormControl("",),
+    introduction: new FormControl("",), 
+  });
+
+
   constructor(private userService: UserService, private route: ActivatedRoute, private formBuilder: FormBuilder , private initService: InitService) { }
 
   ngAfterViewInit(): void {
@@ -32,14 +39,14 @@ export class EditUserComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.userService.get(this.id).subscribe(user => {
-      console.log(user);
       this._editForm.patchValue(user);
+      this._editCoachForm.patchValue(user);
       this.initService.initFormSelect();
       this._userImage = user.imageUrl;
     }); 
   }
 
-  update() {
+  updateProfile() {
     this.userService.update(this._editForm.value, +this.id).subscribe(
       (_ => {
         alert("Your changes have been saved");
@@ -49,11 +56,28 @@ export class EditUserComponent implements OnInit, AfterViewInit {
     );
   }
 
-  cancel(){
+  cancelProfile(){
     this.userService.get(this.id).subscribe(user => {
       this._editForm.patchValue(user);
     });
   }
+
+  updateCoach() {
+    this.userService.updateCoach(this._editCoachForm.value, +this.id).subscribe(
+      (_ => {
+        alert("Your changes have been saved");
+        this.ngOnInit();
+      }),
+      (error =>  this._editCoachForm.setErrors({serverError: 'oops something went wrong'}))
+    );
+  }
+
+  cancelCoach(){
+    this.userService.get(this.id).subscribe(user => {
+      this._editCoachForm.patchValue(user);
+    });
+  }
+
 
   get userImage() {
     if (!this._userImage) {
@@ -64,6 +88,10 @@ export class EditUserComponent implements OnInit, AfterViewInit {
 
   get editForm(){
     return this._editForm;
+  }
+
+  get editCoachForm(){
+    return this._editCoachForm;
   }
 
 }

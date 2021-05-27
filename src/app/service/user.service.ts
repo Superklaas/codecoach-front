@@ -61,5 +61,9 @@ export class UserService {
     return this.http.put<User>(`${this.url}/${id}`, user);
   }
 
+  updateCoach(user: User, id: number): Observable<User>{
+    return this.http.put<User>(`${this.url}/${id}/coach`, user);
+  }
+
 
 }

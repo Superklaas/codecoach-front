@@ -41,6 +41,7 @@ import { UserOverviewComponent } from './dashboard-admin/user-overview/user-over
 import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.component';
 import { CancellableSessionDetailsComponent } from './session-list/cancellable-session-details/cancellable-session-details.component';
 import { DropdownComponent } from './layout/dropdown/dropdown.component';
+import { EditCoachComponent } from './dashboard-coach/edit-coach/edit-coach.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { DropdownComponent } from './layout/dropdown/dropdown.component';
     UserOverviewComponent,
     EditUserComponent,
     CancellableSessionDetailsComponent,
-    DropdownComponent
+    DropdownComponent,
+    EditCoachComponent
 
   ],
   imports: [
