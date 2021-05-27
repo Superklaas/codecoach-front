@@ -12,6 +12,8 @@ export class SmileySelectorComponent implements OnInit {
   @Output()
   scoreUpdate= new EventEmitter<number>();
 
+  @Input()
+  public isDisabled = false
 
   constructor() { }
 
@@ -19,7 +21,9 @@ export class SmileySelectorComponent implements OnInit {
   }
 
   selectRating(number: number) {
-    this.rating = number;
-    this.scoreUpdate.emit(this.rating)
+    if (!this.isDisabled){
+      this.rating = number;
+      this.scoreUpdate.emit(this.rating)
+    }
   }
 }

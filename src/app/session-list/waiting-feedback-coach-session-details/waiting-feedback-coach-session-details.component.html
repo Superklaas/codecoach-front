@@ -26,7 +26,7 @@
 </app-common-session-details>
 
 <ng-container *ngIf="feedBackViewStatus === 'closed' && coacheeHasAlreadyGivenFeedback()" >
-  <tr class="alert-danger" >
+  <tr class="shameMessage" >
     <td colspan="7" >{{session.coacheeProfileName}} Has already given feedback!</td>
   </tr>
 </ng-container>

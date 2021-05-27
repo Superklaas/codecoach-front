@@ -1,0 +1,83 @@
+<app-common-session-details [session]="session" [perspective]="perspective">
+
+  <button *ngIf="feedBackViewStatus==='closed'"   class="waves-effect waves-light btn btn-custom red"
+          (click)="toggleFeedbackView()">
+    SEE FEEDBACK
+    <i class="material-icons right">person</i>
+  </button>
+
+  <button *ngIf="feedBackViewStatus === 'open'"  class="waves-effect waves-light btn btn-custom red"
+          (click)="toggleFeedbackView()">
+    CLOSE FEEDBACK
+    <i class="material-icons right">cancel</i>
+  </button>
+
+</app-common-session-details>
+
+<tr *ngIf="feedBackViewStatus === 'open'">
+
+  <td *ngIf="perspective === 'coachee'" class="center" colspan="7">
+
+    <form disabled="">
+
+      <div class="row">
+        <div class="col">
+          <div>Sentiment about your preparedness</div>
+          <app-smiley-selector [isDisabled]="true" [rating]="session.feedbackForCoachee.preparedness"></app-smiley-selector>
+        </div>
+        <div class="col">
+          <div>Sentiment about your willingness</div>
+          <app-smiley-selector [isDisabled]="true" [rating]="session.feedbackForCoachee.willingness"></app-smiley-selector>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div>Things you did well.</div>
+          <textarea disabled>{{session.feedbackForCoachee.positive}}</textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div>Things you can get better at</div>
+          <textarea disabled>{{session.feedbackForCoachee.negative}}</textarea>
+        </div>
+      </div>
+
+    </form>
+  </td>
+
+  <td *ngIf="perspective === 'coach'" class="center" colspan="7">
+    <form disabled="">
+
+      <div class="row">
+        <div class="col">
+          <div>Sentiment about your explanation</div>
+          <app-smiley-selector [isDisabled]="true" [rating]="session.feedbackForCoach.explanation"></app-smiley-selector>
+        </div>
+        <div class="col">
+          <div>Sentiment about the usefulness of the session</div>
+          <app-smiley-selector [isDisabled]="true" [rating]="session.feedbackForCoach.usefulness"></app-smiley-selector>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div>Things you did well.</div>
+          <textarea disabled>{{session.feedbackForCoachee.positive}}</textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div>Things you can get better at</div>
+          <textarea disabled>{{session.feedbackForCoachee.negative}}</textarea>
+        </div>
+      </div>
+
+    </form>
+  </td>
+
+</tr>
+

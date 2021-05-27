@@ -29,14 +29,14 @@ export class CommonSessionDetailsComponent implements OnInit {
   }
 
   shouldShowInErrorStyle(){
-   /* if (this.session.status === 'WAITING_FEEDBACK'){
-      if (this.perspective === 'coach' && !this.session.feedbackForCoach && this.session.feedbackForCoachee){
+    if (this.session.status === 'WAITING_FEEDBACK'){
+      if (this.perspective === 'coach' && this.session.feedbackForCoach && !this.session.feedbackForCoachee){
         return true;
       }
-      if (this.perspective === 'coachee' && !this.session.feedbackForCoachee && this.session.feedbackForCoach){
+      if (this.perspective === 'coachee' && this.session.feedbackForCoachee && !this.session.feedbackForCoach){
         return true;
       }
-    }*/
+    }
     return false;
   }
 

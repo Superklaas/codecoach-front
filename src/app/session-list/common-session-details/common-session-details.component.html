@@ -1,4 +1,4 @@
-<tr [ngClass]="{ 'alert-danger': hasError}" >
+<tr [ngClass]="{ 'shameMessage': hasError}" >
     <td>
         <ng-container *ngIf="perspective === 'coachee'">{{session.coachProfileName}}</ng-container>
         <ng-container *ngIf="perspective === 'coach'">{{session.coacheeProfileName}}</ng-container>

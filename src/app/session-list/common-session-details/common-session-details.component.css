@@ -2,3 +2,7 @@
     display: contents
 }
 
+.shameMessage {
+  background-color: #ffcccb !important;
+  border: none;
+}

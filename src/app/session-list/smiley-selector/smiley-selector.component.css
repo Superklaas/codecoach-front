@@ -2,7 +2,7 @@
   color: #999999;
 }
 
-.smiley:hover{
+.not-disabled:hover{
   color: orange !important;
   cursor: pointer;
 }
