@@ -87,8 +87,6 @@ import { FeedbackReceivedDetailsComponent } from './session-list/feedback-receiv
     EditUserComponent,
     CancellableSessionDetailsComponent,
     DropdownComponent,
-    EditCoachComponent,
-    CoachingTopicsEditorComponent,
     FeedbackReceivedDetailsComponent,
     EditCoachComponent,
 
