@@ -1,15 +1,19 @@
 <app-common-session-details [session]="session" perspective="coachee">
-  <ng-container *ngIf="feedBackViewStatus!=='given'">
-    <button *ngIf="!session.feedbackForCoach"  class="waves-effect waves-light btn btn-custom green"
+
+  <ng-container *ngIf="feedBackViewStatus === 'open'">
+    <button *ngIf="!session.feedbackForCoachee"  class="waves-effect waves-light btn btn-custom green"
             (click)="toggleFeedbackView()">
-      <ng-container *ngIf="feedBackViewStatus === 'open'">
-        CANCEL
-      </ng-container>
-      <ng-container *ngIf="feedBackViewStatus === 'closed'">
-        GIVE FEEDBACK
-      </ng-container>
+      CANCEL
       <i class="material-icons right">person</i></button>
   </ng-container>
+
+  <ng-container *ngIf="feedBackViewStatus === 'closed'">
+    <button *ngIf="!session.feedbackForCoachee"  class="waves-effect waves-light btn btn-custom green"
+            (click)="toggleFeedbackView()">
+      GIVE FEEDBACK
+      <i class="material-icons right">person</i></button>
+  </ng-container>
+
   <ng-container *ngIf="feedBackViewStatus==='given'">
 
     <button disabled  class="waves-effect waves-light btn btn-custom green">

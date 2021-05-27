@@ -5,11 +5,17 @@
       <div class="row">
         <div class="row border-bottom ">
           <div class="col"><b>Topic 1</b></div>
-          <input type="text" class="form-control col" formControlName="topic1" aria-label="Topic 1">
+          <input type="text" class="form-control col" formControlName="topic1" list="topiclist1">
+          <datalist id="topiclist1" *ngIf="topics$ | async as topics">
+            <option *ngFor="let topic of topics">{{topic.name}}</option>
+          </datalist>
         </div>
         <div class="row border-bottom ">
           <div class="col"><b>Topic 2</b></div>
-          <input type="text" class="form-control col" formControlName="topic2" aria-label="Topic 2">
+          <input type="text" class="form-control col" formControlName="topic2" list="topiclist2">
+          <datalist id="topiclist2" *ngIf="topics$ | async as topics">
+            <option *ngFor="let topic of topics">{{topic.name}}</option>
+          </datalist>
         </div>
       </div>
     </form>
