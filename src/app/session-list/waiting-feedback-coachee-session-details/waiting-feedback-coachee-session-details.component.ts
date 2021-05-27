@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Session} from "../../model/Session";
+import {FeedbackForCoachee} from "../../model/FeedbackForCoachee";
 
 @Component({
   selector: 'app-waiting-feedback-coachee-session-details',
@@ -35,4 +36,8 @@ export class WaitingFeedbackCoacheeSessionDetailsComponent implements OnInit {
     }
   }
 
+  coachHasAlreadyGivenFeedback() {
+    let value = this.session.feedbackForCoachee as FeedbackForCoachee
+    return value.preparedness > 0;
+  }
 }

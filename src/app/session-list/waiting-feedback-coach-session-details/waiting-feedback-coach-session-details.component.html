@@ -25,6 +25,12 @@
 
 </app-common-session-details>
 
+<ng-container *ngIf="feedBackViewStatus === 'closed' && coacheeHasAlreadyGivenFeedback()" >
+  <tr class="alert-danger" >
+    <td colspan="7" >{{session.coacheeProfileName}} Has already given feedback!</td>
+  </tr>
+</ng-container>
+
 <tr *ngIf="feedBackViewStatus === 'open'">
   <td class="center" colspan="7">
    <app-coach-feedback-form [session]="session" (submitted)="feedBackSubmitted($event)" ></app-coach-feedback-form>

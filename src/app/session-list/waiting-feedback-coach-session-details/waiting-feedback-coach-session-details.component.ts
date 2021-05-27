@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Session} from "../../model/Session";
+import {FeedbackForCoach} from "../../model/FeedbackForCoach";
 
 @Component({
   selector: 'app-waiting-feedback-coach-session-details',
@@ -26,6 +27,11 @@ export class WaitingFeedbackCoachSessionDetailsComponent implements OnInit {
       }else{
         this.feedBackViewStatus = 'open';
       }
+  }
+
+  coacheeHasAlreadyGivenFeedback(): boolean{
+    let value = this.session.feedbackForCoach as FeedbackForCoach
+    return value.explanation > 0;
   }
 
   feedBackSubmitted(session: Session) {
