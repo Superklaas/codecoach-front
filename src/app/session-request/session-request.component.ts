@@ -19,11 +19,11 @@ export class SessionRequestComponent implements OnInit {
 
   public _requestSessionForm = this.formBuilder.group(
     {
-      subject: new FormControl("", [Validators.required]),
+      subject: new FormControl("", [Validators.required, Validators.maxLength(255)]),
       date: new FormControl("", [Validators.required]),
       startTime: new FormControl("", [Validators.required]),
-      location: new FormControl("", [Validators.required]),
-      remarks: new FormControl("", []),
+      location: new FormControl("", [Validators.required, Validators.maxLength(255)]),
+      remarks: new FormControl("", [Validators.maxLength(255)]),
       coachId: new FormControl(this.route.snapshot.paramMap.get('id')),
       coacheeId: new FormControl(this.authenticationService.getId())
     }, {validators: this.timeInThePast});
