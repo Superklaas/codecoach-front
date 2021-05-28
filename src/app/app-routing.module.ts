@@ -26,6 +26,7 @@ import { UserOverviewComponent } from './dashboard-admin/user-overview/user-over
 import { AdminGuard } from './authorization/admin.guard';
 import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.component';
 import { EditCoachComponent } from './dashboard-coach/edit-coach/edit-coach.component';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'egg', component: EasterEggComponent, canActivate: [AuthenticationGuard], },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'error', component: ErrorComponent },
   {
     path: 'dashboard',
     component: UserDashboardComponent,
