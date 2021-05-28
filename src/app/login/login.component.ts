@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {Router} from '@angular/router';
+import {InitService} from "../materialize/init.service";
 
 
 @Component({
@@ -10,15 +11,14 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  error;
-  success;
-  loginForm;
+  loginForm = this.formBuilder.group({
+    username: new FormControl("", [Validators.required, Validators.pattern(/.*@.*/)]),
+    password: new FormControl("",
+      [Validators.required, Validators.minLength(8),
+        Validators.pattern(/.*[0-9]+.*/), Validators.pattern(/.*[A-Z]+.*/), Validators.pattern(/.*[a-z]+.*/)]),
+  });
 
   constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router) {
-    this.loginForm = this.formBuilder.group({
-      username: '',
-      password: ''
-    });
   }
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
@@ -26,22 +26,27 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(loginData) {
-    this.success = false;
-    this.error = false;
+    this.loginForm.markAllAsTouched();
+
+    if (!this.loginForm.valid) {
+      this.loginForm.setErrors({credentials: "wrong"});
+      return
+    }
+
     this.authenticationService.login(loginData)
       .subscribe(
         (_ => {
-          this.success = true;
           this.router.navigateByUrl(`/dashboard`);
+          this.loginForm.reset();
         }),
         (error => this.addErrorToForm(error))
       );
-    this.loginForm.reset();
   }
 
   addErrorToForm(errorResponse) {
     if (errorResponse.error.status === 400) {
       this.loginForm.setErrors({serverError: errorResponse.error.message});
+      this.loginForm.setErrors({credentials: "wrong"});
     }else{
       this.loginForm.setErrors({ serverError : 'Error: oops something went wrong...'});
     }
@@ -53,7 +58,6 @@ export class LoginComponent implements OnInit {
   }
 
   requestResetPassword() {
-    alert("please email an admin.")
+    this.router.navigateByUrl(`/forgot-password`);
   }
-
 }

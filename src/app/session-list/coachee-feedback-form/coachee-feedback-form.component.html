@@ -1,0 +1,44 @@
+<form [formGroup]="_coachFeedbackForm" (ngSubmit)="submit()">
+
+  <div class="row">
+    <div class="col">
+      <div>Were the explanations given by your Coach clear?</div>
+      <app-smiley-selector [rating]="0" (scoreUpdate)="updateSmileyRating('explanation', $event)" ></app-smiley-selector>
+      <div *ngIf="explanation.touched && explanation.invalid" class="alert alert-danger">
+        Please choose a smiley
+      </div>
+    </div>
+
+    <div class="col">
+      <div>Was the coaching session useful ?</div>
+      <app-smiley-selector [rating]="0" (scoreUpdate)="updateSmileyRating('usefulness', $event)" ></app-smiley-selector>
+      <div *ngIf=" usefulness.touched && usefulness.invalid" class="alert alert-danger">
+        Please choose a smiley
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <label for="positive">What did you like in the coaching session?</label>
+      <textarea maxlength="2000" id="positive" rows="10" cols="60" formControlName="positive"
+                placeholder="type here..."></textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label for="negative">How could your Coach get better ?</label>
+      <textarea maxlength="2000" id="negative" rows="10" cols="60" formControlName="negative"
+                placeholder="type here..."></textarea>
+    </div>
+  </div>
+
+  <div class="row right-align">
+    <button type="submit" class="waves-effect waves-light yellow darken-2 btn-large black-text">SEND FEEDBACK<i
+      class="material-icons right">send</i></button>
+  </div>
+
+
+</form>

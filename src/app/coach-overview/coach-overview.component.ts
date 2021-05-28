@@ -15,7 +15,7 @@ export class CoachOverviewComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.coaches$ = this.userService.getAllCoaches();
+      this.coaches$ = this.userService.getAllCoaches();
   }
 
 }

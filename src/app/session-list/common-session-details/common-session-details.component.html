@@ -1,0 +1,14 @@
+<tr [ngClass]="{ 'shameMessage': hasError}" >
+    <td>
+        <ng-container *ngIf="perspective === 'coachee'">{{session.coachProfileName}}</ng-container>
+        <ng-container *ngIf="perspective === 'coach'">{{session.coacheeProfileName}}</ng-container>
+    </td>
+    <td>{{session.subject}}</td>
+    <td>{{session.date}}</td>
+    <td>{{session.startTime}}</td>
+    <td>{{session.location}}</td>
+    <td>{{session.status | removeUnderscore | titlecase}}</td>
+    <td>
+        <ng-content></ng-content>
+    </td>
+</tr>

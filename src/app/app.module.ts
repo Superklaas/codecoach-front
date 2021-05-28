@@ -2,8 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {AppComponent} from './app.component';
 import {AuthenticationInterceptor} from './authentication/authentication.interceptor';
@@ -24,11 +22,30 @@ import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach
 import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
 import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
 import { CoachSessionsComponent } from './dashboard-coach/coach-sessions/coach-sessions.component';
-
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}
+import { RemoveUnderscorePipe } from './pipe/remove-underscore.pipe';
+import { EasterEggComponent } from './easter-egg/easter-egg.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { EditProfileComponent } from './dashboard/edit-profile/edit-profile.component';
+import { SessionListItemComponent } from './session-list/session-list-item/session-list-item.component';
+import { CommonSessionDetailsComponent } from './session-list/common-session-details/common-session-details.component';
+import { RequestedCoachSessionDetailsComponent } from './session-list/requested-coach-session-details/requested-coach-session-details.component';
+import { EditCoachingTopicsComponent } from './dashboard-coach/edit-coaching-topics/edit-coaching-topics.component';
+import { WaitingFeedbackCoachSessionDetailsComponent } from './session-list/waiting-feedback-coach-session-details/waiting-feedback-coach-session-details.component';
+import { CoachFeedbackFormComponent } from './session-list/coach-feedback-form/coach-feedback-form.component';
+import { SmileySelectorComponent } from './session-list/smiley-selector/smiley-selector.component';
+import { WaitingFeedbackCoacheeSessionDetailsComponent } from "./session-list/waiting-feedback-coachee-session-details/waiting-feedback-coachee-session-details.component";
+import { CoacheeFeedbackFormComponent } from './session-list/coachee-feedback-form/coachee-feedback-form.component';
+import { AdminDashboardComponent } from './dashboard-admin/admin-dashboard/admin-dashboard.component';
+import { UserOverviewComponent } from './dashboard-admin/user-overview/user-overview.component';
+import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.component';
+import { CancellableSessionDetailsComponent } from './session-list/cancellable-session-details/cancellable-session-details.component';
+import { DropdownComponent } from './layout/dropdown/dropdown.component';
+import { EditCoachComponent } from './dashboard-coach/edit-coach/edit-coach.component';
+import { CoachingTopicsEditorComponent } from './dashboard-coach/coaching-topics-editor/coaching-topics-editor.component';
+import { FeedbackReceivedDetailsComponent } from './session-list/feedback-received-details/feedback-received-details.component';
+import { ErrorComponent } from './error/error.component';
+import { EditCoachTopicsByAdminComponent } from './dashboard-admin/edit-coach-topics-by-admin/edit-coach-topics-by-admin.component';
 
 @NgModule({
   declarations: [
@@ -49,23 +66,41 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoachDashboardComponent,
     MyCoachProfileComponent,
     CoacheeSessionsComponent,
-    CoachSessionsComponent
-
+    CoachSessionsComponent,
+    RemoveUnderscorePipe,
+    RemoveUnderscorePipe,
+    EasterEggComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    EditProfileComponent,
+    SessionListItemComponent,
+    CommonSessionDetailsComponent,
+    RequestedCoachSessionDetailsComponent,
+    WaitingFeedbackCoachSessionDetailsComponent,
+    WaitingFeedbackCoacheeSessionDetailsComponent,
+    CoachFeedbackFormComponent,
+    SmileySelectorComponent,
+    SmileySelectorComponent,
+    CoacheeFeedbackFormComponent,
+    RequestedCoachSessionDetailsComponent,
+    EditCoachingTopicsComponent,
+    AdminDashboardComponent,
+    UserOverviewComponent,
+    EditUserComponent,
+    CancellableSessionDetailsComponent,
+    DropdownComponent,
+    FeedbackReceivedDetailsComponent,
+    EditCoachComponent,
+    CoachingTopicsEditorComponent,
+    ErrorComponent,
+    EditCoachTopicsByAdminComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+    AppRoutingModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}

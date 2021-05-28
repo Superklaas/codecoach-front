@@ -15,7 +15,15 @@ describe('UserMenuComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ UserMenuComponent ],
       imports:[HttpClientTestingModule, RouterModule,  RouterTestingModule],
-      providers: [{provide: AuthenticationService, useValue: {getRole(){ return 'COACH' }}}]
+      providers: [
+        {
+          provide: AuthenticationService,
+          useValue: {
+              getRole(){ return 'COACH' },
+              getId() { return 1; }
+          }
+        }
+      ]
     })
     .compileComponents();
     TestBed.inject(RolePersonalisationService);

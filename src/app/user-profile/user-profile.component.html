@@ -2,9 +2,9 @@
 <div *ngIf=user>
     <div class="card mx-md-5 my-md-5">
         <div class="card-body">
-            <h3 class="border-bottom ">Profile Information </h3>
+            <h3 class="border-bottom">Profile Information </h3>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3 profile-image">
                     <img [src]="userImage" alt="">
                 </div>
                 <div class="col-md-8">
@@ -28,12 +28,18 @@
                     </div>
                     <div class="row border-bottom">
                         <div class="col-md-4"><b>CodeCoach role</b></div>
-                        <div class="col-md-4">{{user.role | lowercase}}</div>
+                        <div class="col-md-4">{{user.role | removeUnderscore| titlecase}}</div>
                     </div>
                     <div *ngIf="user.role=='COACH'">
                         <a class="waves-effect waves-light yellow darken-2 btn black-text right"
-                            routerLink="/create-session/{{user.id}}">
-                            <i class="material-icons center">date_range</i>
+                            routerLink="/create-session/{{user.id}}" *ngIf="user.id!=loggedInId">
+                            <span class="black-text center custom" *ngIf="isMobile()">Book a Session</span>
+                            <i class="material-icons right">date_range</i>
+                        </a>
+                        <a class="waves-effect waves-light yellow darken-2 btn black-text right" routerLink="/egg"
+                            *ngIf="user.id==loggedInId">
+                            <span class="black-text center custom" *ngIf="isMobile()">Book a Session</span>
+                            <i class="material-icons right">date_range</i>
                         </a>
                     </div>
                 </div>
