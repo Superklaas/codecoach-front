@@ -1,10 +1,11 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {User} from "../../model/User";
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
 import {Topic} from "../../model/Topic";
 import {TopicService} from "../../service/topic.service";
 import {UserService} from "../../service/user.service";
+import {RolePersonalisationService} from "../../service/role-personalisation.service";
 
 const MAX_TOPICS = 2;
 
@@ -30,7 +31,7 @@ export class CoachingTopicsEditorComponent implements OnInit {
 
   topicsFromDatabase$: Observable<Topic[]>;
 
-  constructor(private formBuilder: FormBuilder, private topicService: TopicService, private userService: UserService) {
+  constructor(private formBuilder: FormBuilder, private topicService: TopicService, private userService: UserService, private roleStuff: RolePersonalisationService) {
   }
 
   ngOnInit(): void {
@@ -84,6 +85,10 @@ export class CoachingTopicsEditorComponent implements OnInit {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
     return isValid ? null : {'whitespace': true};
+  }
+
+  get color() {
+    return this.roleStuff.color;
   }
 
 }
