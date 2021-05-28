@@ -16,7 +16,7 @@ export class CoachingTopicsEditorComponent implements OnInit {
   cancelEdit = new EventEmitter();
 
   @Output()
-  onSave = new EventEmitter();
+  saved = new EventEmitter();
 
   editForm = this.formBuilder.group({
     topics: new FormArray([])
