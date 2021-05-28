@@ -59,6 +59,9 @@
     <div class="card">
         <div class="card-body">
             <h3>Coach Information</h3>
+            <div class="alert alert-danger"  *ngIf="user.role !== 'COACH'">
+              User is not a coach, be careful to edit this
+            </div>
             <form class="col s12" [formGroup]="editCoachForm" (ngSubmit)="updateCoach()">
                 <div class="row border-bottom ">
                     <div class="col"><b>Introduction</b></div>
@@ -90,5 +93,19 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h3 class="border-bottom ">Coaching Topics</h3>
+        <div class="alert alert-danger"  *ngIf="user.role !== 'COACH'">
+          User is not a coach, be careful to edit this
+        </div>
+        <div class="row border-bottom " *ngFor="let topic of user.topicList">
+          <div class="col"><b>{{topic.name}}</b></div>
+        </div>
+        <button class="right btn-floating" routerLink="/dashboard-admin/edit/{{id}}/topics">
+          <i class="material-icons center">edit</i>
+        </button>
+      </div>
     </div>
 </div>

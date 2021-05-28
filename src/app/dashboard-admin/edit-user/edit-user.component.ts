@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { InitService } from 'src/app/materialize/init.service';
+import { User } from 'src/app/model/User';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -14,6 +15,8 @@ export class EditUserComponent implements OnInit, AfterViewInit {
   id: number;
   _userImage: string;
    roles = ['COACH','COACHEE','ADMIN']
+
+   user: User;
 
   private _editForm = this.formBuilder.group({
     firstName: new FormControl("",),
@@ -39,6 +42,7 @@ export class EditUserComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.userService.get(this.id).subscribe(user => {
+      this.user = user;
       this._editForm.patchValue(user);
       this._editCoachForm.patchValue(user);
       this.initService.initFormSelect();

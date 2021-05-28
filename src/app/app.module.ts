@@ -34,7 +34,7 @@ import { EditCoachingTopicsComponent } from './dashboard-coach/edit-coaching-top
 import { WaitingFeedbackCoachSessionDetailsComponent } from './session-list/waiting-feedback-coach-session-details/waiting-feedback-coach-session-details.component';
 import { CoachFeedbackFormComponent } from './session-list/coach-feedback-form/coach-feedback-form.component';
 import { SmileySelectorComponent } from './session-list/smiley-selector/smiley-selector.component';
-import {WaitingFeedbackCoacheeSessionDetailsComponent } from "./session-list/waiting-feedback-coachee-session-details/waiting-feedback-coachee-session-details.component";
+import { WaitingFeedbackCoacheeSessionDetailsComponent } from "./session-list/waiting-feedback-coachee-session-details/waiting-feedback-coachee-session-details.component";
 import { CoacheeFeedbackFormComponent } from './session-list/coachee-feedback-form/coachee-feedback-form.component';
 import { AdminDashboardComponent } from './dashboard-admin/admin-dashboard/admin-dashboard.component';
 import { UserOverviewComponent } from './dashboard-admin/user-overview/user-overview.component';
@@ -45,6 +45,7 @@ import { EditCoachComponent } from './dashboard-coach/edit-coach/edit-coach.comp
 import { CoachingTopicsEditorComponent } from './dashboard-coach/coaching-topics-editor/coaching-topics-editor.component';
 import { FeedbackReceivedDetailsComponent } from './session-list/feedback-received-details/feedback-received-details.component';
 import { ErrorComponent } from './error/error.component';
+import { EditCoachTopicsByAdminComponent } from './dashboard-admin/edit-coach-topics-by-admin/edit-coach-topics-by-admin.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { ErrorComponent } from './error/error.component';
     EditCoachComponent,
     CoachingTopicsEditorComponent,
     ErrorComponent,
+    EditCoachTopicsByAdminComponent,
   ],
   imports: [
     BrowserModule,

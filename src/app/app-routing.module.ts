@@ -27,6 +27,7 @@ import { AdminGuard } from './authorization/admin.guard';
 import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.component';
 import { EditCoachComponent } from './dashboard-coach/edit-coach/edit-coach.component';
 import { ErrorComponent } from './error/error.component';
+import { EditCoachTopicsByAdminComponent } from './dashboard-admin/edit-coach-topics-by-admin/edit-coach-topics-by-admin.component';
 
 
 
@@ -70,6 +71,7 @@ const routes: Routes = [
     children: [
       { path: '', component: UserOverviewComponent },
       { path: 'edit/:id', component: EditUserComponent },
+      { path: 'edit/:id/topics', component: EditCoachTopicsByAdminComponent },
     ]
   },
   { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard], },
