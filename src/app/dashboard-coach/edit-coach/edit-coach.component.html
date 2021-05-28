@@ -4,23 +4,25 @@
             <form class="col s12" [formGroup]="editCoachForm" (ngSubmit)="update()">
                 <div class="row border-bottom ">
                     <div class="col"><b>Introduction</b></div>
-                    <div class="col">
-                        <input type="text" class="form-control col" formControlName="introduction"
-                            aria-label="introduction text">
-                        <div *ngIf="wrongInputHasBeenTyped(introduction)" class="alert alert-danger">
-                            <div *ngIf="introduction.errors.required">Introduction is required.</div>
-                        </div>
-                    </div>
+                    <input type="text" class="form-control col" formControlName="introduction"
+                        aria-label="introduction text">
+                </div>
 
+                <div class="row">
+                    <div *ngIf="wrongInputHasBeenTyped(introduction)" class="alert alert-danger">
+                        <div *ngIf="introduction.errors.required">Introduction is required.</div>
+                    </div>
                 </div>
                 <div class="row border-bottom ">
                     <div class="col"><b>Availability</b></div>
                     <div class="col">
                         <input type="text" class="form-control col" formControlName="availability"
                             aria-label="Availability">
-                        <div *ngIf="wrongInputHasBeenTyped(availability)" class="alert alert-danger">
-                            <div *ngIf="availability.errors.required">Availability is required.</div>
-                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div *ngIf="wrongInputHasBeenTyped(availability)" class="alert alert-danger">
+                        <div *ngIf="availability.errors.required">Availability is required.</div>
                     </div>
                 </div>
             </form>
