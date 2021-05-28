@@ -1,12 +1,12 @@
 <app-common-session-details [session]="session" [perspective]="perspective">
 
-  <button *ngIf="feedBackViewStatus==='closed'"   class="waves-effect waves-light btn btn-custom red"
+  <button *ngIf="feedBackViewStatus==='closed'"   class="waves-effect waves-light btn btn-custom teal"
           (click)="toggleFeedbackView()">
     SEE FEEDBACK
     <i class="material-icons right">person</i>
   </button>
 
-  <button *ngIf="feedBackViewStatus === 'open'"  class="waves-effect waves-light btn btn-custom red"
+  <button *ngIf="feedBackViewStatus === 'open'"  class="waves-effect waves-light btn btn-custom teal"
           (click)="toggleFeedbackView()">
     CLOSE FEEDBACK
     <i class="material-icons right">cancel</i>
@@ -56,7 +56,8 @@
       <div class="row">
         <div class="col">
           <div>Sentiment about your explanation</div>
-          <app-smiley-selector [isDisabled]="true" [rating]="session.feedbackForCoach.explanation"></app-smiley-selector>
+          <app-smiley-selector [isDisabled]="true"
+                               [rating]="session.feedbackForCoach.explanation"></app-smiley-selector>
         </div>
         <div class="col">
           <div>Sentiment about the usefulness of the session</div>
@@ -67,14 +68,14 @@
       <div class="row">
         <div class="col">
           <label for="positive2">Things you did well.</label>
-          <textarea id="positive2" disabled>{{session.feedbackForCoachee.positive}}</textarea>
+          <textarea id="positive2" disabled>{{session.feedbackForCoach.positive}}</textarea>
         </div>
       </div>
 
       <div class="row">
         <div class="col">
           <label for="negative2">Things you can get better at</label>
-          <textarea id="negative2" disabled>{{session.feedbackForCoachee.negative}}</textarea>
+          <textarea id="negative2" disabled>{{session.feedbackForCoach.negative}}</textarea>
         </div>
       </div>
 
