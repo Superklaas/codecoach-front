@@ -30,10 +30,11 @@ export class CommonSessionDetailsComponent implements OnInit {
 
   shouldShowInErrorStyle(){
     if (this.session.status === 'WAITING_FEEDBACK'){
-      if (this.perspective === 'coach' && this.session.feedbackForCoach && !this.session.feedbackForCoachee){
+      console.log('feedback for coach', this.session.feedbackForCoach, 'feedback for coachee', this.session.feedbackForCoach);
+      if (this.perspective === 'coach' && this.session.feedbackForCoach !== null && !this.session.feedbackForCoachee){
         return true;
       }
-      if (this.perspective === 'coachee' && this.session.feedbackForCoachee && !this.session.feedbackForCoach){
+      if (this.perspective === 'coachee' && this.session.feedbackForCoachee !== null && !this.session.feedbackForCoach){
         return true;
       }
     }
