@@ -21,13 +21,16 @@ export class EditCoachingTopicsComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigateByUrl(`/dashboard-coach`);
+    this.router.navigateByUrl(`/dashboard-coach/edit-coaching-topics`);
   }
 
   save() {
     this.profileService.refresh()
     .subscribe(
-      _ => this.router.navigateByUrl(`/dashboard-coach`),
+      _ => {
+        alert("Your changes have been saved.");
+        this.router.navigateByUrl(`/dashboard-coach/edit-coaching-topics`);
+      },
       e => this.errorService.throwError(e),
     );
   }

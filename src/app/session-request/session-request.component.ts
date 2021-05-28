@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../authentication/authentication.service";
 import {UserService} from "../service/user.service";
 import {User} from "../model/User";
+import { ErrorService } from '../service/error.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-session-request',
@@ -17,27 +19,34 @@ export class SessionRequestComponent implements OnInit {
 
   public _requestSessionForm = this.formBuilder.group(
     {
-      subject: new FormControl("", [Validators.required]),
+      subject: new FormControl("", [Validators.required, Validators.maxLength(255)]),
       date: new FormControl("", [Validators.required]),
       startTime: new FormControl("", [Validators.required]),
-      location: new FormControl("", [Validators.required]),
-      remarks: new FormControl("", []),
+      location: new FormControl("", [Validators.required, Validators.maxLength(255)]),
+      remarks: new FormControl("", [Validators.maxLength(255)]),
       coachId: new FormControl(this.route.snapshot.paramMap.get('id')),
       coacheeId: new FormControl(this.authenticationService.getId())
     }, {validators: this.timeInThePast});
 
   constructor(private formBuilder: FormBuilder, private sessionService: SessionService, private router: Router,
-              private route: ActivatedRoute, private authenticationService: AuthenticationService, private userService: UserService) {
-  }
+              private route: ActivatedRoute, private authenticationService: AuthenticationService, private userService: UserService,
+              private errorService: ErrorService
+  ) {}
 
   ngOnInit(): void {
     this.getCoach();
   }
 
   private getCoach() {
-    this.userService.get(+this.route.snapshot.paramMap.get('id')).subscribe(
+    this.userService.get(+this.route.snapshot.paramMap.get('id'))
+    .pipe(tap(user => {
+      if (user.role !== 'COACH') {
+        throw new Error("User " + user.profileName + " is not a coach")
+      }
+    }))
+    .subscribe(
       user => this.coach = user,
-      errorResponse => this.alertWrongCoachIdInUrl(errorResponse)
+      errorResponse => this.errorService.throwError(errorResponse.toString())
     );
   }
 
@@ -82,13 +91,9 @@ export class SessionRequestComponent implements OnInit {
       return this.sessionService.create(this._requestSessionForm.value)
         .subscribe(
           () => this.router.navigate([`/user/${this.route.snapshot.paramMap.get('id')}`]),
-          errorResponse => this.alertWrongCoachIdInUrl(errorResponse));
+          errorResponse => this.errorService.throwError(errorResponse.toString()));
     }
   }
 
-  private alertWrongCoachIdInUrl(errorResponse: any) {
-    alert(errorResponse.error.message);
-    this.router.navigate([`/user/${this.authenticationService.getId()}`]);
-  }
 
 }
