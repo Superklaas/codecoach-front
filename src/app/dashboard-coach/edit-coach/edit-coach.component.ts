@@ -11,11 +11,11 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class EditCoachComponent implements OnInit {
 
-  id: number; 
-  
+  id: number;
+
   private _editCoachForm = this.formBuilder.group({
     availability: new FormControl("",[Validators.required]),
-    introduction: new FormControl("",[Validators.required]), 
+    introduction: new FormControl("",[Validators.required]),
   });
 
   constructor(private userService: UserService, private formBuilder: FormBuilder, private authService: AuthenticationService ) { }
@@ -31,7 +31,7 @@ export class EditCoachComponent implements OnInit {
     this.userService.updateCoach(this._editCoachForm.value, +this.id).subscribe(
       (_ => {
         alert("Your changes have been saved");
-        this.ngOnInit();
+        window.location.reload();
       }),
       (error =>  this._editCoachForm.setErrors({serverError: 'oops something went wrong'}))
     );

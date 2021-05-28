@@ -11,7 +11,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class EditUserComponent implements OnInit, AfterViewInit {
 
-  id: number; 
+  id: number;
   _userImage: string;
    roles = ['COACH','COACHEE','ADMIN']
 
@@ -26,7 +26,7 @@ export class EditUserComponent implements OnInit, AfterViewInit {
 
   private _editCoachForm = this.formBuilder.group({
     availability: new FormControl("",),
-    introduction: new FormControl("",), 
+    introduction: new FormControl("",),
   });
 
 
@@ -43,14 +43,14 @@ export class EditUserComponent implements OnInit, AfterViewInit {
       this._editCoachForm.patchValue(user);
       this.initService.initFormSelect();
       this._userImage = user.imageUrl;
-    }); 
+    });
   }
 
   updateProfile() {
     this.userService.update(this._editForm.value, +this.id).subscribe(
       (_ => {
         alert("Your changes have been saved");
-        this.ngOnInit();
+        window.location.reload();
       }),
       (error =>  this._editForm.setErrors({serverError: error.error.message}))
     );
@@ -66,7 +66,7 @@ export class EditUserComponent implements OnInit, AfterViewInit {
     this.userService.updateCoach(this._editCoachForm.value, +this.id).subscribe(
       (_ => {
         alert("Your changes have been saved");
-        this.ngOnInit();
+        window.location.reload();
       }),
       (error =>  this._editCoachForm.setErrors({serverError: 'oops something went wrong'}))
     );
