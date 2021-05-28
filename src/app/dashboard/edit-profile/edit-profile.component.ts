@@ -3,7 +3,6 @@ import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { ProfileService } from 'src/app/service/profile.service';
 import { UserService } from 'src/app/service/user.service';
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-edit-profile',
@@ -20,11 +19,7 @@ export class EditProfileComponent implements OnInit {
     profileName: new FormControl("",[Validators.required]),
     imageUrl: new FormControl("",),
   });
-  constructor(public profileService: ProfileService,
-              private formBuilder: FormBuilder,
-              private userService: UserService,
-              private authService: AuthenticationService,
-              private router: Router) { }
+  constructor(public profileService: ProfileService, private formBuilder: FormBuilder, private userService: UserService, private authService: AuthenticationService) { }
 
 
 
@@ -66,13 +61,15 @@ export class EditProfileComponent implements OnInit {
   }
 
   update() {
-    this.userService.update(this._editForm.value, +this.authService.getId()).subscribe(
-      (_ => {
-        alert("Your changes have been saved.");
-        window.location.reload();
-      }),
-      (error =>  this._editForm.setErrors({serverError: error.error.message}))
-    );
+    if(this._editForm.valid){
+      this.userService.update(this._editForm.value, +this.authService.getId()).subscribe(
+        (_ => {
+          alert("Your changes have been saved.");
+          window.location.reload();
+        }),
+        (error =>  this._editForm.setErrors({serverError: error.error.message}))
+      );
+    }
   }
 
   cancel() {
