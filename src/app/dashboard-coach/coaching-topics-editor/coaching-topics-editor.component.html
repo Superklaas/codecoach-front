@@ -3,10 +3,36 @@
     <h3>Edit coaching topics</h3>
     <form [formGroup]="editForm" (ngSubmit)="update()">
       <div formArrayName="topics">
-        <div *ngFor="let topic of topics.controls; let i = index">
-          <input type="text" [formControlName]="i" maxlength="50">
+        <ng-container *ngFor="let topic of topics.controls; let i = index" class="row">
+          <div class="row">
+            <div class="col-md-9">
+              <input type="text" [formControlName]="i" maxlength="50" class="form-control" list="topiclist1">
+            </div>
+            <div class="col-md-3 right-align">
+              <button (click)="deleteTopic(i)" class="btn">Delete</button>
+            </div>
+          </div>
+          <div class="row alert alert-danger" *ngIf="!topic.valid">
+            Please provide a valid topic
+          </div>
+        </ng-container>
+        <datalist id="topiclist1" *ngIf="topicsFromDatabase$ | async as topics">
+          <option *ngFor="let topic of topics">{{topic.name}}</option>
+        </datalist>
+      </div>
+      <div class="row">
+        <button (click)="addTopic()" class="btn col" [disabled]="!canAddTopic()">Add topic</button>
+      </div>
+      <div class="row right-align">
+        <button type="submit" class="btn" [disabled]="!topics.valid">Save</button>
+        <button (click)="cancelEdit.emit()" class="btn">Cancel</button>
+      </div>
+      <div *ngIf="editForm.errors">
+        <div *ngIf="editForm.errors.serverError" class="alert alert-danger">
+          {{editForm.errors.serverError}}
         </div>
       </div>
     </form>
   </div>
 </div>
+

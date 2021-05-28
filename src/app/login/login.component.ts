@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl("",
       [Validators.required, Validators.minLength(8),
         Validators.pattern(/.*[0-9]+.*/), Validators.pattern(/.*[A-Z]+.*/), Validators.pattern(/.*[a-z]+.*/)]),
-  });;
+  });
 
   constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router) {
   }
