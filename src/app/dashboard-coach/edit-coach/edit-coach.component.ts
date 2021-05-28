@@ -28,13 +28,15 @@ export class EditCoachComponent implements OnInit {
   }
 
   update() {
-    this.userService.updateCoach(this._editCoachForm.value, +this.id).subscribe(
-      (_ => {
-        alert("Your changes have been saved");
-        window.location.reload();
-      }),
-      (error =>  this._editCoachForm.setErrors({serverError: 'oops something went wrong'}))
-    );
+    if(this._editCoachForm.valid){
+      this.userService.updateCoach(this._editCoachForm.value, +this.id).subscribe(
+        (_ => {
+          alert("Your changes have been saved.");
+          window.location.reload();
+        }),
+        (error =>  this._editCoachForm.setErrors({serverError: 'oops something went wrong'}))
+      );
+    }
   }
 
   cancel(){

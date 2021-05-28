@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { InitService } from 'src/app/materialize/init.service';
 import { User } from 'src/app/model/User';
 import { UserService } from 'src/app/service/user.service';
+import {RolePersonalisationService} from "../../service/role-personalisation.service";
 
 @Component({
   selector: 'app-edit-user',
@@ -33,7 +34,7 @@ export class EditUserComponent implements OnInit, AfterViewInit {
   });
 
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private formBuilder: FormBuilder , private initService: InitService) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private formBuilder: FormBuilder , private initService: InitService, private roleStuff: RolePersonalisationService) { }
 
   ngAfterViewInit(): void {
     this.initService.initFormSelect();
@@ -80,6 +81,10 @@ export class EditUserComponent implements OnInit, AfterViewInit {
     this.userService.get(this.id).subscribe(user => {
       this._editCoachForm.patchValue(user);
     });
+  }
+
+  get color() {
+    return this.roleStuff.color;
   }
 
 

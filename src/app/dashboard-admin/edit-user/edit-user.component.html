@@ -103,7 +103,7 @@
         <div class="row border-bottom " *ngFor="let topic of user.topicList">
           <div class="col"><b>{{topic.name}}</b></div>
         </div>
-        <button class="right btn-floating" routerLink="/dashboard-admin/edit/{{id}}/topics">
+        <button [ngClass]="color" class="right btn-floating" routerLink="/dashboard-admin/edit/{{id}}/topics">
           <i class="material-icons center">edit</i>
         </button>
       </div>

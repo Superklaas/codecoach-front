@@ -60,6 +60,10 @@ export class CoachingTopicsEditorComponent implements OnInit {
         error => this.addErrorToForm(error));
   }
 
+  reset(event: any) {
+    event.preventDefault();
+  }
+
   addErrorToForm(errorResponse) {
     this.editForm.setErrors({serverError: errorResponse.error.message});
     console.log(errorResponse);

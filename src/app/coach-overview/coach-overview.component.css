@@ -1,11 +1,31 @@
-.coach {
-  width: 400px;
+.container-fluid {
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .coach-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  max-width: 1280px;
+
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media only screen and (max-width: 1250px)  {
+  .coach-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 850px)  {
+  .coach-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.coach {
+  width: 400px;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 h3 {
