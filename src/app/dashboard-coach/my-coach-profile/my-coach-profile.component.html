@@ -21,7 +21,7 @@
       <div class="row border-bottom " *ngFor="let topic of user.topicList">
         <div class="col"><b>{{topic.name}}</b></div>
       </div>
-      <button [ngClass]="color" class="right btn-floating" routerLink="/dashboard-coach/edit-coaching-topics">
+      <button [ngClass]="color" class="btn-floating right" routerLink="/dashboard-coach/edit-coaching-topics">
         <i class="material-icons center">edit</i>
       </button>
     </div>

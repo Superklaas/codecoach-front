@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/
 
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { UserService } from 'src/app/service/user.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-edit-coach',
@@ -18,7 +19,7 @@ export class EditCoachComponent implements OnInit {
     introduction: new FormControl("",[Validators.required]),
   });
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private authService: AuthenticationService ) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
     this.id = +this.authService.getId();
@@ -30,7 +31,7 @@ export class EditCoachComponent implements OnInit {
   update() {
     this.userService.updateCoach(this._editCoachForm.value, +this.id).subscribe(
       (_ => {
-        alert("Your changes have been saved");
+        alert("Your changes have been saved.");
         window.location.reload();
       }),
       (error =>  this._editCoachForm.setErrors({serverError: 'oops something went wrong'}))
