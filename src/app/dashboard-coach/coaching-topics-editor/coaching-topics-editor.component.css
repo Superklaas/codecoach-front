@@ -1,0 +1,11 @@
+.card {
+  max-width: 600px;
+  width: 100%;
+}
+
+.btn-custom{
+  box-shadow: inset;
+  line-height: 1rem;
+  margin-right: 5px;
+}
+

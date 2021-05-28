@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { User } from 'src/app/model/User';
 import { ProfileService } from 'src/app/service/profile.service';
+import {RolePersonalisationService} from "../../service/role-personalisation.service";
 
 
 @Component({
@@ -11,9 +12,9 @@ import { ProfileService } from 'src/app/service/profile.service';
   styleUrls: ['./my-profile.component.css']
 })
 export class MyProfileComponent implements OnInit {
-  
+
   user: User;
-  constructor(public profileService: ProfileService) { }
+  constructor(public profileService: ProfileService, private roleStuff: RolePersonalisationService) { }
 
   ngOnInit(): void {
     this.profileService.currentUser$.subscribe(user => this.user = user);
@@ -23,6 +24,10 @@ export class MyProfileComponent implements OnInit {
       return "assets/images/default-person.png";
     }
     return this.user.imageUrl;
+  }
+
+  get color() {
+    return this.roleStuff.color;
   }
 
 }

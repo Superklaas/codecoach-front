@@ -12,7 +12,7 @@
               <div class="row">
                 <div class="col">
                   <input type="text" class="form-control" placeholder="First name" formControlName="firstName"
-                         aria-label="First name">
+                    aria-label="First name">
                   <div *ngIf="wrongInputHasBeenTyped(firstName)" class="alert alert-danger">
                     <div *ngIf="firstName.errors.required">First name is required.</div>
                   </div>
@@ -20,7 +20,7 @@
 
                 <div class="col">
                   <input type="text" class="form-control" placeholder="Last name" formControlName="lastName"
-                         aria-label="Last name">
+                    aria-label="Last name">
                   <div *ngIf="wrongInputHasBeenTyped(lastName)" class="alert alert-danger">
                     <div *ngIf="lastName.errors.required">Last name is required.</div>
                   </div>
@@ -31,7 +31,7 @@
                 <div class="col">
                   <label for="profile-name">Profile Name (This is the name other users will see.)</label>
                   <input id="profile-name" type="text" class="form-control" formControlName="profileName"
-                         aria-label="profile name">
+                    aria-label="profile name">
                   <div *ngIf="wrongInputHasBeenTyped(profileName)" class="alert alert-danger">
                     <div *ngIf="profileName.errors.required">Profile name is required.</div>
                   </div>
@@ -42,24 +42,24 @@
                 <div class="col">
                   <label for="email">Email</label>
                   <input id="email" type="email" class="form-control" placeholder="" formControlName="email"
-                         aria-label="email">
+                    aria-label="email">
                   <div *ngIf="wrongInputHasBeenTyped(email)" class="alert alert-danger">
                     <div *ngIf="email.errors.required">Email is required.</div>
                     <div *ngIf="email.errors.pattern">Not a valid email</div>
                   </div>
 
-              </div>
+                </div>
               </div>
 
               <div class="row">
                 <div class="col">
                   <input type="password" class="form-control" placeholder="Password" formControlName="password"
-                         aria-label="password">
+                    aria-label="password">
                   <div *ngIf="wrongInputHasBeenTyped(password)" class="alert alert-danger">
                     <div *ngIf="password.errors.required">Password is required.</div>
-                    <div *ngIf="password.errors.pattern">Not a valid password: you need at least a number, an upper case letter and
-                     a lower case letter
-                    </div>
+                    <div *ngIf="password.errors.pattern || password.errors.minlength">
+                      Not a valid password: you need at least 8 characters including a number, an upper case letter, a
+                      lower case letter. </div>
                   </div>
                 </div>
               </div>
@@ -68,10 +68,11 @@
               <div class="row">
                 <div class="col">
                   <input type="password" class="form-control" placeholder="Repeat password" formControlName="password2"
-                         aria-label="repeat password">
+                    aria-label="repeat password">
 
-                  <div *ngIf="registerForm.errors!=null && hasAllBeenTouched(password,password2) && registerForm.errors.notSame"
-                       class="alert alert-danger">
+                  <div
+                    *ngIf="registerForm.errors!=null && hasAllBeenTouched(password,password2) && registerForm.errors.notSame"
+                    class="alert alert-danger">
                     <div>Passwords don't match.</div>
                   </div>
                 </div>
@@ -80,13 +81,13 @@
 
               <div class="row right-align">
                 <button type="submit" class="waves-effect waves-light yellow darken-2 btn-large black-text">Register<i
-                  class="material-icons right">send</i></button>
+                    class="material-icons right">send</i></button>
               </div>
 
-              <div *ngIf="registerForm.errors" >
-              <div *ngIf="registerForm.errors.serverError" class="alert alert-danger">
-                {{registerForm.errors.serverError}}
-              </div>
+              <div *ngIf="registerForm.errors">
+                <div *ngIf="registerForm.errors.serverError" class="alert alert-danger">
+                  {{registerForm.errors.serverError}}
+                </div>
               </div>
 
             </form>

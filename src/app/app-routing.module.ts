@@ -14,8 +14,21 @@ import { SessionRequestComponent } from "./session-request/session-request.compo
 import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach-dashboard.component';
 import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
 import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
-import {CoachSessionsComponent} from "./dashboard-coach/coach-sessions/coach-sessions.component";
-import {AuthorizationGuard} from "./authorization/authorization.guard";
+import { CoachSessionsComponent } from "./dashboard-coach/coach-sessions/coach-sessions.component";
+import { AuthorizationGuard } from "./authorization/authorization.guard";
+import { EasterEggComponent } from './easter-egg/easter-egg.component';
+import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
+import { ResetPasswordComponent } from "./reset-password/reset-password.component";
+import { EditProfileComponent } from './dashboard/edit-profile/edit-profile.component';
+import { EditCoachingTopicsComponent } from "./dashboard-coach/edit-coaching-topics/edit-coaching-topics.component";
+import { AdminDashboardComponent } from './dashboard-admin/admin-dashboard/admin-dashboard.component';
+import { UserOverviewComponent } from './dashboard-admin/user-overview/user-overview.component';
+import { AdminGuard } from './authorization/admin.guard';
+import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.component';
+import { EditCoachComponent } from './dashboard-coach/edit-coach/edit-coach.component';
+import { ErrorComponent } from './error/error.component';
+import { EditCoachTopicsByAdminComponent } from './dashboard-admin/edit-coach-topics-by-admin/edit-coach-topics-by-admin.component';
+
 
 
 
@@ -25,23 +38,19 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, },
   { path: 'home', component: HomeComponent, },
   { path: 'register', component: RegisterComponent, },
+  { path: 'egg', component: EasterEggComponent, canActivate: [AuthenticationGuard], },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'error', component: ErrorComponent },
   {
     path: 'dashboard',
     component: UserDashboardComponent,
     canActivate: [AuthenticationGuard],
     children: [
-      {
-        path: '', // child route path
-        component: MyProfileComponent, // child route component that the router renders
-      },
-      {
-        path: 'become-coach',
-        component: BecomeCoachComponent,
-      },
-      {
-        path: 'coachee-sessions',
-        component: CoacheeSessionsComponent
-      }
+      { path: '', component: MyProfileComponent, },
+      { path: 'become-coach', component: BecomeCoachComponent, },
+      { path: 'coachee-sessions', component: CoacheeSessionsComponent },
+      { path: 'edit-profile', component: EditProfileComponent }
     ]
   },
   {
@@ -50,12 +59,24 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard, AuthorizationGuard],
     children: [
       { path: '', component: MyCoachProfileComponent },
-      { path: 'coach-sessions', component: CoachSessionsComponent}
+      { path: 'coach-sessions', component: CoachSessionsComponent },
+      { path: 'edit-coaching-topics', component: EditCoachingTopicsComponent },
+      { path: 'edit-coach-profile', component: EditCoachComponent }
     ]
   },
-  { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard],},
+  {
+    path: 'dashboard-admin',
+    component: AdminDashboardComponent,
+    canActivate: [AuthenticationGuard, AuthorizationGuard, AdminGuard],
+    children: [
+      { path: '', component: UserOverviewComponent },
+      { path: 'edit/:id', component: EditUserComponent },
+      { path: 'edit/:id/topics', component: EditCoachTopicsByAdminComponent },
+    ]
+  },
+  { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard], },
   { path: 'coaches', component: CoachOverviewComponent, canActivate: [AuthenticationGuard], },
-  { path: 'create-session/:id', component: SessionRequestComponent, canActivate: [AuthenticationGuard],  }
+  { path: 'create-session/:id', component: SessionRequestComponent, canActivate: [AuthenticationGuard], }
 ];
 
 @NgModule({

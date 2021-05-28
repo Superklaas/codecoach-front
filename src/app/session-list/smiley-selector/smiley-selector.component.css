@@ -1,0 +1,12 @@
+.smiley{
+  color: #999999;
+}
+
+.not-disabled:hover{
+  color: orange !important;
+  cursor: pointer;
+}
+
+.active{
+  color: orange;
+}

@@ -3,7 +3,7 @@
     width: 100%;
 }
 
-@media (max-width: 767px) { 
+@media (max-width: 767px) {
     .card-body h3 {
         text-align: center;
         font-size: 1.7em;

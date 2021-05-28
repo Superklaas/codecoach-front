@@ -18,28 +18,18 @@
             <i class="material-icons right">person</i>
           </a>
         </li>
+
          <!-- If logged in -->
-
          <ng-container *ngIf="isLoggedIn">
+            <li><a routerLink="/dashboard">Dashboard</a></li>
 
-            <li>
-              <a class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/dashboard">
-                <div>Dashboard</div>
-                <i class="material-icons right">person</i>
-              </a>
-            </li>
-            <li>
-            <a  class="waves-effect waves-light teal lighten-3 btn black-text" (click)="logout()">
-              <div>Logout</div>
-              <i class="material-icons right">autorenew</i>
-            </a>
-            </li>
+            <app-dropdown [username]="username" [role]="role"></app-dropdown>
         </ng-container>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
-        
-        <li *ngIf="username" class="welcome-msg">
+
+        <li *ngIf="isLoggedIn" class="welcome-msg">
           Welcome {{username}}
         </li>
 
@@ -49,19 +39,19 @@
         </a></li>
 
 
-        <ng-container *ngIf="!username">
+        <ng-container *ngIf="!isLoggedIn">
           <li routerLink="/login"><a  class="waves-effect waves-light amber lighten-4 btn black-text">
             Sign in
             <i class="material-icons right">person</i>
           </a></li>
-  
+
           <li routerLink="/register"><a  class="waves-effect waves-light amber lighten-4 btn black-text">
             Register<i class="material-icons right">person</i>
           </a></li>
         </ng-container>
 
 
-        <ng-container *ngIf="username">
+        <ng-container *ngIf="isLoggedIn">
 
           <!-- If logged in -->
           <li  routerLink="/dashboard"><a class="waves-effect waves-light amber lighten-4 btn black-text">
@@ -75,15 +65,22 @@
 
           <li  *ngIf="role==='ADMIN' || role==='COACH'">
             <a class="waves-effect waves-light light-blue lighten-4 btn black-text" aria-current="page" routerLink="/dashboard-coach" routerLinkActive="active">
-              My Coach Profile
+              Coach Dashboard
               <i class="material-icons right">school</i>
+            </a>
+          </li>
+
+          <li  *ngIf="role==='ADMIN'">
+            <a class="waves-effect waves-light deep-purple lighten-4 btn black-text" aria-current="page" routerLink="/dashboard-admin" routerLinkActive="active">
+              Admin Dashboard
+              <i class="material-icons right">lock</i>
             </a>
           </li>
 
           <li  (click)="logout()"><a class="waves-effect waves-light teal lighten-4 btn black-text">
             Logout <i class="material-icons right">autorenew</i>
           </a></li>
-      
+
         </ng-container>
 
 
