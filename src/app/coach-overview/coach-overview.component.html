@@ -3,7 +3,7 @@
   <div class="coach" *ngFor="let coach of coaches">
     <h3>{{coach.profileName}}</h3>
     <div class="coach-card">
-      
+
       <div class="image-wrapper">
         <img src="{{coach.imageUrl}}">
       </div>
@@ -14,7 +14,7 @@
         </ul>
       </div>
       <button class="round-button yellow darken-2" routerLink="/user/{{coach.id}}">
-        <i class="material-icons center">send</i>
+        <i class="material-icons center white-text">send</i>
       </button>
     </div>
   </div>
