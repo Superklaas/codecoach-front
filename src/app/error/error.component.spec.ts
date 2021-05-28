@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ErrorService } from '../service/error.service';
 
 import { ErrorComponent } from './error.component';
 
@@ -8,7 +9,10 @@ describe('ErrorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorComponent ]
+      declarations: [ ErrorComponent ],
+      providers: [
+        {provide: ErrorService, useValue: {message: "Dummy Message"}}
+      ]
     })
     .compileComponents();
   });
