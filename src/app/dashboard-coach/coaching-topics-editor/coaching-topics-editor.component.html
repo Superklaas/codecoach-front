@@ -9,7 +9,7 @@
               <input type="text" [formControlName]="i" maxlength="50" class="form-control" list="topiclist1">
             </div>
             <div class="col-md-3 right-align">
-              <button (click)="deleteTopic(i)" class="btn">Delete</button>
+              <button [ngClass]="color" (click)="deleteTopic(i)" class="btn">Delete</button>
             </div>
           </div>
           <div class="row alert alert-danger" *ngIf="!topic.valid">
@@ -21,7 +21,7 @@
         </datalist>
       </div>
       <div class="row">
-        <button (click)="addTopic()" class="btn col" [disabled]="!canAddTopic()">Add topic</button>
+        <button [ngClass]="color" (click)="addTopic()" class="btn col" [disabled]="!canAddTopic()">Add topic</button>
       </div>
       <div class="row">
         <div class="right-align">
