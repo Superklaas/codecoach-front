@@ -5,6 +5,23 @@
     <div class="row">
       <div class="col s12 m12">
         <h1 class="center teal-text lighten-3">Request a session</h1>
+
+        <h3>With coach: <span *ngIf="coach">{{ coach.profileName }}</span></h3>
+        <h3>
+          Topics:
+          <ng-container *ngIf="coach">
+            <ng-container *ngIf="coach.topicList.length > 0; else notopics">
+              <span *ngFor="let topic of coach.topicList; let last = last;">
+                {{ topic.name }}
+                <ng-container *ngIf="!last">, </ng-container>
+              </span>
+            </ng-container>
+            <ng-template #notopics>
+              no topics provided
+            </ng-template>
+          </ng-container>
+        </h3>
+
         <div class="content-container-with-padding z-depth-4">
           <div class="row">
             <form class="col s12" [formGroup]="requestSessionForm" (ngSubmit)="submit()">

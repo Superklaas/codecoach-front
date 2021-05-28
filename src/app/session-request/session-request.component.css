@@ -1,0 +1,9 @@
+h3 {
+  text-align: center;
+  font-size: 1.3em;
+  color: #CCC;
+}
+
+h3 span {
+  color: #AAA;
+}

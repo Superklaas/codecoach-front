@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "../app-routing.module";
 import {AuthenticationService} from "../authentication/authentication.service";
+import { ErrorService } from '../service/error.service';
 
 describe('SessionRequestComponent', () => {
   let component: SessionRequestComponent;
@@ -19,7 +20,14 @@ describe('SessionRequestComponent', () => {
         RouterModule,
         AppRoutingModule],
       declarations: [ SessionRequestComponent ],
-      providers: [{provide: AuthenticationService, useValue: {getId(){ return 1 }}}]
+      providers: [
+        {
+        provide: AuthenticationService, useValue: {getId(){ return 1 }}
+        }, {
+          provide: ErrorService,
+          useValue: {},
+        }
+      ]
     })
     .compileComponents();
   });

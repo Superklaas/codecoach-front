@@ -10,8 +10,12 @@
         </div>
         <div class="topic-wrapper">
           <h4>Topics</h4>
+
           <ul>
             <li *ngFor="let topic of coach.topicList">{{topic.name}}</li>
+            <li *ngIf="coach.topicList.length == 0">
+              <em>No known topics</em>
+            </li>
           </ul>
         </div>
         <button class="round-button yellow darken-2" routerLink="/user/{{coach.id}}">
