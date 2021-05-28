@@ -44,6 +44,7 @@ import { DropdownComponent } from './layout/dropdown/dropdown.component';
 import { EditCoachComponent } from './dashboard-coach/edit-coach/edit-coach.component';
 import { CoachingTopicsEditorComponent } from './dashboard-coach/coaching-topics-editor/coaching-topics-editor.component';
 import { FeedbackReceivedDetailsComponent } from './session-list/feedback-received-details/feedback-received-details.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { FeedbackReceivedDetailsComponent } from './session-list/feedback-receiv
     FeedbackReceivedDetailsComponent,
     EditCoachComponent,
     CoachingTopicsEditorComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
