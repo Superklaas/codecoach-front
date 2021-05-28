@@ -23,9 +23,15 @@
       <div class="row">
         <button (click)="addTopic()" class="btn col" [disabled]="!canAddTopic()">Add topic</button>
       </div>
-      <div class="row right-align">
-        <button type="submit" class="btn" [disabled]="!topics.valid">Save</button>
-        <button (click)="cancelEdit.emit()" class="btn">Cancel</button>
+      <div class="row">
+        <div class="right-align">
+          <button type="submit" class="waves-effect waves-light btn btn-custom green col-md-3" [disabled]="!topics.valid">
+            Save<i class="material-icons right">check_circle</i>
+          </button>
+          <button (click)="cancelEdit.emit()" class="waves-effect waves-light btn btn-custom red accent-4 col-md-3">
+            Cancel<i class="material-icons right">cancel</i>
+          </button>
+        </div>
       </div>
       <div *ngIf="editForm.errors">
         <div *ngIf="editForm.errors.serverError" class="alert alert-danger">
