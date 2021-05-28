@@ -19,11 +19,12 @@ describe('CoachingTopicsEditorComponent', () => {
         { provide: UserService, useValue: {}},
         { provide: TopicService, useValue: {
           getAllTopics() { return new Subject() }
-        }}
+        }},
       ],
       imports: [
         FormsModule,
         ReactiveFormsModule,
+        RouterTestingModule,
       ]
     })
     .compileComponents();
