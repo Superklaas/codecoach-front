@@ -15,15 +15,17 @@
       </button>
     </div>
   </div>
-  <div class="card">
+  <div class="card" *ngIf="!topicEditor">
     <div class="card-body">
       <h3 class="border-bottom ">Coaching Topics</h3>
       <div class="row border-bottom " *ngFor="let topic of user.topicList">
         <div class="col"><b>{{topic.name}}</b></div>
       </div>
-      <button [ngClass]="color" class="btn-floating right" routerLink="/dashboard-coach/edit-coaching-topics">
+      <button [ngClass]="color" class="btn-floating right" (click)="openTopicsEditor()">
         <i class="material-icons center">edit</i>
       </button>
     </div>
   </div>
+  <app-coaching-topics-editor *ngIf="topicEditor&& user" [user]="user" (cancelEdit)="closeTopicEditor(false)" (saved)="closeTopicEditor(true)"></app-coaching-topics-editor>
+
 </div>

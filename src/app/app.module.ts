@@ -36,7 +36,6 @@ import { WaitingFeedbackCoacheeSessionDetailsComponent } from './session/session
 import { CoachFeedbackFormComponent } from './session/session-list/coach-feedback-form/coach-feedback-form.component';
 import { SmileySelectorComponent } from './session/session-list/smiley-selector/smiley-selector.component';
 import { CoacheeFeedbackFormComponent } from './session/session-list/coachee-feedback-form/coachee-feedback-form.component';
-import { EditCoachingTopicsComponent } from './dashboards/dashboard-coach/edit-coaching-topics/edit-coaching-topics.component';
 import { AdminDashboardComponent } from './dashboards/dashboard-admin/admin-dashboard/admin-dashboard.component';
 import { UserOverviewComponent } from './dashboards/dashboard-admin/user-overview/user-overview.component';
 import { EditUserComponent } from './dashboards/dashboard-admin/edit-user/edit-user.component';
@@ -81,7 +80,6 @@ import { ErrorComponent } from './utility/error/error.component';
     SmileySelectorComponent,
     CoacheeFeedbackFormComponent,
     RequestedCoachSessionDetailsComponent,
-    EditCoachingTopicsComponent,
     AdminDashboardComponent,
     UserOverviewComponent,
     EditUserComponent,

@@ -65,6 +65,7 @@ export class CoachingTopicsEditorComponent implements OnInit {
 
   reset(event: any) {
     event.preventDefault();
+    this.cancelEdit.emit();
   }
 
   addErrorToForm(errorResponse) {

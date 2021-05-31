@@ -21,7 +21,6 @@ import { EditProfileComponent } from './dashboards/dashboard-coachee/edit-profil
 import { CoachDashboardComponent } from './dashboards/dashboard-coach/coach-dashboard/coach-dashboard.component';
 import { MyCoachProfileComponent } from './dashboards/dashboard-coach/my-coach-profile/my-coach-profile.component';
 import { CoachSessionsComponent } from './dashboards/dashboard-coach/coach-sessions/coach-sessions.component';
-import { EditCoachingTopicsComponent } from './dashboards/dashboard-coach/edit-coaching-topics/edit-coaching-topics.component';
 import { EditCoachComponent } from './dashboards/dashboard-coach/edit-coach/edit-coach.component';
 import { AdminDashboardComponent } from './dashboards/dashboard-admin/admin-dashboard/admin-dashboard.component';
 import { UserOverviewComponent } from './dashboards/dashboard-admin/user-overview/user-overview.component';
@@ -56,7 +55,6 @@ const routes: Routes = [
     children: [
       { path: '', component: MyCoachProfileComponent },
       { path: 'coach-sessions', component: CoachSessionsComponent },
-      { path: 'edit-coaching-topics', component: EditCoachingTopicsComponent },
       { path: 'edit-coach-profile', component: EditCoachComponent }
     ]
   },

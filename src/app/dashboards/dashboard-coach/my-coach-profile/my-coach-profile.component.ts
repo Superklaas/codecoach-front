@@ -15,6 +15,8 @@ import {AuthenticationService} from "../../../authentication/authentication.serv
 export class MyCoachProfileComponent implements OnInit {
 
   user: User;
+  topicEditor: boolean;
+
   constructor(private userService: UserService, private authService: AuthenticationService, private roleStuff: RolePersonalisationService) { }
 
   ngOnInit(): void {
@@ -26,6 +28,17 @@ export class MyCoachProfileComponent implements OnInit {
     this.userService.get(+id).subscribe(user => {
       this.user = user;
     });
+  }
+
+  openTopicsEditor() {
+    this.topicEditor = true;
+  }
+
+  closeTopicEditor(saved: boolean) {
+    this.topicEditor = false;
+    if (saved) {
+      this.displayUser();
+    }
   }
 
   get color() {
