@@ -2,7 +2,6 @@
 import { Component,  OnInit } from '@angular/core';
 
 import { User } from 'src/app/utility/model/User';
-import { ProfileService } from 'src/app/utility/service/profile.service';
 import { RolePersonalisationService } from 'src/app/utility/service/role-personalisation.service';
 import {UserService} from "../../../utility/service/user.service";
 import {AuthenticationService} from "../../../authentication/authentication.service";
