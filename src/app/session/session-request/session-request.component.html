@@ -36,7 +36,7 @@
                          aria-label="subject">
 
                   <div *ngIf="wrongInputHasBeenTyped(subject)" class="alert alert-danger">
-                    <div *ngIf="subject.errors.required">Subject is required.</div>
+                    <div *ngIf="subject.errors.required || subject.errors.whitespace">Subject is required.</div>
                   </div>
 
                 </div>
@@ -72,7 +72,7 @@
                          formControlName="location"
                          aria-label="location">
                   <div *ngIf="wrongInputHasBeenTyped(location)" class="alert alert-danger">
-                    <div *ngIf="location.errors.required">Location is required.</div>
+                    <div *ngIf="location.errors.required || location.errors.whitespace">Location is required.</div>
                   </div>
                 </div>
               </div>

@@ -10,7 +10,7 @@
 
                 <div class="row">
                     <div *ngIf="wrongInputHasBeenTyped(introduction)" class="alert alert-danger">
-                        <div *ngIf="introduction.errors.required">Introduction is required.</div>
+                        <div *ngIf="introduction.errors">Introduction is required.</div>
                     </div>
                 </div>
                 <div class="row border-bottom ">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="row">
                     <div *ngIf="wrongInputHasBeenTyped(availability)" class="alert alert-danger">
-                        <div *ngIf="availability.errors.required">Availability is required.</div>
+                        <div *ngIf="availability.errors">Availability is required.</div>
                     </div>
                 </div>
             </form>
