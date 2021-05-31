@@ -26,7 +26,6 @@ import { EditCoachComponent } from './dashboards/dashboard-coach/edit-coach/edit
 import { AdminDashboardComponent } from './dashboards/dashboard-admin/admin-dashboard/admin-dashboard.component';
 import { UserOverviewComponent } from './dashboards/dashboard-admin/user-overview/user-overview.component';
 import { EditUserComponent } from './dashboards/dashboard-admin/edit-user/edit-user.component';
-import { EditCoachTopicsByAdminComponent } from './dashboards/dashboard-admin/edit-coach-topics-by-admin/edit-coach-topics-by-admin.component';
 import { SessionRequestComponent } from './session/session-request/session-request.component';
 
 
@@ -67,8 +66,7 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard, AuthorizationGuard, AdminGuard],
     children: [
       { path: '', component: UserOverviewComponent },
-      { path: 'edit/:id', component: EditUserComponent },
-      { path: 'edit/:id/topics', component: EditCoachTopicsByAdminComponent },
+      { path: 'edit/:id', component: EditUserComponent }
     ]
   },
   { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard], },

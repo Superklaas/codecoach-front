@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { User } from 'src/app/utility/model/User';
 import { InitService } from 'src/app/utility/service/materialize/init.service';
 import { RolePersonalisationService } from 'src/app/utility/service/role-personalisation.service';
 import { UserService } from 'src/app/utility/service/user.service';
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -17,7 +18,8 @@ export class EditUserComponent implements OnInit, AfterViewInit {
 
   id: number;
   _userImage: string;
-   roles = ['COACH','COACHEE','ADMIN']
+   roles = ['COACH','COACHEE','ADMIN'];
+   areTopicsBeingEdited;
 
    user: User;
 
@@ -36,13 +38,22 @@ export class EditUserComponent implements OnInit, AfterViewInit {
   });
 
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private formBuilder: FormBuilder , private initService: InitService, private roleStuff: RolePersonalisationService) { }
+  constructor(private userService: UserService,
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder ,
+              private initService: InitService,
+              private roleStuff: RolePersonalisationService,
+              private router: Router) { }
 
   ngAfterViewInit(): void {
     this.initService.initFormSelect();
   }
 
   ngOnInit(): void {
+    this.displayUser();
+  }
+
+  displayUser(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.userService.get(this.id).subscribe(user => {
       this.user = user;
@@ -50,14 +61,20 @@ export class EditUserComponent implements OnInit, AfterViewInit {
       this._editCoachForm.patchValue(user);
       this.initService.initFormSelect();
       this._userImage = user.imageUrl;
+      this.areTopicsBeingEdited = false;
     });
+  }
+
+  edit():void {
+    this.areTopicsBeingEdited = true;
   }
 
   updateProfile() {
     this.userService.update(this._editForm.value, +this.id).subscribe(
       (_ => {
         alert("Your changes have been saved");
-        window.location.reload();
+        this.displayUser();
+        this.areTopicsBeingEdited = false;
       }),
       (error =>  this._editForm.setErrors({serverError: error.error.message}))
     );
