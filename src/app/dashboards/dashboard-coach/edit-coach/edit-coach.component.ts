@@ -16,8 +16,8 @@ export class EditCoachComponent implements OnInit {
 
 
   private _editCoachForm = this.formBuilder.group({
-    availability: new FormControl("",[Validators.required]),
-    introduction: new FormControl("",[Validators.required]),
+    availability: new FormControl("",[Validators.required, this.noWhitespaceValidator]),
+    introduction: new FormControl("",[Validators.required, this.noWhitespaceValidator]),
   });
 
   constructor(public profileService: ProfileService, private userService: UserService, private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router) { }
@@ -69,6 +69,12 @@ export class EditCoachComponent implements OnInit {
       return false;
     }
     return input.invalid && (input.dirty || input.touched);
+  }
+
+  public noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
   }
 
 }

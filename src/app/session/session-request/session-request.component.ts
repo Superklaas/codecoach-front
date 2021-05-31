@@ -22,10 +22,10 @@ export class SessionRequestComponent implements OnInit {
 
   public _requestSessionForm = this.formBuilder.group(
     {
-      subject: new FormControl("", [Validators.required, Validators.maxLength(255)]),
+      subject: new FormControl("", [Validators.required, Validators.maxLength(255), this.noWhitespaceValidator]),
       date: new FormControl("", [Validators.required]),
       startTime: new FormControl("", [Validators.required]),
-      location: new FormControl("", [Validators.required, Validators.maxLength(255)]),
+      location: new FormControl("", [Validators.required, Validators.maxLength(255), this.noWhitespaceValidator]),
       remarks: new FormControl("", [Validators.maxLength(255)]),
       coachId: new FormControl(this.route.snapshot.paramMap.get('id')),
       coacheeId: new FormControl(this.authenticationService.getId())
@@ -98,5 +98,10 @@ export class SessionRequestComponent implements OnInit {
     }
   }
 
+  public noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+  }
 
 }

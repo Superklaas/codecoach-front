@@ -15,10 +15,10 @@ export class EditProfileComponent implements OnInit {
 
   userImageUrl: string;
   private _editForm = this.formBuilder.group({
-    firstName: new FormControl("",[Validators.required]),
-    lastName: new FormControl("",[Validators.required]),
-    email: new FormControl("",[Validators.required, Validators.pattern(/.*@.*/)]),
-    profileName: new FormControl("",[Validators.required]),
+    firstName: new FormControl("",[Validators.required, this.noWhitespaceValidator]),
+    lastName: new FormControl("",[Validators.required, this.noWhitespaceValidator]),
+    email: new FormControl("",[Validators.required, this.noWhitespaceValidator, Validators.pattern(/.*@.*/)]),
+    profileName: new FormControl("",[Validators.required, this.noWhitespaceValidator]),
     imageUrl: new FormControl("",),
   });
   constructor(public profileService: ProfileService,
@@ -94,6 +94,12 @@ export class EditProfileComponent implements OnInit {
       return false;
     }
     return input.invalid && (input.dirty || input.touched);
+  }
+
+  public noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
   }
 
 }
