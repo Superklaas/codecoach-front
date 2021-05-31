@@ -1,36 +1,33 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from "./register/register.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
-import { MyProfileComponent } from './dashboard/my-profile/my-profile.component';
-import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
 import { AuthenticationGuard } from './authentication/authentication.guard';
 import { CoachOverviewComponent } from "./coach-overview/coach-overview.component";
-import { BecomeCoachComponent } from "./dashboard/become-coach/become-coach.component";
-import { SessionRequestComponent } from "./session-request/session-request.component";
-import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach-dashboard.component';
-import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
-import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
-import { CoachSessionsComponent } from "./dashboard-coach/coach-sessions/coach-sessions.component";
 import { AuthorizationGuard } from "./authorization/authorization.guard";
 import { EasterEggComponent } from './easter-egg/easter-egg.component';
-import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
-import { ResetPasswordComponent } from "./reset-password/reset-password.component";
-import { EditProfileComponent } from './dashboard/edit-profile/edit-profile.component';
-import { EditCoachingTopicsComponent } from "./dashboard-coach/edit-coaching-topics/edit-coaching-topics.component";
-import { AdminDashboardComponent } from './dashboard-admin/admin-dashboard/admin-dashboard.component';
-import { UserOverviewComponent } from './dashboard-admin/user-overview/user-overview.component';
 import { AdminGuard } from './authorization/admin.guard';
-import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.component';
-import { EditCoachComponent } from './dashboard-coach/edit-coach/edit-coach.component';
-import { ErrorComponent } from './error/error.component';
-import { EditCoachTopicsByAdminComponent } from './dashboard-admin/edit-coach-topics-by-admin/edit-coach-topics-by-admin.component';
-
-
-
+import { LoginComponent } from './login-register-password/login/login.component';
+import { RegisterComponent } from './login-register-password/register/register.component';
+import { ForgotPasswordComponent } from './login-register-password/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './login-register-password/reset-password/reset-password.component';
+import { ErrorComponent } from './utility/error/error.component';
+import { UserDashboardComponent } from './dashboards/dashboard-coachee/user-dashboard/user-dashboard.component';
+import { MyProfileComponent } from './dashboards/dashboard-coachee/my-profile/my-profile.component';
+import { BecomeCoachComponent } from './dashboards/dashboard-coachee/become-coach/become-coach.component';
+import { CoacheeSessionsComponent } from './dashboards/dashboard-coachee/coachee-sessions/coachee-sessions.component';
+import { EditProfileComponent } from './dashboards/dashboard-coachee/edit-profile/edit-profile.component';
+import { CoachDashboardComponent } from './dashboards/dashboard-coach/coach-dashboard/coach-dashboard.component';
+import { MyCoachProfileComponent } from './dashboards/dashboard-coach/my-coach-profile/my-coach-profile.component';
+import { CoachSessionsComponent } from './dashboards/dashboard-coach/coach-sessions/coach-sessions.component';
+import { EditCoachingTopicsComponent } from './dashboards/dashboard-coach/edit-coaching-topics/edit-coaching-topics.component';
+import { EditCoachComponent } from './dashboards/dashboard-coach/edit-coach/edit-coach.component';
+import { AdminDashboardComponent } from './dashboards/dashboard-admin/admin-dashboard/admin-dashboard.component';
+import { UserOverviewComponent } from './dashboards/dashboard-admin/user-overview/user-overview.component';
+import { EditUserComponent } from './dashboards/dashboard-admin/edit-user/edit-user.component';
+import { EditCoachTopicsByAdminComponent } from './dashboards/dashboard-admin/edit-coach-topics-by-admin/edit-coach-topics-by-admin.component';
+import { SessionRequestComponent } from './session/session-request/session-request.component';
 
 
 const routes: Routes = [

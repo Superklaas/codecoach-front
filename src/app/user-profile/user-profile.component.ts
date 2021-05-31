@@ -1,10 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+
 import { AuthenticationService } from '../authentication/authentication.service';
-import { User } from '../model/User';
-import { UserService } from '../service/user.service';
+import { User } from '../utility/model/User';
+import { UserService } from '../utility/service/user.service';
+
 
 @Component({
   selector: 'app-user-profile',

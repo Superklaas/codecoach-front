@@ -1,51 +1,52 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS,  HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 import {AuthenticationInterceptor} from './authentication/authentication.interceptor';
-import {LoginComponent} from './login/login.component';
 import {AppRoutingModule} from './app-routing.module';
 import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NavigationBarComponent } from './layout/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { MyProfileComponent } from './dashboard/my-profile/my-profile.component';
-import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
-import { UserMenuComponent } from './user-menu/user-menu.component';
 import { CoachOverviewComponent } from './coach-overview/coach-overview.component';
-import { BecomeCoachComponent } from './dashboard/become-coach/become-coach.component';
-import { SessionRequestComponent } from './session-request/session-request.component';
-import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach-dashboard.component';
-import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
-import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
-import { CoachSessionsComponent } from './dashboard-coach/coach-sessions/coach-sessions.component';
-import { RemoveUnderscorePipe } from './pipe/remove-underscore.pipe';
 import { EasterEggComponent } from './easter-egg/easter-egg.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { EditProfileComponent } from './dashboard/edit-profile/edit-profile.component';
-import { SessionListItemComponent } from './session-list/session-list-item/session-list-item.component';
-import { CommonSessionDetailsComponent } from './session-list/common-session-details/common-session-details.component';
-import { RequestedCoachSessionDetailsComponent } from './session-list/requested-coach-session-details/requested-coach-session-details.component';
-import { EditCoachingTopicsComponent } from './dashboard-coach/edit-coaching-topics/edit-coaching-topics.component';
-import { WaitingFeedbackCoachSessionDetailsComponent } from './session-list/waiting-feedback-coach-session-details/waiting-feedback-coach-session-details.component';
-import { CoachFeedbackFormComponent } from './session-list/coach-feedback-form/coach-feedback-form.component';
-import { SmileySelectorComponent } from './session-list/smiley-selector/smiley-selector.component';
-import { WaitingFeedbackCoacheeSessionDetailsComponent } from "./session-list/waiting-feedback-coachee-session-details/waiting-feedback-coachee-session-details.component";
-import { CoacheeFeedbackFormComponent } from './session-list/coachee-feedback-form/coachee-feedback-form.component';
-import { AdminDashboardComponent } from './dashboard-admin/admin-dashboard/admin-dashboard.component';
-import { UserOverviewComponent } from './dashboard-admin/user-overview/user-overview.component';
-import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.component';
-import { CancellableSessionDetailsComponent } from './session-list/cancellable-session-details/cancellable-session-details.component';
 import { DropdownComponent } from './layout/dropdown/dropdown.component';
-import { EditCoachComponent } from './dashboard-coach/edit-coach/edit-coach.component';
-import { CoachingTopicsEditorComponent } from './dashboard-coach/coaching-topics-editor/coaching-topics-editor.component';
-import { FeedbackReceivedDetailsComponent } from './session-list/feedback-received-details/feedback-received-details.component';
-import { ErrorComponent } from './error/error.component';
-import { EditCoachTopicsByAdminComponent } from './dashboard-admin/edit-coach-topics-by-admin/edit-coach-topics-by-admin.component';
+import { LoginComponent } from './login-register-password/login/login.component';
+import { RegisterComponent } from './login-register-password/register/register.component';
+import { MyProfileComponent } from './dashboards/dashboard-coachee/my-profile/my-profile.component';
+import { UserDashboardComponent } from './dashboards/dashboard-coachee/user-dashboard/user-dashboard.component';
+import { UserMenuComponent } from './layout/user-menu/user-menu.component';
+import { BecomeCoachComponent } from './dashboards/dashboard-coachee/become-coach/become-coach.component';
+import { SessionRequestComponent } from './session/session-request/session-request.component';
+import { CoachDashboardComponent } from './dashboards/dashboard-coach/coach-dashboard/coach-dashboard.component';
+import { MyCoachProfileComponent } from './dashboards/dashboard-coach/my-coach-profile/my-coach-profile.component';
+import { CoacheeSessionsComponent } from './dashboards/dashboard-coachee/coachee-sessions/coachee-sessions.component';
+import { CoachSessionsComponent } from './dashboards/dashboard-coach/coach-sessions/coach-sessions.component';
+import { RemoveUnderscorePipe } from './utility/pipe/remove-underscore.pipe';
+import { ForgotPasswordComponent } from './login-register-password/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './login-register-password/reset-password/reset-password.component';
+import { EditProfileComponent } from './dashboards/dashboard-coachee/edit-profile/edit-profile.component';
+import { SessionListItemComponent } from './session/session-list/session-list-item/session-list-item.component';
+import { CommonSessionDetailsComponent } from './session/session-list/common-session-details/common-session-details.component';
+import { RequestedCoachSessionDetailsComponent } from './session/session-list/requested-coach-session-details/requested-coach-session-details.component';
+import { WaitingFeedbackCoachSessionDetailsComponent } from './session/session-list/waiting-feedback-coach-session-details/waiting-feedback-coach-session-details.component';
+import { WaitingFeedbackCoacheeSessionDetailsComponent } from './session/session-list/waiting-feedback-coachee-session-details/waiting-feedback-coachee-session-details.component';
+import { CoachFeedbackFormComponent } from './session/session-list/coach-feedback-form/coach-feedback-form.component';
+import { SmileySelectorComponent } from './session/session-list/smiley-selector/smiley-selector.component';
+import { CoacheeFeedbackFormComponent } from './session/session-list/coachee-feedback-form/coachee-feedback-form.component';
+import { EditCoachingTopicsComponent } from './dashboards/dashboard-coach/edit-coaching-topics/edit-coaching-topics.component';
+import { AdminDashboardComponent } from './dashboards/dashboard-admin/admin-dashboard/admin-dashboard.component';
+import { UserOverviewComponent } from './dashboards/dashboard-admin/user-overview/user-overview.component';
+import { EditUserComponent } from './dashboards/dashboard-admin/edit-user/edit-user.component';
+import { CancellableSessionDetailsComponent } from './session/session-list/cancellable-session-details/cancellable-session-details.component';
+import { FeedbackReceivedDetailsComponent } from './session/session-list/feedback-received-details/feedback-received-details.component';
+import { EditCoachComponent } from './dashboards/dashboard-coach/edit-coach/edit-coach.component';
+import { CoachingTopicsEditorComponent } from './dashboards/dashboard-coach/coaching-topics-editor/coaching-topics-editor.component';
+import { ErrorComponent } from './utility/error/error.component';
+import { EditCoachTopicsByAdminComponent } from './dashboards/dashboard-admin/edit-coach-topics-by-admin/edit-coach-topics-by-admin.component';
+
 
 @NgModule({
   declarations: [
@@ -68,7 +69,6 @@ import { EditCoachTopicsByAdminComponent } from './dashboard-admin/edit-coach-to
     CoacheeSessionsComponent,
     CoachSessionsComponent,
     RemoveUnderscorePipe,
-    RemoveUnderscorePipe,
     EasterEggComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
@@ -79,7 +79,6 @@ import { EditCoachTopicsByAdminComponent } from './dashboard-admin/edit-coach-to
     WaitingFeedbackCoachSessionDetailsComponent,
     WaitingFeedbackCoacheeSessionDetailsComponent,
     CoachFeedbackFormComponent,
-    SmileySelectorComponent,
     SmileySelectorComponent,
     CoacheeFeedbackFormComponent,
     RequestedCoachSessionDetailsComponent,

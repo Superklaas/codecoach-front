@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
-import { RolePersonalisationService } from 'src/app/service/role-personalisation.service';
+import { RolePersonalisationService } from 'src/app/utility/service/role-personalisation.service';
+
 
 @Component({
   selector: 'app-footer',

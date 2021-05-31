@@ -1,12 +1,11 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {AuthenticationService} from 'src/app/authentication/authentication.service';
 import {NavigationStart, Router} from "@angular/router";
 import {filter} from 'rxjs/operators';
 import * as M from "materialize-css";
-import {InitService} from "../../materialize/init.service";
-import {ProfileService} from "../../service/profile.service";
-import {UserService} from "../../service/user.service";
 
+import {AuthenticationService} from 'src/app/authentication/authentication.service';
+import { UserService } from 'src/app/utility/service/user.service';
+import { InitService } from 'src/app/utility/service/materialize/init.service';
 
 @Component({
   selector: 'app-navigation-bar',

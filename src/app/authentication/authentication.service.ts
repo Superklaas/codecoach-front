@@ -3,9 +3,10 @@ import {AuthenticationHttpService} from './authentication.http.service';
 import {tap} from 'rxjs/operators';
 import {ReplaySubject} from 'rxjs';
 import jwt_decode from "jwt-decode";
-import {Token} from '../model/Token';
-import {User} from '../model/User';
-import {UserService} from '../service/user.service';
+import { User } from '../utility/model/User';
+import { UserService } from '../utility/service/user.service';
+import { Token } from '../utility/model/Token';
+
 
 
 @Injectable({
