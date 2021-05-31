@@ -44,7 +44,7 @@
 
               <div class="row">
                 <div class="col">
-                  <input type="date" class="form-control" placeholder="Date" formControlName="date" aria-label="date">
+                  <input type="date" class="form-control" placeholder="yyyy-mm-dd" formControlName="date" aria-label="date">
 
                   <div *ngIf="wrongInputHasBeenTyped(date)" class="alert alert-danger">
                     <div *ngIf="date.errors.required">Date is required.</div>
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="col">
-                  <input type="time" class="form-control" placeholder="Time" formControlName="startTime"
+                  <input type="time" class="form-control" placeholder="hh:mm" formControlName="startTime"
                          aria-label="time">
                   <div *ngIf="wrongInputHasBeenTyped(startTime)" class="alert alert-danger">
                     <div *ngIf="startTime.errors.required">Start Time is required.</div>
