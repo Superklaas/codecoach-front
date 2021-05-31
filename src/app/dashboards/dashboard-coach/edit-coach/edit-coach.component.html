@@ -1,4 +1,4 @@
-<div *ngIf="id">
+<div *ngIf="profileService.currentUser$ | async as user">
     <div class="card">
         <div class="card-body">
             <form class="col s12" [formGroup]="editCoachForm" (ngSubmit)="update()">

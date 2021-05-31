@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { UserService } from 'src/app/utility/service/user.service';
 import {Router} from "@angular/router";
+import {ProfileService} from "../../../utility/service/profile.service";
 
 
 @Component({
@@ -13,28 +14,31 @@ import {Router} from "@angular/router";
 })
 export class EditCoachComponent implements OnInit {
 
-  id: number;
 
   private _editCoachForm = this.formBuilder.group({
     availability: new FormControl("",[Validators.required]),
     introduction: new FormControl("",[Validators.required]),
   });
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router) { }
+  constructor(public profileService: ProfileService, private userService: UserService, private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
-    this.id = +this.authService.getId();
-    this.userService.get(this.id).subscribe(user => {
+    this.displayUser();
+  }
+
+  displayUser(): void {
+    const id = this.authService.getId();
+    this.userService.get(+id).subscribe(user => {
       this._editCoachForm.patchValue(user);
     });
   }
 
   update() {
     if(this._editCoachForm.valid){
-      this.userService.updateCoach(this._editCoachForm.value, +this.id).subscribe(
+      this.userService.updateCoach(this._editCoachForm.value, +this.authService.getId()).subscribe(
         (_ => {
           alert("Your changes have been saved.");
-          window.location.reload();
+          this.router.navigateByUrl("/dashboard-coach");
         }),
         (error =>  this._editCoachForm.setErrors({serverError: 'oops something went wrong'}))
       );
@@ -42,7 +46,7 @@ export class EditCoachComponent implements OnInit {
   }
 
   cancel(){
-    this.userService.get(this.id).subscribe(user => {
+    this.userService.get(+this.authService.getId()).subscribe(user => {
       this._editCoachForm.patchValue(user);
       this.router.navigateByUrl("/dashboard-coach");
     });

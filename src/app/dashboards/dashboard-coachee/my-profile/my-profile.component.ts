@@ -4,6 +4,8 @@ import { Component,  OnInit } from '@angular/core';
 import { User } from 'src/app/utility/model/User';
 import { ProfileService } from 'src/app/utility/service/profile.service';
 import { RolePersonalisationService } from 'src/app/utility/service/role-personalisation.service';
+import {UserService} from "../../../utility/service/user.service";
+import {AuthenticationService} from "../../../authentication/authentication.service";
 
 @Component({
   selector: 'app-my-profile',
@@ -13,11 +15,19 @@ import { RolePersonalisationService } from 'src/app/utility/service/role-persona
 export class MyProfileComponent implements OnInit {
 
   user: User;
-  constructor(public profileService: ProfileService, private roleStuff: RolePersonalisationService) { }
+  constructor(private userService: UserService, private authService: AuthenticationService, private roleStuff: RolePersonalisationService) { }
 
   ngOnInit(): void {
-    this.profileService.currentUser$.subscribe(user => this.user = user);
+    this.displayUser();
   }
+
+  displayUser(): void {
+    const id = this.authService.getId();
+    this.userService.get(+id).subscribe(user => {
+      this.user = user;
+    });
+  }
+
   get userImage() {
     if (!this.user.imageUrl) {
       return "assets/images/default-person.png";

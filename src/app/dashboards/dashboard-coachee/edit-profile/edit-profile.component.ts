@@ -27,15 +27,18 @@ export class EditProfileComponent implements OnInit {
               private authService: AuthenticationService,
               private router: Router) { }
 
-
-
   ngOnInit(): void {
+    this.displayUser();
+  }
+
+  displayUser(): void {
     const id = this.authService.getId();
     this.userService.get(+id).subscribe(user => {
       this._editForm.patchValue(user);
       this.userImageUrl = user.imageUrl;
     });
   }
+
   get userImage() {
     if (!this.userImageUrl) {
       return "assets/images/default-person.png";
@@ -71,7 +74,7 @@ export class EditProfileComponent implements OnInit {
       this.userService.update(this._editForm.value, +this.authService.getId()).subscribe(
         (_ => {
           alert("Your changes have been saved.");
-          window.location.reload();
+          this.router.navigateByUrl("/dashboard");
         }),
         (error =>  this._editForm.setErrors({serverError: error.error.message}))
       );

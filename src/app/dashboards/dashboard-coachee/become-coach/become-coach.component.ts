@@ -17,6 +17,6 @@ export class BecomeCoachComponent implements OnInit {
 
   becomeCoach(): void {
     this.userService.updateRole(+this.authService.getId())
-      .subscribe(() => window.location.reload());
+      .subscribe();
   }
 }
