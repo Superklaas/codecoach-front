@@ -24,7 +24,7 @@ export class EditCoachingTopicsComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigateByUrl(`/dashboard-coach/edit-coaching-topics`);
+    this.router.navigateByUrl("/dashboard-coach/edit-coaching-topics");
   }
 
   save() {

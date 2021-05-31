@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/
 
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { UserService } from 'src/app/utility/service/user.service';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class EditCoachComponent implements OnInit {
     introduction: new FormControl("",[Validators.required]),
   });
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private authService: AuthenticationService ) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
     this.id = +this.authService.getId();
@@ -43,6 +44,7 @@ export class EditCoachComponent implements OnInit {
   cancel(){
     this.userService.get(this.id).subscribe(user => {
       this._editCoachForm.patchValue(user);
+      this.router.navigateByUrl("/dashboard-coach");
     });
   }
 
