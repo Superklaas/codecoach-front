@@ -1,4 +1,4 @@
-<div *ngIf="id">
+<div *ngIf="user">
     <div class="card ">
         <div class="card-body">
             <h3>Profile Information</h3>
@@ -94,7 +94,7 @@
             </div>
         </div>
     </div>
-    <div class="card">
+    <div class="card" *ngIf="!areTopicsBeingEdited">
       <div class="card-body">
         <h3 class="border-bottom ">Coaching Topics</h3>
         <div class="alert alert-danger"  *ngIf="user.role !== 'COACH'">
@@ -103,9 +103,10 @@
         <div class="row border-bottom " *ngFor="let topic of user.topicList">
           <div class="col"><b>{{topic.name}}</b></div>
         </div>
-        <button [ngClass]="color" class="right btn-floating" routerLink="/dashboard-admin/edit/{{id}}/topics">
+        <button [ngClass]="color" class="right btn-floating" (click)="edit()">
           <i class="material-icons center">edit</i>
         </button>
       </div>
     </div>
+  <app-coaching-topics-editor *ngIf="areTopicsBeingEdited && user" [user]="user" (cancelEdit)="cancelProfile()" (saved)="updateProfile()"></app-coaching-topics-editor>
 </div>
