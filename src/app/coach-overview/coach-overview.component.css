@@ -29,19 +29,30 @@
 }
 
 h3 {
-  font-size: 28px;
+  font-size: 26px;
+  margin: 0;
 }
 
 .coach-card {
   box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
   display: flex;
-  padding: 10px;
-  height: 200px;
+  padding: 20px;
+  height: 250px;
   position: relative;
+  justify-content: flex-start;
 }
 
-.coach-card img {
-  width: 180px;
+.coach-card-body {
+  height: 200px;
+  padding-bottom: 10px;
+}
+
+.coach-card-body img {
+  width: 150px;
+}
+
+.title-wrapper {
+  padding-bottom: 10px;
 }
 
 .image-wrapper {
