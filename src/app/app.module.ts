@@ -45,7 +45,6 @@ import { FeedbackReceivedDetailsComponent } from './session/session-list/feedbac
 import { EditCoachComponent } from './dashboards/dashboard-coach/edit-coach/edit-coach.component';
 import { CoachingTopicsEditorComponent } from './dashboards/dashboard-coach/coaching-topics-editor/coaching-topics-editor.component';
 import { ErrorComponent } from './utility/error/error.component';
-import { EditCoachTopicsByAdminComponent } from './dashboards/dashboard-admin/edit-coach-topics-by-admin/edit-coach-topics-by-admin.component';
 
 
 @NgModule({
@@ -92,7 +91,6 @@ import { EditCoachTopicsByAdminComponent } from './dashboards/dashboard-admin/ed
     EditCoachComponent,
     CoachingTopicsEditorComponent,
     ErrorComponent,
-    EditCoachTopicsByAdminComponent,
   ],
   imports: [
     BrowserModule,
