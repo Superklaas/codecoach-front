@@ -2,8 +2,10 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Subject } from 'rxjs';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
 
 import { ProfileService } from 'src/app/utility/service/profile.service';
+import { UserService } from 'src/app/utility/service/user.service';
 import { MyProfileComponent } from './my-profile.component';
 
 describe('MyProfileComponent', () => {
@@ -14,7 +16,14 @@ describe('MyProfileComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ MyProfileComponent ],
       imports: [ HttpClientTestingModule , RouterTestingModule],
-      providers: [{provide: ProfileService, useValue: {currentUser$ : new Subject()}}]
+      providers: [
+        {
+          provide: AuthenticationService,
+          useValue: {getId() { return 1 }}},
+        {
+          provide: UserService,
+          useValue: {get() {return  new Subject()}}
+        }]
     })
     .compileComponents();
   });
@@ -22,6 +31,7 @@ describe('MyProfileComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MyProfileComponent);
     component = fixture.componentInstance;
+    component.user = {} as any;
     fixture.detectChanges();
   });
 

@@ -1,15 +1,13 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 import {Subject} from "rxjs";
 
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { ProfileService } from 'src/app/utility/service/profile.service';
 import { UserService } from 'src/app/utility/service/user.service';
 import { EditCoachComponent } from './edit-coach.component';
-
-
-
 
 describe('EditCoachComponent', () => {
   let component: EditCoachComponent;
@@ -18,7 +16,7 @@ describe('EditCoachComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ EditCoachComponent ],
-      imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule,],
+      imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule,RouterTestingModule],
       providers: [
         {
           provide: AuthenticationService,

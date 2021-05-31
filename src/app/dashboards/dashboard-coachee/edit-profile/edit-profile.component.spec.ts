@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 import { Subject } from 'rxjs';
 
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
@@ -17,6 +18,7 @@ describe('EditProfileComponent', () => {
       imports: [
         FormsModule,
         ReactiveFormsModule,
+        RouterTestingModule
       ],
       providers: [
         {
