@@ -44,6 +44,7 @@ import { FeedbackReceivedDetailsComponent } from './session/session-list/feedbac
 import { EditCoachComponent } from './dashboards/dashboard-coach/edit-coach/edit-coach.component';
 import { CoachingTopicsEditorComponent } from './dashboards/dashboard-coach/coaching-topics-editor/coaching-topics-editor.component';
 import { ErrorComponent } from './utility/error/error.component';
+import { PageNotFoundComponent } from './utility/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -89,6 +90,7 @@ import { ErrorComponent } from './utility/error/error.component';
     EditCoachComponent,
     CoachingTopicsEditorComponent,
     ErrorComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

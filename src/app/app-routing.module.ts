@@ -26,6 +26,7 @@ import { AdminDashboardComponent } from './dashboards/dashboard-admin/admin-dash
 import { UserOverviewComponent } from './dashboards/dashboard-admin/user-overview/user-overview.component';
 import { EditUserComponent } from './dashboards/dashboard-admin/edit-user/edit-user.component';
 import { SessionRequestComponent } from './session/session-request/session-request.component';
+import { PageNotFoundComponent } from './utility/page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
@@ -69,7 +70,8 @@ const routes: Routes = [
   },
   { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard], },
   { path: 'coaches', component: CoachOverviewComponent, canActivate: [AuthenticationGuard], },
-  { path: 'create-session/:id', component: SessionRequestComponent, canActivate: [AuthenticationGuard], }
+  { path: 'create-session/:id', component: SessionRequestComponent, canActivate: [AuthenticationGuard], },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
