@@ -72,7 +72,6 @@ export class EditUserComponent implements OnInit, AfterViewInit {
   updateProfile() {
     this.userService.update(this._editForm.value, +this.id).subscribe(
       (_ => {
-        alert("Your changes have been saved");
         this.displayUser();
         this.areTopicsBeingEdited = false;
       }),
