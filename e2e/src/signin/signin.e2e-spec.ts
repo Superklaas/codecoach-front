@@ -1,12 +1,13 @@
 import {SignInPage} from "./signin.po";
 import {browser, logging} from 'protractor';
 
-describe('workspace-project App', () => {
+describe('signin page', () => {
   let page: SignInPage;
 
   beforeEach(() => {
     page = new SignInPage();
   });
+
 
   it('goes to forgot password page when you click reset password button', () => {
     page.navigateTo();
@@ -15,6 +16,7 @@ describe('workspace-project App', () => {
   });
 
 
+/*
   it('goes to homepage with dashboard link when on sign in page and sign in with valid login info', () => {
     page.navigateTo();
 
@@ -23,6 +25,7 @@ describe('workspace-project App', () => {
     page.clickSignInButton()
     expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + "dashboard");
   });
+*/
 
   it('stays on the sign in page and shows an error message when you type a wrong password', () => {
     page.navigateTo();
@@ -43,8 +46,3 @@ describe('workspace-project App', () => {
   });
 });
 
-
-
-/*
-
-*/

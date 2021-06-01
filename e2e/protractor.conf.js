@@ -19,11 +19,11 @@ exports.config = {
     browserName: 'chrome'
   },
   directConnect: true,
-  baseUrl: 'https://codecoach-staging.netlify.app/',
+  baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 300000,
+    defaultTimeoutInterval: 30000,
     print: function() {}
   },
   onPrepare() {

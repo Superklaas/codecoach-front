@@ -1,7 +1,7 @@
 import {RegisterPage} from "./register.po";
 import {browser, logging, protractor} from 'protractor';
 
-describe('workspace-project App', () => {
+describe('register page', () => {
   let page: RegisterPage;
 
   beforeEach(() => {
