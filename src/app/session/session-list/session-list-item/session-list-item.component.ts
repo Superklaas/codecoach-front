@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Session } from 'src/app/utility/model/Session';
+import { SessionService } from 'src/app/utility/service/session.service';
 
 @Component({
   selector: 'app-session-list-item',
@@ -14,6 +15,9 @@ export class SessionListItemComponent implements OnInit {
 
   @Input()
   perspective: 'coachee' | 'coach';
+
+  @Output()
+  sessionUpdate = new EventEmitter<Session>();
 
   constructor() { }
 
