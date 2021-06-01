@@ -1,5 +1,5 @@
-import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import {AppPage} from './app.po';
+import {browser, logging, by, element} from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -8,10 +8,22 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('navigateTo goes to the homepage', () => {
     page.navigateTo();
-    // TODO: add E2E when it actually works
-    // expect(page.getTitleText()).toEqual('20-frontend app is running!');
+    expect(page.getTitleText()).toEqual('CodeCoach');
+  });
+
+  it('has a register button when in desktop mode and clicking on it goes to the register page', () => {
+    page.navigateTo();
+    page.clickRegisterButton();
+    expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + "register");
+
+  });
+
+  it('has a sign in button when in desktop mode that goes to the sign-in page', () => {
+    page.navigateTo();
+    page.clickSignInButton();
+    expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + "login");
   });
 
   afterEach(async () => {
