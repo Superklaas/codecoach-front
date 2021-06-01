@@ -13,7 +13,8 @@ import {AuthenticationService} from "../../../authentication/authentication.serv
 })
 export class MyProfileComponent implements OnInit {
 
-  user: User;
+  userImage = "";
+  user?: User;
   constructor(private userService: UserService, private authService: AuthenticationService, private roleStuff: RolePersonalisationService) { }
 
   ngOnInit(): void {
@@ -24,10 +25,11 @@ export class MyProfileComponent implements OnInit {
     const id = this.authService.getId();
     this.userService.get(+id).subscribe(user => {
       this.user = user;
+      this.userImage = this.setUserImage;
     });
   }
 
-  get userImage() {
+  get setUserImage() {
     if (!this.user.imageUrl) {
       return "assets/images/default-person.png";
     }

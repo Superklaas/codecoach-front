@@ -8,23 +8,23 @@
                 <div class="col-md-8">
                     <div class="row border-bottom ">
                         <div class="col"><b>First name</b></div>
-                        <div class="col">{{user.firstName}}</div>
+                        <div class="col">{{user?.firstName}}</div>
                     </div>
                     <div class="row border-bottom ">
                         <div class="col"><b>Last name</b></div>
-                        <div class="col">{{user.lastName}}</div>
+                        <div class="col">{{user?.lastName}}</div>
                     </div>
                     <div class="row border-bottom ">
                         <div class="col"><b>Email</b></div>
-                        <div class="col">{{user.email}}</div>
+                        <div class="col">{{user?.email}}</div>
                     </div>
                     <div class="row border-bottom ">
                         <div class="col"><b>Profile name</b></div>
-                        <div class="col">{{user.profileName}}</div>
+                        <div class="col">{{user?.profileName}}</div>
                     </div>
                     <div class="row border-bottom">
                         <div class="col"><b>CodeCoach role</b></div>
-                        <div class="col">{{user.role | titlecase}}</div>
+                        <div class="col">{{user?.role | titlecase}}</div>
                     </div>
                 </div>
             </div>
