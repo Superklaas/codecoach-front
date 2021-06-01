@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { CoachDashboardComponent } from './coach-dashboard.component';
 
@@ -10,7 +11,8 @@ describe('CoachDashboardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CoachDashboardComponent ],
-      imports: [HttpClientTestingModule, ]
+      imports: [HttpClientTestingModule,
+        RouterTestingModule, ]
     })
     .compileComponents();
   });

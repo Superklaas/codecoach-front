@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { AuthenticationGuard } from './authentication/authentication.guard';
-import { CoachOverviewComponent } from "./coach-overview/coach-overview.component";
+import { CoachOverviewComponent } from "./find-a-coach/coach-overview/coach-overview.component";
 import { AuthorizationGuard } from "./authorization/authorization.guard";
 import { EasterEggComponent } from './easter-egg/easter-egg.component';
 import { AdminGuard } from './authorization/admin.guard';

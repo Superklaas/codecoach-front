@@ -19,7 +19,12 @@
             <th>Status</th>
             <th>Actions</th>
           </tr>
-          <app-session-list-item *ngFor="let session of futureSessions" [session]="session" perspective="coachee"></app-session-list-item>
+          <app-session-list-item
+            *ngFor="let session of futureSessions"
+            [session]="session"
+            perspective="coachee"
+            (sessionUpdate)="sessionQuery.update($event)"
+          ></app-session-list-item>
         </table>
       </ng-container>
     </div>
@@ -45,7 +50,12 @@
             <th>Status</th>
             <th>Actions</th>
           </tr>
-          <app-session-list-item *ngFor="let session of waitingSessions" [session]="session" perspective="coachee"></app-session-list-item>
+          <app-session-list-item
+            *ngFor="let session of waitingSessions"
+            [session]="session"
+            perspective="coachee"
+            (sessionUpdate)="sessionQuery.update($event)"
+          ></app-session-list-item>
 
         </table>
 
@@ -72,7 +82,12 @@
             <th>Status</th>
             <th>Actions</th>
           </tr>
-          <app-session-list-item *ngFor="let session of archivedSessions" [session]="session" perspective="coachee"></app-session-list-item>
+          <app-session-list-item
+            *ngFor="let session of archivedSessions"
+            [session]="session"
+            perspective="coachee"
+            (sessionUpdate)="sessionQuery.update($event)"
+          ></app-session-list-item>
         </table>
         </ng-container>
     </div>

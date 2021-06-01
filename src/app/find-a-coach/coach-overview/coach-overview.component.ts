@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
-import { User } from '../utility/model/User';
-import { UserService } from '../utility/service/user.service';
-import { XpService } from '../utility/service/xp.service';
 
-
+import { User } from 'src/app/utility/model/User';
+import { UserService } from 'src/app/utility/service/user.service';
+import { XpService } from 'src/app/utility/service/xp.service';
 
 @Component({
   selector: 'app-coach-overview',
@@ -18,7 +17,7 @@ export class CoachOverviewComponent implements OnInit {
   constructor(private userService: UserService, public xpService: XpService) { }
 
   ngOnInit(): void {
-      this.coaches$ = this.userService.getAllCoaches();
+    this.coaches$ = this.userService.getAllCoaches();
   }
 
 }

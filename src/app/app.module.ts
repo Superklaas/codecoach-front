@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NavigationBarComponent } from './layout/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { CoachOverviewComponent } from './coach-overview/coach-overview.component';
+import { CoachOverviewComponent } from './find-a-coach/coach-overview/coach-overview.component';
 import { EasterEggComponent } from './easter-egg/easter-egg.component';
 import { DropdownComponent } from './layout/dropdown/dropdown.component';
 import { LoginComponent } from './login-register-password/login/login.component';
@@ -45,8 +45,8 @@ import { EditCoachComponent } from './dashboards/dashboard-coach/edit-coach/edit
 import { CoachingTopicsEditorComponent } from './dashboards/dashboard-coach/coaching-topics-editor/coaching-topics-editor.component';
 import { ErrorComponent } from './utility/error/error.component';
 import { PageNotFoundComponent } from './utility/page-not-found/page-not-found.component';
-import { SessionOverviewComponent } from './dashboards/dashboard-admin/session-overview/session-overview.component';
-
+import { TopicFilterComponent } from './find-a-coach/topic-filter/topic-filter.component';
+import { SessionOverviewComponent} from "./dashboards/dashboard-admin/session-overview/session-overview.component";
 
 
 @NgModule({
@@ -93,6 +93,7 @@ import { SessionOverviewComponent } from './dashboards/dashboard-admin/session-o
     CoachingTopicsEditorComponent,
     ErrorComponent,
     PageNotFoundComponent,
+    TopicFilterComponent,
     SessionOverviewComponent,
   ],
   imports: [

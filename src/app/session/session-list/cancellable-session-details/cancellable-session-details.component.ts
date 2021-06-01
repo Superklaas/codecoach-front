@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Session } from 'src/app/utility/model/Session';
 import { SessionService } from 'src/app/utility/service/session.service';
@@ -18,6 +18,8 @@ export class CancellableSessionDetailsComponent implements OnInit {
   @Input()
   public session: Session
 
+  @Output()
+  sessionUpdate = new EventEmitter<Session>();
 
   constructor(private sessionService: SessionService) { }
 
@@ -26,7 +28,7 @@ export class CancellableSessionDetailsComponent implements OnInit {
 
   cancelSession() {
     this.sessionService.updateSession(this.session.id, this.cancelStatus)
-      .subscribe(_ => window.location.reload() )
+      .subscribe(session => this.sessionUpdate.emit(session) )
   }
 
 }
