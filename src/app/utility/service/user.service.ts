@@ -37,8 +37,8 @@ export class UserService {
     return this.http.get<User>(`${this.url}/${id}`);
   }
 
-  coachRequest(id: number, request: CoachRequest) {
-    return this.http.post<User>(`${this.url}/${id}/coachify`, request);
+  coachRequest(id: number, request: CoachRequest): Observable<any> {
+    return this.http.post<any>(`${this.url}/${id}/coachify`, request);
   }
 
   sendResetToken(email: string, url: string): Observable<any> {

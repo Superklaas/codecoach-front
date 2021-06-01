@@ -11,6 +11,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./become-coach.component.css']
 })
 export class BecomeCoachComponent implements OnInit {
+  private _hasApplied: boolean;
   private _applyForm = this.formBuilder.group(
     {
       motivation: new FormControl("",[]),
@@ -25,15 +26,20 @@ export class BecomeCoachComponent implements OnInit {
               private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this._hasApplied = false;
   }
 
   submit(): void {
     this.userService.coachRequest(+this.authService.getId(), this._applyForm.value)
-      .subscribe();
+      .subscribe(() => this._hasApplied = true);
   }
 
   get applyForm(): FormGroup {
     return this._applyForm;
+  }
+
+  get hasApplied(): boolean {
+    return this._hasApplied;
   }
 
 }
