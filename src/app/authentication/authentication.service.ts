@@ -20,11 +20,11 @@ export class AuthenticationService {
   currentUser$ = this.currentUser.asObservable();
 
   constructor(private loginService: AuthenticationHttpService, private userService: UserService, private tokenService: TokenService) {
-    if (this.getToken()) {
-      this.userLoggedInSource.next(true);
-    } else {
-      this.userLoggedInSource.next(false);
-    }
+
+    this.tokenService.token$.subscribe(token => {
+      this.userLoggedInSource.next(!!token);
+      this.currentUser.next(null);
+    })
 
   }
 
@@ -32,11 +32,8 @@ export class AuthenticationService {
     return this.loginService.login(loginData)
       .pipe(tap(response => {
         this.tokenService.setToken(response.headers.get('Authorization').replace('Bearer', '').trim());
-
         localStorage.setItem(this.usernameKey, loginData.username);
-        this.userLoggedInSource.next(true);
-      }))
-      ;
+      }));
   }
 
   getDecodedToken(): Token {
@@ -63,7 +60,8 @@ export class AuthenticationService {
   }
 
   isLoggedIn() {
-    return !!this.tokenService.getToken();
+    console.log(this.tokenService.hasToken());
+    return this.tokenService.hasToken();
   }
 
   logout() {
