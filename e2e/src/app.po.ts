@@ -10,7 +10,7 @@ export class AppPage {
   }
 
   clickRegisterButton(){
-    return element(by.css('.register-button')).click();
+    return element(by.css('ul.right > li:nth-child(3) > a:nth-child(1) > div:nth-child(1)')).click();
   }
 
   getRegisterTitle(){
@@ -18,9 +18,7 @@ export class AppPage {
   }
 
   clickSignInButton(){
-    return element(by.css('.sign-in-button')).click();
+    return element(by.css('ul.right > li:nth-child(2) > a:nth-child(1) > div:nth-child(1)')).click();
   }
-
-
 
 }

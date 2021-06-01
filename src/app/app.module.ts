@@ -45,8 +45,7 @@ import { EditCoachComponent } from './dashboards/dashboard-coach/edit-coach/edit
 import { CoachingTopicsEditorComponent } from './dashboards/dashboard-coach/coaching-topics-editor/coaching-topics-editor.component';
 import { ErrorComponent } from './utility/error/error.component';
 import { PageNotFoundComponent } from './utility/page-not-found/page-not-found.component';
-import { SessionOverviewComponent } from './dashboards/dashboard-admin/session-overview/session-overview.component';
-
+import { SessionOverviewComponent} from "./dashboards/dashboard-admin/session-overview/session-overview.component";
 
 
 @NgModule({
