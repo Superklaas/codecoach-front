@@ -1,9 +1,9 @@
 <app-user-menu></app-user-menu>
-<app-topic-filter></app-topic-filter>
-<div class="container-fluid" *ngIf="coaches$ | async as coaches; else loading">
+<app-topic-filter (change)="filterCoachesByTopic($event)"></app-topic-filter>
+<div class="container-fluid" *ngIf="coaches; else loading">
   <div class="container-fluid">
     <div class="row coach-wrapper">
-      <div class="coach" *ngFor="let coach of coaches">
+      <div class="coach" *ngFor="let coach of coaches | filterCoachesByTopic: topicName">
         <div class="coach-card row">
           <div class="title-wrapper border-bottom">
             <h3>{{coach.profileName}}</h3>

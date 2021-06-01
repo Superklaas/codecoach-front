@@ -12,12 +12,17 @@ import { XpService } from 'src/app/utility/service/xp.service';
 })
 export class CoachOverviewComponent implements OnInit {
 
-  coaches$: Observable<User[]>;
+  coaches: User[];
+  topicName: string;
 
   constructor(private userService: UserService, private xpService: XpService) { }
 
   ngOnInit(): void {
-    this.coaches$ = this.userService.getAllCoaches();
+    this.userService.getAllCoaches().subscribe(coaches => this.coaches = coaches);
+  }
+
+  filterCoachesByTopic(event) {
+    this.topicName = event.target.value;
   }
 
   getXpLevel(user: User){
