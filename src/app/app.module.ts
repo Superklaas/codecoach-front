@@ -46,7 +46,7 @@ import { CoachingTopicsEditorComponent } from './dashboards/dashboard-coach/coac
 import { ErrorComponent } from './utility/error/error.component';
 import { PageNotFoundComponent } from './utility/page-not-found/page-not-found.component';
 import { SessionOverviewComponent } from './dashboards/dashboard-admin/session-overview/session-overview.component';
-import { AdminSessionItemComponent } from './dashboards/dashboard-admin/admin-session-item/admin-session-item.component';
+
 
 
 @NgModule({
@@ -94,7 +94,6 @@ import { AdminSessionItemComponent } from './dashboards/dashboard-admin/admin-se
     ErrorComponent,
     PageNotFoundComponent,
     SessionOverviewComponent,
-    AdminSessionItemComponent,
   ],
   imports: [
     BrowserModule,
