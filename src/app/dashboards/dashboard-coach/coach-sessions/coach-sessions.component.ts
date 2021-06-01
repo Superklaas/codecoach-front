@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Session } from 'src/app/utility/model/Session';
+import { SessionQuery } from 'src/app/utility/queries/SessionQuery';
 import { SessionService } from 'src/app/utility/service/session.service';
 
 @Component({
@@ -10,16 +11,20 @@ import { SessionService } from 'src/app/utility/service/session.service';
 })
 export class CoachSessionsComponent implements OnInit {
   public sessions: Session[] = [];
-
   futureSessions: Session[] = [];
   waitingSessions: Session[] = [];
   archivedSessions: Session[] = [];
   loaded: boolean = false;
 
+  public sessionQuery: SessionQuery = new SessionQuery(this.sessionService.getCoachSessions());
+
   constructor(private sessionService: SessionService) { }
 
   ngOnInit(): void {
-    this.sessionService.getCoachSessions().subscribe(sessions => {
+    this.sessionQuery.sessions$.subscribe(sessions => {
+      if (!sessions) return;
+
+      console.log(sessions);
       this.sessions = sessions;
       this.sortSessions(this.sessions);
       this.loaded = true;
@@ -39,6 +44,9 @@ export class CoachSessionsComponent implements OnInit {
   }
 
   sortSessions(sessions: Session[]) {
+    this.archivedSessions = [];
+    this.futureSessions = [];
+    this.waitingSessions = [];
     for (let session of sessions) {
       if( ['REQUEST_CANCELLED_BY_COACHEE', 'SESSION_CANCELLED_BY_COACH', 'SESSION_CANCELLED_BY_COACHEE', 'REQUEST_DECLINED'].includes(session.status)) {
         this.archivedSessions.push(session);

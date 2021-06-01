@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 import { Session } from 'src/app/utility/model/Session';
 
@@ -12,6 +12,11 @@ export class WaitingFeedbackCoachSessionDetailsComponent implements OnInit {
   feedBackViewStatus: 'open' | 'closed' | 'given' = 'closed';
   @Input()
   session: Session
+
+
+  @Output()
+  sessionUpdate = new EventEmitter<Session>();
+
 
   constructor() { }
 
@@ -36,7 +41,7 @@ export class WaitingFeedbackCoachSessionDetailsComponent implements OnInit {
   feedBackSubmitted(session: Session) {
     this.feedBackViewStatus = 'given';
     if (session.status==='FEEDBACK_RECEIVED'){
-      window.location.reload();
+      this.sessionUpdate.emit(session);
     }
   }
 }
