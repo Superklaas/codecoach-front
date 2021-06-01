@@ -22,6 +22,10 @@ export class SessionService {
     return this.http.post<Session>(this.url, session);
   }
 
+  get(): Observable<Session[]>{
+    return this.http.get<Session[]>(`${this.url}`);
+  }
+
   getCoacheeSessions(): Observable<Session[]>{
     return this.http.get<Session[]>(`${this.url}/coachee`);
   }

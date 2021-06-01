@@ -27,6 +27,7 @@ import { UserOverviewComponent } from './dashboards/dashboard-admin/user-overvie
 import { EditUserComponent } from './dashboards/dashboard-admin/edit-user/edit-user.component';
 import { SessionRequestComponent } from './session/session-request/session-request.component';
 import { PageNotFoundComponent } from './utility/page-not-found/page-not-found.component';
+import { SessionOverviewComponent } from './dashboards/dashboard-admin/session-overview/session-overview.component';
 
 
 const routes: Routes = [
@@ -65,7 +66,8 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard, AuthorizationGuard, AdminGuard],
     children: [
       { path: '', component: UserOverviewComponent },
-      { path: 'edit/:id', component: EditUserComponent }
+      { path: 'edit/:id', component: EditUserComponent },
+      { path: 'session-overview', component: SessionOverviewComponent }
     ]
   },
   { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard], },
