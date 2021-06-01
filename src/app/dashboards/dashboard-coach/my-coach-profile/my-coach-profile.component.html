@@ -10,6 +10,16 @@
         <div class="col"><b>Availability</b></div>
         <div class="col">{{user.availability}}</div>
       </div>
+      <div class="row ">
+        <div class="col-md-2"><b>XP</b></div>
+        <div class="col-md-6">
+          <div class="badge center" [ngClass]='xpLevel | lowercase'>{{user.xp}}/{{nextThreshHold}} ({{xpLevel}})</div>
+          <div class="progress " style="height: 10px;">
+            <div class="progress-bar" role="progressbar" [ngClass]='xpLevel | lowercase' [style.width]="xpPercentage">
+            </div>
+          </div>
+        </div>
+      </div>
       <button [ngClass]="color" class="btn-floating right" routerLink="/dashboard-coach/edit-coach-profile">
         <i class="material-icons center">edit</i>
       </button>
@@ -26,6 +36,7 @@
       </button>
     </div>
   </div>
-  <app-coaching-topics-editor *ngIf="topicEditor&& user" [user]="user" (cancelEdit)="closeTopicEditor(false)" (saved)="closeTopicEditor(true)"></app-coaching-topics-editor>
+  <app-coaching-topics-editor *ngIf="topicEditor&& user" [user]="user" (cancelEdit)="closeTopicEditor(false)"
+    (saved)="closeTopicEditor(true)"></app-coaching-topics-editor>
 
 </div>
