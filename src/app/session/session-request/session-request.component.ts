@@ -57,7 +57,7 @@ export class SessionRequestComponent implements OnInit {
     const date = group.get('date').value;
     const startTime = group.get('startTime').value;
     if (date === '' || startTime == '') return null;
-    const referenceDate = Date.parse(date + " " + startTime);
+    const referenceDate = Date.parse(date + "T" + startTime);
     return referenceDate < Date.now() ? {inThePast: true} : {};
   }
 
