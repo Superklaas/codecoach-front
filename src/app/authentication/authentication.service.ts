@@ -6,22 +6,20 @@ import jwt_decode from "jwt-decode";
 import { User } from '../utility/model/User';
 import { UserService } from '../utility/service/user.service';
 import { Token } from '../utility/model/Token';
-
-
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  private tokenKey = 'jwt_token';
   private usernameKey = 'username';
   private userLoggedInSource = new ReplaySubject<boolean>();
   userLoggedIn$ = this.userLoggedInSource.asObservable();
   private currentUser = new ReplaySubject<User>();
   currentUser$ = this.currentUser.asObservable();
 
-  constructor(private loginService: AuthenticationHttpService, private userService: UserService) {
+  constructor(private loginService: AuthenticationHttpService, private userService: UserService, private tokenService: TokenService) {
     if (this.getToken()) {
       this.userLoggedInSource.next(true);
     } else {
@@ -33,7 +31,8 @@ export class AuthenticationService {
   login(loginData: any) {
     return this.loginService.login(loginData)
       .pipe(tap(response => {
-        localStorage.setItem(this.tokenKey, response.headers.get('Authorization').replace('Bearer', '').trim());
+        this.tokenService.setToken(response.headers.get('Authorization').replace('Bearer', '').trim());
+
         localStorage.setItem(this.usernameKey, loginData.username);
         this.userLoggedInSource.next(true);
       }))
@@ -41,11 +40,11 @@ export class AuthenticationService {
   }
 
   getDecodedToken(): Token {
-    return jwt_decode(this.getToken());
+    return this.tokenService.getToken();
   }
 
   getToken() {
-    return localStorage.getItem(this.tokenKey);
+    return this.tokenService.getTokenString();
   }
 
   getProfileName() {
@@ -64,11 +63,11 @@ export class AuthenticationService {
   }
 
   isLoggedIn() {
-    return localStorage.getItem(this.tokenKey) !== null;
+    return !!this.tokenService.getToken();
   }
 
   logout() {
-    localStorage.removeItem(this.tokenKey);
+    this.tokenService.clearToken();
     localStorage.removeItem(this.usernameKey);
     this.userLoggedInSource.next(false);
   }
