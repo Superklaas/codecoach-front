@@ -47,12 +47,15 @@
 }
 .platinum{
     background-color: #e1f5fe;
+    color: black;
 }
 .ruby{
     background-color: #d50000;
+   
 }
 .diamond{
     background-color: #e0f7fa;
+    color: black;
 }
 
 .progress {

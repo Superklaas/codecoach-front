@@ -21,6 +21,7 @@
                 </li>
               </ul>
             </div>
+            <div ><span [ngClass]="getXpLevel(coach) | lowercase" class = "badge right">{{getXpLevel(coach)}}</span></div>
           </div>
           <button class="round-button yellow darken-2" routerLink="/user/{{coach.id}}">
             <i class="material-icons center white-text">send</i>

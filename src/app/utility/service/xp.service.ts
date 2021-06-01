@@ -48,7 +48,7 @@ export class XpService {
       case 'Silver': return this.goldThreshhold+'';
       case 'Gold': return this.platinumThreshhold+'';
       case 'Platinum': return this.rubyThreshhold+'';
-      case 'Ruby': return this.rubyThreshhold+'';
+      case 'Ruby': return this.diamondThreshhold+'';
       case 'Diamond': return '∞';
     }
   }

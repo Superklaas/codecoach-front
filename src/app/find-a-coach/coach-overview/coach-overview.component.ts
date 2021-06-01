@@ -14,10 +14,14 @@ export class CoachOverviewComponent implements OnInit {
 
   coaches$: Observable<User[]>;
 
-  constructor(private userService: UserService, public xpService: XpService) { }
+  constructor(private userService: UserService, private xpService: XpService) { }
 
   ngOnInit(): void {
     this.coaches$ = this.userService.getAllCoaches();
+  }
+
+  getXpLevel(user: User){
+    return this.xpService.getXpLevel(user.xp);
   }
 
 }
