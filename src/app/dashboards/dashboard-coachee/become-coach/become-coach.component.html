@@ -8,7 +8,10 @@
     <div class="row" *ngIf="user.role === 'COACH' || user.role === 'ADMIN'">
       <p class="m-2 mx1">Your application to become a Coach was accepted!</p>
     </div>
-    <div class="row" *ngIf="user.role !== 'COACH' && user.role !== 'ADMIN'">
+    <div class="row" *ngIf="hasApplied && (user.role !== 'COACH' && user.role !== 'ADMIN')">
+      <p class="m-2 mx1">Your application to become a Coach was sent to the Admin(s)!</p>
+    </div>
+    <div class="row" *ngIf="!hasApplied && (user.role !== 'COACH' && user.role !== 'ADMIN')">
       <form [formGroup]="applyForm" (ngSubmit)="submit()">
         <div class="row">
             <p >What is your motivation to become a coach?</p>
