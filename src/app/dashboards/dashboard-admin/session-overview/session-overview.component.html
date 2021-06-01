@@ -1,0 +1,67 @@
+<div class="progress" *ngIf="!loaded">
+    <div class="indeterminate"></div>
+</div>
+<div *ngIf="loaded">
+    <table class="table table-striped">
+        <tr>
+            <th>Coach</th>
+            <th>Coachee</th>
+            <th>Subject</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        <ng-container *ngFor="let session of sessions">
+            <tr>
+                <td>{{session.coachProfileName}}</td>
+                <td>{{session.coacheeProfileName}}</td>
+                <td>{{session.subject}}</td>
+                <td>{{session.date}}</td>
+                <td>{{session.startTime}}</td>
+                <td>{{session.location}}</td>
+                <td>{{session.status | removeUnderscore | titlecase}}</td>
+                <td>
+                    <button class="btn-floating green disabled"><i class="material-icons center">edit</i></button>
+                    <button class="btn-floating green" *ngIf="session.expanded"><i class="material-icons center" (click)="session.expanded=!session.expanded">arrow_drop_up</i></button>
+                    <button class="btn-floating green" *ngIf="!session.expanded"><i class="material-icons center" (click)="session.expanded=!session.expanded">arrow_drop_down</i></button>
+                </td>
+            </tr>
+            <tr *ngIf="session.expanded">
+                <td colspan="8">
+                    <div class = "row">
+                        <div class = "col"><b>Coach explanation:</b></div>
+                        <div class = "col">{{session.feedbackForCoach ? session.feedbackForCoach.explanation : 'X'}}/5</div>
+                        <div class = "col"><b>Coach usefulness:</b></div>
+                        <div class = "col">{{session.feedbackForCoach ? session.feedbackForCoach.usefulness : 'X'}}/5</div>
+                        <div class = "col"><b>Coachee preparedness:</b></div>
+                        <div class = "col">{{session.feedbackForCoachee ? session.feedbackForCoachee.preparedness : 'X'}}/5</div>
+                        <div class = "col"><b>Coachee willingness:</b></div>
+                        <div class = "col">{{session.feedbackForCoachee ? session.feedbackForCoachee.willingness : 'X'}}/5</div>
+                    </div>
+                    <div class = "row">
+                        <div class = "col"><b>Positive feedback for Coach:</b></div>
+                        <div class = "col">{{session.feedbackForCoach ? session.feedbackForCoach.positive : 'null'}}</div>
+                    </div>
+                    <div class = "row">
+                        <div class = "col"><b>Negative feedback for Coach:</b></div>
+                        <div class = "col">{{session.feedbackForCoach ? session.feedbackForCoach.negative : 'null'}}</div>
+                    </div>
+                    <div class = "row">
+                        <div class = "col"><b>Positive feedback for Coachee:</b></div>
+                        <div class = "col">{{session.feedbackForCoachee ? session.feedbackForCoachee.positive : 'null'}}</div>
+                    </div>
+                    <div class = "row">
+                        <div class = "col"><b>Negative feedback for Coachee:</b></div>
+                        <div class = "col">{{session.feedbackForCoachee ? session.feedbackForCoachee.negative : 'null'}}</div>
+                    </div>
+                    <div class = "row">
+                        <div class = "col"><b>Remarks:</b></div>
+                        <div class = "col">{{session.remarks}}</div>
+                    </div>
+                </td>
+            </tr>
+        </ng-container>
+    </table>
+</div>
