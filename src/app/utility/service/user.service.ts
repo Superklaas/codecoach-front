@@ -7,6 +7,8 @@ import {User} from "../model/User";
 import {Topic} from "../model/Topic";
 import { environment } from 'src/environments/environment';
 import {CoachRequest} from "../model/CoachRequest";
+import {ChangePasswordInformation} from "../model/ChangePasswordInformation";
+
 
 @Injectable({
   providedIn: 'root'
@@ -71,4 +73,10 @@ export class UserService {
   updateTopics(newTopics: Topic[], id: number): Observable<Topic[]> {
     return this.http.post<Topic[]>(`${this.url}/${id}/topics`, newTopics);
   }
+
+  changePassword(changePasswordInformation: ChangePasswordInformation){
+    return this.http.post(`${this.url}/update-password`, changePasswordInformation);
+  }
+
+
 }
