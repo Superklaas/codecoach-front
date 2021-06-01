@@ -7,13 +7,14 @@
         <li><a routerLink="/home">Home</a></li>
         <!-- If not logged in  -->
         <li>
-          <a *ngIf="!isLoggedIn" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login">
+          <a *ngIf="!isLoggedIn" class="waves-effect waves-light yellow darken-2 btn black-text sign-in-button" routerLink="/login">
             <div>Sign-in</div>
             <i class="material-icons right">person</i>
           </a>
         </li>
         <li>
-          <a *ngIf="!isLoggedIn" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/register">
+          <a *ngIf="!isLoggedIn" class="waves-effect waves-light yellow darken-2 btn black-text register-button"
+             routerLink="/register">
             <div>Register</div>
             <i class="material-icons right">person</i>
           </a>
@@ -40,12 +41,13 @@
 
 
         <ng-container *ngIf="!isLoggedIn">
-          <li routerLink="/login"><a  class="waves-effect waves-light amber lighten-4 btn black-text">
+          <li routerLink="/login"><a  class="waves-effect waves-light amber lighten-4 btn black-text sign-in-button">
             Sign in
             <i class="material-icons right">person</i>
           </a></li>
 
-          <li routerLink="/register"><a  class="waves-effect waves-light amber lighten-4 btn black-text">
+          <li routerLink="/register"><a
+            class="waves-effect waves-light amber lighten-4 btn black-text register-button">
             Register<i class="material-icons right">person</i>
           </a></li>
         </ng-container>

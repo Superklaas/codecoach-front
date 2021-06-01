@@ -29,7 +29,7 @@ export class CoacheeSessionsComponent implements OnInit {
   }
 
    isInTheFuture(session: Session): boolean{
-    let sessionTime = Date.parse(`${session.date} ${session.startTime}`)
+    let sessionTime = Date.parse(`${session.date}T${session.startTime}`)
     return sessionTime > Date.parse(new Date().toString());
 
   }
