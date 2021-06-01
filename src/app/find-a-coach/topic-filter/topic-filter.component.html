@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-md-6">
+    <label for="topic-filter">Filter by topic</label>
+    <select id="topic-filter" name="topic-filter" *ngIf="topics$ | async as topics">
+      <option value="default">Choose topic</option>
+      <option *ngFor="let topic of topics">{{topic.name}}</option>
+    </select>
+  </div>
+</div>
+

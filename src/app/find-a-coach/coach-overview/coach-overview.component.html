@@ -1,0 +1,37 @@
+<app-user-menu></app-user-menu>
+<app-topic-filter></app-topic-filter>
+<div class="container-fluid" *ngIf="coaches$ | async as coaches; else loading">
+  <div class="container-fluid">
+    <div class="row coach-wrapper">
+      <div class="coach" *ngFor="let coach of coaches">
+        <div class="coach-card row">
+          <div class="title-wrapper border-bottom">
+            <h3>{{coach.profileName}}</h3>
+          </div>
+          <div class="coach-card-body row">
+            <div class="col image-wrapper">
+              <img src="{{coach.imageUrl}}">
+            </div>
+            <div class="col topic-wrapper">
+              <h4>Topics</h4>
+              <ul>
+                <li *ngFor="let topic of coach.topicList">{{topic.name}}</li>
+                <li *ngIf="coach.topicList.length == 0">
+                  <em>No known topics</em>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <button class="round-button yellow darken-2" routerLink="/user/{{coach.id}}">
+            <i class="material-icons center white-text">send</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="progress">
+    <div class="indeterminate"></div>
+  </div>
+</ng-template>
