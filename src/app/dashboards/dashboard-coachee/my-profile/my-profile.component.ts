@@ -28,7 +28,7 @@ export class MyProfileComponent implements OnInit {
   }
 
   get userImage() {
-    if (!this.user.imageUrl) {
+    if (!this.user || !this.user.imageUrl) {
       return "assets/images/default-person.png";
     }
     return this.user.imageUrl;
