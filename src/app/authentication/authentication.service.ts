@@ -51,10 +51,6 @@ export class AuthenticationService {
     return this.tokenService.getTokenString();
   }
 
-  getProfileName() { // DEPRECATED
-    return this.getDecodedToken().profileName;
-  }
-
   getRole(){ // DEPRECATED
     return this.getDecodedToken().role;
   }
