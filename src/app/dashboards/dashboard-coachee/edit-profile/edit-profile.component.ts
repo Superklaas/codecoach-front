@@ -5,6 +5,7 @@ import { AuthenticationService } from 'src/app/authentication/authentication.ser
 import { ProfileService } from 'src/app/utility/service/profile.service';
 import { UserService } from 'src/app/utility/service/user.service';
 import {Router} from "@angular/router";
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-profile',
@@ -72,8 +73,9 @@ export class EditProfileComponent implements OnInit {
   update() {
     if(this._editForm.valid){
       this.userService.update(this._editForm.value, +this.authService.getId()).subscribe(
-        (_ => {
+        (user => {
           alert("Your changes have been saved.");
+          this.profileService.update(user);
           this.router.navigateByUrl("/dashboard");
         }),
         (error =>  this._editForm.setErrors({serverError: error.error.message}))
@@ -82,11 +84,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   cancel() {
-    this.userService.get(+this.authService.getId()).subscribe(user => {
-      this._editForm.patchValue(user);
-      this.userImageUrl = user.imageUrl;
-      this.router.navigateByUrl("/dashboard");
-    });
+    this.router.navigateByUrl("/dashboard");
   }
 
   wrongInputHasBeenTyped(input: AbstractControl): boolean{

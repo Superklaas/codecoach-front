@@ -20,6 +20,10 @@ export class ProfileService {
     this.authService.session$.subscribe(session => this.setUserFromSession(session))
   }
 
+  update(user: User) {
+    this.currentUser.next(user);
+  }
+
   refresh(): Promise<User> {
     const session = this.authService.getSession();
 
