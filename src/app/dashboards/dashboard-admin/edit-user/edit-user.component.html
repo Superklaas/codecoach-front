@@ -1,170 +1,170 @@
 <div *ngIf="user">
-    <div class="card ">
-        <div class="card-body">
-            <h3>Profile Information</h3>
-            <form class="col s12" [formGroup]="editForm" (ngSubmit)="updateProfile()">
-                <div class="row">
-                    <div class="col-md-4 profile-image">
-                        <img class="custom-img" [src]="userImage" alt="">
-                        <div><b>Avatar URL:</b></div>
-                        <input type="text" class="form-control" formControlName="imageUrl" aria-label="Avatar URL">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row border-bottom ">
-                            <div class="col"><b>First name</b></div>
-                            <input type="text" class="form-control col" formControlName="firstName"
-                                aria-label="First name">
-                        </div>
-                        <div class="row border-bottom ">
-                            <div class="col"><b>Last name</b></div>
-                            <input type="text" class="form-control col" formControlName="lastName"
-                                aria-label="Last name">
-                        </div>
-                        <div class="row border-bottom ">
-                            <div class="col"><b>Email</b><span class="red-text mx-2">This is used to sign in</span>
-                            </div>
-                            <input type="text" class="form-control col" formControlName="email" aria-label="Email">
-                        </div>
-                        <div class="row border-bottom ">
-                            <div class="col"><b>Profile name</b></div>
-                            <input type="text" class="form-control col" formControlName="profileName"
-                                aria-label="Profile name">
-                        </div>
-                        <div class="row border-bottom">
-                            <div class="col"><b>CodeCoach role</b></div>
-                            <div class="col">
-                                <select name="roles" id="roles" formControlName="role">
-                                    <option *ngFor="let role of roles" [ngValue]="role">{{ role | titlecase }}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="right-align">
-                <button class="waves-effect waves-light btn btn-custom green" (click)="updateProfile()">SAVE<i
-                        class="material-icons right">check_circle</i>
-                </button>
-                <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancelProfile()">CANCEL<i
-                        class="material-icons right">cancel</i>
-                </button>
-            </div>
-            <div *ngIf="editForm.errors">
-                <div *ngIf="editForm.errors.serverError" class="alert alert-danger">
-                    {{editForm.errors.serverError}}
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="card ">
-
-      <div class="card-body">
-        <h3>Change password</h3>
-
-        <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
-
-          <div class="row border-bottom ">
-            <div class="col label-div"><b>New password</b></div>
-            <input type="password" class="form-control col" formControlName="newPassword"
-                   aria-label="new password">
-            </div>
-
-
-          <div class="row border-bottom ">
-            <div class="col label-div"><b>Repeat new password</b></div>
-            <input type="Password" class="form-control col" formControlName="confirmPassword"
-                   aria-label="repeat new password">
-
-            <div *ngIf="changePasswordForm.errors!=null &&
-                changePasswordForm.errors.notSame && hasAllBeenTouched(newPassword, confirmPassword)"
-                 class="alert alert-danger">
-              <div>Passwords don't match.</div>
-            </div>
-
+  <div class="card ">
+    <div class="card-body">
+      <h3>Profile Information</h3>
+      <form class="col s12" [formGroup]="editForm" (ngSubmit)="updateProfile()">
+        <div class="row">
+          <div class="col-md-4 profile-image">
+            <img class="custom-img" [src]="userImage" alt="">
+            <div><b>Avatar URL:</b></div>
+            <input type="text" class="form-control" formControlName="imageUrl" aria-label="Avatar URL">
           </div>
-
-          <div *ngIf="changePasswordForm.errors" >
-            <div *ngIf="changePasswordForm.errors.serverError" class="alert alert-danger">
-              {{changePasswordForm.errors.serverError}}
+          <div class="col-md-8">
+            <div class="row border-bottom ">
+              <div class="col"><b>First name</b></div>
+              <input type="text" class="form-control col" formControlName="firstName"
+                     aria-label="First name">
+            </div>
+            <div class="row border-bottom ">
+              <div class="col"><b>Last name</b></div>
+              <input type="text" class="form-control col" formControlName="lastName"
+                     aria-label="Last name">
+            </div>
+            <div class="row border-bottom ">
+              <div class="col"><b>Email</b><span class="red-text mx-2">This is used to sign in</span>
+              </div>
+              <input type="text" class="form-control col" formControlName="email" aria-label="Email">
+            </div>
+            <div class="row border-bottom ">
+              <div class="col"><b>Profile name</b></div>
+              <input type="text" class="form-control col" formControlName="profileName"
+                     aria-label="Profile name">
+            </div>
+            <div class="row border-bottom">
+              <div class="col"><b>CodeCoach role</b></div>
+              <div class="col">
+                <select name="roles" id="roles" formControlName="role">
+                  <option *ngFor="let role of roles" [ngValue]="role">{{ role | titlecase }}</option>
+                </select>
+              </div>
             </div>
           </div>
-
-        </form>
-
-        <div class="right-align">
-          <button class="waves-effect waves-light btn btn-custom green" [disabled] = "changePasswordForm.invalid" (click)="changePassword()">SAVE<i class="material-icons right">check_circle</i>
-          </button>
-          <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancelPassword()">CANCEL<i
-            class="material-icons right">cancel</i>
-          </button>
         </div>
-
-      </div>
-    </div>
-
-
-
-    <div class="card">
-        <div class="card-body">
-            <h3>Coach Information</h3>
-            <div class="alert alert-danger"  *ngIf="user.role !== 'COACH'">
-              User is not a coach, be careful to edit this
-            </div>
-            <form class="col s12" [formGroup]="editCoachForm" (ngSubmit)="updateCoach()">
-                <div class="row border-bottom ">
-                    <div class="col"><b>Introduction</b></div>
-                    <div class="col">
-                        <input type="text" class="form-control col" formControlName="introduction"
-                            aria-label="introduction text">
-                    </div>
-
-                </div>
-                <div class="row border-bottom ">
-                    <div class="col"><b>Availability</b></div>
-                    <div class="col">
-                        <input type="text" class="form-control col" formControlName="availability"
-                            aria-label="Availability">
-                    </div>
-                </div>
-                <div class="row  ">
-                    <div class="col"><b>XP</b></div>
-                    <div class="col">
-                        <input type="number" class="form-control col" formControlName="xp"
-                            aria-label="xp">
-                    </div>
-                </div>
-            </form>
-            <div class="right-align">
-                <button class="waves-effect waves-light btn btn-custom green" (click)="updateCoach()">SAVE<i
-                        class="material-icons right">check_circle</i>
-                </button>
-                <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancelCoach()">CANCEL<i
-                        class="material-icons right">cancel</i>
-                </button>
-            </div>
-            <div *ngIf="editCoachForm.errors">
-                <div *ngIf="editCoachForm.errors.serverError" class="alert alert-danger">
-                    {{editCoachForm.errors.serverError}}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card" *ngIf="!areTopicsBeingEdited">
-      <div class="card-body">
-        <h3 class="border-bottom ">Coaching Topics</h3>
-        <div class="alert alert-danger"  *ngIf="user.role !== 'COACH'">
-          User is not a coach, be careful to edit this
-        </div>
-        <div class="row border-bottom " *ngFor="let topic of user.topicList">
-          <div class="col"><b>{{topic.name}}</b></div>
-        </div>
-        <button [ngClass]="color" class="right btn-floating" (click)="edit()">
-          <i class="material-icons center">edit</i>
+      </form>
+      <div class="right-align">
+        <button class="waves-effect waves-light btn btn-custom green" (click)="updateProfile()">SAVE<i
+          class="material-icons right">check_circle</i>
+        </button>
+        <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancelProfile()">CANCEL<i
+          class="material-icons right">cancel</i>
         </button>
       </div>
+      <div *ngIf="editForm.errors">
+        <div *ngIf="editForm.errors.serverError" class="alert alert-danger">
+          {{editForm.errors.serverError}}
+        </div>
+      </div>
     </div>
-  <app-coaching-topics-editor *ngIf="areTopicsBeingEdited && user" [user]="user" (cancelEdit)="cancelProfile()" (saved)="updateProfile()"></app-coaching-topics-editor>
+  </div>
+
+
+  <div class="card ">
+
+    <div class="card-body">
+      <h3>Change password</h3>
+
+      <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+
+        <div class="row border-bottom ">
+          <div class="col label-div"><b>New password</b></div>
+          <input type="password" class="form-control col" formControlName="newPassword"
+                 aria-label="new password">
+        </div>
+
+
+        <div class="row border-bottom ">
+          <div class="col label-div"><b>Repeat new password</b></div>
+          <input type="Password" class="form-control col" formControlName="confirmPassword"
+                 aria-label="repeat new password">
+
+          <div *ngIf="changePasswordForm.errors!=null &&
+                changePasswordForm.errors.notSame && hasAllBeenTouched(newPassword, confirmPassword)"
+               class="alert alert-danger">
+            <div>Passwords don't match.</div>
+          </div>
+
+        </div>
+
+        <div *ngIf="changePasswordForm.errors">
+          <div *ngIf="changePasswordForm.errors.serverError" class="alert alert-danger">
+            {{changePasswordForm.errors.serverError}}
+          </div>
+        </div>
+
+      </form>
+
+      <div class="right-align">
+        <button class="waves-effect waves-light btn btn-custom green" [disabled]="changePasswordForm.invalid"
+                (click)="changePassword()">SAVE<i class="material-icons right">check_circle</i>
+        </button>
+        <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancelPassword()">CANCEL<i
+          class="material-icons right">cancel</i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="card">
+    <div class="card-body">
+      <h3>Coach Information</h3>
+      <div class="alert alert-danger" *ngIf="user.role !== 'COACH'">
+        User is not a coach, be careful to edit this
+      </div>
+      <form class="col s12" [formGroup]="editCoachForm" (ngSubmit)="updateCoach()">
+        <div class="row border-bottom ">
+          <div class="col"><b>Introduction</b></div>
+          <div class="col">
+            <input type="text" class="form-control col" formControlName="introduction"
+                   aria-label="introduction text">
+          </div>
+
+        </div>
+        <div class="row border-bottom ">
+          <div class="col"><b>Availability</b></div>
+          <div class="col">
+            <input type="text" class="form-control col" formControlName="availability"
+                   aria-label="Availability">
+          </div>
+        </div>
+        <div class="row  ">
+          <div class="col"><b>XP</b></div>
+          <div class="col">
+            <input type="number" class="form-control col" formControlName="xp"
+                   aria-label="xp">
+          </div>
+        </div>
+      </form>
+      <div class="right-align">
+        <button class="waves-effect waves-light btn btn-custom green" (click)="updateCoach()">SAVE<i
+          class="material-icons right">check_circle</i>
+        </button>
+        <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancelCoach()">CANCEL<i
+          class="material-icons right">cancel</i>
+        </button>
+      </div>
+      <div *ngIf="editCoachForm.errors">
+        <div *ngIf="editCoachForm.errors.serverError" class="alert alert-danger">
+          {{editCoachForm.errors.serverError}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card" *ngIf="!areTopicsBeingEdited">
+    <div class="card-body">
+      <h3 class="border-bottom ">Coaching Topics</h3>
+      <div class="alert alert-danger" *ngIf="user.role !== 'COACH'">
+        User is not a coach, be careful to edit this
+      </div>
+      <div class="row border-bottom " *ngFor="let topic of user.topicList">
+        <div class="col"><b>{{topic.name}}</b></div>
+      </div>
+      <button [ngClass]="color" class="right btn-floating" (click)="edit()">
+        <i class="material-icons center">edit</i>
+      </button>
+    </div>
+  </div>
+  <app-coaching-topics-editor *ngIf="areTopicsBeingEdited && user" [user]="user" (cancelEdit)="cancelProfile()"
+                              (saved)="updateProfile()"></app-coaching-topics-editor>
 </div>
