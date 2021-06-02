@@ -3,7 +3,6 @@ import {Component, OnInit} from '@angular/core';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { ProfileService } from 'src/app/utility/service/profile.service';
 import { RolePersonalisationService } from 'src/app/utility/service/role-personalisation.service';
-import { UserService } from 'src/app/utility/service/user.service';
 
 @Component({
   selector: 'app-user-menu',

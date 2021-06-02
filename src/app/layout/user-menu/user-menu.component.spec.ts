@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { RolePersonalisationService } from 'src/app/utility/service/role-personalisation.service';
 import { UserMenuComponent } from './user-menu.component';
+import {ProfileService} from "../../utility/service/profile.service";
 
 describe('UserMenuComponent', () => {
   let component: UserMenuComponent;
@@ -22,6 +23,16 @@ describe('UserMenuComponent', () => {
           useValue: {
               session$: new Subject(),
           }
+        },
+        {
+          provide: RolePersonalisationService,
+          useValue: {
+            color: 'yellow darken-2'
+          }
+        },
+        {
+          provide: ProfileService,
+          useValue: {}
         }
       ]
     })

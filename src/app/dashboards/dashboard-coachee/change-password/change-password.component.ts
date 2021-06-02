@@ -10,8 +10,7 @@ import {AuthenticationService} from "../../../authentication/authentication.serv
   styleUrls: ['./change-password.component.css']
 })
 export class ChangePasswordComponent implements OnInit {
-  private _success;
-  private _error;
+
   public changePasswordForm = this.formBuilder.group({
     id: new FormControl(this.authSerive.getSession().getUserId(), []),
     oldPassword: new FormControl("", [Validators.required]),
@@ -64,11 +63,9 @@ export class ChangePasswordComponent implements OnInit {
 
   submit() {
     this.changePasswordForm.markAllAsTouched();
-    this._success = false;
-    this._error = false;
 
       return this.userService.changePassword(this.changePasswordForm.value)
-        .subscribe(() => { this._success= true; this.router.navigate([`/dashboard`])}
+        .subscribe(() => { this.router.navigate([`/dashboard`])}
         , (errorResponse => this.addErrorToForm(errorResponse))  );
   }
 
