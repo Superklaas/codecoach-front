@@ -2,6 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Subject } from 'rxjs';
 
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { RolePersonalisationService } from 'src/app/utility/service/role-personalisation.service';
@@ -19,8 +20,7 @@ describe('UserMenuComponent', () => {
         {
           provide: AuthenticationService,
           useValue: {
-              getRole(){ return 'COACH' },
-              getId() { return 1; }
+              session$: new Subject(),
           }
         }
       ]
