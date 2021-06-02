@@ -12,7 +12,7 @@
       </div>
       <div class="row ">
         <div class="col-md-2"><b>XP</b></div>
-        <div class="col-md-6">
+        <div class="col-md">
           <div class="badge center" [ngClass]='xpLevel | lowercase'>{{user.xp}}/{{nextThreshHold}} ({{xpLevel}})</div>
           <div class="progress " style="height: 10px;">
             <div class="progress-bar" role="progressbar" [ngClass]='xpLevel | lowercase' [style.width]="xpPercentage">
