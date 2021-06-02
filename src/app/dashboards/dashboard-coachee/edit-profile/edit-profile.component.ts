@@ -5,7 +5,6 @@ import { AuthenticationService } from 'src/app/authentication/authentication.ser
 import { ProfileService } from 'src/app/utility/service/profile.service';
 import { UserService } from 'src/app/utility/service/user.service';
 import {Router} from "@angular/router";
-import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-profile',
