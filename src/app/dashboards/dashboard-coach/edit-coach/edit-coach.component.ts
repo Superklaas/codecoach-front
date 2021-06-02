@@ -46,7 +46,6 @@ export class EditCoachComponent implements OnInit {
 
   cancel(){
     this.router.navigateByUrl("/dashboard-coach");
-
   }
 
   get editCoachForm(){
