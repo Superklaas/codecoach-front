@@ -21,5 +21,8 @@ jobs:
     - name: Test
       run: npm run test:ci
     - name: E2E
-      run: npm webdriver-update-ci
-           npm run e2e --webdriver-update=false
+      run: |
+          npm webdriver-update-ci
+          npm run e2e --webdriver-update=false
+           
+           
