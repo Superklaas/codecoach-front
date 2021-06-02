@@ -18,4 +18,11 @@ export class AuthSession {
   isAdmin(): boolean {
     return this.token &&  this.token.role === 'ADMIN';
   }
+
+  getUserId(): number {
+    if (!this.token) {
+      throw new Error("Cannot get user id when user is not authenticated");
+    }
+    return Number(this.token.sub);
+  }
 }

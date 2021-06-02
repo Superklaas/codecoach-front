@@ -15,7 +15,7 @@ export class AuthorizationGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authService.session$
-      .pipe(map(session => session.isAdmin() && session.isCoach()))
+      .pipe(map(session => session.isAdmin() || session.isCoach()))
       .pipe(tap(authorized => {if (!authorized) this.router.navigate(['/dashboard'])}));
   }
 
