@@ -6,6 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { RolePersonalisationService } from 'src/app/utility/service/role-personalisation.service';
 import { UserMenuComponent } from './user-menu.component';
+import {ProfileService} from "../../utility/service/profile.service";
 
 describe('UserMenuComponent', () => {
   let component: UserMenuComponent;
@@ -22,6 +23,16 @@ describe('UserMenuComponent', () => {
               getRole(){ return 'COACH' },
               getId() { return 1; }
           }
+        },
+        {
+          provide: RolePersonalisationService,
+          useValue: {
+            color: 'yellow darken-2'
+          }
+        },
+        {
+          provide: ProfileService,
+          useValue: {}
         }
       ]
     })

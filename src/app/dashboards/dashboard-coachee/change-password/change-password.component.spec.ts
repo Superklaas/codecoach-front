@@ -5,6 +5,7 @@ import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "../../../app-routing.module";
+import {AuthenticationService} from "../../../authentication/authentication.service";
 
 describe('ChangePasswordComponent', () => {
   let component: ChangePasswordComponent;
@@ -19,7 +20,8 @@ describe('ChangePasswordComponent', () => {
         ReactiveFormsModule,
         RouterModule,
         AppRoutingModule
-      ]
+      ],
+      providers: [{provide: AuthenticationService, useValue: {getId(){ return 1 }}}]
     })
     .compileComponents();
   });
