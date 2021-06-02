@@ -13,7 +13,7 @@ export class ChangePasswordComponent implements OnInit {
   private _success;
   private _error;
   public changePasswordForm = this.formBuilder.group({
-    id: new FormControl(this.authSerive.getId(), []),
+    id: new FormControl(this.authSerive.getSession().getUserId(), []),
     oldPassword: new FormControl("", [Validators.required]),
     newPassword: new FormControl("", [Validators.required, Validators.minLength(8), Validators.pattern(/.*[0-9]+.*/), Validators.pattern(/.*[A-Z]+.*/), Validators.pattern(/.*[a-z]+.*/)]),
     newPassword2: new FormControl("", [Validators.required]),
