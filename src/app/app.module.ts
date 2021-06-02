@@ -49,7 +49,7 @@ import { TopicFilterComponent } from './find-a-coach/topic-filter/topic-filter.c
 import { SessionOverviewComponent} from "./dashboards/dashboard-admin/session-overview/session-overview.component";
 import { FilterCoachesByTopicPipe } from './utility/pipe/filter-coaches-by-topic.pipe';
 import {ChangePasswordComponent} from "./dashboards/dashboard-coachee/change-password/change-password.component";
-
+import { SearchCoachPipe } from './utility/pipe/search-coach.pipe';
 
 
 @NgModule({
@@ -99,6 +99,7 @@ import {ChangePasswordComponent} from "./dashboards/dashboard-coachee/change-pas
     TopicFilterComponent,
     SessionOverviewComponent,
     ChangePasswordComponent,
+    SearchCoachPipe,
     FilterCoachesByTopicPipe,
   ],
   imports: [

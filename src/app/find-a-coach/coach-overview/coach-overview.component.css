@@ -199,3 +199,11 @@ ul {
   border-radius: 0.25rem;
   font-weight: 600;
 }
+.topic-filter {
+  padding: 20px;
+}
+
+
+label {
+  font-size: 16px;
+}
