@@ -48,7 +48,7 @@ import { PageNotFoundComponent } from './utility/page-not-found/page-not-found.c
 import { TopicFilterComponent } from './find-a-coach/topic-filter/topic-filter.component';
 import { SessionOverviewComponent} from "./dashboards/dashboard-admin/session-overview/session-overview.component";
 import {ChangePasswordComponent} from "./dashboards/dashboard-coachee/change-password/change-password.component";
-
+import { SearchCoachPipe } from './utility/pipe/search-coach.pipe';
 
 
 @NgModule({
@@ -98,6 +98,8 @@ import {ChangePasswordComponent} from "./dashboards/dashboard-coachee/change-pas
     TopicFilterComponent,
     SessionOverviewComponent,
     ChangePasswordComponent,
+    SearchCoachPipe,
+  
   ],
   imports: [
     BrowserModule,

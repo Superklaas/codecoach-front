@@ -13,6 +13,7 @@ import { XpService } from 'src/app/utility/service/xp.service';
 export class CoachOverviewComponent implements OnInit {
 
   coaches$: Observable<User[]>;
+  searchText: string;
 
   constructor(private userService: UserService, private xpService: XpService) { }
 
