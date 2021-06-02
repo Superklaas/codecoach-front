@@ -72,6 +72,5 @@ export class ChangePasswordComponent implements OnInit {
       return this.userService.changePassword(this.changePasswordForm.value)
         .subscribe(() => { this._success= true; this.router.navigate([`/home`])}
         , (errorResponse => this.addErrorToForm(errorResponse))  );
-
   }
 }
