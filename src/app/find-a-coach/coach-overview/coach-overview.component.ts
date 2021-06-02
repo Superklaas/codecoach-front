@@ -12,6 +12,7 @@ import { XpService } from 'src/app/utility/service/xp.service';
 })
 export class CoachOverviewComponent implements OnInit {
 
+  searchText: string;
   coaches: User[];
   topicName: string;
 

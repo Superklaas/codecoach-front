@@ -73,8 +73,9 @@ export class EditProfileComponent implements OnInit {
   update() {
     if(this._editForm.valid){
       this.userService.update(this._editForm.value, +this.authService.getId()).subscribe(
-        (_ => {
+        (user => {
           alert("Your changes have been saved.");
+          this.profileService.update(user);
           this.router.navigateByUrl("/dashboard");
         }),
         (error =>  this._editForm.setErrors({serverError: error.error.message}))
@@ -83,11 +84,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   cancel() {
-    this.userService.get(+this.authService.getId()).subscribe(user => {
-      this._editForm.patchValue(user);
-      this.userImageUrl = user.imageUrl;
-      this.router.navigateByUrl("/dashboard");
-    });
+    this.router.navigateByUrl("/dashboard");
   }
 
   wrongInputHasBeenTyped(input: AbstractControl): boolean{

@@ -21,8 +21,8 @@ describe('MyProfileComponent', () => {
           provide: AuthenticationService,
           useValue: {getId() { return 1 }}},
         {
-          provide: UserService,
-          useValue: {get() {return  new Subject()}}
+          provide: ProfileService,
+          useValue: {currentUser$: new Subject()}
         }]
     })
     .compileComponents();

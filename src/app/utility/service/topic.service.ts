@@ -19,4 +19,8 @@ export class TopicService {
     return this.http.get<Topic[]>(this.url);
   }
 
+  getAllUsedTopics() {
+    return this.http.get<Topic[]>(this.url+"/used");
+  }
+
 }

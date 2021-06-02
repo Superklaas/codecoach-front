@@ -27,8 +27,7 @@ export class EditCoachComponent implements OnInit {
   }
 
   displayUser(): void {
-    const id = this.authService.getId();
-    this.userService.get(+id).subscribe(user => {
+    this.profileService.currentUser$.subscribe(user => {
       this._editCoachForm.patchValue(user);
     });
   }
@@ -36,8 +35,8 @@ export class EditCoachComponent implements OnInit {
   update() {
     if(this._editCoachForm.valid){
       this.userService.updateCoach(this._editCoachForm.value, +this.authService.getId()).subscribe(
-        (_ => {
-          alert("Your changes have been saved.");
+        (user => {
+          this.profileService.update(user);
           this.router.navigateByUrl("/dashboard-coach");
         }),
         (error =>  this._editCoachForm.setErrors({serverError: 'oops something went wrong'}))
@@ -46,10 +45,7 @@ export class EditCoachComponent implements OnInit {
   }
 
   cancel(){
-    this.userService.get(+this.authService.getId()).subscribe(user => {
-      this._editCoachForm.patchValue(user);
-      this.router.navigateByUrl("/dashboard-coach");
-    });
+    this.router.navigateByUrl("/dashboard-coach");
   }
 
   get editCoachForm(){

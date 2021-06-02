@@ -98,7 +98,7 @@ ul {
 }
 
 .bronze{
-  background-color: #bf360c;
+  background-color: #CD7F32;
   color: white;
   min-width: 3rem;
   padding: 0 6px;
@@ -198,4 +198,12 @@ ul {
   vertical-align: baseline;
   border-radius: 0.25rem;
   font-weight: 600;
+}
+.topic-filter {
+  padding: 20px;
+}
+
+
+label {
+  font-size: 16px;
 }

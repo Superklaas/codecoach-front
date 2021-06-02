@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import {AuthenticationService} from "../authentication/authentication.service";
 
 @Injectable({
@@ -13,11 +14,9 @@ export class AuthorizationGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.authService.getRole() !== 'COACH' && this.authService.getRole() !== 'ADMIN') {
-      this.router.navigate(['/dashboard']);
-      return false;
-    }
-    return true;
+    return this.authService.session$
+      .pipe(map(session => session.isAdmin() || session.isCoach()))
+      .pipe(tap(authorized => {if (!authorized) this.router.navigate(['/dashboard'])}));
   }
 
 }
