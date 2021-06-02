@@ -1,7 +1,7 @@
 <app-user-menu></app-user-menu>
-<div class="d-flex justify-content-start">
-  <app-topic-filter (change)="filterCoachesByTopic($event)"></app-topic-filter>
-  <div >
+<div class="d-flex justify-content-start topic-filter flex-wrap">
+  <app-topic-filter (change)="filterCoachesByTopic($event)" class= "flex-fill"></app-topic-filter>
+  <div class= "flex-fill">
     <label for="search-coach">Search for a Coach</label>
     <input type="text" id="search-coach" placeholder="Search" [(ngModel)]="searchText" />
   </div>
