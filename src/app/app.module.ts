@@ -47,6 +47,7 @@ import { ErrorComponent } from './utility/error/error.component';
 import { PageNotFoundComponent } from './utility/page-not-found/page-not-found.component';
 import { TopicFilterComponent } from './find-a-coach/topic-filter/topic-filter.component';
 import { SessionOverviewComponent} from "./dashboards/dashboard-admin/session-overview/session-overview.component";
+import { FilterCoachesByTopicPipe } from './utility/pipe/filter-coaches-by-topic.pipe';
 import {ChangePasswordComponent} from "./dashboards/dashboard-coachee/change-password/change-password.component";
 import { SearchCoachPipe } from './utility/pipe/search-coach.pipe';
 
@@ -99,7 +100,7 @@ import { SearchCoachPipe } from './utility/pipe/search-coach.pipe';
     SessionOverviewComponent,
     ChangePasswordComponent,
     SearchCoachPipe,
-  
+    FilterCoachesByTopicPipe,
   ],
   imports: [
     BrowserModule,

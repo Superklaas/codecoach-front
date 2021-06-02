@@ -1,15 +1,16 @@
 <app-user-menu></app-user-menu>
 <div class="d-flex justify-content-start">
-  <app-topic-filter></app-topic-filter>
+  <app-topic-filter (change)="filterCoachesByTopic($event)"></app-topic-filter>
   <div >
     <label for="search-coach">Search for a Coach</label>
     <input type="text" id="search-coach" placeholder="Search" [(ngModel)]="searchText" />
   </div>
 </div>
-<div class="container-fluid" *ngIf="coaches$ | async as coaches; else loading">
+<div class="container-fluid" *ngIf="coaches; else loading">
   <div class="container-fluid">
     <div class="row coach-wrapper">
-      <div class="coach" *ngFor="let coach of coaches | searchCoach: searchText">
+      <div class="coach" *ngFor="let coach of coaches | searchCoach: searchText | filterCoachesByTopic: topicName">
+
         <div class="coach-card row">
           <div class="title-wrapper border-bottom">
             <h3>{{coach.profileName}}</h3>
