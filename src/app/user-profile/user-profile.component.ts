@@ -14,23 +14,15 @@ import { XpService } from '../utility/service/xp.service';
 })
 export class UserProfileComponent implements OnInit {
   user: User;
-  isLoggedIn: boolean;
-  role: string;
   currentWindowWidth: number;
-  loggedInId: number;
 
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private authenticationService: AuthenticationService, private xpService: XpService) { }
+  constructor(private route: ActivatedRoute, private userService: UserService, public authService: AuthenticationService, private xpService: XpService) { }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.userService.get(id).subscribe(user => this.user = user);
-    this.authenticationService.userLoggedIn$.subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
-      this.role = this.authenticationService.getRole();
-      this.currentWindowWidth = window.innerWidth;
-      this.loggedInId = +this.authenticationService.getId();
-    });
+
   }
 
   isMobile(): boolean {

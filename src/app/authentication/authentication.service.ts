@@ -11,9 +11,6 @@ import { AuthSession } from './AuthSession';
 })
 export class AuthenticationService {
 
-  private userLoggedInSource = new ReplaySubject<boolean>(); // DEPRECATED
-  userLoggedIn$ = this.userLoggedInSource.asObservable(); // DEPRECATED
-
   private authSession: AuthSession = new AuthSession(null);
   private sessionSource = new BehaviorSubject<AuthSession>(this.authSession);
   session$ = this.sessionSource.asObservable();
@@ -38,29 +35,8 @@ export class AuthenticationService {
   refresh() {
     this.authSession = new AuthSession(this.tokenService.getToken());
     this.sessionSource.next(this.authSession);
-    this.userLoggedInSource.next(this.authSession.isLoggedIn()); // DEPRECATED
   }
 
-  // DEPRECATION WARNING
 
-  getDecodedToken(): Token { // DEPRECATED
-    return this.tokenService.getToken();
-  }
-
-  getToken() { // DEPRECATED
-    return this.tokenService.getTokenString();
-  }
-
-  getRole(){ // DEPRECATED
-    return this.getDecodedToken().role;
-  }
-
-  getId() { // DEPRECATED
-    return this.getDecodedToken().sub;
-  }
-
-  isLoggedIn() { // DEPRECATED
-    return this.authSession.isLoggedIn();
-  }
 
 }

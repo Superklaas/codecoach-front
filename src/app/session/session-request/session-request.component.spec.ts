@@ -7,6 +7,8 @@ import { SessionRequestComponent } from './session-request.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { ErrorService } from 'src/app/utility/service/error.service';
+import { AuthSession } from 'src/app/authentication/AuthSession';
+import { Token } from 'src/app/authentication/Token';
 
 describe('SessionRequestComponent', () => {
   let component: SessionRequestComponent;
@@ -22,7 +24,9 @@ describe('SessionRequestComponent', () => {
       declarations: [ SessionRequestComponent ],
       providers: [
         {
-        provide: AuthenticationService, useValue: {getId(){ return 1 }}
+        provide: AuthenticationService, useValue: {getSession(){ return new AuthSession({
+          sub: "133",
+        } as Token) }}
         }, {
           provide: ErrorService,
           useValue: {},

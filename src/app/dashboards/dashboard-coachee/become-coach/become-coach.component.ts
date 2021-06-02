@@ -30,7 +30,7 @@ export class BecomeCoachComponent implements OnInit {
   }
 
   submit(): void {
-    this.userService.coachRequest(+this.authService.getId(), this._applyForm.value)
+    this.userService.coachRequest(this.authService.getSession().getUserId(), this._applyForm.value)
       .subscribe(() => this._hasApplied = true);
   }
 
