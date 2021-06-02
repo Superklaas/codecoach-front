@@ -1,24 +1,23 @@
 <app-my-profile></app-my-profile>
 <ng-container *ngIf="user">
 
-  <div>
-    <div class="card">
-      <div class="card-body">
-        <div class="row border-bottom ">
-          <div class="col"><b>Introduction</b></div>
-          <div class="col">{{user.introduction}}</div>
-        </div>
-        <div class="row border-bottom ">
-          <div class="col"><b>Availability</b></div>
-          <div class="col">{{user.availability}}</div>
-        </div>
-        <div class="row ">
-          <div class="col-md-2"><b>XP</b></div>
-          <div class="col-md-6">
-            <div class="badge center" [ngClass]='xpLevel | lowercase'>{{user.xp}}/{{nextThreshHold}} ({{xpLevel}})</div>
-            <div class="progress " style="height: 10px;">
-              <div class="progress-bar" role="progressbar" [ngClass]='xpLevel | lowercase' [style.width]="xpPercentage">
-              </div>
+<div>
+  <div class="card">
+    <div class="card-body">
+      <div class="row border-bottom ">
+        <div class="col"><b>Introduction</b></div>
+        <div class="col">{{user.introduction}}</div>
+      </div>
+      <div class="row border-bottom ">
+        <div class="col"><b>Availability</b></div>
+        <div class="col">{{user.availability}}</div>
+      </div>
+      <div class="row ">
+        <div class="col-md-2"><b>XP</b></div>
+        <div class="col-md">
+          <div class="badge center" [ngClass]='xpLevel | lowercase'>{{user.xp}}/{{nextThreshHold}} ({{xpLevel}})</div>
+          <div class="progress " style="height: 10px;">
+            <div class="progress-bar" role="progressbar" [ngClass]='xpLevel | lowercase' [style.width]="xpPercentage">
             </div>
           </div>
         </div>
