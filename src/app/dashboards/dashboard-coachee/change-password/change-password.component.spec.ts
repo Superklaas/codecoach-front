@@ -6,7 +6,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "../../../app-routing.module";
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
-import {AuthenticationService} from "../../../authentication/authentication.service";
 
 describe('ChangePasswordComponent', () => {
   let component: ChangePasswordComponent;
