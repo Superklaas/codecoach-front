@@ -54,8 +54,6 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   addErrorToForm(errorResponse) {
-    console.log(errorResponse.error.status, errorResponse.error.message)
-
     if (errorResponse.error.status === 403) {
       this.changePasswordForm.setErrors({serverError: errorResponse.error.message});
     }
@@ -70,7 +68,11 @@ export class ChangePasswordComponent implements OnInit {
     this._error = false;
 
       return this.userService.changePassword(this.changePasswordForm.value)
-        .subscribe(() => { this._success= true; this.router.navigate([`/home`])}
+        .subscribe(() => { this._success= true; this.router.navigate([`/dashboard`])}
         , (errorResponse => this.addErrorToForm(errorResponse))  );
+  }
+
+  cancel() {
+    this.router.navigateByUrl("/dashboard");
   }
 }
