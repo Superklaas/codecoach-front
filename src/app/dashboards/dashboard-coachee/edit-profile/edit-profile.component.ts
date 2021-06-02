@@ -5,6 +5,7 @@ import { AuthenticationService } from 'src/app/authentication/authentication.ser
 import { ProfileService } from 'src/app/utility/service/profile.service';
 import { UserService } from 'src/app/utility/service/user.service';
 import {Router} from "@angular/router";
+import {StringValidators} from "../../../utility/validators/StringValidators";
 
 @Component({
   selector: 'app-edit-profile',
@@ -15,10 +16,10 @@ export class EditProfileComponent implements OnInit {
 
   userImageUrl: string;
   private _editForm = this.formBuilder.group({
-    firstName: new FormControl("",[Validators.required, this.noWhitespaceValidator]),
-    lastName: new FormControl("",[Validators.required, this.noWhitespaceValidator]),
-    email: new FormControl("",[Validators.required, this.noWhitespaceValidator, Validators.pattern(/.*@.*/)]),
-    profileName: new FormControl("",[Validators.required, this.noWhitespaceValidator]),
+    firstName: new FormControl("",[Validators.required, StringValidators.noWhitespace]),
+    lastName: new FormControl("",[Validators.required, StringValidators.noWhitespace]),
+    email: new FormControl("",[Validators.required, StringValidators.noWhitespace, Validators.pattern(/.*@.*/)]),
+    profileName: new FormControl("",[Validators.required, StringValidators.noWhitespace]),
     imageUrl: new FormControl("",),
   });
   constructor(public profileService: ProfileService,
@@ -96,10 +97,6 @@ export class EditProfileComponent implements OnInit {
     return input.invalid && (input.dirty || input.touched);
   }
 
-  public noWhitespaceValidator(control: FormControl) {
-    const isWhitespace = (control.value || '').trim().length === 0;
-    const isValid = !isWhitespace;
-    return isValid ? null : { 'whitespace': true };
-  }
+
 
 }
