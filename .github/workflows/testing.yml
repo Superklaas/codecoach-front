@@ -23,6 +23,6 @@ jobs:
     - name: E2E
       run: |
           npm run webdriver-update-ci
-          npm run e2e --webdriver-update=false
+          npm run e2e
            
            
