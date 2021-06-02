@@ -17,7 +17,7 @@ export class TopicFilterComponent implements OnInit, AfterViewInit {
   constructor(private initService: InitService, private topicService: TopicService) { }
 
   ngOnInit(): void {
-    this.topics$ = this.topicService.getAllTopics()
+    this.topics$ = this.topicService.getAllUsedTopics()
       .pipe(tap(_ => {setTimeout(_ => this.initService.initFormSelect(),10)}));
   }
 
