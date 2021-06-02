@@ -34,7 +34,7 @@ export class EditCoachComponent implements OnInit {
 
   update() {
     if(this._editCoachForm.valid){
-      this.userService.updateCoach(this._editCoachForm.value, +this.authService.getId()).subscribe(
+      this.userService.updateCoach(this._editCoachForm.value, this.authService.getSession().getUserId()).subscribe(
         (user => {
           this.profileService.update(user);
           this.router.navigateByUrl("/dashboard-coach");

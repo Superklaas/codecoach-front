@@ -33,8 +33,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   displayUser(): void {
-    const id = this.authService.getId();
-    this.userService.get(+id).subscribe(user => {
+    this.profileService.currentUser$.subscribe(user => {
       this._editForm.patchValue(user);
       this.userImageUrl = user.imageUrl;
     });
@@ -72,7 +71,7 @@ export class EditProfileComponent implements OnInit {
 
   update() {
     if(this._editForm.valid){
-      this.userService.update(this._editForm.value, +this.authService.getId()).subscribe(
+      this.userService.update(this._editForm.value, this.authService.getSession().getUserId()).subscribe(
         (user => {
           alert("Your changes have been saved.");
           this.profileService.update(user);

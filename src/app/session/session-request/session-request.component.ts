@@ -28,7 +28,7 @@ export class SessionRequestComponent implements OnInit {
       location: new FormControl("", [Validators.required, Validators.maxLength(255), this.noWhitespaceValidator]),
       remarks: new FormControl("", [Validators.maxLength(255)]),
       coachId: new FormControl(this.route.snapshot.paramMap.get('id')),
-      coacheeId: new FormControl(this.authenticationService.getId())
+      coacheeId: new FormControl(this.authenticationService.getSession().getUserId())
     }, {validators: this.timeInThePast});
 
   constructor(private formBuilder: FormBuilder, private sessionService: SessionService, private router: Router,
