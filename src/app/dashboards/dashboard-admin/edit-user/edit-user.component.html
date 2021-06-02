@@ -56,6 +56,57 @@
             </div>
         </div>
     </div>
+
+
+
+    <div class="card ">
+
+      <div class="card-body">
+        <h3>Change password</h3>
+
+        <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+
+          <div class="row border-bottom ">
+            <div class="col label-div"><b>New password</b></div>
+            <input type="password" class="form-control col" formControlName="newPassword"
+                   aria-label="new password">
+            </div>
+
+
+          <div class="row border-bottom ">
+            <div class="col label-div"><b>Repeat new password</b></div>
+            <input type="Password" class="form-control col" formControlName="confirmPassword"
+                   aria-label="repeat new password">
+
+            <div *ngIf="changePasswordForm.errors!=null &&
+                changePasswordForm.errors.notSame && hasAllBeenTouched(newPassword, confirmPassword)"
+                 class="alert alert-danger">
+              <div>Passwords don't match.</div>
+            </div>
+
+          </div>
+
+          <div *ngIf="changePasswordForm.errors" >
+            <div *ngIf="changePasswordForm.errors.serverError" class="alert alert-danger">
+              {{changePasswordForm.errors.serverError}}
+            </div>
+          </div>
+
+        </form>
+
+        <div class="right-align">
+          <button class="waves-effect waves-light btn btn-custom green" [disabled] = "changePasswordForm.invalid" (click)="changePassword()">SAVE<i class="material-icons right">check_circle</i>
+          </button>
+          <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancelPassword()">CANCEL<i
+            class="material-icons right">cancel</i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+
+
     <div class="card">
         <div class="card-body">
             <h3>Coach Information</h3>

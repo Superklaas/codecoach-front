@@ -1,12 +1,11 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 
 import { User } from 'src/app/utility/model/User';
 import { InitService } from 'src/app/utility/service/materialize/init.service';
 import { RolePersonalisationService } from 'src/app/utility/service/role-personalisation.service';
 import { UserService } from 'src/app/utility/service/user.service';
-import {Observable} from "rxjs";
 
 
 @Component({
@@ -38,6 +37,14 @@ export class EditUserComponent implements OnInit, AfterViewInit {
     xp: new FormControl("",),
   });
 
+
+  private _changePasswordForm = this.formBuilder.group(
+    {
+      id: new FormControl(Number(this.route.snapshot.paramMap.get('id')), []),
+      newPassword: new FormControl(""),
+      confirmPassword: new FormControl("")
+    }, { validators: this.matchingPassword }
+  )
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
@@ -106,7 +113,6 @@ export class EditUserComponent implements OnInit, AfterViewInit {
     return this.roleStuff.color;
   }
 
-
   get userImage() {
     if (!this._userImage) {
       return "assets/images/default-person.png";
@@ -122,4 +128,46 @@ export class EditUserComponent implements OnInit, AfterViewInit {
     return this._editCoachForm;
   }
 
+  get changePasswordForm(){
+    return this._changePasswordForm;
+  }
+
+  get newPassword(){
+    return this.changePasswordForm.get('newPassword');
+  }
+
+  get confirmPassword(){
+    return this.changePasswordForm.get('confirmPassword');
+  }
+
+  changePassword() {
+    return this.userService.changePassword(this.changePasswordForm.value)
+      .subscribe(() => window.location.reload()
+        , (errorResponse => this.addErrorToForm(errorResponse)) );
+  }
+
+  matchingPassword(group: FormGroup): { notSame: boolean }{
+    const password = group.get('newPassword').value;
+    const password2 = group.get('confirmPassword').value;
+    return password === password2 ? null : { notSame: true }
+  }
+
+  addErrorToForm(errorResponse) {
+    console.log(errorResponse.error.status, errorResponse.error.message)
+
+    if (errorResponse.error.status === 400) {
+      this.changePasswordForm.setErrors({serverError: errorResponse.error.message});
+    }
+    else {
+      this.changePasswordForm.setErrors({ serverError : 'Error: oops something went wrong...'});
+    }
+  }
+
+  hasAllBeenTouched(...inputs: AbstractControl[]){
+    return inputs.reduce((touched, input) => touched && (input.touched || input.dirty), true);
+  }
+
+  cancelPassword() {
+    this._changePasswordForm.reset();
+  }
 }
