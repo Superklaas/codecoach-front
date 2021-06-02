@@ -8,14 +8,14 @@ export class AuthSession {
   }
 
   isCoachee(): boolean {
-    return this.token.role === 'COACHEE';
+    return this.token && this.token.role === 'COACHEE';
   }
 
   isCoach(): boolean {
-    return this.token.role === 'COACH';
+    return this.token && this.token.role === 'COACH';
   }
 
   isAdmin(): boolean {
-    return this.token.role === 'ADMIN';
+    return this.token &&  this.token.role === 'ADMIN';
   }
 }
