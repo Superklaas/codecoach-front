@@ -4,6 +4,7 @@ import { ProfileService } from 'src/app/utility/service/profile.service';
 import { RolePersonalisationService } from 'src/app/utility/service/role-personalisation.service';
 import {UserService} from "../../../utility/service/user.service";
 import {AuthenticationService} from "../../../authentication/authentication.service";
+import { XpService } from 'src/app/utility/service/xp.service';
 
 
 
@@ -17,7 +18,7 @@ export class MyCoachProfileComponent implements OnInit {
   user: User;
   topicEditor: boolean;
 
-  constructor(private userService: UserService, private authService: AuthenticationService, private roleStuff: RolePersonalisationService) { }
+  constructor(private userService: UserService, private authService: AuthenticationService, private roleStuff: RolePersonalisationService, private xpService: XpService) { }
 
   ngOnInit(): void {
     this.displayUser();
@@ -43,6 +44,19 @@ export class MyCoachProfileComponent implements OnInit {
 
   get color() {
     return this.roleStuff.color;
+  }
+
+  
+  get xpLevel(): string{
+    return this.xpService.getXpLevel(this.user.xp);
+  }
+
+  get xpPercentage(): string{
+    return Math.round(this.xpService.getXpPercentage(this.user.xp)*100)+'%';
+  }
+
+  get nextThreshHold(): string{
+    return this.xpService.getNextThreshhold(this.user.xp);
   }
 
 

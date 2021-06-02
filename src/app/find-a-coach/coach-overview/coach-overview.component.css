@@ -37,7 +37,6 @@ h3 {
   box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
   display: flex;
   padding: 20px;
-  height: 250px;
   position: relative;
   justify-content: flex-start;
 }
@@ -96,4 +95,107 @@ ul {
   position: absolute;
   bottom: -20px;
   right: -20px;
+}
+
+.bronze{
+  background-color: #bf360c;
+  color: white;
+  min-width: 3rem;
+  padding: 0 6px;
+  margin-left: 14px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 22px;
+  height: 22px;
+  float: right;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-weight: 600;
+}
+.silver{
+  background-color: #bdbdbd;
+  color: white;
+  min-width: 3rem;
+  padding: 0 6px;
+  margin-left: 14px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 22px;
+  height: 22px;
+  float: right;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-weight: 600;
+}
+.gold{
+  background-color: #827717;
+  color: white;
+  min-width: 3rem;
+  padding: 0 6px;
+  margin-left: 14px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 22px;
+  height: 22px;
+  float: right;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-weight: 600;
+}
+.platinum{
+  background-color: #e1f5fe;
+  color: black;
+  min-width: 3rem;
+  padding: 0 6px;
+  margin-left: 14px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 22px;
+  height: 22px;
+  float: right;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-weight: 600;
+}
+.ruby{
+  background-color: #d50000;
+  color: white;
+  min-width: 3rem;
+  padding: 0 6px;
+  margin-left: 14px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 22px;
+  height: 22px;
+  float: right;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-weight: 600;
+}
+.diamond{
+  background-color: #e0f7fa;
+  color: black;
+  min-width: 3rem;
+  padding: 0 6px;
+  margin-left: 14px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 22px;
+  height: 22px;
+  float: right;
+  box-sizing: border-box;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-weight: 600;
 }

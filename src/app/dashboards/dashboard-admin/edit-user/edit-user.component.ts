@@ -35,6 +35,7 @@ export class EditUserComponent implements OnInit, AfterViewInit {
   private _editCoachForm = this.formBuilder.group({
     availability: new FormControl("",),
     introduction: new FormControl("",),
+    xp: new FormControl("",),
   });
 
 

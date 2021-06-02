@@ -28,6 +28,7 @@ import { EditUserComponent } from './dashboards/dashboard-admin/edit-user/edit-u
 import { SessionRequestComponent } from './session/session-request/session-request.component';
 import { PageNotFoundComponent } from './utility/page-not-found/page-not-found.component';
 import { SessionOverviewComponent } from './dashboards/dashboard-admin/session-overview/session-overview.component';
+import {ChangePasswordComponent} from "./dashboards/dashboard-coachee/change-password/change-password.component";
 
 
 const routes: Routes = [
@@ -47,7 +48,8 @@ const routes: Routes = [
       { path: '', component: MyProfileComponent, },
       { path: 'become-coach', component: BecomeCoachComponent, },
       { path: 'coachee-sessions', component: CoacheeSessionsComponent },
-      { path: 'edit-profile', component: EditProfileComponent }
+      { path: 'edit-profile', component: EditProfileComponent },
+      { path: 'change-password', component: ChangePasswordComponent }
     ]
   },
   {

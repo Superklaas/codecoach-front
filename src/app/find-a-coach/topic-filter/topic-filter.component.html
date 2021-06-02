@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-5 topic-filter">
     <label for="topic-filter">Filter by topic</label>
     <select id="topic-filter" name="topic-filter" *ngIf="topics$ | async as topics">
-      <option value="default">Choose topic</option>
+      <option value="default">Choose all topics</option>
       <option *ngFor="let topic of topics">{{topic.name}}</option>
     </select>
   </div>

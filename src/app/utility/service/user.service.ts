@@ -6,6 +6,9 @@ import {catchError, map} from "rxjs/operators";
 import {User} from "../model/User";
 import {Topic} from "../model/Topic";
 import { environment } from 'src/environments/environment';
+import {CoachRequest} from "../model/CoachRequest";
+import {ChangePasswordInformation} from "../model/ChangePasswordInformation";
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +39,8 @@ export class UserService {
     return this.http.get<User>(`${this.url}/${id}`);
   }
 
-  updateRole(id: number): Observable<User> {
-    return this.http.post<User>(`${this.url}/${id}/coachify`, null);
+  coachRequest(id: number, request: CoachRequest): Observable<any> {
+    return this.http.post<any>(`${this.url}/${id}/coachify`, request);
   }
 
   sendResetToken(email: string, url: string): Observable<any> {
@@ -69,6 +72,10 @@ export class UserService {
 
   updateTopics(newTopics: Topic[], id: number): Observable<Topic[]> {
     return this.http.post<Topic[]>(`${this.url}/${id}/topics`, newTopics);
+  }
+
+  changePassword(changePasswordInformation: ChangePasswordInformation){
+    return this.http.post(`${this.url}/update-password`, changePasswordInformation);
   }
 
 

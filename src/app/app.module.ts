@@ -47,6 +47,9 @@ import { ErrorComponent } from './utility/error/error.component';
 import { PageNotFoundComponent } from './utility/page-not-found/page-not-found.component';
 import { TopicFilterComponent } from './find-a-coach/topic-filter/topic-filter.component';
 import { SessionOverviewComponent} from "./dashboards/dashboard-admin/session-overview/session-overview.component";
+import { FilterCoachesByTopicPipe } from './utility/pipe/filter-coaches-by-topic.pipe';
+import {ChangePasswordComponent} from "./dashboards/dashboard-coachee/change-password/change-password.component";
+
 
 
 @NgModule({
@@ -95,6 +98,8 @@ import { SessionOverviewComponent} from "./dashboards/dashboard-admin/session-ov
     PageNotFoundComponent,
     TopicFilterComponent,
     SessionOverviewComponent,
+    ChangePasswordComponent,
+    FilterCoachesByTopicPipe,
   ],
   imports: [
     BrowserModule,

@@ -11,4 +11,5 @@ export interface User {
   introduction: string;
   imageUrl: string;
   topicList: Topic[];
+  xp: number;
 }
