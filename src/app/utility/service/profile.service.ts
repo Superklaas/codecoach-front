@@ -13,23 +13,32 @@ import {UserService} from './user.service';
 })
 export class ProfileService {
 
-  private currentUser = new ReplaySubject<User>();
+  private currentUser = new ReplaySubject<User>(1);
   currentUser$ = this.currentUser.asObservable();
 
   constructor(private authService: AuthenticationService, private userService: UserService) {
-    this.authService.session$.subscribe(session => this.update(session))
+    this.authService.session$.subscribe(session => this.setUserFromSession(session))
   }
 
-  private update(session: AuthSession) {
-      if(!session.isLoggedIn()){
-        this.currentUser.next(null);
-        return;
-      }
-      return this.userService.get(session.getUserId())
-        .subscribe(user => this.currentUser.next(user));
+  refresh(): Promise<User> {
+    const session = this.authService.getSession();
+
+    if(!session.isLoggedIn()){
+      this.currentUser.next(null);
+      return Promise.resolve(null);
+    }
+
+    return this.userService.get(session.getUserId())
+      .pipe(tap(user => this.currentUser.next(user)))
+      .toPromise();
   }
 
-  refresh() {
-    this.update(this.authService.getSession());
+  private setUserFromSession(session: AuthSession) {
+    if(!session.isLoggedIn()){
+      this.currentUser.next(null);
+      return;
+    }
+    return this.userService.get(session.getUserId())
+      .subscribe(user => this.currentUser.next(user));
   }
 }
