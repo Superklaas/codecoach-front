@@ -1,7 +1,7 @@
 <div class="card ">
   <div class="card-body">
     <h3>Edit coaching topics</h3>
-    <form [formGroup]="editForm" (ngSubmit)="update()">
+    <form [formGroup]="editForm" (ngSubmit)="save()">
       <div formArrayName="topics">
         <ng-container *ngFor="let topic of topics.controls; let i = index" class="row">
           <div class="row">

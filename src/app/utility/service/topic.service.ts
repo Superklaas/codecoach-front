@@ -28,4 +28,11 @@ export class TopicService {
     return this.http.post<Topic[]>(`${this.url}/${id}/topics`, newTopics);
   }
 
+
+  requestUpdateTopics(newTopics: Topic[], id: number){
+
+    console.log(newTopics);
+    return this.http.post<Topic[]>(`${this.url}/${id}/edit-topics`, newTopics);
+  }
+
 }
