@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
 
-import { User } from 'src/app/utility/model/User';
 import { RolePersonalisationService } from 'src/app/utility/service/role-personalisation.service';
 import { UserService } from 'src/app/utility/service/user.service';
+import {User} from "../../../utility/model/User";
 
 
 @Component({
@@ -13,13 +12,23 @@ import { UserService } from 'src/app/utility/service/user.service';
 })
 export class UserOverviewComponent implements OnInit {
 
-  users$: Observable<User[]>;
+  loaded: boolean = false;
+  users: User[] = [];
+  pageOfUsers: Array<any>;
 
   constructor(private userService: UserService, private roleStuff: RolePersonalisationService) {
   }
 
   ngOnInit(): void {
-    this.users$ = this.userService.getAll();
+    this.userService.getAll()
+      .subscribe(users => {
+        this.users = users;
+        this.loaded = true;
+      })
+  }
+
+  onChangePage(pageOfUsers: Array<any>) {
+    this.pageOfUsers = pageOfUsers;
   }
 
   get color() {

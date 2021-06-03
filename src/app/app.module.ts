@@ -51,6 +51,7 @@ import { FilterCoachesByTopicPipe } from './utility/pipe/filter-coaches-by-topic
 import {ChangePasswordComponent} from "./dashboards/dashboard-coachee/change-password/change-password.component";
 import { SearchCoachPipe } from './utility/pipe/search-coach.pipe';
 import {EditSessionComponent} from "./dashboards/dashboard-admin/edit-session/edit-session.component";
+import { JwPaginationComponent } from './utility/jw-pagination/jw-pagination.component';
 
 
 @NgModule({
@@ -103,6 +104,7 @@ import {EditSessionComponent} from "./dashboards/dashboard-admin/edit-session/ed
     SearchCoachPipe,
     FilterCoachesByTopicPipe,
     EditSessionComponent,
+    JwPaginationComponent,
   ],
   imports: [
     BrowserModule,

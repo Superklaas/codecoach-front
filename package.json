@@ -27,6 +27,7 @@
     "@types/materialize-css": "^1.0.9",
     "chromedriver": "^90.0.1",
     "jquery": "^3.6.0",
+    "jw-paginate": "^1.0.4",
     "jwt-decode": "^3.1.2",
     "material-design-icons": "^3.0.1",
     "materialize-css": "^1.0.0",
