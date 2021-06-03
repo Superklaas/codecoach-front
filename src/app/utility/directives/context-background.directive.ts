@@ -18,7 +18,6 @@ export class ContextBackgroundDirective implements OnInit, OnDestroy {
     this.applyClasses(this.personifyService.color);
 
     this.subscription = this.personifyService.color$.subscribe(color => {
-      console.log('color change: okay')
       this.applyClasses(color);
     })
   }
