@@ -19,7 +19,6 @@ export class EditSessionComponent implements OnInit, AfterViewInit {
 
   sessionId: number;
   session: Session;
-  _sessionImage = "https://brewbound-images.s3.amazonaws.com/wp-content/uploads/2011/06/Session-Lager-Bottle-Glass.jpg";
 
   coaches$: Observable<User[]>;
   coachees$: Observable<User[]>;
@@ -67,10 +66,6 @@ export class EditSessionComponent implements OnInit, AfterViewInit {
   get color() {
     return this.roleStuff.color;
   }
-
-  // get sessionImage() {
-  //   return this._sessionImage;
-  // }
 
   submit() {
 
