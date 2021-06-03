@@ -7,9 +7,25 @@
       </div>
       <div class="col-md-8">
         <div class="row border-bottom">
+          <div class="col-md-4"><b>Coach</b></div>
+          <div class="col-md-8">
+            <select id="coach" formControlName="coachProfileName" *ngIf="coaches$ | async as coaches">
+              <option *ngFor="let coach of coaches">{{coach.profileName}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row border-bottom">
+          <div class="col-md-4"><b>Coachee</b></div>
+          <div class="col-md-8">
+            <select id="coachee" formControlName="coacheeProfileName" *ngIf="coachees$ | async as coachees">
+              <option *ngFor="let coachee of coachees">{{coachee.profileName}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row border-bottom">
           <div class="col-md-4"><b>Subject</b></div>
           <div class="col-md-8">
-            <input type="text" class="form-control col" formControlName="subject" aria-label="subject">
+            <input type="text" class="form-control" formControlName="subject" aria-label="subject">
           </div>
         </div>
         <div class="row border-bottom">
