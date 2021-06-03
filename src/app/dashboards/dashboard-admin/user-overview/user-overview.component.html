@@ -1,4 +1,7 @@
-<div class="container" *ngIf="users$ | async as users; else loading">
+<div class="progress" *ngIf="!loaded">
+  <div class="indeterminate"></div>
+</div>
+<div *ngIf="loaded">
   <table class="striped">
     <thead>
     <tr>
@@ -9,7 +12,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of users">
+    <tr *ngFor="let user of pageOfUsers">
       <td>{{user.profileName}}</td>
       <td>{{user.email}}</td>
       <td>{{user.role | titlecase}}</td>
@@ -21,11 +24,6 @@
     </tr>
     </tbody>
   </table>
+  <app-jw-pagination [items]="users" (changePage)="onChangePage($event)"></app-jw-pagination>
 </div>
-<ng-template #loading>
-  <div class="progress">
-    <div class="indeterminate"></div>
-  </div>
-</ng-template>
 
-<div class="my-5"></div>
