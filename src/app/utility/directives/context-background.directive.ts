@@ -27,7 +27,6 @@ export class ContextBackgroundDirective implements OnInit, OnDestroy {
   }
 
   applyClasses(classes: string) {
-    console.log(this.renderer);
 
     this.appliedClasses
       .split(" ")
