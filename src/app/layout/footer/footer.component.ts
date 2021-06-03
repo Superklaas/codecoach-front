@@ -11,16 +11,12 @@ import { RolePersonalisationService } from 'src/app/utility/service/role-persona
 })
 export class FooterComponent implements OnInit {
   isLoggedIn: boolean;
-  constructor(private authenticationService: AuthenticationService, private roleStuff: RolePersonalisationService) { }
+  constructor(private authenticationService: AuthenticationService ) { }
 
   ngOnInit(): void {
     this.authenticationService.session$.subscribe(session => {
       this.isLoggedIn = session.isLoggedIn();
     });
-  }
-
-  get color() {
-    return this.roleStuff.color;
   }
 
 

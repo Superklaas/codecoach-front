@@ -11,14 +11,11 @@ import { RolePersonalisationService } from 'src/app/utility/service/role-persona
 })
 export class UserMenuComponent implements OnInit {
 
-  constructor(public authService: AuthenticationService, private profileService: ProfileService, private roleStuff: RolePersonalisationService) {
+  constructor(public authService: AuthenticationService, private profileService: ProfileService) {
   }
 
   ngOnInit(): void {
   }
 
-  get color() {
-    return this.roleStuff.color;
-  }
 
 }
