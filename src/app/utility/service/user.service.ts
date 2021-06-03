@@ -26,11 +26,6 @@ export class UserService {
     );
   }
 
-  getAllCoachees() {
-    return this.http.get<User[]>(`${this.url}/coachees`)
-      .pipe(map(users => users.sort((a,b) => a.lastName.localeCompare(b.lastName))));
-  }
-
   getAllCoaches(): Observable<User[]> {
     return this.http.get<User[]>(`${this.url}/coaches`)
       .pipe(map(users => users.sort((a,b) => a.lastName.localeCompare(b.lastName))));

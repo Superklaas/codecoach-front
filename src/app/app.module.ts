@@ -104,7 +104,7 @@ import { JwPaginationComponent } from './utility/jw-pagination/jw-pagination.com
     SearchCoachPipe,
     FilterCoachesByTopicPipe,
     EditSessionComponent,
-    JwPaginationComponent,
+    JwPaginationComponent
   ],
   imports: [
     BrowserModule,
