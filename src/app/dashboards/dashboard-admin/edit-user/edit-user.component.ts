@@ -50,8 +50,7 @@ export class EditUserComponent implements OnInit, AfterViewInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder ,
               private initService: InitService,
-              private roleStuff: RolePersonalisationService,
-              private router: Router) { }
+              private roleStuff: RolePersonalisationService,) { }
 
   ngAfterViewInit(): void {
     this.initService.initFormSelect();
@@ -142,7 +141,7 @@ export class EditUserComponent implements OnInit, AfterViewInit {
 
   changePassword() {
     return this.userService.changePassword(this.changePasswordForm.value)
-      .subscribe(() => window.location.reload()
+      .subscribe(() => this._changePasswordForm.reset()
         , (errorResponse => this.addErrorToForm(errorResponse)) );
   }
 

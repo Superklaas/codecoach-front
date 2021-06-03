@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, map} from "rxjs/operators";
 
 import {User} from "../model/User";
-import {Topic} from "../model/Topic";
-import { environment } from 'src/environments/environment';
+import {environment} from 'src/environments/environment';
 import {CoachRequest} from "../model/CoachRequest";
 import {ChangePasswordInformation} from "../model/ChangePasswordInformation";
 
@@ -20,22 +19,22 @@ export class UserService {
     this.url = `${environment.backendUrl}/users`
   }
 
-  create(user: User): Observable<User>{
-    return this.http.post<User>(this.url,user)
+  create(user: User): Observable<User> {
+    return this.http.post<User>(this.url, user)
       .pipe(catchError(this.handleError('register'))
-    );
+      );
   }
 
   getAllCoaches(): Observable<User[]> {
     return this.http.get<User[]>(`${this.url}/coaches`)
-      .pipe(map(users => users.sort((a,b) => a.lastName.localeCompare(b.lastName))));
+      .pipe(map(users => users.sort((a, b) => a.lastName.localeCompare(b.lastName))));
   }
 
   getAll(): Observable<User[]> {
     return this.http.get<User[]>(`${this.url}`);
   }
 
-  get(id: number):  Observable<User>{
+  get(id: number): Observable<User> {
     return this.http.get<User>(`${this.url}/${id}`);
   }
 
@@ -62,20 +61,16 @@ export class UserService {
     };
   }
 
-  update(user: User, id: number): Observable<User>{
+  update(user: User, id: number): Observable<User> {
     return this.http.put<User>(`${this.url}/${id}`, user);
   }
 
-  updateCoach(user: User, id: number): Observable<User>{
+  updateCoach(user: User, id: number): Observable<User> {
     return this.http.put<User>(`${this.url}/${id}/coach`, user);
   }
 
-  updateTopics(newTopics: Topic[], id: number): Observable<Topic[]> {
-    return this.http.post<Topic[]>(`${this.url}/${id}/topics`, newTopics);
-  }
 
-  changePassword(changePasswordInformation: ChangePasswordInformation){
+  changePassword(changePasswordInformation: ChangePasswordInformation) {
     return this.http.post(`${this.url}/update-password`, changePasswordInformation);
   }
-
 }

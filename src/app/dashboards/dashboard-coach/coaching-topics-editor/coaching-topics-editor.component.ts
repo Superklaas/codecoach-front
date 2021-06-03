@@ -56,8 +56,7 @@ export class CoachingTopicsEditorComponent implements OnInit {
     const topicDtos: Topic[] = (this.topics.value as string[]).map(topic => {
       return {name: topic}
     });
-
-    this.userService.updateTopics(topicDtos, this.user.id)
+  this.topicService.updateTopics(topicDtos, this.user.id)
       .subscribe(
         _ => this.saved.emit(),
         error => this.addErrorToForm(error));
