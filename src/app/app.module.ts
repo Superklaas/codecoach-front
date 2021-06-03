@@ -53,6 +53,8 @@ import { SearchCoachPipe } from './utility/pipe/search-coach.pipe';
 import {EditSessionComponent} from "./dashboards/dashboard-admin/edit-session/edit-session.component";
 import { JwPaginationComponent } from './utility/jw-pagination/jw-pagination.component';
 import { ContextBackgroundDirective } from './utility/directives/context-background.directive';
+import {RequestChangeCoachingTopicComponent} from "./dashboards/dashboard-coach/request-change-coaching-topic/request-change-coaching-topic.component";
+
 
 
 @NgModule({
@@ -107,6 +109,7 @@ import { ContextBackgroundDirective } from './utility/directives/context-backgro
     EditSessionComponent,
     JwPaginationComponent,
     ContextBackgroundDirective,
+    RequestChangeCoachingTopicComponent
   ],
   imports: [
     BrowserModule,
