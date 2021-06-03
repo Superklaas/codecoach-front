@@ -45,7 +45,7 @@ export class EditSessionComponent implements OnInit, AfterViewInit {
     this.displaySession();
     this.coaches$ = this.userService.getAllCoaches()
       .pipe(tap(_ => {setTimeout(_ => this.initService.initFormSelect(),10)}));
-    this.coachees$ = this.userService.getAllCoachees()
+    this.coachees$ = this.userService.getAll()
       .pipe(tap(_ => {setTimeout(_ => this.initService.initFormSelect(),10)}));
   }
 
@@ -68,9 +68,9 @@ export class EditSessionComponent implements OnInit, AfterViewInit {
     return this.roleStuff.color;
   }
 
-  get sessionImage() {
-    return this._sessionImage;
-  }
+  // get sessionImage() {
+  //   return this._sessionImage;
+  // }
 
   submit() {
 
