@@ -7,15 +7,15 @@ import { filter } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class RolePersonalisationService {
-  color: 'yellow darken-2' | 'light-blue' | 'green' = 'yellow darken-2';
-  private colorSubject = new BehaviorSubject("yellow darken-2");
+  color: 'yellow' | 'light-blue' | 'green' = 'yellow';
+  private colorSubject = new BehaviorSubject("yellow");
   color$ = this.colorSubject.asObservable();
 
   constructor(private router: Router) {
     this.router.events
     .pipe(filter(event => event instanceof NavigationEnd))
     .subscribe((ev:NavigationEnd) => {
-      this.color='yellow darken-2';
+      this.color='yellow';
       if(ev.url.startsWith('/dashboard-coach')){
         this.color='light-blue';
       }
