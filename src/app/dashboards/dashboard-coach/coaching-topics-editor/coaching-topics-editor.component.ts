@@ -41,6 +41,10 @@ export class CoachingTopicsEditorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.displayTopics();
+  }
+
+  displayTopics(){
     this.user.topicList.forEach(topic => this.topics.push(new FormControl(topic.name, this.getValidators())));
     this.topicsFromDatabase$ = this.topicService.getAllTopics();
   }
@@ -77,6 +81,8 @@ export class CoachingTopicsEditorComponent implements OnInit {
   }
 
   reset(event: any) {
+    this.topics.clear();
+    this.displayTopics();
     event.preventDefault();
     this.cancelEdit.emit();
   }

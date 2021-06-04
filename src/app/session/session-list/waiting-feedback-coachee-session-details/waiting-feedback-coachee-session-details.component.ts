@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 
 import { Session } from 'src/app/utility/model/Session';
 
@@ -17,6 +17,7 @@ export class WaitingFeedbackCoacheeSessionDetailsComponent implements OnInit {
   @Output()
   sessionUpdate = new EventEmitter<Session>();
 
+  currentWindowWidth: number;
 
   constructor() { }
 
@@ -44,4 +45,13 @@ export class WaitingFeedbackCoacheeSessionDetailsComponent implements OnInit {
   coachHasAlreadyGivenFeedback() {
     return this.session.feedbackForCoachee !== null;
   }
+  isMobile(): boolean {
+    return this.currentWindowWidth <= 1230;
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.currentWindowWidth = window.innerWidth
+  }
+
 }
