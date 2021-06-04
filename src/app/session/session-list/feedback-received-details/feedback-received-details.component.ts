@@ -11,7 +11,7 @@ export class FeedbackReceivedDetailsComponent implements OnInit {
 
   @Input()
   public session: Session
-  currentWindowWidth: number;
+  currentWindowWidth: number= window.innerWidth;
 
   @Input()
   public perspective: 'coach' | 'coachee';

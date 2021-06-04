@@ -17,7 +17,7 @@ export class WaitingFeedbackCoacheeSessionDetailsComponent implements OnInit {
   @Output()
   sessionUpdate = new EventEmitter<Session>();
 
-  currentWindowWidth: number;
+  currentWindowWidth: number= window.innerWidth;
 
   constructor() { }
 

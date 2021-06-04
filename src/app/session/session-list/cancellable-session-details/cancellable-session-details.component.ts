@@ -11,7 +11,7 @@ import { SessionService } from 'src/app/utility/service/session.service';
 export class CancellableSessionDetailsComponent implements OnInit {
   @Input()
   public perspective: 'coach' | 'coachee';
-  currentWindowWidth: number;
+  currentWindowWidth: number = window.innerWidth;
 
   @Input()
   cancelStatus: 'SESSION_CANCELLED_BY_COACHEE' | 'SESSION_CANCELLED_BY_COACH' | 'REQUEST_CANCELLED_BY_COACHEE';
@@ -40,5 +40,5 @@ export class CancellableSessionDetailsComponent implements OnInit {
   onResize() {
     this.currentWindowWidth = window.innerWidth
   }
-  
+
 }

@@ -15,7 +15,7 @@ export class RequestedCoachSessionDetailsComponent implements OnInit {
   @Output()
   sessionUpdate = new EventEmitter<Session>();
 
-  currentWindowWidth: number;
+  currentWindowWidth: number= window.innerWidth;
 
   constructor(private sessionService: SessionService) { }
 
