@@ -12,6 +12,9 @@ export class SessionOverviewComponent implements OnInit {
 
   loaded: boolean = false;
   sessions: Session[] = [];
+  pageOfSessions: Array<any>;
+
+
   constructor(private sessionService: SessionService, private roleStuff: RolePersonalisationService) { }
 
   ngOnInit(): void {
@@ -19,6 +22,10 @@ export class SessionOverviewComponent implements OnInit {
       this.sessions = sessions;
       this.loaded = true;
     })
+  }
+
+  onChangePage(pageOfSessions: Array<any>) {
+    this.pageOfSessions = pageOfSessions;
   }
 
   get color() {

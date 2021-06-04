@@ -50,6 +50,11 @@ import { SessionOverviewComponent} from "./dashboards/dashboard-admin/session-ov
 import { FilterCoachesByTopicPipe } from './utility/pipe/filter-coaches-by-topic.pipe';
 import {ChangePasswordComponent} from "./dashboards/dashboard-coachee/change-password/change-password.component";
 import { SearchCoachPipe } from './utility/pipe/search-coach.pipe';
+import {EditSessionComponent} from "./dashboards/dashboard-admin/edit-session/edit-session.component";
+import { JwPaginationComponent } from './utility/jw-pagination/jw-pagination.component';
+import { ContextBackgroundDirective } from './utility/directives/context-background.directive';
+import {RequestChangeCoachingTopicComponent} from "./dashboards/dashboard-coach/request-change-coaching-topic/request-change-coaching-topic.component";
+
 
 
 @NgModule({
@@ -101,6 +106,10 @@ import { SearchCoachPipe } from './utility/pipe/search-coach.pipe';
     ChangePasswordComponent,
     SearchCoachPipe,
     FilterCoachesByTopicPipe,
+    EditSessionComponent,
+    JwPaginationComponent,
+    ContextBackgroundDirective,
+    RequestChangeCoachingTopicComponent
   ],
   imports: [
     BrowserModule,

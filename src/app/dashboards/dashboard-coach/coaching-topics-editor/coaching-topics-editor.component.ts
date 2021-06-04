@@ -28,6 +28,9 @@ export class CoachingTopicsEditorComponent implements OnInit {
   @Output()
   saved = new EventEmitter();
 
+  @Output()
+  formValue = new EventEmitter();
+
   editForm = this.formBuilder.group({
     topics: new FormArray([])
   });
@@ -46,7 +49,18 @@ export class CoachingTopicsEditorComponent implements OnInit {
     return this.editForm.get('topics') as FormArray;
   }
 
+  save(){
+    this.formValue.emit((this.topics.value as string[]).map(topic => {
+      return {name: topic}
+    }));
+
+    this.update()
+  }
+
+  @Input()
   update() {
+
+
     this.editForm.markAllAsTouched();
 
     if (!this.editForm.valid) {
@@ -56,8 +70,7 @@ export class CoachingTopicsEditorComponent implements OnInit {
     const topicDtos: Topic[] = (this.topics.value as string[]).map(topic => {
       return {name: topic}
     });
-
-    this.userService.updateTopics(topicDtos, this.user.id)
+  this.topicService.updateTopics(topicDtos, this.user.id)
       .subscribe(
         _ => this.saved.emit(),
         error => this.addErrorToForm(error));

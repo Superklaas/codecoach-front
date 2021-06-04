@@ -34,6 +34,10 @@ export class SessionService {
     return this.http.get<Session[]>(`${this.url}/coach`);
   }
 
+  getSessionById(id: number): Observable<Session> {
+    return this.http.get<Session>(`${this.url}/${id}`)
+  }
+
   updateSession(id: number, status: string): Observable<Session>{
     return this.http.post<Session>(`${this.url}/${id}/status`, {"status":status});
   }

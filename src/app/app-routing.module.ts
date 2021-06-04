@@ -29,6 +29,8 @@ import { SessionRequestComponent } from './session/session-request/session-reque
 import { PageNotFoundComponent } from './utility/page-not-found/page-not-found.component';
 import { SessionOverviewComponent } from './dashboards/dashboard-admin/session-overview/session-overview.component';
 import {ChangePasswordComponent} from "./dashboards/dashboard-coachee/change-password/change-password.component";
+import {EditSessionComponent} from "./dashboards/dashboard-admin/edit-session/edit-session.component";
+import {RequestChangeCoachingTopicComponent} from "./dashboards/dashboard-coach/request-change-coaching-topic/request-change-coaching-topic.component";
 
 
 const routes: Routes = [
@@ -59,7 +61,8 @@ const routes: Routes = [
     children: [
       { path: '', component: MyCoachProfileComponent },
       { path: 'coach-sessions', component: CoachSessionsComponent },
-      { path: 'edit-coach-profile', component: EditCoachComponent }
+      { path: 'edit-coach-profile', component: EditCoachComponent },
+      { path: 'request-change-topic', component: RequestChangeCoachingTopicComponent }
     ]
   },
   {
@@ -69,7 +72,8 @@ const routes: Routes = [
     children: [
       { path: '', component: UserOverviewComponent },
       { path: 'edit/:id', component: EditUserComponent },
-      { path: 'session-overview', component: SessionOverviewComponent }
+      { path: 'session-overview', component: SessionOverviewComponent },
+      { path: 'edit-session/:id', component: EditSessionComponent }
     ]
   },
   { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard], },

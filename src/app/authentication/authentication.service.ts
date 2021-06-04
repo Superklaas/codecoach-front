@@ -13,7 +13,7 @@ export class AuthenticationService {
 
   private authSession: AuthSession = new AuthSession(null);
   private sessionSource = new BehaviorSubject<AuthSession>(this.authSession);
-  session$ = this.sessionSource.asObservable();
+  public readonly session$ = this.sessionSource.asObservable();
 
   constructor(private loginService: AuthenticationHttpService, private tokenService: TokenService) {
     this.refresh();

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 @Injectable({
@@ -7,6 +8,8 @@ import { filter } from 'rxjs/operators';
 })
 export class RolePersonalisationService {
   color: 'yellow darken-2' | 'light-blue' | 'green' = 'yellow darken-2';
+  private colorSubject = new BehaviorSubject("yellow darken-2");
+  public readonly color$ = this.colorSubject.asObservable();
 
   constructor(private router: Router) {
     this.router.events
@@ -19,6 +22,7 @@ export class RolePersonalisationService {
       if(ev.url.startsWith('/dashboard-admin')){
         this.color='green';
       }
+      this.colorSubject.next(this.color);
     });
   }
 }
