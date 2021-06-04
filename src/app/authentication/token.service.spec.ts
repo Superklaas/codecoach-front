@@ -99,7 +99,6 @@ describe('TokenService', () => {
     // TODO: test timeout
   });
 
-
   it('should clear token', () => {
     localStorageData["jwt_token"] = validDummyToken;
     service = TestBed.inject(TokenService);
@@ -111,5 +110,10 @@ describe('TokenService', () => {
     // TODO: test timeout
   });
 
+  it('should return raw token string', () => {
+    localStorageData["jwt_token"] = validDummyToken;
+    service = TestBed.inject(TokenService);
+    expect(service.getTokenString()).toEqual(validDummyToken);
+  });
 
 });
