@@ -43,10 +43,11 @@ export class LoginComponent implements OnInit {
   }
 
   addErrorToForm(errorResponse) {
-    if (errorResponse.error.status === 400) {
+    if (errorResponse.error && errorResponse.error.status === 400) {
       this.loginForm.setErrors({serverError: errorResponse.error.message});
       this.loginForm.setErrors({credentials: "wrong"});
     }else{
+      console.trace(errorResponse);
       this.loginForm.setErrors({ serverError : 'Error: oops something went wrong...'});
     }
   }
