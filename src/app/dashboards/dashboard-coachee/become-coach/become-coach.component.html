@@ -20,6 +20,11 @@
           </div>
         </div>
         <div class="row">
+          <div *ngIf="wrongInputHasBeenTyped(motivation)" class="alert alert-danger">
+            <div *ngIf="motivation.errors.required || motivation.errors.whitespace">Motivation is required.</div>
+          </div>
+        </div>
+        <div class="row">
             <p >Which topics would you like to teach?</p>
           <div class="col">
             <input type="text" formControlName="topic1">
@@ -28,9 +33,17 @@
             <input type="text" formControlName="topic2">
           </div>
         </div>
+        <div class="row">
+          <div
+            *ngIf="applyForm.errors !== null && hasOneBeenTouched(topic1, topic2) && applyForm.errors.topicMissing"
+            class="alert alert-danger">
+            <div>Providing at least one topic is required.</div>
+          </div>
+        </div>
         <div class="row justify-content-end m-3">
           <button type="submit"
-                  class="col-md-7 col-lg-5 col-xl-4 waves-effect waves-light yellow darken-2 btn-large black-text">
+                  class="col-md-7 col-lg-5 col-xl-4 waves-effect waves-light yellow darken-2 btn-large black-text"
+                  [disabled] ="applyForm.invalid">
             Become a coach
             <i class="material-icons right">send</i>
           </button>

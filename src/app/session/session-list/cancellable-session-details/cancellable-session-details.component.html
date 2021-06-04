@@ -1,7 +1,7 @@
 <app-common-session-details [session]="session" [perspective]="perspective">
   <button class="waves-effect waves-light btn btn-custom red"
           (click)="cancelSession()">
-      CANCEL
+    <span class="black-text center custom" *ngIf="!isMobile()">CANCEL</span>
     <i class="material-icons right">cancel</i>
   </button>
 </app-common-session-details>

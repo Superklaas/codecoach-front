@@ -1,13 +1,9 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-
 import { HomeComponent } from './home/home.component';
 import { UserProfileComponent } from "./user-profile/user-profile.component";
-import { AuthenticationGuard } from './authentication/authentication.guard';
 import { CoachOverviewComponent } from "./find-a-coach/coach-overview/coach-overview.component";
-import { AuthorizationGuard } from "./authorization/authorization.guard";
 import { EasterEggComponent } from './easter-egg/easter-egg.component';
-import { AdminGuard } from './authorization/admin.guard';
 import { LoginComponent } from './login-register-password/login/login.component';
 import { RegisterComponent } from './login-register-password/register/register.component';
 import { ForgotPasswordComponent } from './login-register-password/forgot-password/forgot-password.component';
@@ -31,21 +27,21 @@ import { SessionOverviewComponent } from './dashboards/dashboard-admin/session-o
 import {ChangePasswordComponent} from "./dashboards/dashboard-coachee/change-password/change-password.component";
 import {EditSessionComponent} from "./dashboards/dashboard-admin/edit-session/edit-session.component";
 import {RequestChangeCoachingTopicComponent} from "./dashboards/dashboard-coach/request-change-coaching-topic/request-change-coaching-topic.component";
-
+import * as authGuards from './authentication/session.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, },
-  { path: 'home', component: HomeComponent, },
+  { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent, },
-  { path: 'egg', component: EasterEggComponent, canActivate: [AuthenticationGuard], },
+  { path: 'egg', component: EasterEggComponent, canActivate: [ authGuards.authenticated(true) ], },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'error', component: ErrorComponent },
   {
     path: 'dashboard',
     component: UserDashboardComponent,
-    canActivate: [AuthenticationGuard],
+    canActivate: [ authGuards.authenticated(true) ],
     children: [
       { path: '', component: MyProfileComponent, },
       { path: 'become-coach', component: BecomeCoachComponent, },
@@ -57,7 +53,10 @@ const routes: Routes = [
   {
     path: 'dashboard-coach',
     component: CoachDashboardComponent,
-    canActivate: [AuthenticationGuard, AuthorizationGuard],
+    canActivate: [
+       authGuards.authenticated(true),
+       authGuards.sessionGuard(session => session.isCoach() || session.isAdmin()),
+    ],
     children: [
       { path: '', component: MyCoachProfileComponent },
       { path: 'coach-sessions', component: CoachSessionsComponent },
@@ -68,7 +67,10 @@ const routes: Routes = [
   {
     path: 'dashboard-admin',
     component: AdminDashboardComponent,
-    canActivate: [AuthenticationGuard, AuthorizationGuard, AdminGuard],
+    canActivate: [
+      authGuards.authenticated(true),
+      authGuards.sessionGuard(session => session.isAdmin()),
+    ],
     children: [
       { path: '', component: UserOverviewComponent },
       { path: 'edit/:id', component: EditUserComponent },
@@ -76,9 +78,9 @@ const routes: Routes = [
       { path: 'edit-session/:id', component: EditSessionComponent }
     ]
   },
-  { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard], },
-  { path: 'coaches', component: CoachOverviewComponent, canActivate: [AuthenticationGuard], },
-  { path: 'create-session/:id', component: SessionRequestComponent, canActivate: [AuthenticationGuard], },
+  { path: 'user/:id', component: UserProfileComponent, canActivate: [authGuards.authenticated(true)], },
+  { path: 'coaches', component: CoachOverviewComponent, canActivate: [authGuards.authenticated(true)], },
+  { path: 'create-session/:id', component: SessionRequestComponent, canActivate: [authGuards.authenticated(true)], },
   { path: '**', component: PageNotFoundComponent },
 ];
 

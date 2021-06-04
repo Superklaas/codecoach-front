@@ -13,52 +13,61 @@
                     </div>
                     <div class="col-md-8">
                         <div class="row border-bottom ">
-                            <div class="col"><b>First name</b></div>
-                            <input type="text" class="form-control col" formControlName="firstName"
-                                aria-label="First name">
+                            <div class="col-md-4"><b>First name</b></div>
+                            <div class="col-md-4 flex-fill">
+                                <input type="text" class="form-control col" formControlName="firstName"
+                                    aria-label="First name">
+                            </div>
                             <div *ngIf="wrongInputHasBeenTyped(firstName)" class="alert alert-danger">
                                 <div *ngIf="firstName.errors.required || firstName.errors.whitespace">First name is
-                                  required.</div>
+                                    required.</div>
                             </div>
                         </div>
                         <div class="row border-bottom ">
-                            <div class="col"><b>Last name</b></div>
-                            <input type="text" class="form-control col" formControlName="lastName"
-                                aria-label="Last name">
+                            <div class="col-md-4"><b>Last name</b></div>
+                            <div class="col-md-4 flex-fill">
+                                <input type="text" class="form-control col" formControlName="lastName"
+                                    aria-label="Last name">
+                            </div>
                             <div *ngIf="wrongInputHasBeenTyped(lastName)" class="alert alert-danger">
-                                <div *ngIf="lastName.errors.required || lastName.errors.whitespace">Last name is required
-                                  .</div>
+                                <div *ngIf="lastName.errors.required || lastName.errors.whitespace">Last name is
+                                    required
+                                    .</div>
                             </div>
                         </div>
                         <div class="row border-bottom ">
-                            <div class="col"><b>Email</b><span class="red-text mx-2">This is used to sign in</span>
+                            <div class="col-md-4"><b>Email</b><span class="red-text mx-2">This is used to sign in</span>
                             </div>
-                            <input type="text" class="form-control col" formControlName="email" aria-label="Email">
+                            <div class="col-md-4 flex-fill">
+                                <input type="text" class="form-control col" formControlName="email" aria-label="Email">
+                            </div>
                             <div *ngIf="wrongInputHasBeenTyped(email)" class="alert alert-danger">
                                 <div *ngIf="email.errors.required || email.errors.whitespace">Email is required.</div>
                                 <div *ngIf="!email.errors.whitespace && email.errors.pattern">Not a valid email</div>
                             </div>
                         </div>
                         <div class="row border-bottom ">
-                            <div class="col"><b>Profile name</b></div>
-                            <input type="text" class="form-control col" formControlName="profileName"
-                                aria-label="Profile name">
+                            <div class="col-md-4"><b>Profile name</b></div>
+                            <div class="col-md-4 flex-fill">
+                                <input type="text" class="form-control col" formControlName="profileName"
+                                    aria-label="Profile name">
+                            </div>
                             <div *ngIf="wrongInputHasBeenTyped(profileName)" class="alert alert-danger">
-                                <div *ngIf="profileName.errors.required || profileName.errors.whitespace">Profile name is
-                                  required.</div>
+                                <div *ngIf="profileName.errors.required || profileName.errors.whitespace">Profile name
+                                    is
+                                    required.</div>
                             </div>
                         </div>
                         <div class="row border-bottom">
-                            <div class="col grey-text"><b>CodeCoach role</b></div>
-                            <div class="col grey-text">{{user.role | titlecase}}</div>
+                            <div class="col-md-4 grey-text"><b>CodeCoach role</b></div>
+                            <div class="col-md-4 flex-fill grey-text">{{user.role | titlecase}}</div>
                         </div>
                     </div>
                 </div>
             </form>
             <div class="right-align">
-                <button class="waves-effect waves-light btn btn-custom green" [disabled] = "editForm.invalid"
-                        (click)="update()">SAVE<i
-                        class="material-icons right">check_circle</i>
+                <button class="waves-effect waves-light btn btn-custom green" [disabled]="editForm.invalid"
+                    (click)="update()">SAVE<i class="material-icons right">check_circle</i>
                 </button>
                 <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancel()">CANCEL<i
                         class="material-icons right">cancel</i>
