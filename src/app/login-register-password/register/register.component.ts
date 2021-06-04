@@ -63,10 +63,6 @@ export class RegisterComponent implements OnInit {
     return this._registerForm.get('password2')
   }
 
-  get hasDuplicateEmail(){
-    return this._hasDuplicateEmail;
-  }
-
   submit() {
     this._registerForm.markAllAsTouched();
     if(this._registerForm.valid){
