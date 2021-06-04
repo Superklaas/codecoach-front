@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 
 import { Session } from 'src/app/utility/model/Session';
 
@@ -11,6 +11,7 @@ export class FeedbackReceivedDetailsComponent implements OnInit {
 
   @Input()
   public session: Session
+  currentWindowWidth: number;
 
   @Input()
   public perspective: 'coach' | 'coachee';
@@ -28,5 +29,14 @@ export class FeedbackReceivedDetailsComponent implements OnInit {
     }else {
       this.feedBackViewStatus = 'open';
     }
+  }
+
+  isMobile(): boolean {
+    return this.currentWindowWidth <= 1230;
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.currentWindowWidth = window.innerWidth
   }
 }
