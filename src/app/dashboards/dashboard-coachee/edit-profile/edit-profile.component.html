@@ -2,16 +2,17 @@
     <div class="card ">
         <div class="card-body">
             <h3>Profile Information</h3>
-            <form class="col s12" [formGroup]="editForm" (ngSubmit)="update()">
 
-                <div class="row">
-                    <div class="col-md-4 profile-image">
+            <form class="" [formGroup]="editForm" (ngSubmit)="update()">
+
+                <div class="flexbox">
+                    <div class="profile-image">
                         <img [src]="userImage" alt="">
                         <div><b>Avatar URL:</b></div>
                         <input type="text" class="form-control" value="{{userImageString}}" formControlName="imageUrl"
                             aria-label="Avatar URL">
                     </div>
-                    <div class="col-md-8">
+                    <div class="profile-info">
                         <div class="row border-bottom ">
                             <div class="col-md-4"><b>First name</b></div>
                             <div class="col-md-4 flex-fill">
@@ -65,6 +66,7 @@
                     </div>
                 </div>
             </form>
+
             <div class="right-align">
                 <button class="waves-effect waves-light btn btn-custom green" [disabled]="editForm.invalid"
                     (click)="update()">SAVE<i class="material-icons right">check_circle</i>

@@ -1,14 +1,28 @@
 
 .profile-image img {
-    width: 100%;
+  width: 85%;
 }
 
+.profile-info{
+  width: 70%;
+}
+
+.flexbox{
+  display: flex;
+ flex-direction: row;
+}
 
 @media (max-width: 992px) {
-    .card-body h3 {
+
+
+  .card-body h3 {
         text-align: center;
         font-size: 1.7em;
     }
+
+  .flexbox{
+    flex-direction: column;
+  }
 
     .profile-image img {
         margin-bottom: 20px;
@@ -27,6 +41,7 @@
 
   .profile-image img {
     width: 80% !important;
+    height: auto;
   }
 
   .profile-image{
@@ -36,5 +51,8 @@
     margin-bottom: 20px;
   }
 
+  .profile-info{
+    width: 100%;
+  }
 
 }
