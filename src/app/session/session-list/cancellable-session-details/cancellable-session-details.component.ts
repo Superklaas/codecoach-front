@@ -28,7 +28,7 @@ export class CancellableSessionDetailsComponent implements OnInit {
   }
 
   cancelSession() {
-    this.sessionService.updateSession(this.session.id, this.cancelStatus)
+    this.sessionService.updateSessionStatus(this.session.id, this.cancelStatus)
       .subscribe(session => this.sessionUpdate.emit(session) )
   }
 

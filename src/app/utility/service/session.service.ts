@@ -38,7 +38,11 @@ export class SessionService {
     return this.http.get<Session>(`${this.url}/${id}`)
   }
 
-  updateSession(id: number, status: string): Observable<Session>{
+  updateSession(sessionId: number, session: Session): Observable<Session> {
+    return this.http.post<Session>(`${this.url}/${sessionId}`, session);
+  }
+
+  updateSessionStatus(id: number, status: string): Observable<Session>{
     return this.http.post<Session>(`${this.url}/${id}/status`, {"status":status});
   }
 
@@ -51,4 +55,6 @@ export class SessionService {
     console.log(feedbackForCoach)
     return this.http.post<Session>(`${this.url}/${id}/feedback-for-coach`, feedbackForCoach);
   }
+
+
 }

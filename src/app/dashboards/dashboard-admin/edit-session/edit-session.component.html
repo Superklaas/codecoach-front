@@ -1,55 +1,82 @@
 <div class="content-container-with-padding z-depth-4">
+
   <h3>Edit session</h3>
-  <form [formGroup]="editForm" (ngSubmit)="submit()">
+
+  <form [formGroup]="editForm" (ngSubmit)="update()">
+
+    <div class="row border-bottom">
+      <div class="col-md-4"><b>Coach</b></div>
+      <div class="col-md-8">
+        <select id="coach" formControlName="coachProfileName" *ngIf="coaches$ | async as coaches">
+          <option *ngFor="let coach of coaches">{{coach.profileName}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row border-bottom">
+      <div class="col-md-4"><b>Coachee</b></div>
+      <div class="col-md-8">
+        <select id="coachee" formControlName="coacheeProfileName" *ngIf="coachees$ | async as coachees">
+          <option *ngFor="let coachee of coachees">{{coachee.profileName}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row border-bottom">
+      <div class="col-md-4"><b>Subject</b></div>
+      <div class="col-md-8">
+        <input type="text" class="form-control" formControlName="subject" aria-label="subject">
+      </div>
+      <div *ngIf="wrongInputHasBeenTyped(subject)" class="alert alert-danger">
+        <div *ngIf="subject.errors.required || subject.errors.whitespace">Subject is required.</div>
+      </div>
+    </div>
+
+    <div class="row border-bottom">
+      <div class="col-md-4"><b>Date</b></div>
+      <div class="col-md-8">
+        <input type="date" class="form-control" formControlName="date" aria-label="date">
+      </div>
+      <div *ngIf="wrongInputHasBeenTyped(date)" class="alert alert-danger">
+        <div *ngIf="date.errors.required">Date is required.</div>
+      </div>
+    </div>
+
+    <div class="row border-bottom">
+      <div class="col-md-4"><b>Time</b></div>
+      <div class="col-md-8">
+        <input type="time" class="form-control" formControlName="startTime" aria-label="time">
+      </div>
+      <div *ngIf="wrongInputHasBeenTyped(startTime)" class="alert alert-danger">
+        <div *ngIf="startTime.errors.required">Start Time is required.</div>
+      </div>
+    </div>
+
+    <div *ngIf="editForm.touched && editForm.errors?.inThePast" class="alert alert-danger">
+      <div>Please specify a time and date in the future.</div>
+    </div>
+
+    <div class="row border-bottom">
+      <div class="col-md-4"><b>Location</b></div>
+      <div class="col-md-8">
+        <input type="text" class="form-control" formControlName="location" aria-label="location">
+      </div>
+      <div *ngIf="wrongInputHasBeenTyped(location)" class="alert alert-danger">
+        <div *ngIf="location.errors.required || location.errors.whitespace">Location is required.</div>
+      </div>
+    </div>
+
     <div class="row">
-      <div class="row border-bottom">
-        <div class="col-md-4"><b>Coach</b></div>
-        <div class="col-md-8">
-          <select id="coach" formControlName="coachProfileName" *ngIf="coaches$ | async as coaches">
-            <option *ngFor="let coach of coaches">{{coach.profileName}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="row border-bottom">
-        <div class="col-md-4"><b>Coachee</b></div>
-        <div class="col-md-8">
-          <select id="coachee" formControlName="coacheeProfileName" *ngIf="coachees$ | async as coachees">
-            <option *ngFor="let coachee of coachees">{{coachee.profileName}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="row border-bottom">
-        <div class="col-md-4"><b>Subject</b></div>
-        <div class="col-md-8">
-          <input type="text" class="form-control" formControlName="subject" aria-label="subject">
-        </div>
-      </div>
-      <div class="row border-bottom">
-        <div class="col-md-4"><b>Date</b></div>
-        <div class="col-md-8">
-          <input type="date" class="form-control" formControlName="date" aria-label="date">
-        </div>
-      </div>
-      <div class="row border-bottom">
-        <div class="col-md-4"><b>Time</b></div>
-        <div class="col-md-8">
-          <input type="time" class="form-control" formControlName="startTime" aria-label="time">
-        </div>
-      </div>
-      <div class="row border-bottom">
-        <div class="col-md-4"><b>Location</b></div>
-        <div class="col-md-8">
-          <input type="text" class="form-control" formControlName="location" aria-label="location">
-        </div>
-      </div>
-      <div class="row right-align">
-        <button [ngClass]="color" type="submit"
-                class="waves-effect waves-light btn-large black-text"
-                routerLink="/dashboard-admin/session-overview">
-          EDIT SESSION
-          <i class="material-icons right">send</i>
+      <div class="right-align">
+        <button type="submit" class="waves-effect waves-light btn btn-custom green">
+          Save<i class="material-icons right">check_circle</i>
+        </button>
+        <button (click)="cancel()" class="waves-effect waves-light btn btn-custom red accent-4">
+          Cancel<i class="material-icons right">cancel</i>
         </button>
       </div>
     </div>
+
   </form>
+
 </div>

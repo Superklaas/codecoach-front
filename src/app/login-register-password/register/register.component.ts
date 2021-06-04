@@ -3,6 +3,7 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "
 import {Router} from "@angular/router";
 
 import { UserService } from 'src/app/utility/service/user.service';
+import {StringValidators} from "../../utility/validators/StringValidators";
 
 @Component({
   selector: 'app-register',
@@ -10,11 +11,10 @@ import { UserService } from 'src/app/utility/service/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private _hasDuplicateEmail = false;
   private _registerForm = this.formBuilder.group({
-    firstName: new FormControl("",[Validators.required]),
-    lastName: new FormControl("", [Validators.required]),
-    profileName: new FormControl("", [Validators.required]),
+    firstName: new FormControl("",[Validators.required, StringValidators.noWhitespace]),
+    lastName: new FormControl("", [Validators.required, StringValidators.noWhitespace]),
+    profileName: new FormControl("", [Validators.required, StringValidators.noWhitespace]),
     email: new FormControl("", [Validators.required, Validators.pattern(/.*@.*/)]),
     password: new FormControl("",
       [Validators.required, Validators.minLength(8),

@@ -30,4 +30,11 @@ export class CoachOverviewComponent implements OnInit {
     return this.xpService.getXpLevel(user.xp);
   }
 
+  getUserImage(user: User) {
+    if (!user.imageUrl) {
+      return "assets/images/default-person.png";
+    }
+    return user.imageUrl;
+  }
+
 }

@@ -23,11 +23,11 @@ export class RequestedCoachSessionDetailsComponent implements OnInit {
   }
 
   accept(session: Session) {
-    this.sessionService.updateSession(session.id, 'ACCEPTED').subscribe(session => this.sessionUpdate.emit(session) );
+    this.sessionService.updateSessionStatus(session.id, 'ACCEPTED').subscribe(session => this.sessionUpdate.emit(session) );
   }
 
   decline(session: Session) {
-    this.sessionService.updateSession(session.id, 'REQUEST_DECLINED').subscribe(session => this.sessionUpdate.emit(session) );
+    this.sessionService.updateSessionStatus(session.id, 'REQUEST_DECLINED').subscribe(session => this.sessionUpdate.emit(session) );
   }
 
   isMobile(): boolean {
