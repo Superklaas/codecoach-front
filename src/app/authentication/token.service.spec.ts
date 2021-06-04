@@ -59,6 +59,7 @@ describe('TokenService', () => {
   it('should be created with a null token', () => {
     service = TestBed.inject(TokenService);
     expect(service).toBeTruthy();
+    expect(service.hasToken()).toBeFalse();
     expect(service.getToken()).toBeNull();
   });
 
@@ -66,6 +67,7 @@ describe('TokenService', () => {
     localStorageData["jwt_token"] = validDummyToken;
     service = TestBed.inject(TokenService);
     expect(service.getToken()).not.toBeNull();
+    expect(service.hasToken()).toBeTrue();
     expect(service.getToken().role).toBe("ADMIN");
   });
 
@@ -94,6 +96,20 @@ describe('TokenService', () => {
     service.setToken(validDummyToken);
     expect(localStorageData["jwt_token"]).toEqual(validDummyToken);
     expect(service.getToken().sub).toEqual("1");
+    // TODO: test timeout
   });
+
+
+  it('should clear token', () => {
+    localStorageData["jwt_token"] = validDummyToken;
+    service = TestBed.inject(TokenService);
+    expect(service.hasToken()).toBeTrue();
+    service.clearToken();
+    expect(service.getToken()).toBeNull();
+    expect(localStorageData["jwt_token"]).toBeFalsy();
+    expect(service.hasToken()).toBeFalse();
+    // TODO: test timeout
+  });
+
 
 });
