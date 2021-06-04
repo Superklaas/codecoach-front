@@ -14,7 +14,7 @@ import {UserService} from './user.service';
 export class ProfileService {
 
   private currentUser = new ReplaySubject<User>(1);
-  currentUser$ = this.currentUser.asObservable();
+  public readonly currentUser$ = this.currentUser.asObservable();
 
   constructor(private authService: AuthenticationService, private userService: UserService) {
     this.authService.session$.subscribe(session => this.setUserFromSession(session))
