@@ -1,12 +1,12 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {AuthenticationService} from 'src/app/authentication/authentication.service';
 import {NavigationStart, Router} from "@angular/router";
 import {filter} from 'rxjs/operators';
 import * as M from "materialize-css";
-import {InitService} from "../../materialize/init.service";
-import {ProfileService} from "../../service/profile.service";
-import {UserService} from "../../service/user.service";
 
+import {AuthenticationService} from 'src/app/authentication/authentication.service';
+import { UserService } from 'src/app/utility/service/user.service';
+import { InitService } from 'src/app/utility/service/materialize/init.service';
+import { ProfileService } from 'src/app/utility/service/profile.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -18,22 +18,27 @@ export class NavigationBarComponent implements OnInit, AfterViewInit {
   private _isLoggedIn: boolean;
   private _role: string;
 
-  constructor(private authService: AuthenticationService, private userService: UserService, private router: Router, private initService: InitService) {
+  constructor(
+    private authService: AuthenticationService,
+    private userService: UserService,
+    private router: Router,
+    private initService: InitService,
+    private profileService: ProfileService,
+  ) {
   }
 
   ngOnInit(): void {
-    this.authService.userLoggedIn$
-      .subscribe(isLoggedIn => {
-          this._isLoggedIn = isLoggedIn;
-          if (this._isLoggedIn) {
-            this.userService.get(Number(this.authService.getId()))
-              .subscribe(user => {
-                this._username = user.profileName;
-                this._role = user.role;
-              })
-          }
+
+    this.profileService.currentUser$
+      .subscribe(user => {
+        if (user === null) {
+          this._isLoggedIn = false;
+          return;
         }
-      )
+        this._isLoggedIn = true;
+        this._username = user.profileName;
+        this._role = user.role;
+      });
 
     // The materialize sidenav doesn't play nice with Angular Router.
     // When a mobile user navigates to a link, the sidenav remains open.

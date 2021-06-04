@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
-import { InitService } from 'src/app/materialize/init.service';
+import { InitService } from 'src/app/utility/service/materialize/init.service';
+
 
 @Component({
   selector: 'app-dropdown',

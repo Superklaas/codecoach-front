@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Title} from "@angular/platform-browser";
-import {InitService} from "./materialize/init.service";
+
+import { InitService } from './utility/service/materialize/init.service';
 
 @Component({
   selector: 'app-root',

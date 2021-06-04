@@ -1,0 +1,29 @@
+<div class="progress" *ngIf="!loaded">
+  <div class="indeterminate"></div>
+</div>
+<div *ngIf="loaded">
+  <table class="striped">
+    <thead>
+    <tr>
+      <th>Profile Name</th>
+      <th>Email address</th>
+      <th>Role</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of pageOfUsers">
+      <td>{{user.profileName}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.role | titlecase}}</td>
+      <td>
+        <button [ngClass]="color" class="right btn-floating" routerLink="/dashboard-admin/edit/{{user.id}}">
+          <i class="material-icons center">edit</i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <app-jw-pagination [items]="users" (changePage)="onChangePage($event)"></app-jw-pagination>
+</div>
+

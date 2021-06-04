@@ -14,8 +14,8 @@ exports.config = {
   ],
   capabilities: {
     chromeOptions: {
-      args: [ "--headless" ]
-    },  
+     args: [ '--headless', '--window-size=1920,1080' ]
+    },
     browserName: 'chrome'
   },
   directConnect: true,

@@ -1,0 +1,10 @@
+.custom-img{
+    max-width: 400px;
+}
+
+.label-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

@@ -1,0 +1,11 @@
+<ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+  <li [ngClass]="{disabled:pager.currentPage === 1}" class="waves-effect page-item previous-item">
+    <a (click)="setPage(pager.currentPage - 1)"><i class="material-icons">chevron_left</i></a>
+  </li>
+  <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page, selected:pager.currentPage == page}"  class="waves-effect page-item number-item">
+    <a (click)="setPage(page)">{{page}}</a>
+  </li>
+  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="waves-effect page-item next-item">
+    <a (click)="setPage(pager.currentPage + 1)"><i class="material-icons">chevron_right</i></a>
+  </li>
+</ul>
