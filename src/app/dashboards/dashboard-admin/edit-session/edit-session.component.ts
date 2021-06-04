@@ -84,10 +84,6 @@ export class EditSessionComponent implements OnInit, AfterViewInit {
     return this.editForm.get('location');
   }
 
-  submit() {
-
-  }
-
   public noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
@@ -107,6 +103,18 @@ export class EditSessionComponent implements OnInit, AfterViewInit {
     if (date === '' || startTime == '') return null;
     const referenceDate = Date.parse(date + "T" + startTime);
     return referenceDate < Date.now() ? {inThePast: true} : {};
+  }
+
+  update() {
+    if(this._editForm.valid){
+      this.sessionService.updateSession(this.sessionId, this._editForm.value).subscribe(
+        (_ => {
+          alert("Your changes have been saved.");
+          this.router.navigateByUrl("/dashboard-admin/session-overview");
+        }),
+        (error =>  this._editForm.setErrors({serverError: error.error.message}))
+      );
+    }
   }
 
   cancel() {
