@@ -88,4 +88,12 @@ describe('TokenService', () => {
     expect(() => service.setToken(expiredDummyToken)).toThrowError("trying to set an expired token")
   });
 
+  it('should set a valid token', () => {
+    service = TestBed.inject(TokenService);
+    expect(localStorageData["jwt_token"]).toBeFalsy();
+    service.setToken(validDummyToken);
+    expect(localStorageData["jwt_token"]).toEqual(validDummyToken);
+    expect(service.getToken().sub).toEqual("1");
+  });
+
 });
