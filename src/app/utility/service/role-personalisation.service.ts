@@ -9,7 +9,7 @@ import { filter } from 'rxjs/operators';
 export class RolePersonalisationService {
   color: 'yellow darken-2' | 'light-blue darken-2' | 'green darken-2' = 'yellow darken-2';
   private colorSubject = new BehaviorSubject("yellow darken-2");
-  color$ = this.colorSubject.asObservable();
+  public readonly color$ = this.colorSubject.asObservable();
 
   constructor(private router: Router) {
     this.router.events
