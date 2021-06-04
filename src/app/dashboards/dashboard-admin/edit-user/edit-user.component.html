@@ -11,28 +11,33 @@
           </div>
           <div class="col-md-8">
             <div class="row border-bottom ">
-              <div class="col"><b>First name</b></div>
-              <input type="text" class="form-control col" formControlName="firstName"
-                     aria-label="First name">
-            </div>
-            <div class="row border-bottom ">
-              <div class="col"><b>Last name</b></div>
-              <input type="text" class="form-control col" formControlName="lastName"
-                     aria-label="Last name">
-            </div>
-            <div class="row border-bottom ">
-              <div class="col"><b>Email</b><span class="red-text mx-2">This is used to sign in</span>
+              <div class="col-md-4"><b>First name</b></div>
+              <div class="col-md-4 flex-fill">
+                <input type="text" class="form-control col" formControlName="firstName" aria-label="First name">
               </div>
-              <input type="text" class="form-control col" formControlName="email" aria-label="Email">
             </div>
             <div class="row border-bottom ">
-              <div class="col"><b>Profile name</b></div>
-              <input type="text" class="form-control col" formControlName="profileName"
-                     aria-label="Profile name">
+              <div class="col-md-4"><b>Last name</b></div>
+              <div class="col-md-4 flex-fill">
+                <input type="text" class="form-control col" formControlName="lastName" aria-label="Last name">
+              </div>
+            </div>
+            <div class="row border-bottom ">
+              <div class="col-md-4"><b>Email</b><span class="red-text mx-2">This is used to sign in</span>
+              </div>
+              <div class="col-md-4 flex-fill">
+                <input type="text" class="form-control col" formControlName="email" aria-label="Email">
+              </div>
+            </div>
+            <div class="row border-bottom ">
+              <div class="col-md-4"><b>Profile name</b></div>
+              <div class="col-md-4 flex-fill">
+                <input type="text" class="form-control col" formControlName="profileName" aria-label="Profile name">
+              </div>
             </div>
             <div class="row border-bottom">
-              <div class="col"><b>CodeCoach role</b></div>
-              <div class="col">
+              <div class="col-md-4"><b>CodeCoach role</b></div>
+              <div class="col-md-4 flex-fill">
                 <select name="roles" id="roles" formControlName="role">
                   <option *ngFor="let role of roles" [ngValue]="role">{{ role | titlecase }}</option>
                 </select>
@@ -43,10 +48,10 @@
       </form>
       <div class="right-align">
         <button class="waves-effect waves-light btn btn-custom green" (click)="updateProfile()">SAVE<i
-          class="material-icons right">check_circle</i>
+            class="material-icons right">check_circle</i>
         </button>
         <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancelProfile()">CANCEL<i
-          class="material-icons right">cancel</i>
+            class="material-icons right">cancel</i>
         </button>
       </div>
       <div *ngIf="editForm.errors">
@@ -59,27 +64,24 @@
 
 
   <div class="card ">
-
     <div class="card-body">
       <h3>Change password</h3>
-
       <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
-
         <div class="row border-bottom ">
-          <div class="col label-div"><b>New password</b></div>
-          <input type="password" class="form-control col" formControlName="newPassword"
-                 aria-label="new password">
+          <div class="col-md-4 label-div"><b>New password</b></div>
+          <div class="col-md-4 flex-fill">
+            <input type="password" class="form-control col" formControlName="newPassword" aria-label="new password">
+          </div>
         </div>
-
-
         <div class="row border-bottom ">
-          <div class="col label-div"><b>Repeat new password</b></div>
-          <input type="Password" class="form-control col" formControlName="confirmPassword"
-                 aria-label="repeat new password">
-
+          <div class="col-md-4 label-div"><b>Repeat new password</b></div>
+          <div class="col-md-4 flex-fill">
+            <input type="Password" class="form-control col" formControlName="confirmPassword"
+              aria-label="repeat new password">
+          </div>
           <div *ngIf="changePasswordForm.errors!=null &&
                 changePasswordForm.errors.notSame && hasAllBeenTouched(newPassword, confirmPassword)"
-               class="alert alert-danger">
+            class="alert alert-danger">
             <div>Passwords don't match.</div>
           </div>
 
@@ -95,10 +97,10 @@
 
       <div class="right-align">
         <button class="waves-effect waves-light btn btn-custom green" [disabled]="changePasswordForm.invalid"
-                (click)="changePassword()">SAVE<i class="material-icons right">check_circle</i>
+          (click)="changePassword()">SAVE<i class="material-icons right">check_circle</i>
         </button>
         <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancelPassword()">CANCEL<i
-          class="material-icons right">cancel</i>
+            class="material-icons right">cancel</i>
         </button>
       </div>
 
@@ -114,34 +116,31 @@
       </div>
       <form class="col s12" [formGroup]="editCoachForm" (ngSubmit)="updateCoach()">
         <div class="row border-bottom ">
-          <div class="col"><b>Introduction</b></div>
-          <div class="col">
-            <input type="text" class="form-control col" formControlName="introduction"
-                   aria-label="introduction text">
+          <div class="col-md-4"><b>Introduction</b></div>
+          <div class="col-md-4 flex-fill">
+            <input type="text" class="form-control col" formControlName="introduction" aria-label="introduction text">
           </div>
 
         </div>
         <div class="row border-bottom ">
-          <div class="col"><b>Availability</b></div>
-          <div class="col">
-            <input type="text" class="form-control col" formControlName="availability"
-                   aria-label="Availability">
+          <div class="col-md-4"><b>Availability</b></div>
+          <div class="col-md-4 flex-fill">
+            <input type="text" class="form-control col" formControlName="availability" aria-label="Availability">
           </div>
         </div>
         <div class="row  ">
-          <div class="col"><b>XP</b></div>
-          <div class="col">
-            <input type="number" class="form-control col" formControlName="xp"
-                   aria-label="xp">
+          <div class="col-md-4"><b>XP</b></div>
+          <div class="col-md-4 flex-fill">
+            <input type="number" class="form-control col" formControlName="xp" aria-label="xp">
           </div>
         </div>
       </form>
       <div class="right-align">
         <button class="waves-effect waves-light btn btn-custom green" (click)="updateCoach()">SAVE<i
-          class="material-icons right">check_circle</i>
+            class="material-icons right">check_circle</i>
         </button>
         <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancelCoach()">CANCEL<i
-          class="material-icons right">cancel</i>
+            class="material-icons right">cancel</i>
         </button>
       </div>
       <div *ngIf="editCoachForm.errors">
@@ -166,5 +165,5 @@
     </div>
   </div>
   <app-coaching-topics-editor *ngIf="areTopicsBeingEdited && user" [user]="user" (cancelEdit)="cancelProfile()"
-                              (saved)="updateProfile()"></app-coaching-topics-editor>
+    (saved)="updateProfile()"></app-coaching-topics-editor>
 </div>
