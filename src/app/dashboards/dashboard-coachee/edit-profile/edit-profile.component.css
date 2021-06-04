@@ -20,6 +20,10 @@
 
 @media (max-width: 992px) {
 
+  .profile-info{
+    width: 100%;
+  }
+
   .flexbox{
     flex-direction: column;
   }
