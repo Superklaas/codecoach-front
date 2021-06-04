@@ -60,7 +60,7 @@ export class TokenService {
   private refreshTokenTimer() {
     if (this.tokenExpirationTimer !== null) clearTimeout(this.tokenExpirationTimer);
     this.tokenExpirationTimer = (this.token)
-      ? setTimeout(() => this.clearToken(), this.token.exp - (Date.now() / 1000)) as unknown as number
+      ? setTimeout(() => this.clearToken(), (this.token.exp * 1000) - Date.now()) as unknown as number
       : null;
   }
 
