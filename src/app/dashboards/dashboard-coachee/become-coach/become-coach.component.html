@@ -17,9 +17,11 @@
             <p >What is your motivation to become a coach?</p>
           <div class="col">
             <textarea maxlength="2000" rows="10" cols="60" formControlName="motivation"></textarea>
-            <div *ngIf="wrongInputHasBeenTyped(motivation)" class="alert alert-danger">
-              <div *ngIf="motivation.errors.required">Motivation is required.</div>
-            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div *ngIf="wrongInputHasBeenTyped(motivation)" class="alert alert-danger">
+            <div *ngIf="motivation.errors.required">Motivation is required.</div>
           </div>
         </div>
         <div class="row">
