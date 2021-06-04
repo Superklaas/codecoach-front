@@ -5,6 +5,7 @@ import {BehaviorSubject, ReplaySubject} from 'rxjs';
 import { Token } from './Token';
 import { TokenService } from './token.service';
 import { AuthSession } from './AuthSession';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,11 @@ export class AuthenticationService {
   private sessionSource = new BehaviorSubject<AuthSession>(this.authSession);
   public readonly session$ = this.sessionSource.asObservable();
 
-  constructor(private loginService: AuthenticationHttpService, private tokenService: TokenService) {
+  constructor(private loginService: AuthenticationHttpService, private tokenService: TokenService, private router: Router) {
+    this.tokenService.timeout$.subscribe(() => {
+      this.refresh()
+      this.router.navigate(["login"])
+    });
     this.refresh();
   }
 
@@ -36,7 +41,5 @@ export class AuthenticationService {
     this.authSession = new AuthSession(this.tokenService.getToken());
     this.sessionSource.next(this.authSession);
   }
-
-
 
 }

@@ -14,7 +14,7 @@ import { XpService } from '../utility/service/xp.service';
 })
 export class UserProfileComponent implements OnInit {
   user: User;
-  currentWindowWidth: number;
+  currentWindowWidth: number = window.innerWidth;
 
 
   constructor(private route: ActivatedRoute, private userService: UserService, public authService: AuthenticationService, private xpService: XpService) { }
@@ -26,7 +26,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   isMobile(): boolean {
-    return this.currentWindowWidth >= 400;
+    return this.currentWindowWidth <= 767;
   }
 
   get userImage() {
