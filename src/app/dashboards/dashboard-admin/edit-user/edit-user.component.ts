@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 import { User } from 'src/app/utility/model/User';
 import { InitService } from 'src/app/utility/service/materialize/init.service';
@@ -90,6 +90,7 @@ export class EditUserComponent implements OnInit, AfterViewInit {
     this.userService.get(this.id).subscribe(user => {
       this._editForm.patchValue(user);
     });
+    this.areTopicsBeingEdited = false;
   }
 
   updateCoach() {

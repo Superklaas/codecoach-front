@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Token } from './Token';
 import jwt_decode from "jwt-decode";
+import { Observable, Subject } from 'rxjs';
 
 const TOKEN_KEY = 'jwt_token';
 
@@ -12,6 +13,9 @@ export class TokenService {
   private tokenString: string | null = null;
   private token: Token | null = null;
   private tokenExpirationTimer: number | null = null;
+
+  private timeout = new Subject<void>();
+  public timeout$: Observable<void> = this.timeout.asObservable();
 
   constructor() {
     this.initToken();
@@ -60,7 +64,10 @@ export class TokenService {
   private refreshTokenTimer() {
     if (this.tokenExpirationTimer !== null) clearTimeout(this.tokenExpirationTimer);
     this.tokenExpirationTimer = (this.token)
-      ? setTimeout(() => this.clearToken(), (this.token.exp * 1000) - Date.now()) as unknown as number
+      ? setTimeout(() => {
+        this.clearToken();
+        this.timeout.next();
+      }, (this.token.exp * 1000) - Date.now()) as unknown as number
       : null;
   }
 

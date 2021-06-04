@@ -26,8 +26,9 @@
         <td>{{session.location}}</td>
         <td>{{session.status | removeUnderscore | titlecase}}</td>
         <td>
-          <button [ngClass]="color" class="btn-floating" routerLink="/dashboard-admin/edit-session/{{session.id}}"><i
-            class="material-icons center">edit</i></button>
+          <button [ngClass]="color" class="btn-floating" routerLink="/dashboard-admin/edit-session/{{session.id}}" [disabled]="editNotPossible(session)">
+            <i class="material-icons center">edit</i>
+          </button>
           <button [ngClass]="color" class="btn-floating" *ngIf="session.expanded"><i class="material-icons center"
                                                                                      (click)="session.expanded=!session.expanded">arrow_drop_up</i>
           </button>

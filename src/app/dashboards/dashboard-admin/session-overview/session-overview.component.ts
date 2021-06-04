@@ -32,4 +32,8 @@ export class SessionOverviewComponent implements OnInit {
     return this.roleStuff.color;
   }
 
+  editNotPossible(session: Session): boolean {
+    return !(session.status === 'REQUESTED' || session.status === 'ACCEPTED');
+  }
+
 }

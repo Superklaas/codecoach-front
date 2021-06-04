@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 
 import { Session } from 'src/app/utility/model/Session';
 import { SessionService } from 'src/app/utility/service/session.service';
@@ -11,6 +11,7 @@ import { SessionService } from 'src/app/utility/service/session.service';
 export class CancellableSessionDetailsComponent implements OnInit {
   @Input()
   public perspective: 'coach' | 'coachee';
+  currentWindowWidth: number = window.innerWidth;
 
   @Input()
   cancelStatus: 'SESSION_CANCELLED_BY_COACHEE' | 'SESSION_CANCELLED_BY_COACH' | 'REQUEST_CANCELLED_BY_COACHEE';
@@ -27,8 +28,17 @@ export class CancellableSessionDetailsComponent implements OnInit {
   }
 
   cancelSession() {
-    this.sessionService.updateSession(this.session.id, this.cancelStatus)
+    this.sessionService.updateSessionStatus(this.session.id, this.cancelStatus)
       .subscribe(session => this.sessionUpdate.emit(session) )
+  }
+
+  isMobile(): boolean {
+    return this.currentWindowWidth <= 1230;
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.currentWindowWidth = window.innerWidth
   }
 
 }

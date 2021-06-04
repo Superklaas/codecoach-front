@@ -3,6 +3,6 @@
         class="material-icons right">check_circle</i>
     </button>
     <button class="waves-effect waves-light btn btn-custom red accent-4"
-        (click)="decline(session)">DECLINE<i class="material-icons right">cancel</i>
+        (click)="decline(session)"><span class="black-text center custom" *ngIf="!isMobile()">DECLINE</span><i class="material-icons right">cancel</i>
     </button>
 </app-common-session-details>
