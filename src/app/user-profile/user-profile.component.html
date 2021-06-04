@@ -34,12 +34,12 @@
                     <div *ngIf="user.role=='COACH'">
                         <a class="waves-effect waves-light yellow darken-2 btn black-text right"
                             routerLink="/create-session/{{user.id}}" *ngIf="user.id!=auth.getUserId()">
-                            <span class="black-text center custom" *ngIf="isMobile()">Book a Session</span>
+                            <span class="black-text center custom" *ngIf="!isMobile()">Book a Session</span>
                             <i class="material-icons right">date_range</i>
                         </a>
                         <a class="waves-effect waves-light yellow darken-2 btn black-text right" routerLink="/egg"
                             *ngIf="user.id==auth.getUserId()">
-                            <span class="black-text center custom" *ngIf="isMobile()">Book a Session</span>
+                            <span class="black-text center custom" *ngIf="!isMobile()">Book a Session</span>
                             <i class="material-icons right">date_range</i>
                         </a>
                     </div>
