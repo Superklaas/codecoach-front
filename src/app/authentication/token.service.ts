@@ -11,7 +11,7 @@ export class TokenService {
 
   private tokenString: string | null = null;
   private token: Token | null = null;
-  private clearTimerHandle: number | null = null;
+  private tokenExpirationTimer: number | null = null;
 
   constructor() {
     this.initToken();
@@ -58,8 +58,8 @@ export class TokenService {
   }
 
   private refreshTokenTimer() {
-    if (this.clearTimerHandle !== null) clearTimeout(this.clearTimerHandle);
-    this.clearTimerHandle = (this.token)
+    if (this.tokenExpirationTimer !== null) clearTimeout(this.tokenExpirationTimer);
+    this.tokenExpirationTimer = (this.token)
       ? setTimeout(() => this.clearToken(), this.token.exp - (Date.now() / 1000)) as unknown as number
       : null;
   }
