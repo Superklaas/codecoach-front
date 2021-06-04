@@ -8,17 +8,23 @@ import { RolePersonalisationService } from '../service/role-personalisation.serv
 })
 export class ContextBackgroundDirective implements OnInit, OnDestroy {
 
-  private appliedClasses: string = "";
+  // staticClasses contains css classes applied to the target element
+  // inside the html template or from other sources.
+  // These are classes that should not be influenced by the role personalisation service.
+  private staticClasses: string[];
+  private dynamicClasses: string = "";
   private subscription: Subscription;
 
-  constructor(private renderer: Renderer2, private ref: ElementRef, private personifyService: RolePersonalisationService) {
+  constructor(private renderer: Renderer2, private ref: ElementRef<HTMLElement>, private personifyService: RolePersonalisationService) {
   }
 
   ngOnInit() {
-    this.applyClasses(this.personifyService.color);
+    this.staticClasses = this.ref.nativeElement.className.split(" ").map(v => v.trim()).filter(v => v !== "");
+
+    this.updateDynamicClasses(this.personifyService.color);
 
     this.subscription = this.personifyService.color$.subscribe(color => {
-      this.applyClasses(color);
+      this.updateDynamicClasses(color);
     })
   }
 
@@ -26,19 +32,18 @@ export class ContextBackgroundDirective implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  applyClasses(classes: string) {
+  private updateDynamicClasses(classes: string) {
+    this.forEachDynamicClass(c => this.renderer.removeClass(this.ref.nativeElement, c));
+    this.dynamicClasses = classes;
+    this.forEachDynamicClass(c => this.renderer.addClass(this.ref.nativeElement, c));
+  }
 
-    this.appliedClasses
+  private forEachDynamicClass(cb: (c: string) => void) {
+    this.dynamicClasses
       .split(" ")
       .filter(c => c !== "")
-      .forEach(c => this.renderer.removeClass(this.ref.nativeElement, c));
-
-    this.appliedClasses = classes;
-
-    this.appliedClasses
-      .split(" ")
-      .filter(c => c !== "")
-      .forEach(c => this.renderer.addClass(this.ref.nativeElement, c));
+      .filter(c => !this.staticClasses.includes(c))
+      .forEach(cb);
   }
 
 }
