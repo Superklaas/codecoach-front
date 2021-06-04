@@ -1,5 +1,6 @@
 import {AfterViewInit, Component} from '@angular/core';
-import {InitService} from "../materialize/init.service";
+
+import { InitService } from '../utility/service/materialize/init.service';
 
 @Component({
   selector: 'app-home',

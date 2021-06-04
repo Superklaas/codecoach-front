@@ -1,0 +1,4 @@
+<app-coaching-topics-editor (formValue)="sendRequest($event)" [update]="update" *ngIf="user" [user]="user"
+                            (cancelEdit)="cancel()"
+                            (saved)="update()" >
+</app-coaching-topics-editor>

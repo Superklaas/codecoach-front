@@ -1,0 +1,83 @@
+<div *ngIf="profileService.currentUser$ | async as user">
+    <div class="card ">
+        <div class="card-body">
+            <h3>Profile Information</h3>
+            <form class="col s12" [formGroup]="editForm" (ngSubmit)="update()">
+
+                <div class="row">
+                    <div class="col-md-4 profile-image">
+                        <img [src]="userImage" alt="">
+                        <div><b>Avatar URL:</b></div>
+                        <input type="text" class="form-control" value="{{userImageString}}" formControlName="imageUrl"
+                            aria-label="Avatar URL">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row border-bottom ">
+                            <div class="col-md-4"><b>First name</b></div>
+                            <div class="col-md-4 flex-fill">
+                                <input type="text" class="form-control col" formControlName="firstName"
+                                    aria-label="First name">
+                            </div>
+                            <div *ngIf="wrongInputHasBeenTyped(firstName)" class="alert alert-danger">
+                                <div *ngIf="firstName.errors.required || firstName.errors.whitespace">First name is
+                                    required.</div>
+                            </div>
+                        </div>
+                        <div class="row border-bottom ">
+                            <div class="col-md-4"><b>Last name</b></div>
+                            <div class="col-md-4 flex-fill">
+                                <input type="text" class="form-control col" formControlName="lastName"
+                                    aria-label="Last name">
+                            </div>
+                            <div *ngIf="wrongInputHasBeenTyped(lastName)" class="alert alert-danger">
+                                <div *ngIf="lastName.errors.required || lastName.errors.whitespace">Last name is
+                                    required
+                                    .</div>
+                            </div>
+                        </div>
+                        <div class="row border-bottom ">
+                            <div class="col-md-4"><b>Email</b><span class="red-text mx-2">This is used to sign in</span>
+                            </div>
+                            <div class="col-md-4 flex-fill">
+                                <input type="text" class="form-control col" formControlName="email" aria-label="Email">
+                            </div>
+                            <div *ngIf="wrongInputHasBeenTyped(email)" class="alert alert-danger">
+                                <div *ngIf="email.errors.required || email.errors.whitespace">Email is required.</div>
+                                <div *ngIf="!email.errors.whitespace && email.errors.pattern">Not a valid email</div>
+                            </div>
+                        </div>
+                        <div class="row border-bottom ">
+                            <div class="col-md-4"><b>Profile name</b></div>
+                            <div class="col-md-4 flex-fill">
+                                <input type="text" class="form-control col" formControlName="profileName"
+                                    aria-label="Profile name">
+                            </div>
+                            <div *ngIf="wrongInputHasBeenTyped(profileName)" class="alert alert-danger">
+                                <div *ngIf="profileName.errors.required || profileName.errors.whitespace">Profile name
+                                    is
+                                    required.</div>
+                            </div>
+                        </div>
+                        <div class="row border-bottom">
+                            <div class="col-md-4 grey-text"><b>CodeCoach role</b></div>
+                            <div class="col-md-4 flex-fill grey-text">{{user.role | titlecase}}</div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="right-align">
+                <button class="waves-effect waves-light btn btn-custom green" [disabled]="editForm.invalid"
+                    (click)="update()">SAVE<i class="material-icons right">check_circle</i>
+                </button>
+                <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancel()">CANCEL<i
+                        class="material-icons right">cancel</i>
+                </button>
+            </div>
+            <div *ngIf="editForm.errors">
+                <div *ngIf="editForm.errors.serverError" class="alert alert-danger">
+                    {{editForm.errors.serverError}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

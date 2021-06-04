@@ -1,74 +1,42 @@
 import {Injectable} from '@angular/core';
 import {AuthenticationHttpService} from './authentication.http.service';
 import {tap} from 'rxjs/operators';
-import {ReplaySubject} from 'rxjs';
-import jwt_decode from "jwt-decode";
-import {Token} from '../model/Token';
-import {User} from '../model/User';
-import {UserService} from '../service/user.service';
-
+import {BehaviorSubject, ReplaySubject} from 'rxjs';
+import { Token } from './Token';
+import { TokenService } from './token.service';
+import { AuthSession } from './AuthSession';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  private tokenKey = 'jwt_token';
-  private usernameKey = 'username';
-  private userLoggedInSource = new ReplaySubject<boolean>();
-  userLoggedIn$ = this.userLoggedInSource.asObservable();
-  private currentUser = new ReplaySubject<User>();
-  currentUser$ = this.currentUser.asObservable();
+  private authSession: AuthSession = new AuthSession(null);
+  private sessionSource = new BehaviorSubject<AuthSession>(this.authSession);
+  public readonly session$ = this.sessionSource.asObservable();
 
-  constructor(private loginService: AuthenticationHttpService, private userService: UserService) {
-    if (this.getToken()) {
-      this.userLoggedInSource.next(true);
-    } else {
-      this.userLoggedInSource.next(false);
-    }
+  constructor(private loginService: AuthenticationHttpService, private tokenService: TokenService) {
+    this.refresh();
+  }
 
+  getSession(): AuthSession {
+    return this.authSession;
   }
 
   login(loginData: any) {
-    return this.loginService.login(loginData)
-      .pipe(tap(response => {
-        localStorage.setItem(this.tokenKey, response.headers.get('Authorization').replace('Bearer', '').trim());
-        localStorage.setItem(this.usernameKey, loginData.username);
-        this.userLoggedInSource.next(true);
-      }))
-      ;
-  }
-
-  getDecodedToken(): Token {
-    return jwt_decode(this.getToken());
-  }
-
-  getToken() {
-    return localStorage.getItem(this.tokenKey);
-  }
-
-  getProfileName() {
-    return this.getDecodedToken().profileName;
-  }
-  getUsername() {
-    return localStorage.getItem(this.usernameKey);
-  }
-
-  getRole(){
-    return this.getDecodedToken().role;
-  }
-
-  getId() {
-    return this.getDecodedToken().sub;
-  }
-
-  isLoggedIn() {
-    return localStorage.getItem(this.tokenKey) !== null;
+    return this.loginService.login(loginData); // The interceptor will take care of the returned bearer token
   }
 
   logout() {
-    localStorage.removeItem(this.tokenKey);
-    localStorage.removeItem(this.usernameKey);
-    this.userLoggedInSource.next(false);
+    this.tokenService.clearToken();
+    this.refresh();
   }
+
+  refresh() {
+    this.authSession = new AuthSession(this.tokenService.getToken());
+    this.sessionSource.next(this.authSession);
+  }
+
+
+
 }

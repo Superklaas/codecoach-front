@@ -1,4 +1,5 @@
 <app-user-menu></app-user-menu>
+<ng-container *ngIf="authService.session$ | async as auth">
 <div *ngIf=user>
     <div class="card mx-md-5 my-md-5">
         <div class="card-body">
@@ -8,7 +9,7 @@
                     <img [src]="userImage" alt="">
                 </div>
                 <div class="col-md-8">
-                    <div *ngIf="role==='ADMIN'">
+                    <div *ngIf="auth.isAdmin()">
                         <div class="row border-bottom ">
                             <div class="col-md-4"><b>First name</b></div>
                             <div class="col-md-4">{{user.firstName}}</div>
@@ -32,13 +33,13 @@
                     </div>
                     <div *ngIf="user.role=='COACH'">
                         <a class="waves-effect waves-light yellow darken-2 btn black-text right"
-                            routerLink="/create-session/{{user.id}}" *ngIf="user.id!=loggedInId">
-                            <span class="black-text center custom" *ngIf="isMobile()">Book a Session</span>
+                            routerLink="/create-session/{{user.id}}" *ngIf="user.id!=auth.getUserId()">
+                            <span class="black-text center custom" *ngIf="!isMobile()">Book a Session</span>
                             <i class="material-icons right">date_range</i>
                         </a>
                         <a class="waves-effect waves-light yellow darken-2 btn black-text right" routerLink="/egg"
-                            *ngIf="user.id==loggedInId">
-                            <span class="black-text center custom" *ngIf="isMobile()">Book a Session</span>
+                            *ngIf="user.id==auth.getUserId()">
+                            <span class="black-text center custom" *ngIf="!isMobile()">Book a Session</span>
                             <i class="material-icons right">date_range</i>
                         </a>
                     </div>
@@ -58,6 +59,15 @@
                     <div class="col-md-2"><b>Availability</b></div>
                     <div class="col-md-6">{{user.availability}}</div>
                 </div>
+                <div class="row ">
+                    <div class="col-md-2"><b>XP</b></div>
+                    <div class="col-md">
+                        <div class="badge center" [ngClass]='xpLevel | lowercase'>{{user.xp}}/{{nextThreshHold}} ({{xpLevel}})</div>
+                        <div class="progress " style="height: 10px;">
+                            <div class="progress-bar" role="progressbar" [ngClass]='xpLevel | lowercase' [style.width]="xpPercentage"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="card mx-md-5 ">
@@ -70,3 +80,4 @@
         </div>
     </div>
 </div>
+</ng-container>

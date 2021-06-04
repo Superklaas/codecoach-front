@@ -1,0 +1,54 @@
+<section *ngIf="profileService.currentUser$ | async as user">
+  <div class="card">
+    <div class="row">
+      <div class="col-md-12">
+        <h6 class="card-title p-2 border-bottom mx-1">Apply to become a coach</h6>
+      </div>
+    </div>
+    <div class="row" *ngIf="user.role === 'COACH' || user.role === 'ADMIN'">
+      <p class="m-2 mx1">Your application to become a Coach was accepted!</p>
+    </div>
+    <div class="row" *ngIf="hasApplied && (user.role !== 'COACH' && user.role !== 'ADMIN')">
+      <p class="m-2 mx1">Your application to become a Coach was sent to the Admin(s)!</p>
+    </div>
+    <div class="row" *ngIf="!hasApplied && (user.role !== 'COACH' && user.role !== 'ADMIN')">
+      <form [formGroup]="applyForm" (ngSubmit)="submit()">
+        <div class="row">
+            <p >What is your motivation to become a coach?</p>
+          <div class="col">
+            <textarea maxlength="2000" rows="10" cols="60" formControlName="motivation"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div *ngIf="wrongInputHasBeenTyped(motivation)" class="alert alert-danger">
+            <div *ngIf="motivation.errors.required">Motivation is required.</div>
+          </div>
+        </div>
+        <div class="row">
+            <p >Which topics would you like to teach?</p>
+          <div class="col">
+            <input type="text" formControlName="topic1">
+          </div>
+          <div class="col">
+            <input type="text" formControlName="topic2">
+          </div>
+        </div>
+        <div class="row">
+          <div
+            *ngIf="applyForm.errors !== null && hasOneBeenTouched(topic1, topic2) && applyForm.errors.topicMissing"
+            class="alert alert-danger">
+            <div>Providing one topic is required.</div>
+          </div>
+        </div>
+        <div class="row justify-content-end m-3">
+          <button type="submit"
+                  class="col-md-7 col-lg-5 col-xl-4 waves-effect waves-light yellow darken-2 btn-large black-text"
+                  [disabled] ="applyForm.invalid">
+            Become a coach
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

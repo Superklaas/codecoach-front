@@ -1,82 +1,87 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from "./register/register.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
-import { MyProfileComponent } from './dashboard/my-profile/my-profile.component';
-import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
-import { AuthenticationGuard } from './authentication/authentication.guard';
-import { CoachOverviewComponent } from "./coach-overview/coach-overview.component";
-import { BecomeCoachComponent } from "./dashboard/become-coach/become-coach.component";
-import { SessionRequestComponent } from "./session-request/session-request.component";
-import { CoachDashboardComponent } from './dashboard-coach/coach-dashboard/coach-dashboard.component';
-import { MyCoachProfileComponent } from './dashboard-coach/my-coach-profile/my-coach-profile.component';
-import { CoacheeSessionsComponent } from './dashboard/coachee-sessions/coachee-sessions.component';
-import { CoachSessionsComponent } from "./dashboard-coach/coach-sessions/coach-sessions.component";
-import { AuthorizationGuard } from "./authorization/authorization.guard";
+import { CoachOverviewComponent } from "./find-a-coach/coach-overview/coach-overview.component";
 import { EasterEggComponent } from './easter-egg/easter-egg.component';
-import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
-import { ResetPasswordComponent } from "./reset-password/reset-password.component";
-import { EditProfileComponent } from './dashboard/edit-profile/edit-profile.component';
-import { EditCoachingTopicsComponent } from "./dashboard-coach/edit-coaching-topics/edit-coaching-topics.component";
-import { AdminDashboardComponent } from './dashboard-admin/admin-dashboard/admin-dashboard.component';
-import { UserOverviewComponent } from './dashboard-admin/user-overview/user-overview.component';
-import { AdminGuard } from './authorization/admin.guard';
-import { EditUserComponent } from './dashboard-admin/edit-user/edit-user.component';
-import { EditCoachComponent } from './dashboard-coach/edit-coach/edit-coach.component';
-import { ErrorComponent } from './error/error.component';
-import { EditCoachTopicsByAdminComponent } from './dashboard-admin/edit-coach-topics-by-admin/edit-coach-topics-by-admin.component';
-
-
-
-
+import { LoginComponent } from './login-register-password/login/login.component';
+import { RegisterComponent } from './login-register-password/register/register.component';
+import { ForgotPasswordComponent } from './login-register-password/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './login-register-password/reset-password/reset-password.component';
+import { ErrorComponent } from './utility/error/error.component';
+import { UserDashboardComponent } from './dashboards/dashboard-coachee/user-dashboard/user-dashboard.component';
+import { MyProfileComponent } from './dashboards/dashboard-coachee/my-profile/my-profile.component';
+import { BecomeCoachComponent } from './dashboards/dashboard-coachee/become-coach/become-coach.component';
+import { CoacheeSessionsComponent } from './dashboards/dashboard-coachee/coachee-sessions/coachee-sessions.component';
+import { EditProfileComponent } from './dashboards/dashboard-coachee/edit-profile/edit-profile.component';
+import { CoachDashboardComponent } from './dashboards/dashboard-coach/coach-dashboard/coach-dashboard.component';
+import { MyCoachProfileComponent } from './dashboards/dashboard-coach/my-coach-profile/my-coach-profile.component';
+import { CoachSessionsComponent } from './dashboards/dashboard-coach/coach-sessions/coach-sessions.component';
+import { EditCoachComponent } from './dashboards/dashboard-coach/edit-coach/edit-coach.component';
+import { AdminDashboardComponent } from './dashboards/dashboard-admin/admin-dashboard/admin-dashboard.component';
+import { UserOverviewComponent } from './dashboards/dashboard-admin/user-overview/user-overview.component';
+import { EditUserComponent } from './dashboards/dashboard-admin/edit-user/edit-user.component';
+import { SessionRequestComponent } from './session/session-request/session-request.component';
+import { PageNotFoundComponent } from './utility/page-not-found/page-not-found.component';
+import { SessionOverviewComponent } from './dashboards/dashboard-admin/session-overview/session-overview.component';
+import {ChangePasswordComponent} from "./dashboards/dashboard-coachee/change-password/change-password.component";
+import {EditSessionComponent} from "./dashboards/dashboard-admin/edit-session/edit-session.component";
+import {RequestChangeCoachingTopicComponent} from "./dashboards/dashboard-coach/request-change-coaching-topic/request-change-coaching-topic.component";
+import * as authGuards from './authentication/session.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, },
-  { path: 'home', component: HomeComponent, },
+  { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent, },
-  { path: 'egg', component: EasterEggComponent, canActivate: [AuthenticationGuard], },
+  { path: 'egg', component: EasterEggComponent, canActivate: [ authGuards.authenticated(true) ], },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'error', component: ErrorComponent },
   {
     path: 'dashboard',
     component: UserDashboardComponent,
-    canActivate: [AuthenticationGuard],
+    canActivate: [ authGuards.authenticated(true) ],
     children: [
       { path: '', component: MyProfileComponent, },
       { path: 'become-coach', component: BecomeCoachComponent, },
       { path: 'coachee-sessions', component: CoacheeSessionsComponent },
-      { path: 'edit-profile', component: EditProfileComponent }
+      { path: 'edit-profile', component: EditProfileComponent },
+      { path: 'change-password', component: ChangePasswordComponent }
     ]
   },
   {
     path: 'dashboard-coach',
     component: CoachDashboardComponent,
-    canActivate: [AuthenticationGuard, AuthorizationGuard],
+    canActivate: [
+       authGuards.authenticated(true),
+       authGuards.sessionGuard(session => session.isCoach() || session.isAdmin()),
+    ],
     children: [
       { path: '', component: MyCoachProfileComponent },
       { path: 'coach-sessions', component: CoachSessionsComponent },
-      { path: 'edit-coaching-topics', component: EditCoachingTopicsComponent },
-      { path: 'edit-coach-profile', component: EditCoachComponent }
+      { path: 'edit-coach-profile', component: EditCoachComponent },
+      { path: 'request-change-topic', component: RequestChangeCoachingTopicComponent }
     ]
   },
   {
     path: 'dashboard-admin',
     component: AdminDashboardComponent,
-    canActivate: [AuthenticationGuard, AuthorizationGuard, AdminGuard],
+    canActivate: [
+      authGuards.authenticated(true),
+      authGuards.sessionGuard(session => session.isAdmin()),
+    ],
     children: [
       { path: '', component: UserOverviewComponent },
       { path: 'edit/:id', component: EditUserComponent },
-      { path: 'edit/:id/topics', component: EditCoachTopicsByAdminComponent },
+      { path: 'session-overview', component: SessionOverviewComponent },
+      { path: 'edit-session/:id', component: EditSessionComponent }
     ]
   },
-  { path: 'user/:id', component: UserProfileComponent, canActivate: [AuthenticationGuard], },
-  { path: 'coaches', component: CoachOverviewComponent, canActivate: [AuthenticationGuard], },
-  { path: 'create-session/:id', component: SessionRequestComponent, canActivate: [AuthenticationGuard], }
+  { path: 'user/:id', component: UserProfileComponent, canActivate: [authGuards.authenticated(true)], },
+  { path: 'coaches', component: CoachOverviewComponent, canActivate: [authGuards.authenticated(true)], },
+  { path: 'create-session/:id', component: SessionRequestComponent, canActivate: [authGuards.authenticated(true)], },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
