@@ -10,7 +10,6 @@ import { UserService } from 'src/app/utility/service/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private _hasDuplicateEmail = false;
   private _registerForm = this.formBuilder.group({
     firstName: new FormControl("",[Validators.required]),
     lastName: new FormControl("", [Validators.required]),
