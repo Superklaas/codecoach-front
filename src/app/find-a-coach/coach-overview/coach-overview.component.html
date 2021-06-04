@@ -16,10 +16,10 @@
             <h3>{{coach.profileName}}</h3>
           </div>
           <div class="coach-card-body row">
-            <div class="col image-wrapper">
-              <img src="{{coach.imageUrl}}">
+            <div class="col-md image-wrapper">
+              <img [src]="getUserImage(coach)">
             </div>
-            <div class="col topic-wrapper">
+            <div class="col-md topic-wrapper">
               <h4>Topics</h4>
               <ul>
                 <li *ngFor="let topic of coach.topicList">{{topic.name}}</li>
@@ -28,11 +28,15 @@
                 </li>
               </ul>
             </div>
-            <div><span [ngClass]="getXpLevel(coach) | lowercase" class="badge right">{{getXpLevel(coach)}}</span></div>
+            <div row>
+              <div><span [ngClass]="getXpLevel(coach) | lowercase" class="badge xp-level">{{getXpLevel(coach)}}</span>
+              </div>
+              <button class="round-button yellow darken-2" routerLink="/user/{{coach.id}}">
+                <i class="material-icons center white-text">send</i>
+              </button>
+            </div>
           </div>
-          <button class="round-button yellow darken-2" routerLink="/user/{{coach.id}}">
-            <i class="material-icons center white-text">send</i>
-          </button>
+
         </div>
       </div>
     </div>

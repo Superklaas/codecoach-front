@@ -3,9 +3,11 @@
         <div class="card-body">
             <form class="col s12" [formGroup]="editCoachForm" (ngSubmit)="update()">
                 <div class="row border-bottom ">
-                    <div class="col"><b>Introduction</b></div>
-                    <input type="text" class="form-control col" formControlName="introduction"
-                        aria-label="introduction text">
+                    <div class="col-md-4"><b>Introduction</b></div>
+                    <div class="col-md-4 flex-fill">
+                        <input type="text" class="form-control col" formControlName="introduction"
+                            aria-label="introduction text">
+                    </div>
                 </div>
 
                 <div class="row">
@@ -14,8 +16,8 @@
                     </div>
                 </div>
                 <div class="row border-bottom ">
-                    <div class="col"><b>Availability</b></div>
-                    <div class="col">
+                    <div class="col-md-4"><b>Availability</b></div>
+                    <div class="col-md-4 flex-fill">
                         <input type="text" class="form-control col" formControlName="availability"
                             aria-label="Availability">
                     </div>
@@ -27,8 +29,8 @@
                 </div>
             </form>
             <div class="right-align">
-                <button class="waves-effect waves-light btn btn-custom green" [disabled] ="editCoachForm.invalid"  (click)="update()">SAVE<i
-                        class="material-icons right">check_circle</i>
+                <button class="waves-effect waves-light btn btn-custom green" [disabled]="editCoachForm.invalid"
+                    (click)="update()">SAVE<i class="material-icons right">check_circle</i>
                 </button>
                 <button class="waves-effect waves-light btn btn-custom red accent-4" (click)="cancel()">CANCEL<i
                         class="material-icons right">cancel</i>
