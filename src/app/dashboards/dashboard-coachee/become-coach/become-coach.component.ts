@@ -4,6 +4,7 @@ import { AuthenticationService } from 'src/app/authentication/authentication.ser
 import { ProfileService } from 'src/app/utility/service/profile.service';
 import { UserService } from 'src/app/utility/service/user.service';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {StringValidators} from "../../../utility/validators/StringValidators";
 
 @Component({
   selector: 'app-become-coach',
@@ -14,7 +15,7 @@ export class BecomeCoachComponent implements OnInit {
   private _hasApplied: boolean;
   private _applyForm = this.formBuilder.group(
     {
-      motivation: new FormControl("",[Validators.required]),
+      motivation: new FormControl("",[Validators.required, StringValidators.noWhitespace]),
       topic1: new FormControl("", []),
       topic2: new FormControl("", []),
     }, {validators: this.oneTopicRequired}

@@ -21,7 +21,7 @@
         </div>
         <div class="row">
           <div *ngIf="wrongInputHasBeenTyped(motivation)" class="alert alert-danger">
-            <div *ngIf="motivation.errors.required">Motivation is required.</div>
+            <div *ngIf="motivation.errors.required || motivation.errors.whitespace">Motivation is required.</div>
           </div>
         </div>
         <div class="row">
