@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {RolePersonalisationService} from "../../../utility/service/role-personalisation.service";
-import {FormBuilder, FormControl, Validators} from "@angular/forms";
-import {ActivatedRoute} from "@angular/router";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
 import {SessionService} from "../../../utility/service/session.service";
 import {Session} from "../../../utility/model/Session";
 import {User} from "../../../utility/model/User";
@@ -30,14 +30,15 @@ export class EditSessionComponent implements OnInit, AfterViewInit {
     date: new FormControl("", [Validators.required]),
     startTime: new FormControl("", [Validators.required]),
     location: new FormControl("", [Validators.required, Validators.maxLength(255), this.noWhitespaceValidator]),
-  });
+  }, {validators: this.timeInThePast});
 
   constructor(private roleStuff: RolePersonalisationService,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private sessionService: SessionService,
               private userService: UserService,
-              private initService: InitService,) {
+              private initService: InitService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -67,6 +68,22 @@ export class EditSessionComponent implements OnInit, AfterViewInit {
     return this.roleStuff.color;
   }
 
+  get subject() {
+    return this.editForm.get('subject');
+  }
+
+  get date() {
+    return this.editForm.get('date');
+  }
+
+  get startTime() {
+    return this.editForm.get('startTime');
+  }
+
+  get location() {
+    return this.editForm.get('location');
+  }
+
   submit() {
 
   }
@@ -75,6 +92,25 @@ export class EditSessionComponent implements OnInit, AfterViewInit {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
     return isValid ? null : {'whitespace': true};
+  }
+
+  public wrongInputHasBeenTyped(input: AbstractControl): boolean {
+    if (input === null) {
+      return false;
+    }
+    return input.invalid && (input.dirty || input.touched);
+  }
+
+  timeInThePast(group: FormGroup): { inThePast?: boolean } {
+    const date = group.get('date').value;
+    const startTime = group.get('startTime').value;
+    if (date === '' || startTime == '') return null;
+    const referenceDate = Date.parse(date + "T" + startTime);
+    return referenceDate < Date.now() ? {inThePast: true} : {};
+  }
+
+  cancel() {
+    this.router.navigateByUrl('/dashboard-admin/session-overview');
   }
 
 }
